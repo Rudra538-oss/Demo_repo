@@ -1,0 +1,323 @@
+<mvc:View
+ xmlns:core="sap.ui.core"
+ xmlns="sap.m"
+ xmlns:l="sap.ui.layout"  
+ xmlns:mvc="sap.ui.core.mvc" 
+ xmlns:u="sap.ui.unified"
+controllerName="JS.Reversal"
+ xmlns:f="sap.ui.layout.form"
+xmlns:table="sap.ui.table"
+xmlns:html="http://www.w3.org/1999/xhtml">
+<html:style>
+      		
+
+.sapUiUfdShellHeadItmSep.sapUiUfdShellHeadItm{
+    width: 124px;
+}
+.sapUiUfdShellHeadItm>span>img {
+    margin-top: 0px;
+    width: 110px;
+    height: 40px;
+    border-width: 0;
+}
+.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+    max-height: 30px;
+    max-width: 150px;
+    vertical-align: middle;
+}
+.sapMPI{
+ height: 2rem;
+ margin-left: 0.5rem;
+}
+.sapMLabel{
+    font-weight: bold;
+    white-space:normal;
+}
+#Reversal--label_header3{
+    font-size: 20px;
+    font-family: Times New Roman;
+}
+#Reversal--btnECCGMId-img{
+color: green;
+}
+#Reversal--btnECCGMId-inner, #Reversal--repID-inner {
+background-color: white;
+border: 1px solid;
+border-color: #bfbfbf;
+border-radius: 0.125rem;
+}
+#Reversal--repID-img{
+color: royalBlue;
+}
+#Reversal--quant, #Reversal--batchNo, #Reversal--PostDate, #Reversal--info{
+max-width:280px;
+}
+#Reversal--uom, #Reversal--declareID, #Reversal--revID{
+max-width:190px;
+}
+.sapMBtnInner.sapMBtnText{
+padding-left: 0rem; 
+padding-right: 0rem; 
+}
+.sapborderRes{
+font-stretch:semi-condensed;
+}
+#__item0{
+     width: 53px;
+}
+	#textForConfirm1{
+	color: fireBrick;
+	font-weight:bold;
+	font-size: medium;
+	}
+	#textForConfirm2{
+	font-size: x-large;
+	padding-top: inherit;
+	}
+
+</html:style>
+	<Page
+		id="pageID" class="Background"
+		showHeader="false"
+		title="Setup" >
+						
+				<u:Shell
+			id="shell3"
+			icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+			<u:headItems>
+				<u:ShellHeadItem
+					tooltip="{GRReverse1>NPDashboard_Back}"
+					icon="sap-icon://nav-back"
+					visible="true"
+					press="goHome" />
+			</u:headItems>
+			<u:headEndItems>
+				<u:ShellHeadItem
+					  id="bcpStatus"
+					icon=""
+					tooltip="{GRReverse2>InBndMatRecpt_title_BCP}"
+					press="" />
+			</u:headEndItems>
+			<u:user>
+				<u:ShellHeadUserItem
+					image="sap-icon://person-placeholder"
+				            showPopupIndicator="false"
+					username="Karl Mustermann"
+					press="logoff" />
+			</u:user>
+<u:search>
+				<Label  id="label_header3"
+					text="{GRReverse3>CustomGR_GRR_1}" design="Bold"/>
+			</u:search>
+	<u:content>
+
+
+<f:Form id="Form1"   
+            editable="false">
+
+       <f:layout>
+           <f:ResponsiveGridLayout labelSpanL="4" labelSpanM="4" labelSpanS="3"
+            columnsL="4" columnsM="4"/>
+        </f:layout>
+	
+        <f:formContainers>
+	<f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{GRReverse1>NPDashboard_Line}">
+                  <f:fields>
+                  <Input id ="resDes" class="sapborderRes" value ="" />
+	
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+	  <f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{GRReverse4>CustomGR_GRR_2}" design="Bold">
+                  <f:fields>
+                  <Input id ="ProcessOrder" value ="" change="poInput"  />
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+	
+	<f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{GRReverse6>CustomGR_GRR_4}" design="Bold">
+                  <f:fields>
+                  <Input id ="Material" value ="" change="poInput" />
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+	
+	
+		<f:FormContainer>
+               <f:formElements>
+	   <f:FormElement >
+                  <f:fields>
+                  <Input id ="MatDes" class="sapborderRes" value ="" change="poInput" />
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+<f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{GRReverse5>CustomGR_GRR_3}" design="Bold">
+                  <f:fields>
+                  <Input id ="Target" value ="" />
+		
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+<f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{GRReverse7>CustomGR_GRR_5}" design="Bold">
+                  <f:fields>
+                  <Input id ="Produced" value ="" />
+		
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+		<f:FormContainer>
+               <f:formElements>
+	   <f:FormElement >
+                  <f:fields>
+                  <Select id ="changeMatID"  
+		
+		visible="true" 
+		height="100%"
+		enabled="true" 
+		change="changeMaterial"
+		items="{path: '/Rowset/Row'}">
+		<items> <core:Item key="{WarehouseNumber}"  /> 
+		</items> 
+</Select>
+	
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+		<f:FormContainer>
+               <f:formElements>
+	   <f:FormElement >
+                  <f:fields>
+                  <ProgressIndicator id="pi" class="progress" width="80%" showValue="true" />
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+	
+</f:formContainers>
+</f:Form>
+<panel id="Panel2">
+<headerToolbar>
+
+  <OverflowToolbar height="3rem">
+		<ToolbarSpacer />
+		<Button id="btnECCGMId" text="{GMReport21>GMReport_ECCGoodsMvmt}" width="200px" enabled="true" visible="true" press="goToECCGM" icon="sap-icon://sap-box" />
+		<Button id="repID" text="{GRReverse16>CustomGI_CL_12}" enabled="true" visible="true" width="200px" press="doReport" icon="sap-icon://excel-attachment"/>
+ 		<ToolbarSpacer width="25px" />
+     </OverflowToolbar>
+  </headerToolbar>
+<f:Form id="Form2"   
+            editable="false">
+
+        <f:layout>
+           <f:ResponsiveGridLayout
+	labelSpanL="3"
+            labelSpanM="3"
+             labelSpanS="3"
+            emptySpanL="4"
+            emptySpanM="4"
+            columnsL="1"
+            columnsM="1"
+          />
+        </f:layout>
+	
+        <f:formContainers>
+
+	
+	  <f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{GRReverse8>CustomGR_GRR_6}" id="ssccLabel">
+                  <f:fields>
+                 
+
+	 <MultiInput id ="ssccID" width="185%"
+		valueHelpRequest="getsscc">
+		
+</MultiInput>
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+	
+	 <f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{GRReverse9>CustomGR_GRR_7}" design="Bold">
+                  <f:fields>
+                  <Input id ="quant" value ="" liveChange="validateQuantity" enabled="false" />
+		<Input id ="uom" value ="" enabled="false" />
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+	<f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{GRReverse10>CustomGR_GRR_8}" enabled="false">
+                  <f:fields>
+                    <Select id ="batchNo" width="280px"  margin-left="2%" visible="true"  height="100%" enabled="false" change="getBatch" items="{path: '/Rowset/Row'}">
+		<items> <core:Item key="{WarehouseNumber}"  /> 
+		</items> </Select>
+
+	<Button id ="revID"  enabled="true" visible="true" text = "{GRReverse13>CustomGR_GRR_12}" type="Emphasized" press="doReverse" />
+
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+	 <f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{GRReverse11>CustomGR_GRR_9}" design="Bold">
+                  <f:fields>
+                  <DatePicker  id ="PostDate"  enabled="false" type="Date" valueFormat="yyyy-MM-dd" placeholder="" change="handlePostingDateChange" />
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+
+	 <f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{GRReverse12>CustomGR_GRR_11}" design="Bold">
+                  <f:fields>
+                  <Input id ="info" fieldWidth="25px"  value ="" change="quantInput" maxLength="50" />
+		<Button text="{GRReverse14>CustomGR_GR_18}" enabled="true" id="declareID" visible="true" press="doGR" />
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+</f:formContainers>
+</f:Form>
+
+
+
+
+</panel>
+
+</u:content>
+
+</u:Shell>
+	
+		</Page>
+
+</mvc:View>

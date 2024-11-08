@@ -1,0 +1,345 @@
+<mvc:View
+ xmlns:core="sap.ui.core"
+ xmlns="sap.m"
+ xmlns:l="sap.ui.layout"  
+ xmlns:mvc="sap.ui.core.mvc" 
+ xmlns:u="sap.ui.unified"
+controllerName="JS.Rework"
+ xmlns:f="sap.ui.layout.form"
+xmlns:table="sap.ui.table"
+xmlns:html="http://www.w3.org/1999/xhtml">
+<html:style>
+      	
+	
+
+.sapUiUfdShellHeadItmSep.sapUiUfdShellHeadItm{
+    width: 124px;
+}
+.sapUiUfdShellHeadItm>span>img {
+    margin-top: 0px;
+    width: 110px;
+    height: 40px;
+    border-width: 0;
+}
+.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+    max-height: 30px;
+    max-width: 150px;
+    vertical-align: middle;
+}
+#__item0{
+     width: 53px;
+}
+</html:style>
+	<Page
+		id="pageID" class="Background"
+		showHeader="false"
+		title="Setup" >
+						
+				<u:Shell
+			id="shell3"
+			icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+			<u:headItems>
+				<u:ShellHeadItem
+					tooltip="{Rework1>NPDashboard_Back}"
+					icon="sap-icon://nav-back"
+					visible="true"
+					press="goHome" />
+			</u:headItems>
+			<u:headEndItems>
+				<u:ShellHeadItem
+					  id="bcpStatus"
+					icon=""
+					tooltip="{Rework2>InBndMatRecpt_title_BCP}"
+					press="" />
+			</u:headEndItems>
+			<u:user>
+				<u:ShellHeadUserItem
+					image="sap-icon://person-placeholder"
+				            showPopupIndicator="false"
+					username="Karl Mustermann"
+					 />
+			</u:user>
+<u:search>
+				<Label  id="label_header3"
+					text="" design="Bold"/>
+			</u:search>
+	<u:content>
+
+<panel id="PanelTitle">
+<headerToolbar>
+
+  <Toolbar height="2rem">
+		<ToolbarSpacer />
+	<Label text="{Rework3>CustomGR_GRR_16}" design="Bold"/>
+ 		<ToolbarSpacer />
+     </Toolbar>
+  </headerToolbar>
+</panel>
+<panel id="topPanel">
+
+<f:Form id="Form1"   
+            editable="false">
+
+        <f:layout>
+           <f:ResponsiveGridLayout
+	labelSpanL="3"
+            labelSpanM="3"
+             labelSpanS="3"
+           
+          />
+        </f:layout>
+	
+        <f:formContainers>
+
+<f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="">
+                  <f:fields>
+                  <Input id ="resDes" width="350px" fieldWidth="70px"  value ="" />
+	
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+	<f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="">
+                  <f:fields>
+                  <Input id ="MatDes1" width="300px" fieldWidth="70px"  visible="false" value ="" change="poInput" />
+	
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+	
+	  <f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{Rework4>CustomGR_GRR_2}" design="Bold">
+                  <f:fields>
+                  <Input id ="ProcessOrder"  width="300px" fieldWidth="30px"  value ="" style="border:none" />
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+<f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{Rework5>CustomGR_GRR_3}" design="Bold">
+                  <f:fields>
+                  <Input id ="Target"  width="250px" fieldWidth="10px"  value ="" />
+		
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+	
+	<f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{Rework6>CustomGR_GRR_4}" design="Bold">
+                  <f:fields>
+                  <Input id ="Material" width="300px" fieldWidth="30px"  value ="" change="poInput" />
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+<f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{Rework7>CustomGR_GRR_5}" design="Bold">
+                  <f:fields>
+                  <Input id ="Produced"  width="250px" fieldWidth="10px"  value ="" />
+		
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+	
+		<f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="">
+                  <f:fields>
+                  <Input id ="MatDes" fieldWidth="80px"  value ="" change="poInput" />
+	
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+	
+	
+</f:formContainers>
+</f:Form>
+</panel>
+<panel id="Panel2">
+<headerToolbar>
+
+  <Toolbar height="2rem">
+		<ToolbarSpacer />
+	<Label text="{Rework8>CustomGR_GRR_21}" align="left"/>
+ 		<ToolbarSpacer />
+     </Toolbar>
+  </headerToolbar>
+<f:Form id="Form2"   
+            editable="false">
+
+        <f:layout>
+           <f:ResponsiveGridLayout
+	labelSpanL="3"
+            labelSpanM="3"
+             labelSpanS="3"
+            emptySpanL="4"
+            emptySpanM="4"
+            columnsL="1"
+            columnsM="1"
+          />
+        </f:layout>
+	
+        <f:formContainers>
+
+	
+	  <f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{Rework9>CustomGR_GRR_7}" design="Bold">
+                  <f:fields>
+                  <Input id ="quant"  width="300px" fieldWidth="30px"  value ="" liveChange="validateQuantity" />
+
+	 <Select id ="uom"  
+		width="200px" 
+		visible="true" 
+		height="100%"
+		enabled="true" 
+		change="getUom"
+		items="{path: '/Rowset/Row'}">
+		<items> <core:Item key="{WarehouseNumber}"  /> 
+		</items> 
+</Select>
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+	
+	<f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{Rework10>CustomGR_GRR_8}">
+                  <f:fields>
+
+		
+                    		 <MultiInput id ="batchNo" width="300px" change="checkExistBatch"
+		valueHelpRequest="getBatch">
+</MultiInput>
+	<Button id ="CreateBatch"  
+		enabled="true"
+			visible="true"
+			text = "{Rework11>CustomGR_GRR_20}"
+			width="200px"
+			press="pressBatch" />
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+	<f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{Rework12>CustomGR_GRR_19}" design="Bold">
+                  <f:fields>
+                  <DatePicker  id ="ProdDate" 
+                    		type="Date"
+                    		valueFormat="yyyy-MM-dd"
+			width="300px"
+                   		placeholder=""
+			change="handleProdDateChange" />
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+ <f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{Rework13>CustomGR_GRR_18}" design="Bold">
+                  <f:fields>
+                  <DatePicker  id ="sledDate" 
+                    		type="Date"
+                    		valueFormat="yyyy-MM-dd"
+			width="300px"
+                   		placeholder=""
+			change="handleSledDateChange" />
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+	 <f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{Rework14>CustomGR_GRR_9}" design="Bold">
+                  <f:fields>
+                  <DatePicker  id ="PostDate" 
+                    		type="Date"
+                    		valueFormat="yyyy-MM-dd"
+			width="300px"
+			
+                   		placeholder=""
+			change="handlePostingDateChange" />
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+	 <f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{Rework15>CustomGR_GRR_11}" design="Bold">
+                  <f:fields>
+                  <Input id ="info"  width="300px" fieldWidth="30px"  value =""  maxLength="50" />
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+<f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{Rework16>CustomGR_GR_15}" id="printerLabel"  visible="false" design="Bold">
+                  <f:fields>
+	 <Select id ="printerID"  
+		width="300px" 
+		visible="false" 
+		height="100%"
+		enabled="true" 
+		change="getPrinter"
+		items="{path: '/Rowset/Row'}">
+		<items> <core:Item key="{WarehouseNumber}"  /> 
+		</items> 
+</Select>
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+ <f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{Rework17>CustomGR_GR_16}" id="copyLabel" visible="false" design="Bold">
+                  <f:fields>
+                  <Input id ="copies" visible="false" enabled="true" width="300px" fieldWidth="30px"  value ="" liveChange="validateNoOfPrintCopies" />
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+</f:formContainers>
+</f:Form>
+</panel>
+
+</u:content>
+</u:Shell>
+<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+					<Button text="{Rework18>CustomGR_GRR_14}" type="Emphasized" enabled="true" visible="true" press="doGR" />
+				<Button text="{Rework19>CustomGR_GRR_12}" enabled="true" visible="true" press="doReverse" />
+			
+				<Button text="{Rework20>CustomGR_GRR_13}" enabled="true" visible="true" press="doReport"/>
+			
+			</Toolbar>
+		</footer>
+		</Page>
+
+</mvc:View>

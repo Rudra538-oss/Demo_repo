@@ -1,0 +1,666 @@
+<mvc:View
+	controllerName="customActivity.InboundMaterialReceipt"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns="sap.m"
+	xmlns:table="sap.ui.table"
+	xmlns:model="sap.ui.model"
+	 xmlns:f="sap.ui.layout.form"  
+	 xmlns:commons="sap.ui.commons"
+	xmlns:u="sap.ui.unified"
+	xmlns:s="sap.suite.ui.commons"
+	xmlns:m="sap.m"
+	xmlns:ux3="sap.ui.ux3"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+<html:style>
+
+.sapMTitleStyleAuto{
+font-size:2rem !important;
+font-weight : bold !important;
+}
+.sapUiUfdShellHeadItmSep.sapUiUfdShellHeadItm{
+    width: 124px;
+}
+.sapUiUfdShellHeadItm>span>img {
+    margin-top: 0px;
+    width: 110px;
+    height: 40px;
+    border-width: 0;
+}
+.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+    max-height: 30px;
+    max-width: 150px;
+    vertical-align: middle;
+}
+#__item0{
+     width: 53px;
+}
+.sapUiRespGridMedia-Std-Desktop.sapUiRespGridHSpace0>.sapUiRespGridSpanL4 {
+    width: 33.33333333%;
+}
+.sapMInputBaseInner {
+    padding: 0 0.35rem;
+}
+.sapUiFormResGridMain.sapUiRespGridMedia-Std-Tablet > div:not(.sapUiRespGridBreakM):not(.sapUiRespGridSpanM12), .sapUiFormResGridMain.sapUiRespGridMedia-Std-Desktop > div:not(.sapUiRespGridBreakL):not(.sapUiRespGridSpanL12), .sapUiFormResGridMain.sapUiRespGridMedia-Std-LargeDesktop > div:not(.sapUiRespGridBreakXL):not(.sapUiRespGridSpanXL12) {
+    padding-left: 0rem;
+}
+.sapUiFormResGridCont {
+    padding-bottom: 1rem;
+}
+
+
+</html:style>
+
+ <Page
+    id="page"
+	title = ""
+    showHeader="false" > 
+      
+<!--<div id="Panel_LayoutV"></div>-->
+	<u:Shell class="Background"
+			id="shell1"
+			icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+
+			<u:headItems>
+				<u:ShellHeadItem
+					tooltip="{IMReceipt1>NPDashboard_Back}"
+					icon="sap-icon://nav-back"
+					visible="true"
+					press="goBack" />
+			
+			</u:headItems>
+
+			<u:headEndItems>
+				<u:ShellHeadItem
+				        id="bcpHDRIMR"
+					icon=""
+					tooltip="{IMReceipt2>InBndMatRecpt_title_BCP}" 
+					press="" />
+			</u:headEndItems>
+
+			<u:user>
+				<u:ShellHeadUserItem
+					id="usernameIds"
+					image="sap-icon://person-placeholder" 
+				        	showPopupIndicator="false"
+					username=""	/>
+			</u:user>
+			<u:search>
+				<Label id="label_header1"
+					text="{IMReceipt3>InBndMatRecpt_Header_Title}"/>
+		</u:search>
+
+  <u:content>
+             
+<Panel id="SelectionCarteriaPanel" headerText="{IMReceipt4>InBndMatRecpt_title_SelectCriteria}" expandable="true" expanded="true"  > 
+
+<headerToolbar>
+  <Toolbar height="3rem" id="toolbar">
+	<Label text="{IMReceipt5>InBndMatRecpt_title_SelectCriteria}" design="Bold"/>
+	<ToolbarSpacer />
+<!--
+	<Label text="{IMReceipt6>InBndMatRecpt_title_BCP}" design="Bold"/>
+        	<Image  id="bcpStatus" src="" >
+	</Image>
+-->
+     </Toolbar>
+  </headerToolbar>
+
+      <f:Form id="Form1"    
+	minWidth="1024" 
+	maxContainerCols="2" 
+            editable="true">
+
+        <f:layout>
+          <f:ResponsiveGridLayout
+            labelSpanL="4"
+            labelSpanM="4"
+            emptySpanL="0"
+            emptySpanM="0"
+            columnsL="6"
+            columnsM="6"
+          />
+        </f:layout>
+	
+        <f:formContainers>
+
+	
+	  <f:FormContainer>
+               <f:formElements>
+	   <f:FormElement id="StartDateLabel" label="{IMReceipt7>InBndMatRecpt_Lbl_StartDate}">
+                  <f:fields>
+                    <DatePicker  id ="StartDate" 
+                    		type="Date"
+                    		valueFormat="MM/dd/yyyy HH:mm"
+                   		placeholder="Select Date"
+			width=""
+			change="handleStartDateChange" />
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+	 <f:FormContainer>
+               <f:formElements>
+	     <f:FormElement id="EndDateLabel" label="{IMReceipt8>InBndMatRecpt_Lbl_EndDate}">
+                  <f:fields>
+                    <DatePicker  id ="EndDate" 
+                    		type="Date"
+                    		valueFormat="MM/dd/yyyy HH:mm"
+                   		placeholder="Select Date"
+			change="handleEndDateChange" />
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+	<f:FormContainer>
+               <f:formElements>
+	    <f:FormElement label="">
+                   <f:fields>
+	      <Button
+			id="lastHour"
+			icon="/XMII/CM/MaterialHandling/InboundMaterial/Common/clockUpload.png"
+			enabled="true"
+		           visible="true"
+			text = "{IMReceipt9>InBndMatRecpt_btn_LastHour}"
+			width="100%"
+			press="clickLastHour" />
+	
+	      </f:fields>
+                 </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+	<f:FormContainer>
+               <f:formElements>
+	    <f:FormElement label="">
+                   <f:fields>
+	      <Button
+			id="Today"
+			icon="/XMII/CM/MaterialHandling/InboundMaterial/Common/todayUpload.png"
+			enabled="true"
+		           visible="true"
+			text = "{IMReceipt10>InBndMatRecpt_btn_Today}"
+			width="100%"
+			press="clickToday" />
+	
+	      </f:fields>
+                 </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+	<f:FormContainer>
+               <f:formElements>
+	    <f:FormElement label="">
+                   <f:fields>
+	      <Button
+			id="Yesterday"
+			icon="/XMII/CM/MaterialHandling/InboundMaterial/Common/calendarMnthUpload.png"
+			enabled="true"
+		           visible="true"
+			text = "{IMReceipt11>InBndMatRecpt_btn_yesterday}"
+			width="100%"
+			press="clickYesterday" />
+	
+	      </f:fields>
+                 </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+	<f:FormContainer>
+               <f:formElements>
+	    <f:FormElement label="">
+                   <f:fields>
+	      <Button
+			id="ThisWeek"
+			icon="/XMII/CM/MaterialHandling/InboundMaterial/Common/calendarWeekUpload.png"
+			enabled="true"
+		           visible="true"
+			text = "{IMReceipt12>InBndMatRecpt_btn_thisWeek}"
+			width="100%"
+			press="clickThisWeek" />
+	
+	      </f:fields>
+                 </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+	</f:formContainers>
+     </f:Form>
+
+
+
+<f:Form id="Form2"
+        editable="true">
+
+        <f:layout>
+          <f:ResponsiveGridLayout
+            labelSpanL="4"
+            labelSpanM="4"
+            emptySpanL="0"
+            emptySpanM="0"
+            columnsL="5"
+            columnsM="5"
+          />
+        </f:layout>
+	
+        <f:formContainers>
+
+ 	<f:FormContainer>
+               <f:formElements>
+	    <f:FormElement  label="{IMReceipt13>InBndMatRecpt_Lbl_PO}">
+                   <f:fields>
+	     <Input id ="PurchaseOrder"   value ="" change="poInput" />
+	
+	      </f:fields>
+                 </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+	 <f:FormContainer>
+               <f:formElements>
+	    <f:FormElement label="{IMReceipt14>InBndMatRecpt_Lbl_Vendor}">
+                   <f:fields>
+	     <Input id ="Vendor"  value ="" change="vendorInput" />
+	
+	      </f:fields>
+                 </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+	 <f:FormContainer>
+               <f:formElements>
+	    <f:FormElement label="{IMReceipt15>InBndMatRecpt_Lbl_Material}" visible="false">
+                   <f:fields>
+	     <Input id ="Material"  value ="" change="materialInput" />
+	
+	      </f:fields>
+                 </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+
+	<f:FormContainer>
+               <f:formElements>
+	    <f:FormElement label="" >
+                  <f:fields>
+	     <Button
+		id="Refresh"
+		icon="/XMII/CM/MaterialHandling/InboundMaterial/Common/refresh.png"
+		enabled="true"
+		visible="true"
+		text = "{IMReceipt16>InBndMatRecpt_btn_refresh}"
+		width="100%"
+		press="doRefreshFn" />	
+	 	</f:fields>
+	
+                 </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+	</f:formContainers>
+     	</f:Form>
+</Panel> 
+
+
+<Panel id="InboundMaterialGrid" headerText="" expandable="true" expanded="true" > 
+<headerToolbar>
+
+  <Toolbar height="3rem" id="toolbar1">
+ 	<Label text="{IMReceipt17>InBndMatRecpt_title_InbndMatRecptGrid}" design="Bold"/>
+		<ToolbarSpacer/>
+		
+		<SearchField id="Search"
+			icon="sap-icon://search"
+			enabled="true" visible="true" width="300px" placeholder="{title7>CustomGI_CL_4}"
+			liveChange="onSearch" />
+     </Toolbar>
+  </headerToolbar>
+     <f:Form id="form3"
+        editable="true">
+
+        <f:layout>
+          <f:ResponsiveGridLayout
+            labelSpanL="1"
+            labelSpanM="1"
+            emptySpanL="0"
+            emptySpanM="0"
+            columnsL="1"
+            columnsM="1" />
+        </f:layout>
+
+	<f:formContainers>
+
+     <f:FormContainer>
+               <f:formElements>
+
+	  <f:FormElement id="InboundMatReceiptData">
+		<table:Table id="InboundMatReceiptTable"
+		rows="{/Rowset/Row}"
+		selectionMode="Single"
+		selectionBehavior="Row"
+		rowSelectionChange ="oInboundMatReceiptTableRowChange"
+	            visible="true"	
+	            visibleRowCount="5"
+	           visibleRowCountMode="Fixed">
+
+	<table:columns>
+			
+				<table:Column hAlign="Center" visible="true" width = "54px">
+				<Label text="{IMReceipt18>InBndMatRecpt_colHeader_plant}" />
+					<table:template>
+					<Text text="{Plant}" />
+					</table:template>
+			</table:Column>
+		   	
+				<table:Column hAlign="Center" visible="true" width = "54px">
+				<Label text="{IMReceipt19>InBndMatRecpt_colHeader_Client}" />
+					<table:template>
+					<Text text="{Client}" />
+			</table:template>
+			</table:Column>
+		   	
+			<table:Column hAlign="Center" visible="true" width = "146px">
+				<Label text="{IMReceipt20>InBndMatRecpt_colHeader_PO}" />
+					<table:template>
+					<Text text="{PurchaseOrderNumber}" />
+					</table:template>
+			</table:Column>
+		   	
+			<table:Column hAlign="Center" visible="true" width = "118px">
+				<Label text="{IMReceipt22>InBndMatRecpt_colHeader_docType}" />
+					<table:template>
+					<Text text="{Document_Type}" />
+					</table:template>
+			</table:Column>
+		   	 <table:Column hAlign="Center" visible="true" width = "165px">
+				<Label text="{IMReceipt23>InBndMatRecpt_colHeader_docDate}" />
+					<table:template>
+					<Text text="{parts : [{path: 'Document_Date'}],  formatter : '.getDateDisplayFormat'}" />
+					</table:template>
+			</table:Column>
+		   	 <table:Column hAlign="Center" visible="true" width = "165px">
+				<Label text="{IMReceipt24>InBndMatRecpt_colHeader_poDt}" />
+					<table:template>
+					<Text text="{parts : [{path: 'PurchaseOrder_Date'}],  formatter : '.getDateDisplayFormat'}" />
+					</table:template>
+			</table:Column>
+		   	   <table:Column hAlign="Center" visible="true" width = "63px">
+				<Label text="{IMReceipt25>InBndMatRecpt_colHeader_Vendor}" />
+					<table:template>
+					<Text text="{Vendor_Number}" />
+					</table:template>
+			</table:Column>
+		   	<table:Column hAlign="Center" visible="true" width = "100px">
+				<Label text="{IMReceipt26>InBndMatRecpt_colHeader_VendorNo}" />
+					<table:template>
+					<Text text="{Vendor_Number_Value}" />
+					</table:template>
+			</table:Column>
+			<table:Column hAlign="Center" visible="true" width = "109px">
+				<Label text="{IMReceipt27>InBndMatRecpt_colHeader_VendorName}" />
+					<table:template>
+					<Text text="{Vendor_Name_Value}" />
+					</table:template>
+			</table:Column>
+		  	<table:Column hAlign="Center" visible="true" width = "147px">
+				<Label text="{IMReceipt28>InBndMatRecpt_colHeader_address}" />
+					<table:template>
+					<Text text="{Address_Value}" />
+					</table:template>
+			</table:Column>   	
+			<table:Column hAlign="Center" visible="true" width = "186px">
+				<Label text="{IMReceipt29>InBndMatRecpt_colHeader_city}" />
+					<table:template>
+					<Text text="{City}" />
+					</table:template>
+			</table:Column>  
+			<table:Column hAlign="Center" visible="true" width = "94px">
+				<Label text="{IMReceipt30>InBndMatRecpt_colHeader_psCode}" />
+					<table:template>
+					<Text text="{PostalCode}" />
+					</table:template>
+			</table:Column>  		
+			<table:Column hAlign="Center" visible="true" width = "98px">
+				<Label text="{IMReceipt31>InBndMatRecpt_colHeader_countryKey}" />
+					<table:template>
+					<Text text="{CountryKey}" />
+					</table:template>
+			</table:Column>  
+			<table:Column hAlign="Center" visible="true" width = "134px">
+				<Label text="{IMReceipt32>InBndMatRecpt_colHeader_telephone}" />
+					<table:template>
+					<Text text="{Telephone}" />
+					</table:template>
+			</table:Column>  	
+			<table:Column hAlign="Center" visible="true" width = "134px">
+				<Label text="{IMReceipt33>InBndMatRecpt_colHeader_fax}" />
+					<table:template>
+					<Text text="{Fax}" />
+					</table:template>
+			</table:Column>  
+			<table:Column hAlign="Center" visible="true" width = "110px">
+				<Label text="{IMReceipt34>InBndMatRecpt_colHeader_langKey}" />
+					<table:template>
+					<Text text="{LanguageKey}" />
+					</table:template>
+			</table:Column>  	
+				<table:Column hAlign="Center" visible="true" width = "63px">
+				<Label text="{IMReceipt35>InBndMatRecpt_colHeader_region}" />
+					<table:template>
+					<Text text="{Region}" />
+					</table:template>
+			</table:Column>  
+			<table:Column hAlign="Center" visible="true" width = "74px">
+				<Label text="{IMReceipt36>InBndMatRecpt_colHeader_ILNNR}" />
+					<table:template>
+					<Text text="{ILNNR}" />
+					</table:template>
+			</table:Column>  		
+					<table:Column hAlign="Center" visible="true" width = "120px">
+				<Label text="{IMReceipt37>InBndMatRecpt_colHeader_SAPlangCode}" />
+					<table:template>
+					<Text text="{SAP_LangCode}" />
+					</table:template>
+			</table:Column>  
+				
+	</table:columns>
+	
+</table:Table>
+
+    		</f:FormElement>
+	
+	 </f:formElements>
+             </f:FormContainer>         
+
+ <f:FormContainer>
+               <f:formElements>
+
+	  <f:FormElement id="POItemDetailsData">
+		<table:Table id="POItemDetailsTable"
+		rows="{/Rowset/Row}"
+		selectionMode="Single"
+		selectionBehavior="Row"
+	            visible="false"	
+		rowSelectionChange ="oPOItemsTableRowChange"
+	            visibleRowCount="5">
+
+	<table:columns>
+			
+			<table:Column hAlign="Center" visible="true" width = "54px">
+			<Label text="{IMReceipt38>InBndMatRecpt_colHeader_plant}" />
+					<table:template>
+					<Text text="{Plant}" />
+					</table:template>
+			</table:Column>
+		   		   	
+			<table:Column hAlign="Center" visible="true" width = "119px">
+				<Label text="{IMReceipt39>InBndMatRecpt_colHeader_PO}" />
+					<table:template>
+					<Text text="{PurchaseOrderNumber}" />
+					</table:template>
+			</table:Column>
+		   	 <table:Column hAlign="Center" visible="true" width = "161px">
+				<Label text="{IMReceipt40>InBndMatRecpt_colHeader_matNr}" />
+				 <table:template>
+					<Text text="{Material}" />
+					</table:template>
+			</table:Column>
+			
+		
+				<table:Column hAlign="Center" visible="true" width = "94px">
+				<Label text="{IMReceipt41>InBndMatRecpt_colHeader_ActCode}" />
+					<table:template>
+					<Text text="{Action_Code}" />
+					</table:template>
+			</table:Column>
+		   	
+		   	   		<table:Column hAlign="Center" visible="true" width = "107px">
+				<Label text="{IMReceipt42>InBndMatRecpt_colHeader_itemCatg}" />
+					<table:template>
+					<Text text="{OrderItemNumber}" />
+					</table:template>
+			</table:Column>
+
+		   	 <table:Column hAlign="Center" visible="true" width = "140px">
+				<Label text="{IMReceipt43>InBndMatRecpt_colHeader_rcvdQty}" />
+					<table:template>
+					<Text text="{parts : [{path: 'ReceivedOrderQuantity'}],  formatter : 'sap.oee.ui.Formatter.formatQuantityValue'}" />
+					</table:template>
+			</table:Column>
+
+		   	   		<table:Column hAlign="Center" visible="true" width = "70px">
+				<Label text="{IMReceipt44>InBndMatRecpt_colHeader_ordQty}" />
+					<table:template>
+					<Text text="{parts : [{path: 'Quantity'}],  formatter : 'sap.oee.ui.Formatter.formatQuantityValue'}" />
+					</table:template>
+			</table:Column>
+		   	   		<table:Column hAlign="Center" visible="true" width = "51px">
+				<Label text="{IMReceipt45>InBndMatRecpt_colHeader_Uom}" />
+					<table:template>
+					<Text text="{UOM}" />
+					</table:template>
+			</table:Column>
+		   	   		<table:Column hAlign="Center" visible="true" width = "109px">
+				<Label text="{IMReceipt46>InBndMatRecpt_colHeader_qtyPrice}" />
+					<table:template>
+					<Text text="{Qunatity_Price}" />
+					</table:template>
+			</table:Column>
+			<table:Column hAlign="Center" visible="true" width = "144px">
+				<Label text="{IMReceipt47>InBndMatRecpt_colHeader_qtyPriceUom}" />
+					<table:template>
+					<Text text="{Quantity_PriceUOM}" />
+
+					</table:template>
+			</table:Column>
+		  	<table:Column hAlign="Center" visible="true" width = "70px">
+				<Label text="{IMReceipt48>InBndMatRecpt_colHeader_price}" />
+					<table:template>
+					<Text text="{Price}" />
+					</table:template>
+			</table:Column>   	
+			<table:Column hAlign="Center" visible="true" width = "84px">
+				<Label text="{IMReceipt49>InBndMatRecpt_colHeader_priceUnit}" />
+					<table:template>
+					<Text text="{Price_Unit}" />
+					</table:template>
+			</table:Column>  
+			<table:Column hAlign="Center" visible="true" width = "89px">
+				<Label text="{IMReceipt50>InBndMatRecpt_colHeader_itemVal}" />
+					<table:template>
+					<Text text="{ItemValue}" />
+					</table:template>
+			</table:Column>  		
+			<table:Column hAlign="Center" visible="true" width = "89px">
+				<Label text="{IMReceipt51>InBndMatRecpt_colHeader_netWt}" />
+					<table:template>
+					<Text text="{NetWeight}" />
+					</table:template>
+			</table:Column>  
+			<table:Column hAlign="Center" visible="true" width = "101px">
+				<Label text="{IMReceipt52>InBndMatRecpt_colHeader_wtUOM}" />
+					<table:template>
+					<Text text="{WeightUOM}" />
+					</table:template>
+			</table:Column>  	
+			<table:Column hAlign="Center" visible="true" width = "103px">
+				<Label text="{IMReceipt53>InBndMatRecpt_colHeader_matrlClass}" />
+					<table:template>
+					<Text text="{MaterialClass}" />
+					</table:template>
+			</table:Column>  
+			<table:Column hAlign="Center" visible="true" width = "136px">
+				<Label text="{IMReceipt54>InBndMatRecpt_colHeader_convDenom}" />
+					<table:template>
+					<Text text="{ConversionDenom}" />
+					</table:template>
+			</table:Column>  	
+				<table:Column hAlign="Center" visible="true" width = "159px">
+				<Label text="{IMReceipt55>InBndMatRecpt_colHeader_convNumrtr}" />
+					<table:template>
+					<Text text="{ConversionNumerator}" />
+					</table:template>
+			</table:Column>  
+			<table:Column hAlign="Center" visible="true" width = "100px">
+				<Label text="{IMReceipt56>InBndMatRecpt_colHeader_wrhse}" />
+					<table:template>
+					<Text text="{Warehouse}" />
+					</table:template>
+			</table:Column>  		
+					<table:Column hAlign="Center" visible="true" width = "125px">
+				<Label text="{IMReceipt57>InBndMatRecpt_colHeader_strgLoc}" />
+					<table:template>
+					<Text text="{Storage_Location}" />
+					</table:template>
+			</table:Column>  
+				<table:Column hAlign="Center"  visible="true" width = "106px">
+				<Label text="{IMReceipt58>InBndMatRecpt_colHeader_strgType}" />
+					<table:template>
+					<Text text="{Storage_Type}" />
+					</table:template>
+			</table:Column>  
+				<table:Column hAlign="Center" visible="true" width = "105px">
+				<Label text="{IMReceipt59>InBndMatRecpt_colHeader_strgBin}" />
+					<table:template>
+					<Text text="{Storage_Bin}" />
+					</table:template>
+			</table:Column>  
+				<table:Column hAlign="Center" visible="true" width = "106px">
+				<Label text="{IMReceipt60>InBndMatRecpt_colHeader_dlvryDt}" />
+					<table:template>
+					<Text text="{parts : [{path: 'DeliveryDate'}],  formatter : '.getDateDisplayFormat'}" />
+					</table:template>
+			</table:Column> 
+				<table:Column hAlign="Center" visible="true" width = "151px">
+				<Label text="{IMReceipt61>InBndMatRecpt_colHeader_matDesc}" />
+					<table:template>
+					<Text text="{MaterialDescription}" />
+					</table:template>
+			</table:Column>  
+				<table:Column hAlign="Center" visible="true" width = "106px">
+				<Label text="{IMReceipt62>InBndMatRecpt_colHeader_totalWt}" />
+					<table:template>
+					<Text text="{TotalWeight}" />
+					</table:template>
+			</table:Column> 	
+	</table:columns>
+	
+</table:Table>
+
+    		</f:FormElement>
+	
+	 </f:formElements>
+             </f:FormContainer>         
+	</f:formContainers>
+     		</f:Form>
+
+   </Panel>
+
+  </u:content>
+</u:Shell>
+</Page>
+</mvc:View>

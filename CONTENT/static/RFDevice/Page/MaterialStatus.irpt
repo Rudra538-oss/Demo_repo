@@ -1,0 +1,145 @@
+<HTML>
+	<HEAD>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<TITLE id="title">Internal: Stock Status Change</TITLE>
+				<script type="text/javascript">
+		document.write('<scr'+'ipt src="/XMII/CM/MaterialHandling/RFDevice/JavaScript/MaterialStatus.js?'+Math.random()+'" type="text/javascript"></scr'+'ipt>');
+		document.write('<scr'+'ipt src="/XMII/CM/MaterialHandling/RFDevice/Common/Utility.js?'+Math.random()+'" type="text/javascript"></scr'+'ipt>');
+		</script>
+
+		<!--SCRIPT language="javascript" src="/XMII/CM/MaterialHandling/RFDevice/JavaScript/MaterialStatus.js"></SCRIPT-->
+		<script type="text/javascript" src="/XMII/CM/MaterialHandling/RFDevice/Common/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="/XMII/CM/MaterialHandling/RFDevice/Common/jquery-ui.js"></script>
+		<LINK REL="StyleSheet" HREF="/XMII/CM/MaterialHandling/RFDevice/Common/jquery-ui.css" TYPE="text/css">
+		<!--script type="text/javascript" src="/XMII/CM/MaterialHandling/RFDevice/Common/Utility.js"></script-->
+		<LINK REL="StyleSheet" HREF="/XMII/CM/MaterialHandling/RFDevice/Stylesheet/RF_Device.css" TYPE="text/css">
+<script>   
+    $(function() {
+         $( "#sledIn" ).datepicker();   
+    }); 
+</script>
+<style>
+.b {
+    border: 0px solid rgba(154, 140, 140, 0.4);
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 1em 2em;
+    padding-top: ;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 400px;
+    background-image: -webkit-linear-gradient(top, #3c3d3e, #28597a);
+    background-image: -moz-linear-gradient(top, #3c3d3e, #28597a);
+    background-image: -ms-linear-gradient(top,#3c3d3e, #28597a);
+    background-image: -o-linear-gradient(top, #3c3d3e, #28597a);
+    height: 5rem;
+    margin-bottom: 1.5rem
+}
+h3 {
+    color: #2f4f4f;
+    font-family: "Josefin Sans",sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+}
+button {
+    padding: 5px 12px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 27px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 1px;
+    width: 195px;
+}
+body {
+    margin: 0;
+    background: #f0f8ff;
+    font-family: "Open Sans", sans-serif;
+    padding-bottom: 8rem;
+}
+label {
+    color: #2f4f4f;
+    font-weight: bold;
+    font-size: 1.9rem;
+}
+input[type="text"] {
+    color: black;
+    font-size: 1.5rem;
+    margin: 0 0 0.5em;
+    outline: medium none;
+    padding: 0px;
+    height: 60px;
+    width: 400px;
+}
+#bcp {
+    background-color: #0e7d0e;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    height: 60px;
+    width: 400px;
+}
+</style>
+	</HEAD>
+	<BODY onload="onLoading()">
+<div>
+
+		<div class="content">
+			<div>
+					<div class="headerItem">	
+					</div>
+					<div class="mainContent">
+					<div class="header">
+  						<img src="/XMII/CM/MaterialHandling/Common/Images/NestleLogo.png" alt="Nestle" />
+  						<label id="labelHdr">Main Menu- Internal</label>
+					</div>
+				<br/><br/>
+
+				<label id="idBCP">BCP </label>	
+				<input class="input inputBCP" type="value" id="bcp" readonly disabled/><br/><br/>
+				<label class="label labelSU" id="scanSU">Scan Storage Unit</label>
+				 <input class="input inputSSU" type="text" id="ssuIn" autofocus/>
+
+				<label id="resrcLbl" hidden="true">Resource</label>
+				<input class="input inputRsrc" type="text" id="resourceIn" value="" hidden="true" readonly disabled/>
+				<label id="message" class="label msgLabel" hidden="true" ></label>
+				<label id="ssccLbl" class="label labelSSCC" hidden="true">Storage Unit</label>
+				<input class="input inputSSCCIn" type="text" id="sSCCIn" hidden="true" readonly disabled/>
+
+				<label id="matLbl" hidden="true">Material</label>
+				<input class="input inputMat" type="text" id="matIn" value ="" hidden="true" readonly disabled/>
+				<label id="descLbl" hidden="true">Description</label>
+				<input class="label labelMatDesc" type="text" id="matDescLbl" hidden="true" readonly disabled> </input>
+				<label id="sTypeLbl" hidden="true">Storage Type</label>
+				<input class="input inputSType" type="text" id="sTypeIn" value ="" hidden="true" readonly disabled/>
+				<label id="sBinLbl" hidden="true">Storage Bin</label>
+				<input class="input inputSBin" type="text" id="sBinIn" value ="" hidden="true" readonly disabled/>
+				<label id="batchLbl" hidden="true">Batch</label>
+				<input class="input inputBatch" type="text" id="batchIn" value =""  hidden="true" readonly disabled/>
+				<label id="sledLbl" hidden="true">SLED</label>
+				<input class="input inputSLED" type="text" id="sledIn" value ="" hidden="true" readonly disabled/>
+				<label id="batchStatusLbl" hidden="true">Batch Status</label>
+				<input class="input inputBatchStatus" type="text" id="batchStatusIn" value ="" hidden="true" readonly disabled/>
+				<label id="sCategoryLbl" hidden="true">Stock Category</label>
+				<input class="input inputSCategory" type="text" id="sCategoryIn" value ="" hidden="true" readonly disabled/>
+				<label id="quantityLbl" hidden="true">Quantity</label>
+				<input class="input inputQuantity" type="text" id="quantitytIn" value ="" hidden="true" readonly disabled />
+			            <input class="input inputUOM" type="text" id="uOMIn" value ="" hidden="true" readonly disabled/>
+
+				<br/><br/>
+				<label id="errorMsg" class=""  hidden="true" ></label>
+				<!--button id="clr" class="" type="button"  style="cursor:pointer" onclick="clearInput()"> F2 Clr </button-->
+				<button id="clr" type="button" style="cursor:pointer" onclick="Clear()"> F2 Clear </button>
+				<button id="nxt" class="" type="button"  style="cursor:pointer"  onclick="next()"> F4 Next </button>
+				<button id="BtnBk" class="" type="button" style="cursor:pointer"  onclick="goBack()"> F3 Back </button>
+
+			</div>
+		</div>
+</div>
+</div>
+	</BODY>
+</HTML>

@@ -1,0 +1,239 @@
+<mvc:View
+ xmlns:core="sap.ui.core"
+ xmlns="sap.m"
+ xmlns:l="sap.ui.layout"  
+ xmlns:mvc="sap.ui.core.mvc" 
+ xmlns:u="sap.ui.unified"
+controllerName="JS.ProcessOrder"
+ xmlns:f="sap.ui.layout.form"
+xmlns:table="sap.ui.table"
+xmlns:m="sap.suite.ui.microchart"
+xmlns:c="sap.me"
+xmlns:html="http://www.w3.org/1999/xhtml">
+<html:style>
+   
+
+.sapMInputBaseInner, .sapMComboBoxBase, .sapMSFF {
+    font-weight: bold;
+    border-width: 2.5px;
+    border-color: #008bc7;
+    border-radius: 15px;
+}
+#ProcessOrder--range2-inner{
+    font-size: large;
+}
+#ProcessOrder--label_header3{
+    font-size: 20px;
+    font-family: Times New Roman;
+}
+.sapMComboBoxBaseArrow{
+    border-radius: 0px 15px 15px 0px;
+}
+.sapMBtnIcon{
+    color: #008bc7;
+}
+.sapMBtnInner{
+    border-width: 1px;
+    border-color: grey;
+}
+#ProcessOrder--Form1--Grid {
+    background-color: #ddeef1;
+}	
+.sapMLabel{
+    font-weight: bold;
+white-space:normal;
+}
+.sapUiUfdShellHeadItmSep.sapUiUfdShellHeadItm{
+    width: 124px;
+}
+.sapUiUfdShellHeadItm>span>img {
+    margin-top: 0px;
+    width: 110px;
+    height: 40px;
+    border-width: 0;
+}
+.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+    max-height: 30px;
+    max-width: 150px;
+    vertical-align: middle;
+}
+.sapUiTableColHdrCnt{
+border-color: grey;
+border-bottom-width: 2px;
+background-image: linear-gradient(to bottom,white, #dedede);
+}
+#__item0{
+     width: 53px;
+}
+.progress{
+ border: 0px solid;
+}
+.sapMPIBarNeutral {
+background: #008bc7;
+}
+#textForConfirm1{
+	color: fireBrick;
+	font-weight:bold;
+	font-size: medium;
+}
+#textForConfirm2{
+	font-size: x-large;
+	padding-top: inherit;
+}
+</html:style>
+	<Page
+		id="pageID" class="Background"
+		showHeader="false"
+		title="Setup" >
+						
+				<u:Shell
+			id="shell3"
+			icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+			<u:headItems>
+				<u:ShellHeadItem
+					tooltip="{GRPO1>NPDashboard_Back}"
+					icon="sap-icon://nav-back"
+					visible="true"
+					press="goHome" />
+			</u:headItems>
+			<u:headEndItems>
+				<u:ShellHeadItem
+					  id="bcpStatus"
+					icon=""
+					tooltip="{GRPO2>InBndMatRecpt_title_BCP}"
+					press="" />
+			</u:headEndItems>
+			<u:user>
+				<u:ShellHeadUserItem
+					image="sap-icon://person-placeholder"
+				            showPopupIndicator="false"
+					username="Karl Mustermann"
+					press="logoff"/>
+			</u:user>
+<u:search>
+				<Label  id="label_header3"
+					text="{GRPO3>CustomGR_PO_1}" design="Bold"/>
+			</u:search>
+	<u:content>
+<f:Form id="Form1"   editable="false">
+
+        <f:layout>
+           <f:ResponsiveGridLayout
+	labelSpanL="7" labelSpanM="5" labelSpanS="6"
+            emptySpanL="1" emptySpanM="1"
+            columnsL="3" columnsM="1"
+	breakpointL="1024" breakpointM="600" />
+        </f:layout>
+	
+        <f:formContainers >
+
+	
+	  <f:FormContainer>
+               <f:formElements>
+	   <f:FormElement >
+                  <f:fields>
+	<ComboBox id="resource" items="{path: '/Rowset/Row'}" design="Bold" selectionChange="ResourceChange">
+				<core:Item key="{NODE_ID}" text="{DESCRIPTION}" />
+			          </ComboBox>         
+                </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+
+ <f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{GRPO4>CustomGR_PO_2}" design="Bold">
+                  <f:fields>
+	<Input id ="range2" width="80%" textAlign="Center" value ="" />
+	<Button id="Refresh" icon="/XMII/CM/MaterialHandling/Common/Images/Refresh.png" width="60%" press="doSave" />
+		<!--<Input id ="range3" width="60px" fieldWidth="80px" value ="7" visible="false" />-->
+			
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+	  <f:FormContainer>
+               <f:formElements>
+	   <f:FormElement>
+                  <f:fields>
+	<SearchField id="Search" icon="/XMII/CM/PerformanceManagement/ChangeoverMatrix/Image/Search.png" enabled="true" visible="true"
+	 		width="80%" text = "{GRPO5>CustomGR_PO_3}" liveChange="onSearch"/>        
+                </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+</f:formContainers>
+</f:Form>
+
+
+	<table:Table id="ProcessOrderTable" rows="{/Rowset/Row}" rowSelectionChange="rowSelectionPage" enableColumnReordering="true"
+		selectionMode="Single" selectionBehavior="RowOnly" visibleRowCount="11">
+		<table:columns>
+			<table:Column id="id_col_Order" hAlign="Center" filterProperty="Order" sortProperty="Order">
+				<Label text="{GRPO6>CustomGR_PO_4}"/>
+				<table:template>
+				<Text text="{Order}"/>
+				</table:template>
+			</table:Column>
+			<table:Column id="id_col_Material" hAlign="Center" filterProperty="Material" sortProperty="Material">
+				<Label text="{GRPO7>CustomGR_PO_5}"/>
+				<table:template>
+				<Text text="{Material}"/>
+				</table:template>
+			</table:Column>
+			<table:Column id="id_col_MaterialDescription" hAlign="Center" width="30%" filterProperty="MaterialDescription" sortProperty="MaterialDescription">
+				<Label text="{GRPO8>CustomGR_PO_6}"/>
+				<table:template>
+				<Text text="{MaterialDescription}"/>
+				</table:template>
+			</table:Column>
+			<table:Column id="id_col_PlannedStart" hAlign="Center" filterProperty="PlannedStart" filterType="sap.ui.model.type.Date" sortProperty="PlannedStart">
+				<Label text="{GRPO9>CustomGR_PO_7}"/>
+				<table:template>
+				<Text text="{parts : [{path: 'PlannedStart'}],  formatter : '.getDateDisplayFormat' }"/>
+				</table:template>
+			</table:Column>
+			<table:Column id="id_col_DeclaredQuantity" hAlign="Center" visible="false" filterProperty="DeclaredQuantity" sortProperty="DeclaredQuantity">
+				<Label text="{GRPO10>CustomGR_PO_8}"/>
+				<table:template>
+				<Text text="{DeclaredQuantity}"/>
+				</table:template>
+			</table:Column>
+			<table:Column id="id_col_Target" hAlign="Center" visible="false" filterProperty="Target" sortProperty="Target">
+				<Label text="{GRPO11>CustomGR_PO_9}"/>
+				<table:template>
+				<Text text="{Target}"/>
+				</table:template>
+			</table:Column>
+			<table:Column id="id_col_Tar" hAlign="Center" visible="false" filterProperty="Tar" sortProperty="Tar">
+				<Label text="{GRPO12>CustomGR_PO_10}"/>
+				<table:template>
+				<Text text="{Tar}"/>
+				</table:template>
+			</table:Column>
+			<table:Column id="id_col_DeclaredQuantity_TagetUOM" hAlign="Center">
+				<Label text="{GRPO13>CustomGR_PO_11}"/>
+				<table:template>
+				<ProgressIndicator id="pi" class="progress" percentValue="{=Number(${Tar})}" state="{=Number(${Tar})&lt; 100 ?'Success': 'Error'}"
+				displayValue="{parts : [{path: 'DeclaredQuantity'}],  formatter : 'sap.oee.ui.Formatter.formatQuantityValue'} of {parts : [{path: 'TargetQuantity'}, {path: 'TagetUOM'}],  formatter : '.getFormattedQuantityUOM'}"
+				showValue="true" />
+				</table:template>
+			</table:Column>
+			<table:Column id="id_col_ProdType" hAlign="Center" visible="false" filterProperty="ProdType" sortProperty="ProdType">
+				<Label text="{GRPO14>CustomGR_PO_12}"/>
+				<table:template>
+				<Text text="{ProdType}"/>
+				</table:template>
+			</table:Column>
+		</table:columns>
+	</table:Table>
+
+
+</u:content>
+</u:Shell>
+		</Page>
+
+</mvc:View>

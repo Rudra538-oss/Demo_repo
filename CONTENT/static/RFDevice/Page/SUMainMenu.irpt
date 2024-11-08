@@ -1,0 +1,108 @@
+<HTML>
+	<HEAD>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<TITLE id="title">Internal</TITLE>
+				<script type="text/javascript">
+		document.write('<scr'+'ipt src="/XMII/CM/MaterialHandling/RFDevice/JavaScript/SUMainMenu.js?'+Math.random()+'" type="text/javascript"></scr'+'ipt>');
+		document.write('<scr'+'ipt src="/XMII/CM/MaterialHandling/RFDevice/Common/Utility.js?'+Math.random()+'" type="text/javascript"></scr'+'ipt>');
+		</script>
+		<!--SCRIPT language="javascript" src="/XMII/CM/MaterialHandling/RFDevice/JavaScript/SUMainMenu.js"></SCRIPT-->
+		<script type="text/javascript" src="/XMII/CM/MaterialHandling/RFDevice/Common/jquery-1.7.2.js"></script>
+		<!--script type="text/javascript" src="/XMII/CM/MaterialHandling/RFDevice/Common/Utility.js"></script-->
+		<LINK REL="StyleSheet" HREF="/XMII/CM/MaterialHandling/RFDevice/Stylesheet/RF_Device.css" TYPE="text/css">
+<style>
+input[type="text"] {
+    color: black;
+    font-size: 0.9em;
+    margin: 0 0 0.5em;
+    outline: medium none;
+    padding: 0.5em;
+    width: 400px;
+}
+/*
+.b {
+    border: 0px solid rgba(154, 140, 140, 0.4);
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 1em 2em;
+    padding-top: ;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 400px;
+    background-image: -webkit-linear-gradient(top, #3c3d3e, #28597a);
+    background-image: -moz-linear-gradient(top, #3c3d3e, #28597a);
+    background-image: -ms-linear-gradient(top,#3c3d3e, #28597a);
+    background-image: -o-linear-gradient(top, #3c3d3e, #28597a);
+    height: 5rem;
+    margin-bottom: 1.5rem
+}
+*/
+h3 {
+    color: #2f4f4f;
+    font-family: "Josefin Sans",sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+body {
+    margin: 0;
+    background: #f0f8ff;
+    font-family: "Open Sans", sans-serif;
+    padding-bottom: 8rem;
+}
+label {
+    color: #2f4f4f;
+    font-weight: bold;
+    font-size: 1.9rem;
+}
+input[type="text"] {
+    color: black;
+    font-size: 1.5rem;
+    margin: 0 0 0.5em;
+    outline: medium none;
+    padding: 0px;
+    height: 60px;
+}
+#bcp {
+    background-color: #0e7d0e;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+</style>
+</HEAD>
+<BODY onload="onLoading()">
+	<div>
+		<div class="content">
+			<div>
+					<div class="headerItem">	
+					</div>
+					<div class="mainContent">
+					<div class="header">
+  						<img src="/XMII/CM/MaterialHandling/Common/Images/NestleLogo.png" alt="Nestle" />
+  							<label id="labelHdr">Main Menu- Internal</label>
+					</div>
+				<br/>
+				<label id="idSite">Site</label><br/>
+				<input class="input inputSite" type="text" id="siteIn" readonly disabled/><br/>
+				<label id="idBCP">BCP </label></br>	
+				<input class="input inputBCP" type="text" id="bcp" readonly disabled/><br/>
+				<h3 id="idMfg">Internal</h3>
+				<button id="Btnmove" class="button b" type="button" style="cursor:pointer"  onclick="moveSU(event)">F1 Storage Unit Move WMSUMO </button><p/>
+				<button id="BtnNonSu" class="button b" type="button" style="cursor:pointer" onclick="moveSUToNonSU()"> F2 Storage Unit Move to Non SU </button><p/>
+				<button  id="BtnStock" class="button b" type="button" style="cursor:pointer" onclick="stockStatusChange()"> F3 Stock Status Change </button><p/>
+				<button id="BtnUnit" class="button b" type="button" style="cursor:pointer" onclick="splitSU()"> F4 Split Storage Unit </button><p/>
+				<button id="Btnmove1" class="button b" type="button" style="cursor:pointer"  onclick="moveSU(event)"> F6 Storage Unit Move WMTORD</button><p/>
+				<button id="BtnStatusScan"  class="button b" type="button" style="cursor:pointer" onclick="scanStatus()"> F7 Status Scan </button><p/>
+				<button  id="BtnBk" class="button b"  type="button" style="cursor:pointer" onclick="goBack()"> F9 Go Back </button><p/>
+			</div>
+		</div>
+	</div>
+</div>
+
+</BODY>
+</HTML>

@@ -1,0 +1,334 @@
+<mvc:View
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:u="sap.ui.unified"
+controllerName="JS.ReverseMaterial"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:table="sap.ui.table"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+    <html:style>
+      	
+.sapUiUfdShellHeadItmSep.sapUiUfdShellHeadItm{
+    	width: 124px;
+}
+.sapUiUfdShellHeadItm>span>img {
+    	margin-top: 0px;
+    	width: 110px;
+    	height: 40px;
+    	border-width: 0;
+}
+#successdialog-icon{
+color: green;
+}
+.sapMPanelBGTranslucent{
+	padding:0px;
+}
+.sapMInputBaseInner{
+	padding-bottom:1.5%
+}
+.sapMLabel{
+	font-weight: bold;
+	white-space:normal;
+}
+#ReverseMaterial--PostDate{
+	max-width:200px;
+}
+
+#ReverseMaterial--stock{
+	max-width:200px;
+}
+#ReverseMaterial--ConsumeID{
+	max-width:190px;
+}
+#ReverseMaterial--uom{
+	max-width:190px !important;
+}
+#ReverseMaterial--ReverseID{
+	max-width:190px
+}
+#ReverseMaterial--pInd{
+	max-width:190px;
+}
+
+#ReverseMaterial--btnECCGMId-inner{
+	background-color: white;
+	border-color: grey;
+
+}
+#ReverseMaterial--btnECCGMId{
+	min-width:150px;
+}
+#ReverseMaterial--GMId{
+	min-width:150px;
+}
+#ReverseMaterial--GMId-inner{
+	background-color: white;
+	border-color: grey;
+}
+#ReverseMaterial--GMId-inner:hover{
+	background-color: green;
+	border-color: grey;
+}
+#ReverseMaterial--GMId-img
+{
+	color: green;
+}
+#ReverseMaterial--btnECCGMId-img
+{
+	color: royalBlue;
+}
+.sapborderRes{
+	background-color: transparent;
+	font-weight:bold;
+	font-size: 1.0rem;
+	font-stretch:semi-condensed;
+		}
+.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+   	max-height: 30px;
+    	max-width: 150px;
+    	vertical-align: middle;
+}
+#ReverseMaterial--label_header3{
+	font-size: 20px;
+	font-family: Times New Roman;
+		}
+#__item0{
+     	width: 53px;
+}
+.sapborder{
+	background-color: transparent;
+	font-weight:bold;
+ 	border-width: 0;
+	outline:none;
+	font-size: 1.2rem;
+}
+#textForConfirm1{
+	color: fireBrick;
+	font-weight:bold;
+	font-size: medium;
+}
+#textForConfirm2{
+	font-size: x-large;
+	padding-top: inherit;
+}
+</html:style>
+    <Page
+		id="pageID" class="Background"
+		showHeader="false"
+		title="Setup" >
+        <u:Shell
+			id="shell3"
+			icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+            <u:headItems>
+                <u:ShellHeadItem
+					tooltip="{Reversal1>NPDashboard_Back}"
+					icon="sap-icon://nav-back"
+					visible="true"
+					press="goHome" />
+            </u:headItems>
+            <u:headEndItems>
+                <u:ShellHeadItem
+					  id="bcpStatus"
+					icon=""
+					tooltip="{Reversal2>InBndMatRecpt_title_BCP}"
+					press="" />
+            </u:headEndItems>
+            <u:user>
+                <u:ShellHeadUserItem
+					image="sap-icon://person-placeholder"
+				            showPopupIndicator="false"
+					username="Karl Mustermann"
+					press="logoff" />
+            </u:user>
+            <u:search>
+                <Label  id="label_header3"
+					text="{Reversal3>CustomGI_GIR_1}" design="Bold"/>
+            </u:search>
+            <u:content>
+                <panel id="PanelTitle" visible="false" expandable="true" expanded="true" >
+                    <headerToolbar>
+                        <Toolbar height="2rem">
+                            <ToolbarSpacer />
+                            <Label text="" design="Bold"/>
+                            <ToolbarSpacer />
+                        </Toolbar>
+                    </headerToolbar>
+                </panel>
+                <panel id="topPanel">
+                    <f:Form id="Form1"   
+            editable="false">
+                        <f:layout>
+                            <f:ResponsiveGridLayout
+	labelSpanL="4"
+            labelSpanM="4"
+             labelSpanS="4"
+	emptySpanL="0"
+            emptySpanM="0"
+         columnsL="4"
+            columnsM="4"
+          />
+                        </f:layout>
+                        <f:formContainers>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement  label="{ReversalGIList24>NPDashboard_Line}">
+                                        <f:fields>
+                                            <Input class="sapborderRes" editable="false" id ="resDes" fieldWidth="70px"  value =""  />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{Reversal4>CustomGR_GRR_2}" design="Bold">
+                                        <f:fields>
+                                            <Input class="sapborder" editable="false" id ="ProcessOrder"  width="300px" fieldWidth="30px"  value ="" style="border:none" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{Reversal5>CustomGI_GIR_3}" design="Bold">
+                                        <f:fields>
+                                            <Input class="sapborder" editable="false" id ="Material" width="200px" fieldWidth="25px"  value ="" change="poInput" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement >
+                                        <f:fields>
+                                            <Input class="sapborderRes" editable="false" id ="MatDes" fieldWidth="80px"  value ="" change="poInput" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                        </f:formContainers>
+                    </f:Form>
+                </panel>
+                <panel id="Panel2" expandable="false" expanded="true">
+                    <headerToolbar>
+                        <OverflowToolbar >
+                            <ToolbarSpacer />
+                            <Button text="{Revesal20>GMReport_ECCGoodsMvmt}" id="btnECCGMId" width="12%" enabled="true" visible="true" press="goToECCGM" icon="sap-icon://sap-box" />
+                            <Button text="{Revesal21>CustomGI_CL_12}" width="12%" enabled="true" visible="true" id="GMId" press="doReport" icon="sap-icon://excel-attachment"/>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <f:Form id="Form2"   
+            editable="false">
+                        <f:layout>
+                            <f:ResponsiveGridLayout
+	labelSpanL="3"
+            labelSpanM="3"
+             labelSpanS="3"
+            emptySpanL="5"
+            emptySpanM="5"
+            columnsL="1"
+            columnsM="1"
+          />
+                        </f:layout>
+                        <f:formContainers>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{Reversal6>CustomGI_GIR_4}" design="Bold">
+                                        <f:fields>
+                                            <Input id ="batchNo" editable="false" width="350px" visible="false" fieldWidth="40px"  value ="" change="quantInput" />
+                                            <ComboBox id="batchCombo" visible="false" width="350px"  items="{path: '/Rowset/Row'}"  selectionChange="getBatch">
+                                                <core:Item key="{BATCH_NO}" text="{SLEDFormattedDate}" />
+                                            </ComboBox>
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{Reversal7>CustomGI_GIR_5}" design="Bold">
+                                        <f:fields>
+                                            <DatePicker  id ="shelfID" 
+                    		type="Date"
+                    		valueFormat="yyyy-MM-dd"
+			width="220px"
+                   		placeholder=""
+			editable="false"
+			change="handleProdDateChange" />
+                                            <Input id ="shelfDays" editable="false" width="220px" fieldWidth="30px"  value ="" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{Reversal8>CustomGI_GIR_6}" design="Bold">
+                                        <f:fields>
+                                            <Input id ="stock"   fieldWidth="30px"  value =""  liveChange="validateQuantity"/>
+                                            <Select id ="uom"  
+		
+		visible="true" 
+		height="100%"
+		enabled="true" 
+		change="getUom"
+		items="{path: '/Rowset/Row'}">
+                                                <items>
+                                                    <core:Item key="{WarehouseNumber}"  />
+                                                </items>
+                                            </Select>
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{Reversal9>CustomGI_GIR_7}" design="Bold">
+                                        <f:fields>
+                                            <Input id ="reqQuant" editable="false" width="300px" fieldWidth="30px"  value ="" change="quantInput" />
+                                            <Button text="{Reversal13>CustomGI_GIR_11}" id="ReverseID" type="Emphasized" enabled="true" visible="true"  press="doReverse" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{Reversal10>CustomGI_GIR_8}" design="Bold">
+                                        <f:fields>
+                                            <Input id ="conQuant" editable="false" width="300px" fieldWidth="30px"  value ="" change="quantInput" />
+                                            <ProgressIndicator id="pInd" showValue="true" displayValue="" state="Success" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{Reversal11>CustomGI_GIR_9}" design="Bold">
+                                        <f:fields>
+                                            <DatePicker  id ="PostDate" 
+                    		type="Date"
+			enabled="false"
+                    		valueFormat="yyyy-MM-dd"
+			
+                   		placeholder=""
+			change="handlePostingDateChange" />
+                                            <Button text="{Reversal14>CustomGI_GIR_12}" id="ConsumeID" enabled="true" visible="true"  press="doGI" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{Reversal12>CustomGI_GIR_10}" visible="false" id="ssccLabel">
+                                        <f:fields>
+                                            <Input id ="sscc" visible="false" width="300px" editable="false" fieldWidth="30px"  value ="" change="quantInput" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                        </f:formContainers>
+                    </f:Form>
+                </panel>
+            </u:content>
+        </u:Shell>
+    </Page>
+</mvc:View>

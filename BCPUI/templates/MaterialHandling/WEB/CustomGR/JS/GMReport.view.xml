@@ -1,0 +1,282 @@
+<mvc:View
+ xmlns:core="sap.ui.core"
+ xmlns="sap.m"
+ xmlns:l="sap.ui.layout"  
+ xmlns:mvc="sap.ui.core.mvc" 
+ xmlns:u="sap.ui.unified"
+controllerName="JS.GMReport"
+ xmlns:f="sap.ui.layout.form"
+xmlns:table="sap.ui.table"
+xmlns:html="http://www.w3.org/1999/xhtml">
+<html:style>
+      	
+	
+
+.sapUiUfdShellHeadItmSep.sapUiUfdShellHeadItm{
+    width: 124px;
+}
+.sapUiUfdShellHeadItm>span>img {
+    margin-top: 0px;
+    width: 110px;
+    height: 40px;
+    border-width: 0;
+}
+.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+    max-height: 30px;
+    max-width: 150px;
+    vertical-align: middle;
+}
+#__item0{
+     width: 53px;
+}
+.sapborder{
+  background-color: transparent;
+
+font-size: 1.2rem;	
+}
+	#textForConfirm1{
+	color: fireBrick;
+	font-weight:bold;
+	font-size: medium;
+	}
+	#textForConfirm2{
+	font-size: x-large;
+	padding-top: inherit;
+	}
+
+</html:style>
+	<Page
+		id="pageID" class="Background"
+		showHeader="false"
+		title="Setup" >
+						
+				<u:Shell
+			id="shell3"
+			icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+			<u:headItems>
+				<u:ShellHeadItem
+					tooltip="{GMReport1>NPDashboard_Back}"
+					icon="sap-icon://nav-back"
+					visible="true"
+					press="goHome" />
+			</u:headItems>
+			<u:headEndItems>
+				<u:ShellHeadItem
+					  id="bcpStatus"
+					icon=""
+					tooltip="{GMReport2>InBndMatRecpt_title_BCP}"
+					press="" />
+			</u:headEndItems>
+			<u:user>
+				<u:ShellHeadUserItem
+					image="sap-icon://person-placeholder"
+				            showPopupIndicator="false"
+					username="Karl Mustermann"
+					press="logoff" />
+			</u:user>
+<u:search>
+				<Label  id="label_header3"
+					text="{GMReport3>CustomGR_GMReport_1}" design="Bold"/>
+			</u:search>
+	<u:content>
+
+<panel id="PanelTitle">
+<headerToolbar>
+
+  <Toolbar height="3rem">
+		<ToolbarSpacer />
+		
+			<Label text="{GMReport4>CustomGR_GRR_2}" />
+	  <Input class="sapborder" id ="ProcessOrder" editable="false" width="300px" fieldWidth="30px"  value ="" style="border:none" />
+		<ToolbarSpacer />
+		
+<Button
+			id="getExcelReport"
+			icon="/XMII/CM/MaterialHandling/Common/Images/csv-icon.png"
+			enabled="true"
+			visible="true"
+			text = "{GMReport5>CustomGR_GMReport_11}"
+			width="220px"
+			press="pressGetExcelReportFn" />
+
+<ToolbarSpacer/>
+	<SearchField 
+			id="Search"
+			icon="/XMII/CM/PerformanceManagement/ChangeoverMatrix/Image/Search.png"
+			enabled="true"
+			visible="true"
+	 		width="300px"
+			text = "{GMReport14>CustomGR_GMReport_10}"			
+		    	liveChange="onSearch" />
+ 
+		
+     </Toolbar>
+  </headerToolbar>
+
+
+<f:Form id="form3"
+        editable="false">
+
+        <f:layout>
+          <f:ResponsiveGridLayout
+            labelSpanL="1"
+            labelSpanM="1"
+            emptySpanL="0"
+            emptySpanM="0"
+            columnsL="1"
+            columnsM="1" />
+        </f:layout>
+
+	<f:formContainers>
+
+     <f:FormContainer>
+               <f:formElements>
+
+	  <f:FormElement id="GMData">
+<table:Table id="GMTable"
+		rows="{/Rowset/Row}"
+		 growingFinished="colorRow"
+		selectionMode="Single"
+		selectionBehavior="Row"
+	            visible="true"	
+	            RowCount="500"
+	           visibleRowCount="10">
+
+	<table:columns>
+			
+				<table:Column hAlign="Center" visible="true" width = "80px"
+				sortProperty="Material" 
+				filterProperty="Material">
+				
+				<Label text="{GMReport6>CustomGR_GMReport_2}" />
+					<table:template>
+					<Text text="{parts : [{path: 'Material'}],  formatter : '.colorRow' }" />
+					</table:template>
+			</table:Column>
+		   	
+				<table:Column hAlign="Center" visible="true" width = "150px"
+				sortProperty="MaterialDescription" 
+				filterProperty="MaterialDescription">
+				<Label text="{GMReport14>CustomGR_GMReport_16}" />
+					<table:template>
+					<Text text="{MaterialDescription}" />
+			</table:template>
+			</table:Column>
+		   	
+			<table:Column hAlign="Center" visible="true" width = "70px"
+				sortProperty="Quantity" 
+				filterProperty="Quantity">
+				<Label text="{GMReport7>CustomGR_GMReport_3}" />
+					<table:template>
+					<Text text="{parts : [{path: 'Quantity'}],  formatter : 'sap.oee.ui.Formatter.formatQuantityValue'}" />
+
+					</table:template>
+			</table:Column>
+
+		<table:Column hAlign="Center" visible="true" width = "40px"
+				sortProperty="CommUOM" 
+				filterProperty="CommUOM">
+				<Label text="{GMReport8>CustomGR_GMReport_4}" />
+					<table:template>
+					<Text text="{CommUOM}" />
+					</table:template>
+			</table:Column>
+
+			<table:Column hAlign="Center" visible="true" width = "85px"
+				sortProperty="MovementType" 
+				filterProperty="MovementType">
+				<Label text="{GMReport9>CustomGR_GMReport_5}" />
+					<table:template>
+					<Text text="{MovementType}" />
+					</table:template>
+			</table:Column>
+		   	 <table:Column hAlign="Center" visible="true" width = "70px"
+				sortProperty="Batch" 
+				filterProperty="Batch">
+				<Label text="{GMReport10>TransferDisplay_colHeader_batch}" />
+					<table:template>
+					<Text text="{Batch}" />
+					</table:template>
+			</table:Column>
+			<table:Column hAlign="Center" visible="true" width = "100px"
+				sortProperty="StorageUnit" 
+				filterProperty="StorageUnit">
+				<Label text="{GMReport11>CustomGR_GMReport_7}" />
+					<table:template>
+					<Text text="{StorageUnit}" />
+					</table:template>
+			</table:Column>
+		   	 <table:Column hAlign="Center" visible="true" width = "70px"
+				sortProperty="PostingDate" 
+				filterProperty="PostingDate">
+				<Label text="{GMReport12>CustomGR_GMReport_8}" />
+					<table:template>
+					<Text text="{parts : [{path: 'PostingDate'}],  formatter : '.getDateDisplayFormat' }" />
+					</table:template>
+			</table:Column>
+		 <table:Column hAlign="Center" visible="true" width = "90px"
+				sortProperty="PalletInfo" 
+				filterProperty="PalletInfo">
+				<Label text="{GMReport15>CustomGR_GMReport_17}" />
+					<table:template>
+					<Text text="{PalletInfo}" />
+					</table:template>
+			</table:Column>
+			<table:Column hAlign="Center" visible="true" width = "90px"
+				sortProperty="UserID" 
+				filterProperty="UserID">
+				<Label text="{GMReport13>CustomGR_GMReport_9}" />
+					<table:template>
+					<Text text="{UserID}" />
+					</table:template>
+			</table:Column>
+                             	<table:Column hAlign="Center" visible="true" width = "75px"
+				sortProperty="BCPStatus" 
+				filterProperty="BCPStatus">
+				<Label text="{GMReport25>NPM_COMMON_BCP_STATUS}" />
+					<table:template>
+					<Text text="{BCPStatus}" />
+					</table:template>
+			</table:Column>
+                      	<table:Column hAlign="Center" visible="true" width = "100px"
+				sortProperty="Message" 
+				filterProperty="Message">
+				<Label text="{GMReport26>NPM_COMMON_Message}" />
+					<table:template>
+					<Text text="{Message}" />
+					</table:template>
+			</table:Column>
+			<table:Column hAlign="Center" visible="true" width = "100px"
+				sortProperty="StorageType" 
+				filterProperty="StorageType">
+				<Label text="{GMReport26>TransferType_Lbl_StorageType}" />
+					<table:template>
+					<Text text="{StorageType}" />
+					</table:template>
+			</table:Column>
+
+			<table:Column hAlign="Center" visible="true" width = "100px"
+				sortProperty="StorageBin" 
+				filterProperty="StorageBin">
+				<Label text="{GMReport26>TransferType_Lbl_StorageBin}" />
+					<table:template>
+					<Text text="{StorageBin}" />
+					</table:template>
+			</table:Column>
+		   	
+				</table:columns>
+	
+</table:Table>
+
+    		</f:FormElement>
+</f:formElements>
+             </f:FormContainer>         
+			 </f:formContainers>
+     		</f:Form>
+
+</panel>
+</u:content>
+</u:Shell>
+		</Page>
+
+</mvc:View>

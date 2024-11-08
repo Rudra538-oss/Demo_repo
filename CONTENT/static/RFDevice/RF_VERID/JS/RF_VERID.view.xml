@@ -1,0 +1,274 @@
+<mvc:View
+   xmlns:core="sap.ui.core"
+   xmlns="sap.m"
+   xmlns:l="sap.ui.layout"  
+   xmlns:mvc="sap.ui.core.mvc" 
+   xmlns:u="sap.ui.unified"
+   controllerName="JS.RF_VERID"
+   xmlns:f="sap.ui.layout.form"
+   xmlns:table="sap.ui.table"
+   xmlns:html="http://www.w3.org/1999/xhtml">
+
+<html:style>
+
+.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+    max-height: 30px;
+    max-width: 150px;
+    vertical-align: middle;
+}
+
+.sapUiUfdShellHeadItmSep.sapUiUfdShellHeadItm{
+    width: 124px;
+}
+.sapUiUfdShellHeadItm>span>img {
+    margin-top: 0px;
+    width: 110px;
+    height: 40px;
+    border-width: 0;
+}
+.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+    max-height: 30px;
+    max-width: 150px;
+    vertical-align: middle;
+}
+#__item0{
+     width: 53px;
+}
+</html:style>
+
+ <Page
+      id="pageID" class="Background"
+      showHeader="false"
+      title="Setup" >
+      <u:Shell
+         id="shell3"
+         icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+         <u:headItems>
+            <u:ShellHeadItem
+               tooltip="{title1>NPDashboard_Home}"
+               icon="sap-icon://nav-back"
+               visible="true"
+               press="goHome" />
+         </u:headItems>
+         <u:headEndItems>
+            <u:ShellHeadItem
+               id="bcpStatus"
+               icon=""
+               tooltip="{title2>InBndMatRecpt_title_BCP}"
+               press="" />
+         </u:headEndItems>
+         <u:user>
+            <u:ShellHeadUserItem
+               image="sap-icon://person-placeholder"
+               showPopupIndicator="false"
+               username="Karl Mustermann"
+               />
+         </u:user>
+         <u:search>
+            <Label  id="label_header3"
+               text="" design="Bold"/>
+         </u:search>
+         <u:content>
+            <panel id="panel">
+               <headerToolbar>
+                  <Toolbar height="3rem">
+                     <ToolbarSpacer />
+                     <Label text="{title10>NPDASHBOARD_BCPUI_RF_VERIFICATION_ID_LIST}" design="Bold"/>
+                     <ToolbarSpacer />
+                  </Toolbar>
+               </headerToolbar>
+            </panel >
+            <panel id="panel2" headerText="Selection Criteria" expandable="true" expanded="true" >
+               <headerToolbar>
+                  <Toolbar height="3rem" id="toolbar">
+                     <Label text="{title4>TransferDisplay_title_SelectCriteria}" design="Bold"/>
+                     <ToolbarSpacer />
+                     <Button id="Download" 
+                        width="175px"
+                        text="{title24>TransferDisplay_label_DownloadVerID}" 
+                        enabled="true" 
+                        icon="sap-icon://download" 
+                        press="dodownload"/>
+                  </Toolbar>
+               </headerToolbar>
+               <f:Form id="Form1"   
+                  editable="false">
+                  <f:layout>
+                     <f:ResponsiveGridLayout
+                        labelSpanXL = "5"
+                        labelSpanL="5"
+                        labelSpanM="5"
+                        emptySpanXL = "0"
+                        emptySpanL="0"
+                        emptySpanM="0"
+                        columnsXL="6"
+                        columnsL="6"
+                        columnsM="6"
+                        />
+                  </f:layout>
+                  <f:formContainers>
+                     <f:FormContainer  id="td2">
+                        <f:formElements>
+                           <f:FormElement label="{label2>TransferDisplay_label_WHNo}">
+                              <f:fields>
+                                 <Select id ="wareNum"  
+                                    visible="true" 
+                                    enabled="true" 
+                                    change="getStoragetype"
+                                    items="{path: '/Rowset/Row'}">
+                                    <items>
+                                       <core:Item key="{WarehouseNumber}" 
+                                          text="{WarehouseNumber}" />
+                                    </items>
+                                 </Select>
+                              </f:fields>
+                           </f:FormElement>
+                        </f:formElements>
+                     </f:FormContainer>
+                     <f:FormContainer id="td3">
+                        <f:formElements>
+                           <f:FormElement label="{label3>TransferDisplay_label_SType}" >
+                              <f:fields>
+                                 <MultiComboBox  id ="stype" selectionChange="handleSelectionChange" selectionFinish="getSelectedValues"  items="{path: '/Rowset/Row'}" enabled="true"  width="105px">
+                               		<items> <core:Item key="{SType}" text="{SType}" /> </items>
+		         </MultiComboBox >
+                              </f:fields>
+                           </f:FormElement>
+                        </f:formElements>
+                     </f:FormContainer>
+                     <f:FormContainer  id="td4">
+                        <f:formElements>
+                           <f:FormElement label="{label4>TransferDisplay_label_SBin}" >
+                              <f:fields>
+                                 <Input id ="sbin" value ="" change="handleSelectionChange" />
+                              </f:fields>
+                           </f:FormElement>
+                        </f:formElements>
+                     </f:FormContainer>
+                     <f:FormContainer  id="td5">
+                        <f:formElements>
+                           <f:FormElement label="{label5>TransferDisplay_label_SSec}">
+                              <f:fields>
+                                 <Input id ="ssec" value ="" change="handleSelectionChange" />
+                              </f:fields>
+                           </f:FormElement>
+                        </f:formElements>
+                     </f:FormContainer>
+                     <f:FormContainer  id="td7">
+                        <f:formElements>
+                           <f:FormElement label="{label6>TransferDisplay_label_VerifID}" width="80px">
+                              <f:fields>
+                                 <Input id ="verif" value ="" change="handleSelectionChange" width="100px" />
+                              </f:fields>
+                           </f:FormElement>
+                        </f:formElements>
+                     </f:FormContainer>
+                     <f:FormContainer id="td8">
+                        <f:formElements>
+                           <f:FormElement   label="">
+                              <f:fields>
+                                 <Button id="DisplayID" width="100px" text="{button1>TransferDisplay_btn_disp}" enabled="true" icon="/XMII/CM/MaterialHandling/Common/Images/Display.png" press="doDisplay"/> 
+                              </f:fields>
+                           </f:FormElement>
+                        </f:formElements>
+                     </f:FormContainer>
+                  </f:formContainers>
+               </f:Form>
+            </panel>
+            <panel id="panel3" headerText="" expandable="true" expanded="true" >
+               <headerToolbar>
+                  <Toolbar height="3rem" id="toolbar1">
+                     <Label text="" design="Bold"/>
+                     <ToolbarSpacer/>
+                     <Button id="RefreshID"  width="100px"  text="{button2>TransferDisplay_btn_Clear}" enabled="true" icon="/XMII/CM/MaterialHandling/Common/Images/Clear.png" press="doRefresh"/>
+                     <ToolbarSpacer width="25px"/>
+                  </Toolbar>
+               </headerToolbar>
+               <f:Form id="form3"
+                  editable="false">
+                  <f:layout>
+                     <f:ResponsiveGridLayout
+                        labelSpanL="1"
+                        labelSpanM="1"
+                        emptySpanL="0"
+                        emptySpanM="0"
+                        columnsL="1"
+                        columnsM="1" />
+                  </f:layout>
+                  <f:formContainers>
+                     <f:FormContainer>
+                        <f:formElements>
+                           <f:FormElement id="Data">
+                              <table:Table id="Table"
+                                 rows="{/Rowset/Row}"
+                                 growingFinished="colorRow"
+                                 selectionMode="Single"
+                                 selectionBehavior="Row"
+                                 visible="true"	
+                                 RowCount="100000">
+                                 <table:columns>
+                                    <table:Column hAlign="Center" visible="true" width = "90px" 
+                                       filterProperty="WHSENUMBER"  
+                                       sortProperty="WHSENUMBER" >
+                                       <Label text="{column1>TransferDisplay_colHeader_whNo}" />
+                                       <table:template>
+                                          <Text text="{WHSENUMBER}" />
+                                       </table:template>
+                                    </table:Column>
+                                    <table:Column hAlign="Center" visible="true" width = "100px"
+                                       filterProperty="STGE_TYPE"  
+                                       sortProperty="STGE_TYPE" >
+                                       <Label text="{column2>TransferDisplay_colHeader_sType}" />
+                                       <table:template>
+                                          <Text text="{STGE_TYPE}" />
+                                       </table:template>
+                                    </table:Column>
+                                    <table:Column hAlign="Center" visible="true" width = "80px" 
+                                       filterProperty="STGE_BIN"  
+                                       sortProperty="STGE_BIN"	>
+                                       <Label text="{column3>TransferDisplay_colHeader_sBin}" />
+                                       <table:template>
+                                          <Text text="{STGE_BIN}" />
+                                       </table:template>
+                                    </table:Column>
+                                    <table:Column hAlign="Center" visible="true" width = "80px" 
+                                       filterProperty="STGE_SEC"  
+                                       sortProperty="STGE_SEC">
+                                       <Label text="{column4>TransferDisplay_colHeader_ssec}" />
+                                       <table:template>
+                                          <Text text="{STGE_SEC}" />
+                                       </table:template>
+                                    </table:Column>
+                                    <table:Column hAlign="Center" visible="true" width = "100px"   filterProperty="VERIF_ID"  
+                                       sortProperty="VERIF_ID">
+                                       <Label text="{column5>TransferDisplay_colHeader_VerifID}" />
+                                       <table:template>
+                                          <Text text="{VERIF_ID}" />
+                                       </table:template>
+                                    </table:Column>
+                                    <table:Column hAlign="Center" visible="true" width = "100px"  filterProperty="UPDATED_BY"  
+                                       sortProperty="UPDATED_BY">
+                                       <Label text="{column7>TransferDisplay_colHeader_updatedby}" />
+                                       <table:template>
+                                          <Text text="{UPDATED_BY}" />
+                                       </table:template>
+                                    </table:Column>
+                                    <table:Column hAlign="Center" visible="true" width = "100px"  filterProperty="UPDATED_ON"  
+                                       sortProperty="UPDATED_ON">
+                                       <Label text="{column6>TransferDisplay_colHeader_updatedOn}" />
+                                       <table:template>
+                                          <Text text="{UPDATED_ON}" />
+                                       </table:template>
+                                    </table:Column>
+                                 </table:columns>
+                              </table:Table>
+                           </f:FormElement>
+                        </f:formElements>
+                     </f:FormContainer>
+                  </f:formContainers>
+               </f:Form>
+            </panel>
+         </u:content>
+      </u:Shell>
+   </Page>
+</mvc:View>

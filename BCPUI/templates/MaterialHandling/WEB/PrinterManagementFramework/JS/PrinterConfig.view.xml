@@ -1,0 +1,508 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns="sap.m"  xmlns:l="sap.ui.layout"  xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified"
+controllerName="JS.PrinterConfig" xmlns:f="sap.ui.layout.form"
+xmlns:html="http://www.w3.org/1999/xhtml">
+<html:style>
+
+
+	.sapUiFormResGrid.sapUiFormBackgrTranslucent>div{
+	background-color:transparent !important;
+	}
+	
+	#PrinterConfig--label_header1{
+	margin-left:25%; 
+            font-size: 16px;
+	font-weight:bold;
+	}
+
+		.sapMListTbl .sapMText, .sapMListTbl .sapMLabel
+	 {
+	    padding-top: 1px;
+   	 font-size: 0.875rem;
+   	 color: #333333;
+   	 font-weight: inherit;
+	 }
+	#idPrinterConfig--label_header1
+	{
+		font-weight: bold;
+		font-size:16px;
+	}
+#idPrinterConfig--buttonConfig--Grid{
+    padding-left: 5rem;
+    margin-right: -10rem;
+	
+}
+.greyout{
+ background-color: #e8e8e4 !important;
+}
+
+.disable{
+ background-color:green;
+ border: none;
+  color: white;
+ 
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+#PrinterConfig--searchFieldPrintTableId
+{
+    padding-top: 8px;
+}
+#idPrinterConfig--printerConfig--Grid{
+    margin-bottom: -30px;
+}
+
+#PrinterConfig--buttonConfig--Grid{
+    margin-bottom: 10px;
+	margin-top: -30px;
+    padding-left: 100px;
+}
+#PrinterConfig--printerConfig--Grid{
+    margin-bottom: -30px;
+}
+
+.sapUiUfdShellHeadItmSep.sapUiUfdShellHeadItm{
+    width: 124px!important;
+}
+.sapUiUfdShellHeadItm>span>img {
+    margin-top: 0px;
+    width: 105px;
+    height: 38px;
+    border-width: 0;
+}
+.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+    max-height: 30px;
+    max-width: 150px;
+    vertical-align: middle;
+}
+
+.sapMPanelBGTranslucent.sapMPanelContent.sapMPanelExpandablePart{
+ margin-bottom: -25px;
+}
+#PrinterConfig--tablePanel{
+margin-top: -20px;
+}
+#PrinterConfig--SelectionPanel{
+margin-top: -20px;
+}
+.sapMPanelWrappingDiv{
+margin-top: -16px;
+}
+</html:style>
+
+	<Page
+		id="page" class="Background"
+		showHeader="false"
+		title="Setup" >
+						
+				<u:Shell 
+			id="shell1"
+			icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+			<u:headItems>
+				<u:ShellHeadItem
+					tooltip="{PConfig1>NPDashboard_Back}"
+					icon="sap-icon://nav-back"
+					visible="true"
+					press="goBack" />
+			
+			</u:headItems>
+			<u:headEndItems>
+			
+			<u:ShellHeadItem
+					  id="bcpStatus"
+					icon=""
+					tooltip="{title1>InBndMatRecpt_title_BCP}"
+					press="" />
+		
+			</u:headEndItems>
+			<u:user>
+				<u:ShellHeadUserItem
+					image="sap-icon://person-placeholder" 
+				        showPopupIndicator="false"
+					username="Karl Mustermann"
+					/>
+			</u:user>
+			<u:search>
+				<Label id="label_header1"
+					text="{PConfig2>PrinterConfig_Header_Title}"/>
+			</u:search>
+			<u:content>
+
+<Panel id="SelectionPanel"  expandable="true" expanded="true"   width="auto" class="sapUiResponsiveMargin" headerText="{PConfig3>Print_PrinterConfiguration}">
+
+      <f:Form id="printerConfig"
+        minWidth="1024"
+        maxContainerCols="2"
+        editable="true">
+        <f:layout>
+          <f:ResponsiveGridLayout
+            labelSpanL="5"
+            labelSpanM="4"
+            emptySpanL="0"
+            emptySpanM="0"
+            columnsL="3"
+            columnsM="2" />
+        </f:layout>
+        <f:formContainers>
+          <f:FormContainer>
+            <f:formElements>
+              <f:FormElement label="{PConfig4>Print_PrimaryPrinterIP}">
+                <f:fields>
+              	<Input id ="PrinterIP" height ="9%"   value ="" placeholder="printername.aoa.nestle.com"  change="PrinterIPValidation" />
+                 </f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+<f:FormContainer>
+            <f:formElements>
+              <f:FormElement label="{PConfig5>Print_PrimaryPrinterPort}">
+                <f:fields>
+                  <Input id ="PrinterPort" height ="9%"   value ="" change="PrinterPortValidation" />
+                 </f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+<f:FormContainer>
+            <f:formElements>
+              <f:FormElement label="{PConfig6>Print_PrimaryPrinterName}">
+                <f:fields>
+                  <Input id ="PrinterName" height ="9%"   value ="" change="PrinterNameValidation" />
+                 </f:fields>
+              </f:FormElement>
+			  </f:formElements>
+	</f:FormContainer>
+			  
+<f:FormContainer>
+            <f:formElements>
+             <f:FormElement label="{PConfig7>Print_BackupPrinterIP}">
+                <f:fields>
+                 <Input id ="BackupIP" height ="9%"   value ="" placeholder="printername.aoa.nestle.com"  change="BackupIPValidation" />
+                 </f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+<f:FormContainer>
+            <f:formElements>
+              <f:FormElement label="{PConfig8>Print_BackupPrinterPort}">
+                <f:fields>
+                  <Input id ="BackupPort" height ="9%"   value ="" change="BackupPortValidation" />
+                 </f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+<f:FormContainer>
+            <f:formElements>
+             <f:FormElement label="{PConfig9>Print_BackupPrinterName}">
+                <f:fields>
+                 <Input id ="BackupName" height ="9%"   value ="" change="BackupNameValidation" />
+                 </f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+	<f:FormContainer>
+            <f:formElements>
+             <f:FormElement label="{PConfig10>Print_Workcenter}">
+                <f:fields>
+                <Select id ="Line" width="100%"  items="{path: '/Rowset/Row'}" change="LineSelectionChange" ><items> <core:Item key="{Key}" text="{Value}" /> </items> </Select>
+                 </f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+	<f:FormContainer>
+            <f:formElements>
+             <f:FormElement label="{PConfig33>Custom_GR_MaterialType}">
+                <f:fields>
+                <Select id ="MatType" width="100%"  items="{path: '/Rowset/Row'}"><items> <core:Item key="{Key}" text="{Value}" /> </items> </Select>
+                 </f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+	<f:FormContainer>
+            <f:formElements>
+             <f:FormElement label="{PConfig11>Print_Label_Type}">
+                <f:fields>
+                 <Select id ="LabelTypeID"  width="100%"  items="{path: '/Rowset/Row'}"><items> <core:Item key="{Key}" text="{Value}" /> </items> </Select>
+                 </f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+<f:FormContainer>
+            <f:formElements>
+             <f:FormElement label="{PConfig28>Print_Copies}">
+                <f:fields>
+                              	<Input id ="noCopies" height ="9%"   value =""/>
+	  </f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+<f:FormContainer>
+            <f:formElements>
+             <f:FormElement label="{PConfig12>Print_Global_Template}">
+                <f:fields>
+                 <Select id ="template"  width="100%"  items="{path: '/Rowset/Row'}"><items> <core:Item key="{Key}" text="{Value}" /> </items> </Select>
+                 </f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+<f:FormContainer>
+            <f:formElements>
+             <f:FormElement label="{PConfig30>Print_Status}">
+                <f:fields>
+                              	 <MultiComboBox  id ="status" selectionChange="handleSelectionChange" selectionFinish="getSelectedValues"   items="{path: '/Rowset/Row'}" enabled="true">
+		<items> <core:Item key="{Key}" text="{Value}" /> </items>
+		 </MultiComboBox >
+
+                
+	  </f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+
+
+			  </f:formContainers>
+      </f:Form>
+
+	 <f:Form id="buttonConfig"
+        minWidth="1024"
+        maxContainerCols="2"
+        editable="true">
+        <f:layout>
+          <f:ResponsiveGridLayout
+            labelSpanL="7" labelSpanM="7" emptySpanL="0" emptySpanM="0"
+            columnsL="6" columnsM="5" />
+        </f:layout>
+        <f:formContainers>
+          <f:FormContainer>
+            <f:formElements>
+              <f:FormElement >
+                <f:fields>
+	<Button type="Accept" width="60%" text="{PConfig13>Print_Add}" press="doAdd"  enabled="false" id="Add" class="sapUiLargeMarginBegin"/> 
+	</f:fields>
+	 </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+	   <f:FormContainer>
+            <f:formElements>
+              <f:FormElement>
+                <f:fields>
+	<Button id="UpdateID" width="70%" type="Default" text="{PConfig14>Print_Update}" enabled="false" press="doUpdate"/> 
+		</f:fields>
+	 </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+	 <f:FormContainer>
+            <f:formElements>
+              <f:FormElement>
+                <f:fields>
+	<Button id="DeleteID" width="70%" type="Reject" text="{PConfig15>Print_Delete}" enabled="false" press="doDelete"/> 
+	</f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+	<f:FormContainer>
+            <f:formElements>
+              <f:FormElement >
+                <f:fields>
+	<Button id="ClearID" width="70%" type="" text="{PConfig15>Print_Clear}" enabled="true" press="doClear"/> 
+	</f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+	<f:FormContainer>
+            <f:formElements>
+              <f:FormElement >
+                <f:fields>
+	<Button id="EnableID" width="70%" type="Reject" text="{PConfig32>Print_Disable}" enabled="false" press="doEnable"/> 
+	</f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+	<f:FormContainer>
+            <f:formElements>
+              <f:FormElement label="{PConfig34>Print_SAPDefaultPrinter}">
+                <f:fields>
+			<Switch id="id_switchSAPdefPr" state="false" enabled="false">
+				<layoutData>
+					<FlexItemData growFactor="1" />
+				</layoutData>
+			</Switch>
+	</f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+			  </f:formContainers>
+      </f:Form>
+</Panel>
+	<Panel 
+					id="tablePanel" 
+					headerText="" 
+					expandable="true" 
+					expanded="true"
+					>
+					<headerToolbar>
+						<Toolbar height="4rem" id="toolbar1">
+							<ToolbarSpacer/>
+							<SearchField 
+							id="searchFieldPrintTableId"
+							icon="/XMII/CM/PerformanceManagement/ChangeoverMatrix/Image/Search.png"
+							enabled="true"
+							visible="true"
+							width="300px"
+							text = "{GMReport10>CustomGR_PO_3}"			
+							liveChange="onSearchPrint"/>
+						</Toolbar>
+					</headerToolbar>
+					<content>
+
+
+	<Table id="PrinterConfigTable"
+		border="solid 0.1mm black"
+		inset="false"
+		mode="SingleSelectMaster"
+		selectionChange="doRowSelect"
+		items="{
+			path: '/Rowset/Row',
+			sorter: {
+				path: 'Name'
+			}
+		}"
+		>
+			
+		<columns>
+			<Column
+				hAlign="Center" visible="true" width="100px">
+				<Text text="{PConfig16>Print_Workcenter}"/>
+			</Column>
+			<Column
+				hAlign="Center" visible="true" width="80px">
+				<Text text="{PConfig33>Custom_GR_MaterialType}" />
+			</Column>
+			<Column
+				
+				hAlign="Center" width="100px">
+				<Text text="{PConfig17>Print_PrimaryPrinterIP}"/>
+			</Column>
+
+			<Column
+				hAlign="Center">
+				<Text text="{PConfig18>Print_PrimaryPrinterPort}" />
+			</Column>
+
+			
+			<Column
+				hAlign="Center" width="100px">
+				<Text text="{PConfig19>Print_PrimaryPrinterName}" />
+			</Column>
+
+			<Column
+				hAlign="Center" width="120px">
+				<Text text="{PConfig20>Print_BackupPrinterIP}" />
+				
+			</Column>
+				<Column
+				hAlign="Center">
+				<Text text="{PConfig21>Print_BackupPrinterPort}" />
+				
+			</Column>
+			<Column
+				hAlign="Center" width="120px">
+				<Text text="{PConfig22>Print_BackupPrinterName}" />
+				
+			</Column>
+			<Column
+				hAlign="Center" width="70px">
+				<Text text="{PConfig23>Print_Label_Type}" />
+				
+			</Column>
+				<Column
+				hAlign="Center" width="60px">
+				<Text text="{PConfig24>Print_Copies}" />
+				
+			</Column>
+			<Column
+				hAlign="Center" visible="false">
+				<Text text="{PConfig25>Print_Global_Template}" />
+				
+			</Column>
+			<Column
+				hAlign="Center" visible="true">
+				<Text text="{PConfig26>Print_CreatedBy}" />
+			</Column>
+
+			<Column
+				hAlign="Center" visible="false">
+				<Text text="{PConfig27>Print_Print_ID}" />
+			</Column>
+			<Column
+				hAlign="Center" visible="false">
+				<Text text="{PConfig27>Print_Template_ID}" />
+			</Column>
+			<Column
+				hAlign="Center" visible="false">
+				<Text text="{PConfig27>Print_Workcenter}" />
+			</Column>
+                                             	<Column
+				hAlign="Center" visible="true" width="60px">
+				<Text text="{PConfig30>Print_Status}" />
+			</Column>
+					<Column
+				hAlign="Center" visible="true" width="80px">
+				<Text text="{PConfig31>Print_Enable}" />
+			</Column>
+					<Column
+				hAlign="Center" visible="true" width="80px">
+				<Text text="{PConfig35>Print_SAPDefault}" />
+			</Column>
+			
+		</columns>
+	
+	<items>
+			<ColumnListItem id="PrinterConfigItems">
+				<cells class="greyout">
+					<Text
+						text="{WORKCENTER}" />
+                                                            	<Text
+						text="{MATERIAL_TYPE}" />
+					<Text
+						text="{PRINTER_IP}"/>
+					<Text
+						text="{PRINTER_PORT}"/>
+					<Text
+						text="{PRINTER_DESC}"/>
+					<Text
+						text="{BACKUP_IP}" />
+					<Text
+						text="{BACKUP_PORT}" />
+					<Text
+						text="{BACKUP_DESC}" />
+				           <Text
+						text="{LABEL_TYPE}" />
+					 <Text
+						text="{COPIES}" />
+					 <Text
+						text="{GLOBAL_TEMPLATE_PATH}" />
+					 <Text
+						text="{CREATED_BY}" />
+					<Text
+						text="{PRINTER_ID}" />
+					<Text
+						text="{TEMPLATE_ID}" />
+					<Text
+						text="{NODEID}" />
+					   <Text
+						text="{BCP_STATUS}" />
+	 		<core:Icon size="20px" src="{=${ENABLE_STATUS}==='0' ? 'sap-icon://decline' : 'sap-icon://accept'}" color="{=${ENABLE_STATUS}==='0' ? 'red' : 'green'}"/>
+	 		<core:Icon size="20px" src="{=${SAPDefault}==='1' ? 'sap-icon://accept' : 'sap-icon://decline'}" color="{=${SAPDefault}==='1' ? 'green' : 'red'}"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+			</Table>
+
+</content>
+</Panel>
+		</u:content>
+			</u:Shell>
+		</Page>
+
+</mvc:View>

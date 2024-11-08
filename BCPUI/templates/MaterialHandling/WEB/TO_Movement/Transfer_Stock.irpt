@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Transfer Stock</title>
+<META http-equiv="X-UA-Compatible" content="IE=edge">
+	<META http-equiv='cache-control' content='no-cache'>
+	<META http-equiv='expires' content='0'>
+	<META http-equiv='pragma' content='no-cache'>
+<script type="text/javascript" src="/XMII/CM/PerformanceManagement/Usability/TO_Movement/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="/XMII/CM/PerformanceManagement/Usability/TO_Movement/TransferStock.js"></script>
+<link rel="stylesheet" href="/XMII/CM/PerformanceManagement/Usability/TO_Movement/TransferStock.css"/>
+
+</head>
+
+<body bgcolor="aliceblue" onload="getPlant_Timestamp()">
+<div class="flip-container">
+	<div class="flipper">
+<!-- The Modal -->
+<div id="myModal" class="modal">
+ <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">×</span>
+     <p id="header_dialog"></p>
+    </div>
+    <div id="dialog-body" class="modal-body">
+      <p>Select the Material</p>
+        </div>
+  </div>
+
+</div>
+<!--End The Modal -->
+<div id="snackbar">Some Message</div>
+<div  class="content" id="myContent">
+<div id="header"><h2>{##transferStock}</h2></div>
+<div id="logout"><button type="button" style="cursor:pointer" onclick="doLogout()">{##logout}</button></div><div id="timestamp"><b>{##datetime} : </b></div><div id="plant"><b>{##plant} : </b></div>
+<div id="source">
+<table width="100%" border="0">
+<tr>
+<td width="100%">
+<b  id="source_label">{##source} :</b>
+<input type="text" name="scan_source"  id="id_scan_source"  value="">
+<button type="button" style="cursor:pointer" onclick="displaySourceDetails()"> {##getData} </button>
+<button type="button" style="cursor:pointer" onclick="clearSourceDetails()"> {##clear} </button>
+</td>
+</tr>
+<tr/><tr/>
+<tr>
+<td width="100%">
+<table  id="source_details" style="visibility:hidden;margin-left: 10%;" width="100%" border="0">
+<tr><td><div id="div_ssce_source">
+{##sscc}:<input type="text" name="sssc_source"  id="id_sssc_source"  value="" readonly/></div>
+</td><td><div id="div_mat_source">
+{##materialId}:<input type="text" name="mat_id_source"  id="id_mat_id_source"  value="" readonly/></div>
+</td></tr><tr/><tr/>
+<tr><td><div id="div_batch_source">
+{##batch}:<input type="text" name="batch_source" id="id_batch_source"  value="" readonly/></div>
+</td><td><div id="div_sled_source">
+{##sled}:<input type="text" name="sled_source"  id="id_sled_source"  value="" readonly/></div>
+</td></tr><tr/><tr/>
+<tr><td><div id="div_stype_source">
+{##stype}:<input type="text" name="stype_source" id="id_stype_source"  value="" readonly/></div>
+</td><td><div id="div_sbin_source">
+{##sbin}:<input type="text" name="sbin_source" id="id_sbin_source"  value="" readonly/></div>
+</td></tr><tr/><tr/>
+<tr><td><div id="div_quantity_source">
+{##quantity}:<input type="text" name="quantity_source" id="id_quantity_source" value="" readonly/><span id="uom_source"/></div>
+</td><td><div id="div_stockcat_source">
+{##stockCategory}:<input type="text" name="stockcat_source" id="id_stockcat_source"  value="" readonly/></div>
+</td></tr>
+</table>
+</td>
+</table>
+</div>
+<br/><br/>
+<div id="destination" style="visibility:hidden" >
+
+<table width="100%" border="0">
+<tr>
+<td width="100%">
+<b  id="dest_label">{##destination} :</b>
+<input type="text" name="scan_destination"  id="id_scan_destination"  value="">
+<button type="button" style="cursor:pointer" onclick="displayDestinationDetails()"> {##getData} </button>
+<button type="button" style="cursor:pointer" onclick="clearDestinationDetails()"> {##clear} </button>
+</td>
+</tr>
+<tr/><tr/>
+<tr>
+<td width="100%">
+<table  id="destination_details" style="visibility:hidden;margin-left: 8%;" width="100%" border="0">
+<tr><td><div id="div_sscc_dest">
+{##sscc}:<input type="text" name="sscc_destination" id="id_sscc_destination"  value="" readonly/></div>
+</td></tr><tr/><tr/><tr><td><div id="div_sbin_dest">
+{##sbin}:<input type="text" name="sbin_destination" id="id_sbin_destination"  value="" readonly/></div>
+</td></tr><tr/><tr/><tr><td><div id="div_stype_dest">
+{##stype}:<input type="text" name="stype_destination" id="id_stype_destination"  value="" readonly/></div>
+</td></tr><tr/><tr/><tr><td><div id="div_batch_dest">
+{##batch}:<input type="text" name="batch_destination" id="id_batch_destination"  value="" readonly/></div>
+</td></tr><tr/><tr/>
+<tr><td><div id="div_quantity_dest">
+{##quantity}:<input type="text" name="quantity_destination" id="id_quantity_destination" value=""/><span id="uom_destination"/></div>
+</td><td></tr><tr/><tr/>
+<tr><td><div id="div_move_dest">
+<button type="button" style="cursor:pointer" onclick="doTransferStock()"> {##move} </button></div>
+</td><td>
+</td></tr>
+
+</table>
+</td>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<script>
+var modal = document.getElementById('myModal');
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+span.onclick = function() {
+    	//modal.style.display = "none";	
+	document.getElementById("myContent").style.transform="rotateY(0deg)";
+	document.getElementById("myModal").style.transform="rotateY(180deg)";
+}
+</script>
+</body>
+</html>

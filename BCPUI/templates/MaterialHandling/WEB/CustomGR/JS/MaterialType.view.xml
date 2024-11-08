@@ -1,0 +1,219 @@
+ <mvc:View xmlns:core="sap.ui.core" xmlns="sap.m"  xmlns:l="sap.ui.layout"  xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified"
+controllerName="JS.MaterialType" xmlns:f="sap.ui.layout.form"
+xmlns:html="http://www.w3.org/1999/xhtml">
+<html:style>
+
+
+	.sapUiFormResGrid.sapUiFormBackgrTranslucent>div{
+	background-color:transparent !important;
+	}
+	
+	#idview1--label_header1{
+	margin-left:25%;
+	}
+
+	#idview1--barcode_icon{
+	margin-top:4%;
+	width:10% !important;
+	cursor:pointer;
+	}
+	
+	.sapMListTbl .sapMText, .sapMListTbl .sapMLabel
+	 {
+	    padding-top: 1px;
+   	 font-size: 0.875rem;
+   	 color: #333333;
+   	 font-weight: inherit;
+	 }
+	.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+    max-height: 30px;
+    max-width: 150px;
+    vertical-align: middle;
+}
+#idQueueMonitor--label_header1
+	{
+		font-weight: bold;
+		font-size:16px;
+	}
+
+</html:style>
+
+	<Page
+		id="page"
+		showHeader="false"
+		title="Setup" >
+
+				<u:Shell class="Background"
+			id="shell1"
+			icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+			<u:headItems>
+				<u:ShellHeadItem
+					tooltip="{MatType1>NPDashboard_Back}"
+					icon="sap-icon://nav-back"
+					visible="true"
+					press="goBack" />
+			
+			</u:headItems>
+			<u:headEndItems>
+			
+			</u:headEndItems>
+			<u:user>
+				<u:ShellHeadUserItem
+					image="sap-icon://person-placeholder" 
+				        showPopupIndicator="false"
+					username="Karl Mustermann"
+					/>
+			</u:user>
+			<u:search>
+				<Label id="label_header1"
+					text="{MatType12>Custom_GR_Heading}"/>
+			</u:search>
+			<u:content>
+
+<Panel expandable="true" expanded="true"   width="auto" class="sapUiResponsiveMargin" headerText="{MatType2>Custom_GR_Heading}">
+
+      <f:Form id="printerConfig"
+        minWidth="1024"
+        maxContainerCols="2"
+        editable="true">
+        <f:layout>
+          <f:ResponsiveGridLayout
+            labelSpanL="5"
+            labelSpanM="4"
+            emptySpanL="0"
+            emptySpanM="0"
+            columnsL="3"
+            columnsM="2" />
+        </f:layout>
+        <f:formContainers>
+		<f:FormContainer>
+           		 <f:formElements>
+             			 <f:FormElement label="{MatType3>Custom_GR_MaterialType}">
+              				  <f:fields>
+	<Select id ="material_type"  width="100%"  items="{path: '/Rowset/Row'}"> <core:Item key="{Material_Type}" text="{Material_Type}" /> </Select>
+             					 
+               				  </f:fields>
+             			 </f:FormElement>
+			 </f:formElements>
+		</f:FormContainer>
+	<f:FormContainer>
+              	<f:formElements>
+                 		<f:FormElement label="{MatType4>Custom_GR_StorageType}">
+          				<f:fields>
+					<Input id ="storage_type" height ="9%"   value ="" />
+	       			 </f:fields>
+                   		</f:FormElement>
+		</f:formElements>		
+	</f:FormContainer>
+	<f:FormContainer>
+              	<f:formElements>
+                 		<f:FormElement label="{MatType5>Custom_GR_StorageBin}">
+          				<f:fields>
+					<Input id ="storage_bin" height ="9%"   value ="" />
+	       			 </f:fields>
+                   		</f:FormElement>
+		</f:formElements>		
+	</f:FormContainer>
+	<f:FormContainer>
+            <f:formElements>
+             <f:FormElement label="{MatType20>NPDashboard_Line}">
+                <f:fields>
+                <Select id ="Line" width="100%"  items="{path: '/Rowset/Row'}" change="LineSelectionChange" ><items> <core:Item key="{Key}" text="{Value}" /> </items> </Select>
+                 </f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+	<!--	<f:FormContainer>
+            			<f:formElements>
+              			<f:FormElement label="">
+                				<f:fields>
+						<Button enabled="false"  visible="false" id="btn_update"  width="100%" type="Check" text="{MatType6>Custom_GR_Update}" press="doUpdate"/> 
+					</f:fields>
+	 			</f:FormElement>
+			  </f:formElements> 
+	</f:FormContainer>  -->
+	<f:FormContainer>
+            			<f:formElements>
+              			<f:FormElement label="">
+                				<f:fields>
+						<Button id="btn_add" width="100%" type="Check" text="{MatType7>Custom_GR_Add}" press="doAdd"/> 
+					</f:fields>
+	 			</f:FormElement>
+			  </f:formElements>
+	</f:FormContainer>
+		<f:FormContainer>
+            			<f:formElements>
+              			<f:FormElement label="">
+                				<f:fields>
+						<Button  enabled="false"   id="btn_delete"  width="100%" type="Check" text="{MatType8>Custom_GR_Delete}" press="doDelete"/> 
+					</f:fields>
+	 			</f:FormElement>
+			  </f:formElements>
+		</f:FormContainer>
+      </f:formContainers>
+</f:Form>
+
+ 	<Table id="MaterialTypeTable"
+		border="solid 0.1mm black"
+		inset="false"
+		mode="SingleSelectMaster"
+		selectionChange="doRowSelect"
+		items="{
+			path: '/Rowset/Row',
+			sorter: {
+				path: 'Name'
+			}
+		}"
+		>
+			
+		<columns>
+                           	<Column
+				
+				hAlign="Center">
+				<Text text="{MatType20>NPDashboard_Line}" />
+			</Column>
+		
+			<Column
+				
+				hAlign="Center">
+				<Text text="{MatType9>Custom_GR_MaterialType}" />
+			</Column>
+
+			<Column
+				
+				hAlign="Center">
+				<Text text="{MatType10>Custom_GR_StorageType}" />
+			</Column>
+
+			<Column
+				hAlign="Center" >
+				<Text text="{MatType11>Custom_GR_StorageBin}" />
+			</Column>
+			
+		</columns>
+	
+	<items>
+			<ColumnListItem id="MaterialTypeItems">
+				<cells>
+                                                   	<Text
+						text="{LINE_ID}"/>
+					<Text
+						text="{MATERIAL_TYPE}"/>
+					<Text
+						text="{STORAGE_TYPE}"/>
+
+					<Text
+						text="{STORAGE_BIN}" />
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+
+ 
+
+    </Panel>
+</u:content>
+</u:Shell>
+</Page>
+
+</mvc:View>

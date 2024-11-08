@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?><Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:html="http://www.w3.org/TR/REC-html40" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns:x="urn:schemas-microsoft-com:office:excel">
+<Styles>
+<Style ss:ID="header">
+<Borders>
+<Border ss:LineStyle="Continuous" ss:Position="Left" ss:Weight="1"/>
+<Border ss:LineStyle="Continuous" ss:Position="Top" ss:Weight="1"/>
+</Borders>
+<Font ss:Bold="1"/>
+<Interior ss:Color="#F08080" ss:Pattern="Solid"/>
+</Style>
+<Style ss:ID="Parameter">
+<Borders>
+<Border ss:LineStyle="Continuous" ss:Position="Left" ss:Weight="1"/>
+<Border ss:LineStyle="Continuous" ss:Position="Top" ss:Weight="1"/>
+</Borders>
+<Font ss:Bold="1"/>
+<Interior ss:Color="#FF8C00" ss:Pattern="Solid"/>
+</Style>
+<Style ss:ID="body">
+<Borders>
+<Border ss:LineStyle="Continuous" ss:Position="Left" ss:Weight="1"/>
+<Border ss:LineStyle="Continuous" ss:Position="Right" ss:Weight="1"/>
+<Border ss:LineStyle="Continuous" ss:Position="Top" ss:Weight="1"/>
+<Border ss:LineStyle="Continuous" ss:Position="Bottom" ss:Weight="1"/>
+</Borders>
+</Style>
+<Style ss:ID="Total">
+<Borders>
+<Border ss:LineStyle="Continuous" ss:Position="Left" ss:Weight="1"/>
+<Border ss:LineStyle="Continuous" ss:Position="Right" ss:Weight="1"/>
+<Border ss:LineStyle="Continuous" ss:Position="Top" ss:Weight="1"/>
+<Border ss:LineStyle="Continuous" ss:Position="Bottom" ss:Weight="1"/>
+</Borders>
+<Interior ss:Color="#FFFF00" ss:Pattern="Solid"/>
+</Style>
+<Style ss:ID="s65">
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+</Style>
+<Style ss:ID="s66">
+<Alignment ss:Vertical="Bottom"/>
+<Borders>
+<Border ss:LineStyle="Continuous" ss:Position="Left" ss:Weight="1"/>
+<Border ss:LineStyle="Continuous" ss:Position="Top" ss:Weight="1"/>
+</Borders>
+<Font ss:Bold="1" ss:FontName="Arial"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<NumberFormat/>
+<Protection/>
+</Style>
+<Style ss:ID="s76">
+<Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+<Borders>
+<Border ss:LineStyle="Continuous" ss:Position="Bottom" ss:Weight="1"/>
+</Borders>
+<Font ss:Bold="1" ss:Color="BLUE" ss:FontName="Calibri" ss:Size="14" x:Family="Swiss"/>
+<NumberFormat/>
+<Protection/>
+</Style>
+</Styles>
+<Worksheet ss:Name="Transfer Stock Detail">
+<Table ss:DefaultRowHeight="15" ss:ExpandedRowCount="6" x:FullColumns="1" x:FullRows="1">
+<Column ss:Span="4" ss:Width="155"/>
+<Column ss:Span="4" ss:Width="155"/>
+<Column ss:Span="4" ss:Width="155"/>
+<Column ss:Span="4" ss:Width="155"/>
+<Column ss:Span="4" ss:Width="155"/>
+<Column ss:Span="4" ss:Width="155"/>
+<Column ss:Span="4" ss:Width="155"/>
+<Column ss:Span="4" ss:Width="155"/>
+<Column ss:Span="4" ss:Width="155"/>
+<Row ss:AutoFitHeight="0">
+<Cell ss:Index="4" ss:MergeAcross="2" ss:StyleID="s76" ss:id="Stoppages">
+<Data ss:Type="String">Transfer Stock Detail</Data>
+</Cell>
+</Row>
+<Row>
+<Cell ss:StyleID="Parameter" ss:id="StorageLoc">
+<Data ss:Type="String">StorageLocation: Y001</Data>
+</Cell>
+<Cell ss:StyleID="Parameter" ss:id="WarehouseNo">
+<Data ss:Type="String">WareHouseNo: Y03</Data>
+</Cell>
+</Row>
+<Row ss:AutoFitHeight="0" ss:StyleID="s65">
+<Cell ss:StyleID="s66"/>
+<Cell ss:StyleID="s66"/>
+</Row>
+<Row>
+<Cell ss:StyleID="header" ss:id="MATERIAL">
+<Data ss:Type="String">MATERIAL</Data>
+</Cell>
+<Cell ss:StyleID="header" ss:id="BATCH">
+<Data ss:Type="String">BATCH</Data>
+</Cell>
+<Cell ss:StyleID="header" ss:id="STGE_TYPE">
+<Data ss:Type="String">STGE_TYPE</Data>
+</Cell>
+<Cell ss:StyleID="header" ss:id="STGE_BIN">
+<Data ss:Type="String">STGE_BIN</Data>
+</Cell>
+<Cell ss:StyleID="header" ss:id="BATCH_STATUS">
+<Data ss:Type="String">BATCH_STATUS</Data>
+</Cell>
+<Cell ss:StyleID="header" ss:id="EXPIRYDATE">
+<Data ss:Type="String">EXPIRYDATE</Data>
+</Cell>
+<Cell ss:StyleID="header" ss:id="AVAIL_STCK">
+<Data ss:Type="String">AVAIL_STCK</Data>
+</Cell>
+<Cell ss:StyleID="header" ss:id="STOR_UNIT">
+<Data ss:Type="String">STOR_UNIT</Data>
+</Cell>
+<Cell ss:StyleID="header" ss:id="STOCK_CAT">
+<Data ss:Type="String">STOCK_CAT</Data>
+</Cell>
+</Row>
+<Row>
+<Cell ss:StyleID="body" ss:id="MATERIAL">
+<Data ss:Type="String">44016388</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="BATCH">
+<Data ss:Type="String">0000000003</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="STGE_TYPE">
+<Data ss:Type="String">171</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="STGE_BIN">
+<Data ss:Type="String">REWORK</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="BATCH_STATUS">
+<Data ss:Type="String">---</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="EXPIRYDATE">
+<Data ss:Type="String">2014-12-12</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="AVAIL_STCK">
+<Data ss:Type="String">900.000</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="STOR_UNIT">
+<Data ss:Type="String">null</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="STOCK_CAT">
+<Data ss:Type="String">S</Data>
+</Cell>
+</Row>
+<Row>
+<Cell ss:StyleID="body" ss:id="MATERIAL">
+<Data ss:Type="String">145550176</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="BATCH">
+<Data ss:Type="String">Y203A00292</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="STGE_TYPE">
+<Data ss:Type="String">171</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="STGE_BIN">
+<Data ss:Type="String">REWORK</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="BATCH_STATUS">
+<Data ss:Type="String">---</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="EXPIRYDATE">
+<Data ss:Type="String">2017-02-28</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="AVAIL_STCK">
+<Data ss:Type="String">0.000</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="STOR_UNIT">
+<Data ss:Type="String">null</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="STOCK_CAT">
+<Data ss:Type="String">Q</Data>
+</Cell>
+</Row>
+</Table>
+</Worksheet>
+</Workbook>

@@ -1,0 +1,253 @@
+ <mvc:View
+	controllerName="JS.TransferOrder"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns="sap.m"
+	xmlns:table="sap.ui.table"
+	xmlns:model="sap.ui.model"
+	 xmlns:f="sap.ui.layout.form"  
+	 xmlns:commons="sap.ui.commons"
+	xmlns:ma="sap.makit"
+	xmlns:viz="sap.viz" 
+	xmlns:u="sap.ui.unified"
+	xmlns:s="sap.suite.ui.commons"
+	xmlns:m="sap.m"
+	xmlns:ux3="sap.ui.ux3"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+<html:style>
+#__item50{
+     width: 53px;
+}
+.sapUiRespGridMedia-Std-Phone.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanS12)>.sapMLabel, .sapUiRespGridMedia-Std-Tablet.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanM12)>.sapMLabel, .sapUiRespGridMedia-Std-Desktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanL12)>.sapMLabel, .sapUiRespGridMedia-Std-LargeDesktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanXL12)>.sapMLabel {
+    text-align: start!important;
+    float: none;
+    /* position: relative; */
+}
+.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+    max-height: 30px;
+    max-width: 150px;
+    vertical-align: middle;
+}
+
+</html:style>
+
+
+ <Page
+    id="page" class="Background"
+	title = "Setup"  
+    showHeader="false" > 
+<!--
+	<footer>
+			<Bar>
+				<contentRight>
+					<Button id="CreateTransferOrder" text="{buttonCreateTO>TrasferType_btn_CreateTransferOrder}" icon="/XMII/CM/MaterialHandling/Common/Images/transfer.png" press="toTransferOrder"/>
+				</contentRight>
+			</Bar>
+		</footer>
+-->
+<u:Shell class="Background"
+			id="shell1"
+			icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+
+			<u:headItems>
+				<u:ShellHeadItem id="gotoHomeHeadItem"
+					tooltip="Home"
+					icon="sap-icon://nav-back"
+					visible="true"
+					press="goToTransferDisplay" />
+			
+			</u:headItems>
+
+			<u:headEndItems>
+				<u:ShellHeadItem
+				        id="bcpHDRIMR"
+					icon=""
+					tooltip="{title1>InBndMatRecpt_title_BCP}" 
+					press="" />
+			</u:headEndItems>
+
+			<u:user>
+				<u:ShellHeadUserItem
+					id="usernameIds"
+					image="sap-icon://person-placeholder" 
+				        	showPopupIndicator="false"
+					username=""	/>
+			</u:user>
+			<u:search>
+				
+			
+					 <Input id ="Header" height ="9%" width="103%"  enabled="true"  value ="" change="WarehouseValidation" />
+		</u:search>
+
+  <u:content>
+<Panel id="SourcePanel" headerText="{title2>TransferType_title_Source}" > 
+ <f:Form id="Form1"  minWidth="1024" maxContainerCols="15" editable="false">
+      <f:layout> <f:ResponsiveGridLayout labelSpanL="5" labelSpanM="6"
+			emptySpanL="0" emptySpanM="0" columnsL="4" columnsM="4"/>
+      </f:layout>
+      <f:formContainers id="tiger">
+	<f:FormContainer> <f:formElements> <f:FormElement id="StorageLocLabel" label="{label1>TransferType_Lbl_StorageLocation}">
+		<f:fields> <Input id ="StorageLoc" editable="false" height ="9%"  width ="100%" value ="" change="getSLoc" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement id="WarehouseLabel" label="{label2>TransferDisplay_label_WHNo}">
+		<f:fields> <Input id ="Warehouse" editable="false" height ="9%"  value ="" change="WarehouseValidation" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement id="StorageTypeLabel" label="{label3>TransferType_Lbl_StorageType}">
+		<f:fields> <Input id ="StorageType" editable="false" height ="9%"  value ="" change="StorageTypeValidation" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement id="StorageBinLabel" label="{label4>TransferType_Lbl_StorageBin}">
+		<f:fields> <Input id ="StorageBin" editable="false" height ="9%"  value ="" change="StorageBinValidation" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	 <f:FormContainer id="SourceSU"> <f:formElements> <f:FormElement id="StorageUniteLabel" label="{label6>TransferType_Lbl_StorageUnite}">
+		<f:fields> <Input id ="StorageUnite" editable="false" height ="9%"  value ="" change="StorageUniteValidation" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement id="MatNumberLabel" label="{label7>TransferType_Lbl_MatNumber}">
+		<f:fields> <Input id ="MatNumber" editable="false" height ="9%"  value ="" change="MatNumberValidation" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement id="BatchNumberLabel" label="{label8>TransferType_Lbl_BatchNumber}">
+		<f:fields> <Input id ="BatchNumber" editable="false" height ="9%"  value ="" change="BatchNumberValidation" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement id="SLEDLabel" label="{label9>TransferType_Lbl_SLED}">
+		<f:fields> <Input id ="SLED" editable="false" height ="9%" value ="" change="SLEDValidation" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement id="StockCategoryLabel" label="{label10>TransferType_Lbl_StockCategory}">
+		<f:fields> <Input id ="StockCategory" editable="false" height ="9%"  value ="" change="StockCategoryValidation" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement id="QuantityLabel" label="{label11>TransferType_Lbl_Quantity}">
+		<f:fields> <Input id ="Quantity" editable="false" height ="9%"  value ="" change="QuantityValidation" />
+			<Input id ="Measure" editable="false" height ="9%" value ="EA" change="QuantityValidation" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement id="BatchStatusLabel" label="{label12>TransferType_Lbl_BatchStatus}">
+		<f:fields> <Input id ="BatchStatus" editable="false" height ="9%"  value ="" change="BatchStatusValidation" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement id="UnitTypeLabel" visible="false" label="{label5>TransferType_Lbl_UnitType}">
+		<f:fields> <Input id ="UnitType" editable="false" height ="9%"  visible="false"  value ="" change="UnitTypeValidation" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+          </f:formContainers>
+     </f:Form>
+</Panel> 
+
+<Panel id="DestinationPanel" headerText="{title3>TransferType_title_Destination}"> 
+ <f:Form id="Form2" minWidth="1024" maxContainerCols="15" editable="false">
+        <f:layout> <f:ResponsiveGridLayout labelSpanL="5" labelSpanM="6"
+			emptySpanL="0" emptySpanM="0" columnsL="4" columnsM="4" />
+        </f:layout>
+        <f:formContainers>
+	<f:FormContainer> <f:formElements> <f:FormElement id="StorageLocLabel1" label="{label13>TransferType_Lbl_StorageLocation}">
+		<f:fields> <Select id ="StorageLoc1" change="StorageLocDestValidation" width=""  items="{path: '/Rowset/Row'}">
+                    			<items> <core:Item key="{StorageLocation}" text="{StorageLoc}" /> </items>
+			</Select> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+
+	 <f:FormContainer> <f:formElements> <f:FormElement id="WarehouseLabel1" label="{label14>TransferDisplay_label_WHNo}">
+		<f:fields> <Input id ="Warehouse1" enabled="false" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement >
+		<f:fields> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement >
+		<f:fields> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement id="StorageTypeLabel1" label="{label15>TransferType_Lbl_StorageType}">
+		<f:fields> <Select id ="StorageType1" change="StorageType1Validation" width=""  items="{path: '/Rowset/Row'}">
+                    		<items> <core:Item key="{STYPE}"  text="{STYPE}" /> </items>
+			</Select> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	 <f:FormContainer> <f:formElements> <f:FormElement id="StorageTypeLabel2" visible="false" label="{label16>TransferType_Lbl_StorageType}">
+		<f:fields> <Input id ="StorageType2" height ="9%"   enabled="false" visible="false" value ="" change="StorageTypeValidation1" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer id="ManualEntryCon1"> <f:formElements> <f:FormElement >
+		<f:fields> <CheckBox id="ManualEntryST" text="Manual Entry" enabled="true" selected="false" select="SelectManualEntryST" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement >
+		<f:fields> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement id="StorageBinLabel1" label="{label17>TransferType_Lbl_StorageBin}">
+		<f:fields> <Input id ="StorageBin1" height ="9%"  visible="false" value ="" change="StorageBinValidation" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	 <f:FormContainer id="StorageBinCon1"> <f:formElements> <f:FormElement id="StorageBin2Label" label="{label18>TransferType_Lbl_StorageBin}">
+		<f:fields> <Select id ="StorageBin2" change="StorageBinDestValidation" enabled="false"  width=""  items="{path: '/Rowset/Row'}">
+                    		<items>  <core:Item text="{StorageBin}" key="{StorageBin}" /> </items> 
+			</Select> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer id="ManualEntryCon"> <f:formElements> <f:FormElement >
+		<f:fields> <CheckBox id="ManualEntry" text="Manual Entry" enabled="false" selected="false" select="SelectManualEntry" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement id="UnitTypeLabel1" visible="false" label="{label19>TransferType_Lbl_UnitType}">
+		<f:fields> <Input id ="UnitType1" height ="9%"   enabled="false" visible="false" value ="" change="UnitTypeValidation1" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>	
+	 <f:FormContainer> <f:formElements> <f:FormElement >
+		<f:fields> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer id="StroageUniteCon2" > <f:formElements> <f:FormElement id="StorageUniteLabel1" label="{label20>TransferType_Lbl_StorageUnite}">
+		<f:fields> <Input id ="StorageUnite1" height ="9%"   value ="" change="StorageUniteValidation" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer id="StorageUniteCon1"> <f:formElements> <f:FormElement id="StorageUniteLabel2" label="{label21>TransferType_Lbl_StorageUnite}">
+		<f:fields> <Select id ="StorageUnite2" change="StorageUnite1Validation" width=""  items="{path: '/Rowset/Row'}">
+                    		<items> <core:Item key="{StorageUnite}" text="{StorageUnite}" /> </items>
+			</Select> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer id="AutoGenerateCon"> <f:formElements> <f:FormElement >
+		<f:fields> <CheckBox id="AutoGenerateID" text="Auto Generate" selected="false" select="SelectAutoGenerate" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement id="MatNumberLabel1" label="{label22>TransferType_Lbl_MatNumber}">
+		<f:fields> <Input id ="MatNumber1" height ="9%"   value ="" change="MatNumberValidation" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement id="BatchNumberLabel1" label="{label23>TransferType_Lbl_BatchNumber}">
+		<f:fields> <Input id ="BatchNumber1" height ="9%"   value ="" change="BatchNumberValidation" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement id="SLEDLabel1" label="{label24>TransferType_Lbl_SLED}">
+		<f:fields> <DatePicker id ="SLED1" height ="9%"   value ="" change="SLEDValidation" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement id="StockCategoryLabel1" label="{label25>TransferType_Lbl_StockCategory}">
+		<f:fields> <Input id ="StockCategory1" height ="9%"   value ="" change="StockCategoryValidation" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer> 
+	<f:FormContainer> <f:formElements> <f:FormElement id="QuantityLabel1" label="{label26>TransferType_Lbl_Quantity}">
+		<f:fields> <Input id ="Quantity1" height ="9%"  width="100%"  value ="" change="QuantityValidation"  liveChange="validateQuantity" />
+			<Input id ="Measure1" height ="9%"  width="100%"  enabled="false" value ="" change="QuantityValidation" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement id="BatchStatusLabel1" label="{label27>TransferType_Lbl_BatchStatus}">
+		<f:fields> <Input id ="BatchStatus1" height ="9%"    value ="" change="BatchStatus1Validation" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement id="printerSel" label="{label28>NPORTAL_COMMON_LABEL_PRINTER_NAME}">
+		<f:fields> <Select id ="printerName" height ="9%"    value ="" change="onPrinterSelection" />	</f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement id="noOfCopies" label="{label29>NPORTAL_COMMON_LABEL_NO_OF_COPIES}">
+		<f:fields> <Input id ="noOfCopiesInput" height ="9%" value ="" liveChange="validateNoOfPrintCopies" /> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement label="">
+		<f:fields> </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+         </f:formContainers>
+     </f:Form>
+
+			<Bar>
+				<contentLeft/>
+				<contentMiddle>
+					<Button id="CreateTransferOrder" text="{buttonCreateTO>TrasferType_btn_CreateTransferOrder}" press="toTransferOrder" icon="sap-icon://create"/>
+				</contentMiddle>
+				<contentRight/>
+			</Bar>
+
+</Panel> 
+<!--
+	<OverflowToolbar class="sapUiMediumMarginTop">
+		<ToolbarSpacer/>
+			<Button
+			id="CreateTOrderButton"
+			icon="/XMII/CM/MaterialHandling/Common/Images/SaveIcon.png"
+			enabled="true"
+			text = "{buttonCTO>TrasferType_btn_CreateTransferOrder}"
+			width="220px"
+			press="pressCreateTransferOrderFn" />
+
+	<ToolbarSpacer/>
+		</OverflowToolbar>
+-->
+  </u:content>
+</u:Shell>
+
+ </Page>
+</mvc:View>         		

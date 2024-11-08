@@ -1,0 +1,323 @@
+<mvc:View
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"  
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:u="sap.ui.unified"
+	controllerName="JS.GMReport"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:table="sap.ui.table"
+	xmlns:commons="sap.ui.commons"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<html:style>
+		.sapUiRespGridMedia-Std-Phone.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanS12)>.sapMLabel, .sapUiRespGridMedia-Std-Tablet.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanM12)>.sapMLabel, .sapUiRespGridMedia-Std-Desktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanL12)>.sapMLabel, .sapUiRespGridMedia-Std-LargeDesktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanXL12)>.sapMLabel {
+		    text-align: end!important;
+		    float: none;
+		}
+.sapMPanelContent {
+    padding: 0rem;
+    box-sizing: border-box;
+    overflow: auto;
+    white-space: normal;
+}
+		.sapMLabel, .sapMBtnContent {
+		    font-weight: bold;
+		}
+		.sapMComboBoxTextField, .sapMMultiComboBoxBorder,.sapMMultiComboBoxInputContainer, .sapMComboBoxTextFieldArrow, input.sapMComboBoxTextFieldInner {
+		    border-radius: 15px;
+		}
+		.sapMComboBoxTextField{
+		    border: 1px solid grey;
+		}
+		.sapMInputBase {
+		    vertical-align: baseline;
+		}
+		.sapMTokenText{
+		    font-size: 1rem!important;
+		}
+		.sapMInputBaseInner {
+		    height: 2.5rem;
+		    font-size: 1rem!important;
+		    border: 1px solid grey;
+		    border-radius: 10px;
+		}
+		.sapMSFF {
+		    border: 2px solid steelblue;
+		    border-radius: 15px;
+		}
+		.sapUiUfdShellHeadItmSep.sapUiUfdShellHeadItm{
+			width: 124px;
+		}
+		.sapUiUfdShellHeadItm>span>img {
+			margin-top: 0px;
+			width: 110px;
+			height: 40px;
+			border-width: 0;
+		}
+		.sapUiFormResGridCont {
+		    padding-bottom: 0rem!important;
+		}
+		#GMReport--navBackId{
+		   width: 53px;
+		}
+		#GMReport--label_header3 {
+		    font-size: 20px;
+		    font-family: Times New Roman;
+		}
+		.sapMBtnInner.sapMBtnText{
+		padding-left: 0rem; 
+		padding-right: 0rem; 
+		}
+		#GMReport--btnECCGMId-img {
+		    color: royalBlue;
+		}
+		#GMReport--btnECCGMId-inner {
+		    background-color: aliceblue;
+		    border-color: steelblue;
+		}
+		#GMReport--btnExcelReportId-inner {
+		    border-color: green;
+		}
+		#GMReport--btnExcelReportId-img {
+		    color: green;
+		}
+		#GMReport--btnRefresh-inner {
+		    border-width: 2px;
+		    border-color: grey;
+		}
+		.sapMBtnInner {
+		    min-width: 0.5rem;
+		    border-radius: 15px;
+		}
+		.sapMIBar.sapMTB .sapMBarChild {
+		    font-weight: bold;
+		}
+		.sapUiTableColCell>.sapUiLbl {
+		    font-weight: bold !important;
+		    font-size: 0.875rem !important;
+		    color: #666666 !important;
+		    font-family: Arial,Helvetica,sans-serif;
+		}
+.sapUiTableColHdrCnt {
+    border-color: grey;
+    border-bottom-width: 2px;
+    background-image: linear-gradient(to bottom,white, #dedede);
+}
+.sapUiTable>.sapUiTableHdr {
+    border: none !important;
+    border-bottom: 0px !important;
+    min-height: 0px !important;
+    height: 0px !important;
+    padding: 0 !important;
+    margin-bottom: 0px !important;
+    background-color: transparent !important;
+}	
+		.sapMPI {
+			box-sizing: border-box;
+			min-width: 5rem;
+			outline: none;
+			background: #ffffff;
+			height: auto;
+			border:none;
+			margin:0rem;
+		}
+		.sapMPIBar {
+			height: 100%;
+			float: left;
+			border-radius: 25px;
+		}
+		.sapMPIText {
+			font-family: Arial,Helvetica,sans-serif;
+			font-weight: normal;
+			line-height: 1.5rem;
+			color: #333333;
+		}
+		.sapMPIBarPositive {
+			background: linear-gradient(to bottom,#5cb85c 0,#5cb85c 100%);
+		}
+		.sapMPIBarCritical {
+			background: linear-gradient(to bottom,#f0ad4e 0,#f0ad4e 100%);
+		}
+		.sapMObjStatusError>.sapMObjStatusText {
+			color: #333333;
+			background-color: #f9b68e;
+			border-radius: 25px;
+		}
+		.sapMObjStatusError>.sapMObjStatusIcon{
+			color: #f9b68e;
+		}
+		div.sapMBtnInner.sapMBtnAccept {
+    			background-image: none;
+    			background-color: #024067;
+    			border-color: #383a38;
+    			color: #ffffff;
+    			text-shadow: none;
+    			border-radius: 15px;
+			border: 25px;
+		}
+		.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+    		max-height: 30px;
+   		max-width: 150px;
+   		vertical-align: middle;
+		}
+		.sapMBtnAccept.sapMBtnHoverable.sapMBtnIconFirst.sapMBtnInner.sapMBtnText.sapMFocusable{
+			background-color: #024067;
+		}	
+	</html:style>
+	<Page
+		id="pageID" 
+		class="Background"
+		showHeader="false"
+		title="Setup">				
+		<u:Shell
+			id="shell3"
+			icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+			<u:headItems>
+				<u:ShellHeadItem 
+					id="navBackId"
+					tooltip="{GMReport1>NPDashboard_Back}"
+					icon="sap-icon://nav-back"
+					visible="true"
+					press="goHome"/>
+			</u:headItems>
+			<u:headEndItems>
+				<u:ShellHeadItem
+					id="bcpStatus"
+					icon=""
+					tooltip="{GMReport2>InBndMatRecpt_title_BCP}"
+					press="" />
+			</u:headEndItems>
+			<u:user>
+				<u:ShellHeadUserItem
+					image="sap-icon://person-placeholder"
+					showPopupIndicator="false"
+					username=""/>
+			</u:user>
+			<u:search>
+				<Label  
+					id="label_header3"
+					text="{GMReport3>CustomGR_GMReport_1}" 
+					design="Bold"/>
+			</u:search>
+   <u:content>
+	<f:Form id="selectionForm" minWidth="1024" maxContainerCols="15" editable="true">
+	<f:layout> <f:ResponsiveGridLayout labelSpanL="4" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="4" columnsM="4"/> </f:layout>
+	<f:formContainers>
+		<f:FormContainer id="td1"> <f:formElements>
+			<f:FormElement label="{GMReport4>NPDashboard_Line}">
+				<f:fields> <ComboBox id ="selLineId" change="handleLineSelectionChange" items="{path: '/Rowset/Row'}" >
+					<items> <core:Item key="{NODE_ID}" text="{DESCRIPTION}" /> </items>
+					</ComboBox > </f:fields>
+			</f:FormElement> </f:formElements> </f:FormContainer>
+		<f:FormContainer id="td2"> <f:formElements>
+			<f:FormElement label="{GMReport5>CustomGR_GR_2}"> 
+				<f:fields> <MultiComboBox  id ="procOrdId" items="{path: '/Rowset/Row'}" enabled="true" >
+					<items> <core:Item key="{AUFNR}" text="{= ${AUFNR}.indexOf('E') &gt; -1 ? ${AUFNR} :  Number(${AUFNR})}"  /> </items>
+					</MultiComboBox > </f:fields>
+			</f:FormElement> </f:formElements> </f:FormContainer>
+		<f:FormContainer id="td3"> <f:formElements>
+			<f:FormElement  label="{GMReport7>CustomGR_GMReport_5}">
+				<f:fields> <MultiComboBox  id ="mvtTypeId" items="{path: '/Rowset/Row'}" enabled="true">
+					<items> <core:Item key="{MOVEMENT_TYPE}" text="{MOVEMENT_TYPE}" /> </items>
+					</MultiComboBox > </f:fields>
+			</f:FormElement> </f:formElements> </f:FormContainer>
+		<f:FormContainer id="td4"> <f:formElements>
+			<f:FormElement visible="true" label="{GMReport8>GMReport_NoOfDays}" > 
+				<f:fields> <Input id="inputDayId" value="3" width="50px" change="handleDayChange" /> </f:fields>
+			</f:FormElement> </f:formElements> </f:FormContainer>
+		<f:FormContainer id="td5"> <f:formElements>
+			<f:FormElement label="{GMReport6>CustomGR_GMReport_2}">
+				<f:fields> <Input id ="mat" value ="" change="handleSelectionChange" /> </f:fields>
+			</f:FormElement> </f:formElements> </f:FormContainer>
+		<f:FormContainer id="td6"> <f:formElements>
+			<f:FormElement label="Storage Unit">
+				<f:fields> <Input id ="sunit"  value =""  /> </f:fields>
+			</f:FormElement> </f:formElements> </f:FormContainer>
+		<f:FormContainer  id="td7"> <f:formElements>
+			<f:FormElement label="Batch">
+				<f:fields> <Input id ="Batch" value =""  /> </f:fields>
+			</f:FormElement> </f:formElements> </f:FormContainer>
+		<f:FormContainer id="td8"> <f:formElements>
+			<f:FormElement label="">
+				<f:fields> <Button id="btnRefresh" icon="/XMII/CM/MaterialHandling/InboundMaterial/Common/refresh.png" width="20%" press="getGMReport"/></f:fields>
+			</f:FormElement> </f:formElements> </f:FormContainer>
+		</f:formContainers>
+	</f:Form>
+      <panel id="tabelPanel">
+	<headerToolbar> <OverflowToolbar height="3rem" id="toolbar1">
+		<Label text="" design="Bold"/>
+		<ToolbarSpacer/>
+		<Button id="btnECCGMId" enabled="false" text = "{GMReport21>GMReport_ECCGoodsMvmt}" icon="sap-icon://sap-box" width="180px" press="goToECCGM"/>
+		<Button id="btnExcelReportId" icon="sap-icon://excel-attachment" enabled="true" visible="true" text = "{GMReport9>CustomGR_GMReport_11}" width="180px" press="getExcelReport"/>
+		<SearchField id="searchFieldGMTableId" icon="/XMII/CM/PerformanceManagement/ChangeoverMatrix/Image/Search.png" enabled="true" visible="true" width="300px" text = "{GMReport10>CustomGR_PO_3}"	
+				liveChange="onSearch"/>
+	</OverflowToolbar> </headerToolbar>
+		<table:Table id="GMTable" rows="{/Rowset/Row}" selectionMode="Single" selectionBehavior="Row" rowSelectionChange="onRowSelection"  visibleRowCount="8">
+		       <table:columns>
+			<table:Column width = "5.5%" sortProperty="ProcOrd" filterProperty="ProcOrd">
+				<commons:Label text="{GMReportTableProcOrd>CustomGR_GR_2}" wrapping="true"/>
+				<table:template> <Text text="{ProcOrd}" /> </table:template>
+			</table:Column>
+			<table:Column hAlign="Center" visible="true" width = "5.5%" sortProperty="Material" filterProperty="Material">
+				<Label text="{GMReport6>CustomGR_GMReport_2}" />
+				<table:template> <Text text="{Material}" /> </table:template>
+			</table:Column>
+			<table:Column hAlign="Center" visible="true" sortProperty="MaterialDescription" filterProperty="MaterialDescription">
+				<Label text="{GMReport12>CustomGR_GMReport_16}" />
+				<table:template> <Text text="{MaterialDescription}" /> </table:template>
+			</table:Column>	
+			<table:Column hAlign="Center" visible="true" width = "6%" sortProperty="Quantity" filterProperty="Quantity">
+				<Label text="{GMReport13>CustomGR_GMReport_3}" />
+				<table:template> <ProgressIndicator percentValue="100%" displayValue="{path: 'Quantity',  formatter : 'sap.oee.ui.Formatter.formatQuantityValue'}" showValue="true" state="{= ${Status} === 'E' ? 'Error' : Number(${Quantity}) &lt; 0 ? 'Warning' : 'Success'}"/>												
+							</table:template>
+			</table:Column>
+			<table:Column hAlign="Center" visible="true" width = "3.5%" sortProperty="CommUOM" filterProperty="CommUOM">
+				<Label text="{GMReport14>CustomGR_GMReport_4}" />
+				<table:template> <Text text="{CommUOM}" /> </table:template>
+			</table:Column>
+			<table:Column hAlign="Center" visible="true" width = "5.5%" sortProperty="MovementType" filterProperty="MovementType">
+				<commons:Label text="{GMReport15>CustomGR_GMReport_5}" wrapping="true"/>
+				<table:template> <Text text="{MovementType}" /> </table:template>
+			</table:Column>
+			<table:Column hAlign="Center" visible="true" width = "7%" sortProperty="Batch" filterProperty="Batch">
+				<Label text="{GMReport16>TransferDisplay_colHeader_batch}" />
+				<table:template> <Text text="{Batch}" /> </table:template>
+			</table:Column>
+			<table:Column hAlign="Center" visible="true" width = "12%" sortProperty="StorageUnit" filterProperty="StorageUnit">
+				<commons:Label text="{GMReport17>CustomGR_GMReport_7}" wrapping="true"/>
+				<table:template> <Text text="{StorageUnit}" /> </table:template>
+			</table:Column>
+			<table:Column hAlign="Center" visible="true" width = "7%" sortProperty="PostingDate" filterProperty="PostingDate">
+				<commons:Label text="{GMReport18>CustomGR_GMReport_8}" wrapping="true"/>
+				<table:template> <Text text="{PostingDate}" /> </table:template>
+			</table:Column>
+			<table:Column hAlign="Center" visible="true" width = "3.5%" sortProperty="Pallet_Info" filterProperty="Pallet_Info">
+				<commons:Label text="{GMReport19>CustomGR_GMReport_17}" wrapping="true"/>
+				<table:template> <Text text="{Pallet_Info}" /> </table:template>
+			</table:Column>
+			<table:Column hAlign="Center" visible="true" width = "8%" sortProperty="UserID" filterProperty="UserID">
+				<Label text="{GMReport20>CustomGR_GMReport_9}" />
+				<table:template> <Text text="{UserID}" /> </table:template>
+			</table:Column>	   
+                                     <table:Column hAlign="Center" visible="true" width = "5%" sortProperty="BCPStatus" filterProperty="BCPStatus">
+				<commons:Label text="{GMReport25>NPM_COMMON_BCP_STATUS}" wrapping="true"/>
+				<table:template> <Text text="{BCPStatus}" /> </table:template>
+			</table:Column>
+			<table:Column hAlign="Center" visible="true" width = "5.5%" sortProperty="Message" filterProperty="Message">
+				<Label text="{GMReport25>NPM_COMMON_Message}" />
+				<table:template> <Text text="{Message}" /> </table:template>
+			</table:Column>
+                                     <table:Column hAlign="Center" visible="true" width = "5%" sortProperty="StorageType" filterProperty="StorageType">
+				<commons:Label text="{GMReport25>TransferType_Lbl_StorageType}" wrapping="true"/>
+				<table:template> <Text text="{StorageType}" /> </table:template>
+			</table:Column>
+			<table:Column hAlign="Center" visible="true" width = "7%" sortProperty="StorageBin" filterProperty="StorageBin">
+				<commons:Label text="{GMReport25>TransferType_Lbl_StorageBin}" wrapping="true"/>
+				<table:template> <Text text="{StorageBin}" /> </table:template>
+			</table:Column>
+		      </table:columns>
+		</table:Table>
+	  </panel>
+	  </u:content> </u:Shell>
+	</Page>
+</mvc:View>

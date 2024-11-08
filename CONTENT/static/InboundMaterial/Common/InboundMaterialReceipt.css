@@ -1,0 +1,466 @@
+/*
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////COMMON STYLESHEET////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+*/
+
+.sapUiPanelTitle {
+background: -moz-linear-gradient(left,  rgba(73,165,191,1) 0%, rgba(31,69,79,1) 0%, rgba(73,165,191,1) 70%, rgba(249,251,252,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(73,165,191,1)), color-stop(0%,rgba(31,69,79,1)), color-stop(70%,rgba(73,165,191,1)), color-stop(100%,rgba(249,251,252,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left,  rgba(73,165,191,1) 0%,rgba(31,69,79,1) 0%,rgba(73,165,191,1) 70%,rgba(249,251,252,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left,  rgba(73,165,191,1) 0%,rgba(31,69,79,1) 0%,rgba(73,165,191,1) 70%,rgba(249,251,252,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left,  rgba(73,165,191,1) 0%,rgba(31,69,79,1) 0%,rgba(73,165,191,1) 70%,rgba(249,251,252,1) 100%); /* IE10+ */
+background: linear-gradient(to right,  rgba(73,165,191,1) 0%,rgba(31,69,79,1) 0%,rgba(73,165,191,1) 70%,rgba(249,251,252,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49a5bf', endColorstr='#f9fbfc',GradientType=1 ); /* IE6-9 */
+color: white;
+font-size: 16px;
+
+text-align: center;
+box-shadow: 0px 0px 0px 0px #7a7a7a;
+
+height:22px;
+}
+
+.sapUiMltPadRight {
+    padding: 0 2px 2px 0;
+}
+
+.sapUiPanelHdr {
+
+    color: #444444;
+    min-height: 0.5px;
+}
+
+.sapUiPanelHdrEmph {
+
+border-bottom:none;
+background-color:#ECF5F8;
+}
+
+.sapUiPanelAreaDesignFill > .sapUiPanelCont
+{
+background: rgb(249,247,247); /* Old browsers */
+background: -moz-linear-gradient(left, rgba(249,247,247,1) 0%, rgba(44,95,153,1) 0%, rgba(44,95,153,1) 0%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(249,247,247,1)), color-stop(99%,rgba(44,95,153,1)), color-stop(100%,rgba(44,95,153,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left, rgba(249,247,247,1) 0%,rgba(44,95,153,1) 99%,rgba(44,95,153,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left, rgba(249,247,247,1) 0%,rgba(44,95,153,1) 99%,rgba(44,95,153,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left, rgba(249,247,247,1) 0%,rgba(44,95,153,1) 99%,rgba(44,95,153,1) 100%); /* IE10+ */
+background: linear-gradient(to right, rgba(249,247,247,1) 0%,rgba(44,95,153,1) 99%,rgba(44,95,153,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f7f7', endColorstr='#2c5f99',GradientType=1 ); /* IE6-9 */
+
+}
+
+html[data-sap-ui-browser*='ie'] .sapUiPanelTitle{
+height:5px;
+line-height:5px;
+}
+
+html[data-sap-ui-browser*='ie'] .sapUiPanelHdrItem, html[data-sap-ui-browser*='ie'] .sapUiPanelHdrRightItem
+{
+display:block;
+}
+.JSRCSS {
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9f7f7+0,2c5f99+99,2c5f99+100 */
+background: rgb(249,247,247); /* Old browsers */
+background: -moz-linear-gradient(left, rgba(249,247,247,1) 0%, rgba(44,95,153,1) 0%, rgba(44,95,153,1) 0%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(249,247,247,1)), color-stop(99%,rgba(44,95,153,1)), color-stop(100%,rgba(44,95,153,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left, rgba(249,247,247,1) 0%,rgba(44,95,153,1) 99%,rgba(44,95,153,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left, rgba(249,247,247,1) 0%,rgba(44,95,153,1) 99%,rgba(44,95,153,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left, rgba(249,247,247,1) 0%,rgba(44,95,153,1) 99%,rgba(44,95,153,1) 100%); /* IE10+ */
+background: linear-gradient(to right, rgba(249,247,247,1) 0%,rgba(44,95,153,1) 99%,rgba(44,95,153,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f7f7', endColorstr='#2c5f99',GradientType=1 ); /* IE6-9 */
+}
+
+.JSRCSSApple {
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,dfe5d7+100,e5e5e5+100 */
+background: rgb(255,255,255); /* Old browsers */
+background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(223,229,215,1) 100%, rgba(229,229,229,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(223,229,215,1)), color-stop(100%,rgba(229,229,229,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(223,229,215,1) 100%,rgba(229,229,229,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(223,229,215,1) 100%,rgba(229,229,229,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(223,229,215,1) 100%,rgba(229,229,229,1) 100%); /* IE10+ */
+background: linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(223,229,215,1) 100%,rgba(229,229,229,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=1 ); /* IE6-9 */
+}
+
+.CommonTitleHeader {
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fcfaf9+0,e5ebee+50,f5f7f9+61 */
+background: rgb(252,250,249); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(252,250,249,1) 0%, rgba(229,235,238,1) 50%, rgba(245,247,249,1) 61%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,250,249,1)), color-stop(50%,rgba(229,235,238,1)), color-stop(61%,rgba(245,247,249,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, rgba(252,250,249,1) 0%,rgba(229,235,238,1) 50%,rgba(245,247,249,1) 61%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, rgba(252,250,249,1) 0%,rgba(229,235,238,1) 50%,rgba(245,247,249,1) 61%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, rgba(252,250,249,1) 0%,rgba(229,235,238,1) 50%,rgba(245,247,249,1) 61%); /* IE10+ */
+background: linear-gradient(to bottom, rgba(252,250,249,1) 0%,rgba(229,235,238,1) 50%,rgba(245,247,249,1) 61%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfaf9', endColorstr='#f5f7f9',GradientType=0 ); /* IE6-9 */
+color: #00009d;
+font-size: 20px;
+text-align: center;
+font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+border-top-right-radius: 5px;
+border-top-left-radius: 5px;
+border-bottom-right-radius: 5px;
+border-bottom-left-radius: 5px;
+box-shadow: 0px 0px 4px 0px #96a0a3;
+
+}
+
+.CommonTitleHeaderApple {
+	background: #ffbd27; /* Old browsers */
+	background: -moz-linear-gradient(top, #E0E3E4 0%, #C7CDCF 50%, #B9C1C4 51%, #A8B1B5 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#E0E3E4), color-stop(50%,#C7CDCF), color-stop(51%,#B9C1C4), color-stop(100%,#A8B1B5)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #E0E3E4 0%,#C7CDCF 50%,#B9C1C4 51%,#A8B1B5 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #E0E3E4 0%,#C7CDCF 50%,#B9C1C4 51%,#A8B1B5 100%); /* Opera11.10+ */
+	background: -ms-linear-gradient(top, #E0E3E4 0%,#C7CDCF 50%,#B9C1C4 51%,#A8B1B5 100%); /* IE10+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff9d19', endColorstr='#A8B1B5',GradientType=0 ); /* IE6-9 */
+	background: linear-gradient(top, #ffbd27 0%,#ffb119 50%,#ff9d19 51%,#A8B1B5 100%); /* W3C */
+color: #000000;
+font-size: 20px;
+text-align: center;
+font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+border-top-right-radius: 5px;
+border-top-left-radius: 5px;
+border-bottom-right-radius: 5px;
+border-bottom-left-radius: 5px;
+box-shadow: 0px 0px 0px 0px #96a0a3;
+margin-right:6px;
+}
+
+
+/*.sapUiBtnS {
+height:22.5px;
+background: #fcf9f7;
+background-image: -webkit-linear-gradient(top, #fcf9f7, #acb3b5);
+background-image: -moz-linear-gradient(top, #fcf9f7, #acb3b5);
+background-image: -ms-linear-gradient(top, #fcf9f7, #acb3b5);
+background-image: -o-linear-gradient(top, #fcf9f7, #acb3b5);
+background-image: linear-gradient(to bottom, #fcf9f7, #acb3b5);
+text-shadow: 0px 0px 8px #666666;
+font-family: Arial;
+color: #050505;
+font-size: 13px;
+text-decoration: none;
+} */
+
+/*.sapUiBtnS:hover {
+height:22.5px !important;
+color: #FFFFFF !important;
+background: #fcfeff;
+background-image: -webkit-linear-gradient(top, #fcfeff, #1f6187);
+background-image: -moz-linear-gradient(top, #fcfeff, #1f6187);
+background-image: -ms-linear-gradient(top, #fcfeff, #1f6187);
+background-image: -o-linear-gradient(top, #fcfeff, #1f6187);
+background-image: linear-gradient(to bottom, #fcfeff, #1f6187);
+text-decoration: none;
+}*/
+
+/*.sapUiBtnS.sapUiBtnNorm {
+-webkit-border-radius: 4;
+-moz-border-radius: 4;
+border-radius: 4px;
+border:none;
+}*/
+
+.sapUiBtnS.sapUiBtnDsbl, .sapUiBtnS.sapUiBtnDsbl:focus 
+{
+color:#7a7a7a;
+}
+
+.CommonDivBackground{
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#deefff+0,98bede+100;Blue+3D+%2310 */
+background: rgb(222,239,255); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(222,239,255,1) 0%, rgba(152,190,222,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(222,239,255,1) 0%,rgba(152,190,222,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(222,239,255,1) 0%,rgba(152,190,222,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#deefff', endColorstr='#98bede',GradientType=0 ); /* IE6-9 */
+
+}
+
+.CommonDivContentBackground{
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9f7f7+0,2c5f99+99,2c5f99+100 */
+background: rgb(249,247,247); /* Old browsers */
+background: -moz-linear-gradient(left, rgba(249,247,247,1) 0%, rgba(44,95,153,1) 0%, rgba(44,95,153,1) 0%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(249,247,247,1)), color-stop(99%,rgba(44,95,153,1)), color-stop(100%,rgba(44,95,153,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left, rgba(249,247,247,1) 0%,rgba(44,95,153,1) 99%,rgba(44,95,153,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left, rgba(249,247,247,1) 0%,rgba(44,95,153,1) 99%,rgba(44,95,153,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left, rgba(249,247,247,1) 0%,rgba(44,95,153,1) 99%,rgba(44,95,153,1) 100%); /* IE10+ */
+background: linear-gradient(to right, rgba(249,247,247,1) 0%,rgba(44,95,153,1) 99%,rgba(44,95,153,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#deefff', endColorstr='#98bede',GradientType=1 ); /* IE6-9 */
+
+}
+
+.sapUiLbl {
+color:#000000;
+font-size:12px;
+font-weight:bold;
+}
+
+
+
+.tabStripStyle {
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,dfe5d7+100,e5e5e5+100 */
+border-right: 1px solid  #009DE0;
+border-bottom: 1px solid  #009DE0;
+background-color:#006699;
+font-size:24px;
+font-weight:bold;
+margin-top:-1.4%;
+background: rgb(255,255,255); /* Old browsers */
+background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(223,229,215,1) 100%, rgba(229,229,229,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(223,229,215,1)), color-stop(100%,rgba(229,229,229,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(223,229,215,1) 100%,rgba(229,229,229,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(223,229,215,1) 100%,rgba(229,229,229,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(223,229,215,1) 100%,rgba(229,229,229,1) 100%); /* IE10+ */
+background: linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(223,229,215,1) 100%,rgba(229,229,229,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=1 ); /* IE6-9 */
+}
+
+
+.sapUiTabSel
+{
+width: 200px;
+height: 30px;
+font-size: 15px;
+font-weight:bold;
+font-color: #000000;
+background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(223,229,215,1) 100%,rgba(229,229,229,1) 100%);
+
+}
+
+
+
+.sapUiTableColCell > .sapUiLbl{
+color:#FFFFFF;
+}
+.sapUiTableCtrl tr.sapUiTableRowHvr > td
+{
+background-color:#E6F2F9;
+color:#000000;
+}
+.sapUiTableCol .sapUiLbl, .sapUiTableCell>.sapUiTf, .sapUiTableCell>.sapUiSearchField, .sapUiTableCell>.sapUiSearchField>.sapUiTfCombo, .sapUiTableCell>.sapUiTfCombo{
+text-align : center !important ;
+}
+
+.sapUiRb {
+color:#000000;
+font-size:12px;
+font-weight:bold;
+margin-top:-1.4%;
+}
+
+sapUiTf sapUiTfBack sapUiTfBrd sapUiTfStd sapUiTxtA {
+overflow:visible !important;}
+
+.sapMInputBase{
+vertical-align:baseline;
+}
+
+/*
+.sapUiTab, .sapUiTabSel, .sapUiTabDsbl {
+-moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+ background-color: #96a8c3;
+background: #bbc8de; /* Old browsers */
+background: -moz-linear-gradient(top, #bbc8de 0px, #96a8c3 4px, #96a8c3 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #bbc8de 0px,#96a8c3 4px,#96a8c3 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #bbc8de 0px,#96a8c3 4px,#96a8c3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bbc8de', endColorstr='#96a8c3',GradientType=0 ); /* IE6-9 */
+    border-color: #cccccc;
+    border-image: none;
+    border-radius: 0;
+    border-style: solid;
+    border-width: 1px 1px 0;
+    height: 16px;
+    margin: 6px 0 0;
+    padding: 2px 10px;
+    width: 23%;
+color:#FFFFFF;
+text-align:center;
+}
+*/
+
+
+
+
+.sapUiTabPanel{
+background: #f2f7f9; /* Old browsers */
+background: -moz-linear-gradient(top,  #f2f7f9 8%, #85b1bc 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #f2f7f9 8%,#85b1bc 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #f2f7f9 8%,#85b1bc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f7f9', endColorstr='#85b1bc',GradientType=0 ); /* IE6-9 */
+
+}
+
+.sapUiTabBarCnt > li.sapUiTabSel{
+border-bottom:2px white solid;
+}
+
+
+.sapUiRespGridMedia-Std-Desktop.sapUiFormResGridCont>.sapUiFormResGridLbl:not(.sapUiRespGridSpanL12)>.sapMLabel {
+    font-size: 14px !important;
+    padding-top: 14px;
+}
+
+.sap-desktop .sapMIBar.sapMHeader-CTX {
+    background-color:#f2f7f9;
+}
+
+.sapMPanelBG{
+background: #f2f7f9; /* Old browsers */
+background: -moz-linear-gradient(top,  #f2f7f9 8%, #85b1bc 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #f2f7f9 8%,#85b1bc 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #f2f7f9 8%,#85b1bc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f7f9', endColorstr='#85b1bc',GradientType=0 ); /* IE6-9 */
+}
+
+.sapMPanelBGTranslucent{
+background: #f2f7f9; /* Old browsers */
+background: -moz-linear-gradient(top,  #f2f7f9 8%, #85b1bc 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #f2f7f9 8%,#85b1bc 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #f2f7f9 8%,#85b1bc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f7f9', endColorstr='#85b1bc',GradientType=0 ); /* IE6-9 */
+}
+
+
+.sapUiRespGrid.sapUiRespGridVSpace1>div{
+margin-bottom:0px;
+}
+
+.sapMTitleStyleAuto{
+font-size:20px;
+font-weight:bold;
+}
+
+.sapMListTblCell.sapMListTblCellNoData, .sapMListTblRow>:nth-last-child(2){
+padding-right:5px !important;
+}
+
+.sapMListTbl th {
+border-right: 1px solid #cdcdcd;
+font-weight:bold !important;
+}
+
+.sapMPanelHdr {
+font-size:17px;
+font-weight:bold;
+background-color:  #2F879D;
+color:#FFFFFF;
+text-shadow:none;
+font-family: inherit;
+}
+
+.sapMPanelExpandableIcon{
+background-color:  ##2F879D;
+color:#2F879D;
+width:2.45%;
+line-height:32px;
+margin-left:.5%;
+}
+
+.sapMLabel{
+font-size:14px;
+white-space:pre-line;
+font-weight:bold;
+}
+
+.sapUiTableColCell, .sapUiTableColRowHdrIco{
+white-space:normal;
+font-weight:bold !important;
+}
+
+.sapMText{
+font-size:12px;
+} 
+
+.sapMSlt{
+height:2rem;
+}
+
+.sapMSlt>.sapMSltLabel{
+line-height:2rem;
+}
+
+.sapMSltArrow{
+line-height:2rem;
+}
+
+.sapMInputBaseInner{
+height:2rem;}
+
+.sapMInputValHelpInner, html[data-sap-ui-browser='ie9'] .sapMInputValHelpInner{
+line-height:2rem;
+height:2rem;
+padding-right:none;
+}
+.sapMInputVH>.sapMInputBaseInner{
+padding-right:none;
+}
+
+
+
+
+.sapMPanelHdr{
+height:2rem;
+line-height:2rem;}
+
+.sapMPanelHdrExpandable.sapMPanelHdr, .sapMPanelWrappingDivTb>.sapMTB{
+margin-left:3.48%}
+
+.sapUiFormResGridCont{
+padding-bottom:0rem !important;
+}
+.sapUiRespGridMedia-Std-Phone.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanS12), .sapUiRespGridMedia-Std-Tablet.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanM12), .sapUiRespGridMedia-Std-Desktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanL12), .sapUiRespGridMedia-Std-LargeDesktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanXL12)
+{
+padding-top:14px;
+}
+#__container0--Grid
+{
+    margin-left: -29%;
+}
+#__container1--Grid
+{
+    margin-left: 30%;
+    padding-right: 6%;
+}
+#__container4--Grid
+{
+    margin-left: -29%;
+}
+#__container3--Grid
+{
+margin-left: 28%;
+    padding-right: 4%;
+}
+
+#__container5--Grid
+{
+    margin-left: -40%;
+  
+}
+#__container9--Grid
+{
+       margin-left: 33%;
+    padding-right: 6%;
+}
+#__container2--Grid
+{
+  margin-left: 16%;
+    padding-right: 16%;
+}
+#__container6--Grid
+{
+     margin-left: -58%;
+    padding-right: 9%;;
+}
+#__container7--Grid
+{
+      margin-left: -44%;
+}
+
+
+#__container11--Grid
+{
+padding-top: 3%;
+}

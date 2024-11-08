@@ -1,0 +1,380 @@
+ <mvc:View xmlns:core="sap.ui.core" xmlns="sap.m"  xmlns:l="sap.ui.layout"  xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified"
+controllerName="JS.QueueMonitor" xmlns:f="sap.ui.layout.form"
+xmlns:html="http://www.w3.org/1999/xhtml">
+<html:style>
+
+
+	.sapUiFormResGrid.sapUiFormBackgrTranslucent>div{
+	background-color:transparent !important;
+	}
+	
+	#idview1--label_header1{
+	margin-left:25%;
+	}
+
+	#idview1--barcode_icon{
+	margin-top:4%;
+	width:10% !important;
+	cursor:pointer;
+	}
+	.sapMLabel{
+	    font-weight: bold;
+	}
+	.sapMListTbl .sapMText, .sapMListTbl .sapMLabel
+	 {
+	    padding-top: 1px;
+   	 font-size: 0.875rem;
+   	 color: #333333;
+   	 font-weight: inherit;
+	 }
+	#idQueueMonitor--label_header1
+	{
+	    background-color: #f2f2f2;
+	    font-size: 20px!important;
+	    font-weight: bold;
+	    color: grey;
+	    width: 135%!important;
+	    font-family: Times New Roman;
+	}
+	.sapUiUfdShellHeadItmSep.sapUiUfdShellHeadItm{
+   	 width: 124px!important;
+	}
+	.sapUiUfdShellHeadItm>span>img {
+   	 margin-top: 0px;
+    	width: 105px;
+  	  height: 38px;
+   	 border-width: 0;
+	}
+	.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+ 	 max-height: 30px;
+   	 max-width: 150px;
+   	 vertical-align: middle;
+	}
+
+</html:style>
+
+	<Page
+		id="page" class="Background"
+		showHeader="false"
+		title="Setup" >
+
+				<u:Shell 
+			id="shell1"
+			icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+			<u:headItems>
+				<u:ShellHeadItem
+					tooltip="{QMonitor1>NPDashboard_Back}"
+					icon="sap-icon://nav-back"
+					visible="true"
+					press="goBack" />
+			
+			</u:headItems>
+			<u:headEndItems>
+				<u:ShellHeadItem
+					  id="bcpStatus"
+					icon=""
+					tooltip="{title1>InBndMatRecpt_title_BCP}"
+					press="" />
+		
+			</u:headEndItems>
+			<u:user>
+				<u:ShellHeadUserItem
+					image="sap-icon://person-placeholder" 
+				        showPopupIndicator="false"
+					username="Karl Mustermann"
+					/>
+			</u:user>
+			<u:search>
+				<Label id="label_header1"
+					text="{QMonitor2>Print_BCPPrintQueueMonitor}"/>
+			</u:search>
+			<u:content>
+
+<Panel expandable="true" expanded="true"   width="auto" class="sapUiResponsiveMargin" headerText="{QMonitor3>Print_QueueMonitor}">
+
+      <f:Form id="printerConfig"
+        minWidth="1024"
+        maxContainerCols="2"
+        editable="true">
+        <f:layout>
+          <f:ResponsiveGridLayout
+            labelSpanL="5"
+            labelSpanM="4"
+            emptySpanL="0"
+            emptySpanM="0"
+            columnsL="3"
+            columnsM="2" />
+        </f:layout>
+        <f:formContainers>
+		<f:FormContainer>
+           		 <f:formElements>
+             			 <f:FormElement label="{QMonitor4>Print_PrinterName}">
+              				  <f:fields>
+             					  <Select id ="printer_name"  width="100%"  change ="onSelectPrinter" items="{path: '/Rowset/Row'}"><items> <core:Item key="{PRINTER_NAME}" text="{PRINTER_NAME}" /> </items> </Select>
+               				  </f:fields>
+             			 </f:FormElement>
+			 </f:formElements>
+		</f:FormContainer>
+	<f:FormContainer>
+            		<f:formElements>
+             		 <f:FormElement label="{QMonitor5>Print_ScreenType}">
+              		 	<f:fields>
+                  				<Select id ="screen_type"  width="100%"  items="{path: '/Rowset/Row'}"><items> <core:Item key="{SCREEN_TYPE}" text="{SCREEN_TYPE}" /> </items> </Select>
+                			</f:fields>
+              		</f:FormElement>
+		</f:formElements>
+	</f:FormContainer>
+	<f:FormContainer>
+              	<f:formElements>
+                 		<f:FormElement id="StatusLabel"  label="{QMonitor6>Print_Status}">
+          				<f:fields>
+					<Select id ="Status" change="StatusSelectionChange" width=""  items="{path: '/Rowset/Row'}">
+                    					<items> <core:Item key="{Status}" text="{Status}" /> </items>
+ 					</Select >
+	       			 </f:fields>
+                   		</f:FormElement>
+		</f:formElements>		
+	</f:FormContainer>
+	
+         	<f:FormContainer>
+               	<f:formElements>
+	    		 <f:FormElement id="StartTimeLabel" label="{QMonitor7>Print_StartDateTime}">
+                  			<f:fields>
+                    				<DatePicker  id ="StartTime" 
+                    						type="Date"
+                    						valueFormat="MM/dd/yyyy"
+							
+                   						placeholder="Select Date"
+							change="handleChangeStartTimeDate" />	
+				</f:fields>
+                 		</f:FormElement>
+		 </f:formElements>
+             </f:FormContainer>
+	<f:FormContainer>
+               	<f:formElements>
+                 		<f:FormElement id="EndTimeLabel" label="{QMonitor8>Print_EndDateTime}">
+                  			<f:fields>
+                    				<DatePicker  id ="EndTimeDate" 
+                    						 type="Date"
+                    						 valueFormat="MM/dd/yyyy"
+							
+                   						 placeholder="Select Date"
+							 change="handleChangeEndTimeDate" />
+                  			</f:fields>
+                		</f:FormElement>
+	 	</f:formElements>
+             </f:FormContainer>
+	<f:FormContainer>
+            		<f:formElements>
+             		<f:FormElement label="{QMonitor9>Print_Workcenter}">
+                			<f:fields>
+                 			  <Select id ="Line" width="100%"  items="{path: '/Rowset/Row'}"><items> <core:Item key="{Key}" text="{Value}" /> </items> </Select>
+              			</f:fields>
+              		</f:FormElement>
+		</f:formElements>
+	</f:FormContainer>
+	<f:FormContainer>
+            		<f:formElements>
+             		<f:FormElement label="{QMonitor10>Print_SSCCNumber}">
+                			<f:fields>
+                 				<Input id ="SSCCNumberID" height ="9%"   value ="" change="SSCCNumberValidation" />
+                 			</f:fields>
+              		</f:FormElement>
+		</f:formElements>
+	</f:FormContainer>
+	<f:FormContainer>
+		<f:formElements>
+              		<f:FormElement label="{QMonitor30>NPM_COMMON_BCP_STATUS}">
+                 			<f:fields>
+                 				<MultiComboBox  id ="bcpstatus" selectionChange="handleSelectionChange" selectionFinish="getSelectedValues"   items="{path: '/Rowset/Row'}" enabled="true">
+                 				     <items> <core:Item key="{Value}" text="{Value}" /> </items>
+                 				</MultiComboBox >
+                 			</f:fields>
+                 		</f:FormElement>
+                 	</f:formElements>
+	</f:FormContainer>
+	<f:FormContainer>
+            			<f:formElements>
+              			<f:FormElement label="">
+                				<f:fields>
+						<Button width="100%" type="Check" text="Fetch" press="doCheck"/> 
+					</f:fields>
+	 			</f:FormElement>
+			  </f:formElements>
+		</f:FormContainer>
+      </f:formContainers>
+</f:Form>
+<!--
+	 <f:Form id="buttonConfig"
+        		     minWidth="1024"
+        		     maxContainerCols="2"
+        		     editable="true">
+        	<f:layout>
+          	<f:ResponsiveGridLayout
+           		labelSpanL="6"
+           		labelSpanM="4"
+            	emptySpanL=	"0"
+            	emptySpanM=	"0"
+            	columnsL=		"3"
+            	columnsM=		"3" />
+        	</f:layout>
+        	<f:formContainers>
+          		<f:FormContainer>
+            			<f:formElements>
+              			<f:FormElement label="">
+                				<f:fields>
+						<Button width="25%" type="Check" text="{QMonitor11>Print_Fetch}" press="doCheck"/> 
+					</f:fields>
+	 			</f:FormElement>
+			  </f:formElements>
+		</f:FormContainer>
+	  </f:formContainers>
+      </f:Form> 
+-->
+ 	<Table id="QueueMonitorTable"
+		border="solid 0.1mm black"
+		inset="false"
+		mode="SingleSelectMaster"
+		selectionChange=""
+			
+		items="{
+			path: '/Rowset/Row',
+			sorter: {
+				path: 'Name'
+			}
+		}"
+		>
+			
+		<columns>
+		
+				<Column
+				
+				hAlign="Center">
+				<Text text="{QMonitor28>Print_PrintGivenOn}" />
+			</Column>
+
+			<Column
+				
+				hAlign="Center">
+				<Text text="{QMonitor12>Print_PrintedBy}" />
+			</Column>
+
+			<Column
+				hAlign="Center" >
+				<Text text="{QMonitor13>Print_PrinterName}" />
+			</Column>
+				<Column
+				hAlign="Center">
+				<Text text="{QMonitor14>Print_PrinterPort}" />
+			</Column>
+			
+			<Column
+				hAlign="Center">
+				<Text text="{QMonitor15>Print_ScreenType}" />
+			</Column>
+
+			<Column
+				hAlign="Center">
+				<Text text="{QMonitor16>Print_Status}" />
+				
+			</Column>
+			<Column
+				hAlign="Center">
+				<Text text="{QMonitor17>Print_Message}" />
+				
+			</Column>
+				<Column
+				hAlign="Center">
+				<Text text="{QMonitor18>Print_RetryCount}" />
+				
+			</Column>	
+			<Column
+				hAlign="Center">
+				<Text text="{QMonitor19>Print_LastRetryTime}" />
+				
+			</Column>	
+			<Column
+				hAlign="Center" visible="false">
+				<Text text="{QMonitor20>Print_Print_ID}" />
+				
+			</Column>
+			
+			<Column
+				hAlign="Center" visible="false">
+				<Text text="{QMonitor21>TemplateID}" />
+				
+			</Column>
+			
+			<Column
+				hAlign="Center" visible="false">
+				<Text text="{QMonitor22>Print_Content}" />
+				
+			</Column>
+			<Column
+				hAlign="Center">
+				<Text text="{QMonitor23>Print_SSCCNumber}" />
+				
+			</Column>
+			<Column
+				hAlign="Center">
+				<Text text="{QMonitor24>Print_Copies}" />
+				
+			</Column>
+			<Column hAlign="Center">
+				<Text text="{QMonitor30>NPM_COMMON_BCP_STATUS}" />
+				
+			</Column>
+			<Column
+				hAlign="Center">
+				<Text text="{QMonitor25>Print_Reprint}" />
+				
+			</Column>	
+		</columns>
+	
+	<items>
+			<ColumnListItem id="QueueMonitorItems">
+				<cells>
+					<Text
+						text="{DATETIME}"/>
+					<Text
+						text="{PRINTED_BY}"/>
+
+					<Text
+						text="{PRINTER_DESC}" />
+					<Text
+						text="{PRINTED_ON_PORT}" />
+					<Text
+						text="{SCREEN_TYPE}" />
+				
+					 <Image src="{STATUS}"/>
+				          	<Text
+						text="{STATUS_MESSAGE}" />
+					<Text
+						text="{RETRY_COUNT}" />
+				         <Text
+						text="{LAST_RETRY_TIME}"/>
+    					<Text
+						text="{PRINTER_ID}" />
+					<Text
+						text="{TEMPLATE_ID}" />
+					<Text
+						text="{PRINT_CONTENT}" />
+					<Text
+						text="{SSCCNumber}" />
+					<Text
+						text="{COPIES}" />
+					<Text
+						text="{BCPSTATUS}" />
+					<Button id="ReprintID"   type="Reprint" visible="true" enabled="true" text="{QMonitor26>Print_Reprint}" press="doPressReprint"/>
+				         
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+
+    </Panel>
+</u:content>
+</u:Shell>
+</Page>
+
+</mvc:View>

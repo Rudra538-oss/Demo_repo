@@ -1,0 +1,71 @@
+<HTML>
+	<HEAD>
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<TITLE>Goods Issue</TITLE>
+				<script type="text/javascript">
+		document.write('<scr'+'ipt src="/XMII/CM/MaterialHandling/RFDevice/JavaScript/GIScanScreen.js?'+Math.random()+'" type="text/javascript"></scr'+'ipt>');
+		document.write('<scr'+'ipt src="/XMII/CM/MaterialHandling/RFDevice/Common/Utility.js?'+Math.random()+'" type="text/javascript"></scr'+'ipt>');
+		</script>
+			<!--SCRIPT language="javascript" src="/XMII/CM/MaterialHandling/RFDevice/Common/Utility.js"></SCRIPT-->
+		<!--SCRIPT language="javascript" src="/XMII/CM/MaterialHandling/RFDevice/JavaScript/GIScanScreen.js"></SCRIPT-->
+		<script type="text/javascript" src="/XMII/CM/MaterialHandling/RFDevice/Common/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="/XMII/CM/MaterialHandling/RFDevice/Common/jquery-ui.js"></script>
+	<LINK REL="StyleSheet" HREF="/XMII/CM/MaterialHandling/RFDevice/Common/jquery-ui.css" TYPE="text/css">
+	<LINK REL="StyleSheet" HREF="/XMII/CM/MaterialHandling/RFDevice/Stylesheet/RF_Device.css" TYPE="text/css">
+
+<style>
+input[type="text"] {
+    color: black;
+    font-size: 0.9em;
+    margin: 0 0 0.5em;
+    outline: medium none;
+    padding: 0.5em;
+    width: 400px;
+}
+</style>
+		<input id="login" type="hidden" value="{IllumLoginName}"></input>
+	</HEAD>
+	<BODY style="font-family: sans-serif" onload="OnLoading();">
+	<div>
+		<div class="content">
+			<div>
+					<div class="headerItem">	
+					</div>
+					<div class="mainContent">
+					<div class="header">
+  						<img src="/XMII/CM/MaterialHandling/Common/Images/logo.png" alt="Nestle" />
+  							<label id="labelHdr">GI-Order Material</label>
+					</div>
+
+			</br><br/>
+			<label for="resource">Resource </label>
+			<input type="text" name="resource" id="resourceArea" readonly>
+			<label for="bcp">BCP </label>
+			<input class="input inputBCP" type="text" name="bcp" id="BCPArea" readonly>
+			<label for="order">Order </label>
+			<input type="text" name="order" id="orderArea" readonly>
+			<label for="material">Material </label>
+			<input type="text" name="material" id="materialArea" readonly></center><br>
+			<label for="materialdes">Description </label>
+			<input type="text" name="materialdes" id="descriptionArea" readonly>
+			<label for="sscc" id="ssccL" hidden>SSCC </label>
+			<input type="text" name="sscc" id="ssccArea" hidden>
+			<label for="batch" id="batchL" hidden>Batch</label>
+			<select name="batch" id="batchArea" hidden onchange="doBatchChange()"></select>
+			<label for="sled" id="sledL" hidden>SLED</label>
+			<input type="text" name="sled" id="sledArea" hidden></input>
+			<label for="qty" id="qtyL" hidden>Quantity </label>
+			<input type="text" name="qty" id="qtyArea" hidden></input>
+			<select name="uom" id="uomArea" hidden></select>
+			<label for="post" id="postL" hidden>Posting Date </label>
+			<input type="text"  name="post" id="postArea" hidden></input>
+			<br/><br/>
+			<button type="button" style="cursor:pointer" onclick="doClear()"> F2 Clear </button>
+			<button type="button" style="cursor:pointer" onclick="doBack()"> F3 Back </button>
+			<button type="button" style="cursor:pointer" onclick="doNext()"> F4 Next </button>
+			</div>
+		</div>
+	</div>
+</div>
+	</BODY>
+</HTML>

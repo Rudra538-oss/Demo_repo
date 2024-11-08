@@ -1,0 +1,80 @@
+{% load bootstrap4 %}
+{% load static %} 
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+	           <title> FEAT Portal</title>
+	           <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="expires" content="0">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous">
+		<script src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.m,sap.ui.core"
+				data-sap-ui-theme="sap_bluecrystal" 
+				data-sap-ui-xx-bindingSyntax="complex">
+		</script>
+		<!-- only load the mobile lib "sap.m" and the "sap_mvi" theme -->
+
+
+
+	<script type="text/javascript" src="{% static './Utils.js' %}"></script>
+	<script type="text/javascript" src="{% static './CustomMenu/NestlePortal.controller.js' %}"></script>
+	<script type="text/javascript" src="{% static './Common/JS/app.js' %}"></script>
+	<script type="text/javascript" src="{% static './Common/JS/Formatter.js' %}"></script>
+	<script type="text/javascript" src="{% static './Common/JS/Utils.js' %}"></script>
+
+
+	<script>
+                jQuery.sap.registerModulePath("nav", "{% static './CustomMenu' %}");
+				var portal = sap.ui.view({id:"idNestlePortal", viewName:"nav.NestlePortal", type:sap.ui.core.mvc.ViewType.XML});
+				var app = new sap.m.App("idapp",{initialPage:"idNestlePortal"});
+				app.addPage(portal);
+				app.placeAt("content");
+	</script>
+
+
+
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+
+<style>
+/*
+#__page0-cont{
+background-image : linear-gradient(to bottom, #2da9b1 0px, #178299 50%, #1a4c7d 100%);
+}
+*/
+.colorButton{
+
+}
+
+#__button5-inner{
+
+}
+.bgColor{
+
+margin-right: 3.45em;
+}
+
+html.sap-desktop .sapMDialog {
+}
+
+.bgBar {
+background-color : # DCDCDC !important ;
+}
+
+.bgDialog{
+max-width : 18 em;
+}
+
+.myText {
+font-size: 90%;
+}
+</style>
+</html>

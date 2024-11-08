@@ -1,0 +1,557 @@
+<mvc:View
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:microchart="sap.suite.ui.microchart"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:commons="sap.suite.ui.commons"
+    xmlns:u="sap.ui.unified" controllerName="JS.TransferOrderDashboard"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:table="sap.ui.table"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+    <html:style>.sapUiUfdShellHeadItmSep.sapUiUfdShellHeadItm{
+		width: 124px;
+		}
+		.sapUiUfdShellHeadItm>span>img {
+		margin-top: 0px;
+		width: 110px;
+		height: 40px;
+		border-width: 0;
+		}
+		.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+		max-height: 30px;
+		max-width: 150px;
+		vertical-align: middle;
+		}
+		#__item0{
+		width: 53px;
+		}
+		.sapMLabel{
+		font-weight: bold;
+		white-space:normal;
+		}
+		.sapMPanelBGTranslucent{
+		padding:0px;
+		}
+		.sapMMultiComboBoxItemSelected{
+		background: white !important;
+		}
+		#TransferOrderDashboard--resDes{
+		background-color:white !important;
+		}
+		.sapMListBGSolid .sapMLIB {
+   		
+   		 font-weight: bold;
+		}
+		.sapUiTableColHdrCnt{
+		border-color: grey;
+		border-bottom-width: 2px;
+		background-image: linear-gradient(to bottom,white, #dedede);
+		}
+		.v-plot-bound
+		{
+  		 fill:#f3f3f3 ;
+		}
+#TransferOrderDashboard--MicroChartFlex{
+background-color:#f3f3f3;
+}
+.sapMObjStatusNone > .sapMObjStatusText, .sapMObjStatusNone > .sapMObjStatusIcon {
+    color: white;
+}
+.sapMObjStatusError > .sapMObjStatusText, .sapMObjStatusError > .sapMObjStatusIcon {
+    color: white;
+}
+.sapMObjStatusSuccess > .sapMObjStatusText, .sapMObjStatusError > .sapMObjStatusIcon {
+    color: white;
+}
+.columnStatus{
+background:green !important;
+}
+.sapMObjStatusNone{
+font-weight:bold;
+background-color: #d40000;
+border-radius:15px;
+}
+.sapMObjStatusWarning{
+font-weight:bold;
+background-color: #fff099;
+border-radius:15px;
+}
+.sapMObjStatusError{
+font-weight:bold;
+background-color: darkorange;
+border-radius:15px;
+}
+.sapMObjStatusSuccess{
+font-weight:bold;
+background-color: green;
+border-radius:15px;
+}
+
+span[data-bgcolor='green'] {
+background-color:green !important;
+}
+.sapUiFormResGrid>div {
+    padding: 0px;
+}
+		.green {
+background-color: lightgreen !important;}
+
+.yellow {
+background-color: yellow !important;}
+
+.orange {
+background-color: orange !important;}
+		#UIComp_0.v-info svg.v-m-root g.v-m-background rect.v-background-body.viz-plot-background.v-morphable-background
+		{
+ 		   fill: #f3f3f3 !important;
+		
+		    background-color: #a8c8d0;
+		} 
+		#UIComp_1.v-info svg.v-m-root g.v-m-background rect.v-background-body.viz-plot-background.v-morphable-background
+		{
+ 		   fill: #f3f3f3 !important;
+		} 
+		
+		.sapMListBGTransparent .sapMLIB {
+   		background-image: linear-gradient(to bottom , #dbf3fa, azure);
+   		 font-weight: bold;
+		}
+		.sapMLIB.sapMLIBSelected {
+  		 background-image: linear-gradient(to bottom , #83EAF1, #09C6F9);
+		}
+		.sapMLIB.sapMLIBSelected:hover {
+  		  background-image: linear-gradient(to bottom , #83EAF1, #09C6F9);
+		}
+		.sapUiContentPadding.sapUiHLayout {
+   		 padding: 0px;
+   		}
+		#TransferOrderDashboard--ProcessOrder-inner
+		{
+  		  font-weight: bold;
+  		  font-size: large;
+  		  color: dodgerblue;
+		}
+		#TransferOrderDashboard--ProcessOrderCombo-inner
+		{
+  		  font-weight: bold;
+  		  color: dodgerblue;
+		}
+		#TransferOrderDashboard--resDes-inner
+		{
+ 		  font-weight: bold;
+		}
+		#textForConfirm1{
+		color: fireBrick;
+		font-weight:bold;
+		font-size: medium;
+		}
+		#textForConfirm2{
+		font-size: x-large;
+		padding-top: inherit;
+		}
+		#TransferOrderDashboard--label_header3{
+		font-size: 20px;
+		font-family: Times New Roman;
+		}
+		#TransferOrderDashboard--ExportID-inner{
+		
+		border-radius: 15px;
+		border-color: green;
+		}
+		#TransferOrderDashboard--ExportID-img
+		{
+		color: green;
+		}
+		.tilesuccess{
+		background-color:lightgreen;
+		}
+		.tilefail{
+		background-color:orange;
+		}
+		.AREA3{
+		background-color:orange;
+		}
+		.InvisiblevisibleRow{
+		visibility:hidden;
+		}
+		.InvisiblevisibleRowBorder{
+		border-bottom-style:hidden;
+		}
+	</html:style>
+    <!-- Test comment for source control -->
+    <Page id="pageID" class="Background" showHeader="false" title="Setup">
+        <u:Shell id="shell3" icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+            <u:headItems>
+                <u:ShellHeadItem tooltip="{TODashboard1>NPDashboard_Back}"
+					icon="sap-icon://nav-back" visible="true" press="goHome" />
+            </u:headItems>
+            <u:headEndItems>
+                <u:ShellHeadItem id="bcpStatus" icon=""
+					tooltip="{TODashboard2>InBndMatRecpt_title_BCP}" press="" />
+            </u:headEndItems>
+            <u:user>
+                <u:ShellHeadUserItem image="sap-icon://person-placeholder"
+					showPopupIndicator="false" username="Karl Mustermann" press="logoff" />
+            </u:user>
+            <u:search>
+                <Label id="label_header3" text="{TODashboard3>TO_DashboardTitle}"
+					design="Bold" />
+            </u:search>
+            <u:content>
+                <panel id="1stPanel">
+                    <f:Form id="FormTop"   
+            editable="false">
+                        <f:layout>
+                            <f:ResponsiveGridLayout
+	labelSpanL="4"
+            labelSpanM="4"
+             labelSpanS="4"
+	emptySpanL="0"
+            emptySpanM="0"
+         columnsL="3"
+            columnsM="3"
+          />
+                        </f:layout>
+                        <f:formContainers>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{TODashboard1>NPDashboard_Line}">
+                                        <f:fields>
+                                            <ComboBox id ="resDes" selectionChange="handleLineSelectionChange" items="{path: '/Rowset/Row'}" >
+                                                <items>
+                                                    <core:Item key="{NODE_ID}" text="{DESCRIPTION}" />
+                                                </items>
+                                            </ComboBox >
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{TODashboard4>CustomGI_CL_2}">
+                                        <f:fields>
+                                            <Input  editable="false" id ="ProcessOrder" value ="" visible="true"  />
+				 <ComboBox id ="ProcessOrderCombo" change="handleOrderSelectionChange" visible="false" items="{path: '/Rowset/Row'}" >
+                                                <items>
+                                                    <core:Item key="{Order}" text="{Order}" />
+                                                </items>
+                                            </ComboBox >
+			
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+		 <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement id="RefreshField"  visible="true">
+                                        <f:fields>
+                                          <Input id ="range2" width="60%" textAlign="Center" liveChange="handleLineSelectionChange" visible="false" value ="" />
+                                            <Button id="Refresh"
+		icon="/XMII/CM/MaterialHandling/Common/Images/Refresh.png" width="20%" enabled="true" visible="true" press="doRefresh" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                        </f:formContainers>
+                    </f:Form>
+                </panel>
+                <panel id="tabelPanel" headerText="" 
+					>
+                    <l:Splitter
+							id="mainSplitter"
+						
+							height="100%"
+							visible="true">
+                        <Panel >
+                            <layoutData>
+                                <l:SplitterLayoutData size="13%" />
+                            </layoutData>
+                            <Toolbar>
+                                <SearchField liveChange="onSearchSType" placeholder="{TODashboard14>TODashboard_PSA}" />
+                            </Toolbar>
+                            <List
+			id="STypeCombo"
+			items="{path: '/Rowset/Row'}"
+			select ="onPSASelection"	
+			growing="true"
+			growingThreshold="50"
+			mode="SingleSelectMaster"
+			backgroundDesign="Transparent"
+			includeItemInSelection="true">
+                                <StandardListItem
+				title="{STORAGE_TYPE} - {STORAGE_BIN}"
+				description=""
+				 />
+                            </List>
+                        </Panel>
+                        <Panel id="ContentPanel"
+                            xmlns="sap.m" width="auto" visible="true" expandable="false" headerText="" expanded="true" >
+                            <content>
+                                <panel id="ChartContentPanel"
+                                    xmlns="sap.m" width="auto" visible="true" expandable="false" headerText="" expanded="true" >
+                                    <content>
+                                        <l:HorizontalLayout class="sapUiContentPadding" >
+                                            <Panel>
+                                                <content>
+                                                    <FlexBox  width="23rem" alignItems="Center" class="sapUiSmallMargin">
+                                                        <items>
+                                                            <viz:Popover id="idPopOverBar"></viz:Popover>
+                                                            <viz:VizFrame id="idVizBarFrame" uiConfig="{applicationSet:'fiori'}"  width="24rem"  height="200px" 
+	vizProperties="{
+		   plotArea:{
+                            	dataLabel:{
+				visible: true,
+				type:'value',
+				showTotal: true
+				},
+			drawingEffect: 'glossy',
+			dataPointSize: {
+				min : 40, 
+				max : 40},
+			gap: {
+				barSpacing:0 
+				}					
+			    },
+		title:{visible: false
+				},
+			
+		legendGroup:{
+			layout:{
+				position: 'right'
+				}
+			}
+		    }"
+                 vizType="stacked_bar">
+                                                                <viz:dataset>
+                                                                    <viz.data:FlattenedDataset id="flattenDataBar" data="{path: '/Rowset/Row'}">
+                                                                        <viz.data:dimensions>
+                                                                            <viz.data:DimensionDefinition name="{TODashboard14>TODashboard_PSA}" visible="false"
+                                value="" />
+                                                                            <viz.data:DimensionDefinition name="TO Count"
+                                value="{TOAction}" />
+                                                                        </viz.data:dimensions>
+                                                                        <viz.data:measures>
+                                                                            <viz.data:MeasureDefinition name="{TODashboard6>NPM_COMMON_QUANTITY}" value="{=Number(${TOQuantity})}" />
+                                                                        </viz.data:measures>
+                                                                    </viz.data:FlattenedDataset>
+                                                                </viz:dataset>
+                                                                <viz:feeds>
+                                                                    <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="{TODashboard6>NPM_COMMON_QUANTITY}" />
+                                                                    <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="{TODashboard14>TODashboard_PSA}" />
+                                                                    <viz.feeds:FeedItem uid="color" type="Dimension" values="TO Count" />
+                                                                </viz:feeds>
+                                                            </viz:VizFrame>
+                                                        </items>
+                                                    </FlexBox>
+                                                </content>
+                                            </Panel>
+                                            <Panel>
+                                                <content>
+                                                    <FlexBox width="25rem"  alignItems="Center" class="sapUiSmallMargin">
+                                                        <items>
+                                                            <viz:Popover id="idPopOver"></viz:Popover>
+                                                            <viz:VizFrame id="idVizPieFrame" uiConfig="{applicationSet:'fiori'}" height="200px" width="26rem" 
+	vizProperties="{
+		   plotArea:{
+                            dataLabel:{visible: true,
+				type:'value'
+				},
+			drawingEffect: 'glossy'
+			    },
+		title:{visible: false
+				},
+	
+		legendGroup:{
+				layout:{
+					position: 'right'
+					}
+				}
+		    }"
+                 vizType="pie">
+                                                                <viz:dataset>
+                                                                    <viz.data:FlattenedDataset id="flattenData" data="{path: '/Rowset/Row'}">
+                                                                        <viz.data:dimensions>
+                                                                            <viz.data:DimensionDefinition name="TOStatus" value="{TOStatus}" />
+                                                                        </viz.data:dimensions>
+                                                                        <viz.data:measures>
+                                                                            <viz.data:MeasureDefinition name="{TODashboard16>TODashboard_CountTONumber}" value="{=Number(${TOCount})}" />
+                                                                        </viz.data:measures>
+                                                                    </viz.data:FlattenedDataset>
+                                                                </viz:dataset>
+                                                                <viz:feeds>
+                                                                    <viz.feeds:FeedItem uid="size" type="Measure" values="{TODashboard16>TODashboard_CountTONumber}" />
+                                                                    <viz.feeds:FeedItem uid="color" type="Dimension" values="TOStatus" />
+                                                                </viz:feeds>
+                                                            </viz:VizFrame>
+                                                        </items>
+                                                    </FlexBox>
+                                                </content>
+                                            </Panel>
+                                            <Panel>
+                                                <content>
+                                                    <FlexBox width="24rem" height="200px" id="MicroChartFlex" alignItems="Center" class="sapUiSmallMargin" justifyContent="Center">
+                                                        <items>
+                                                            <microchart:ComparisonMicroChart id="microChartData"  size="L" width="22rem" press="onGetMaterialDetails" >
+                                                                <microchart:data>
+                                                                    <microchart:ComparisonMicroChartData  id="ThresholdQuantID" title="{CompList9>TODashboard_ThresholdQuantity}"
+								value="0" color="Critical" />
+                                                                    <microchart:ComparisonMicroChartData  id="AvlQuantID" title="{CompList27>GI_Stage_AvlQuant}"
+								value="0" color="Good" />
+                                                                    <microchart:ComparisonMicroChartData id="ReqdQuantID" title="{CompList9>CustomGI_CL_6}"
+								color="Error" />
+                                                                    <microchart:ComparisonMicroChartData  id="PutawayQuantID" title="{CompList9>TransferDisplay_colHeader_putaway}"
+								value="{=Number(${RequiredQuant})}" color="Information" />
+                                                                </microchart:data>
+                                                            </microchart:ComparisonMicroChart>
+                                                        </items>
+                                                    </FlexBox>
+                                                </content>
+                                            </Panel>
+                                        </l:HorizontalLayout>
+                                    </content>
+                                </panel>
+                                <panel id="TableContentPanel"
+                                    xmlns="sap.m" width="auto" visible="true" expandable="false" headerText="" expanded="true" >
+                                    <headerToolbar>
+                                        <Toolbar id="toolbarTable">
+                                            <Label text="{TODashboard5>NPM_COMMON_ORD_MATERIAL}" design="Bold"/>
+                                            <MultiComboBox  id ="MaterialSelection" items="{path: '/Rowset/Row'}" selectionChange="onMaterialChange" enabled="true" width="180px">
+                                                <items>
+                                                    <core:Item key="{Material}" text="{Material}" />
+                                                </items>
+                                            </MultiComboBox >
+                                            <ToolbarSpacer />
+                                            <Button  icon="sap-icon://filter"
+								 enabled="true" visible="true" id="ResetID" width="3%" press="doReset" />
+                                            <Button text="{CompList13>TODashboard_Export}" icon="sap-icon://excel-attachment"
+								 enabled="true" visible="true" id="ExportID" width="10%" press="doExport" />
+                                            <SearchField liveChange="onSearch" id="SearchField"  width="30%" />
+                                        </Toolbar>
+                                    </headerToolbar>
+                                    <content>
+                                        <table:Table id="TODashboardTable" rows="{/Rowset/Row}"
+							selectionMode="Single" selectionBehavior="RowOnly" visible="true" columnHeaderHeight="45" 
+							enableGrouping="true" 
+							visibleRowCount="13">
+                                            <table:columns>
+                                                <table:Column hAlign="Center" visible="true"  width="120px"
+									sortProperty="Material" filterProperty="Material">
+                                                    <Label text="{TODashboard5>NPM_COMMON_ORD_MATERIAL}" />
+                                                    <table:template>
+                                                        <Text text="{Material}" />
+                                                    </table:template>
+                                                </table:Column>
+                                                <table:Column hAlign="End" visible="true" width="115px"
+									sortProperty="MIITRNumber" filterProperty="MIITRNumber">
+                                                    <Label text="{TODashboard6>TODashboard_TRNumber}" />
+                                                    <table:template>
+                                                        <Text text="{MIITRNumber}" />
+                                                    </table:template>
+                                                </table:Column>
+                                                <table:Column hAlign="Center" visible="true"  width="100px"
+									sortProperty="ECCTRNumber" filterProperty="ECCTRNumber">
+                                                    <Label text="{TODashboard6>TODashboard_ECCTRNumber}" />
+                                                    <table:template>
+                                                        <Text text="{ECCTRNumber}" />
+                                                    </table:template>
+                                                </table:Column>
+                                                <table:Column hAlign="Center" visible="true"
+									sortProperty="TRQuantity" filterProperty="TRQuantity">
+                                                    <Label text="{TODashboard7>TODashboard_TRQuantity}" />
+                                                    <table:template>
+                                                        <Text text="{TRQuantity} {TRUOM}" />
+                                                    </table:template>
+                                                </table:Column>
+                                                <table:Column hAlign="Center" visible="true" width="70px"
+									sortProperty="TRPriority" filterProperty="TRPriority">
+                                                    <Label text="{TODashboard8>TODashboard_TRPriority}" />
+                                                    <table:template>
+                                                        <Text text="{TRPriority}" />
+                                                    </table:template>
+                                                </table:Column>
+                                                <table:Column hAlign="Center" visible="true" width="100px"
+									sortProperty="TONumber" filterProperty="TONumber">
+                                                    <Label text="{TODashboard9>TODashboard_TONumber}" />
+                                                    <table:template>
+                                                        <Text text="{TONumber}" />
+                                                    </table:template>
+                                                </table:Column>
+                                                <table:Column hAlign="Center" visible="true" id="statusID" width="140px"
+									sortProperty="TOStatus" filterProperty="TOStatus">
+                                                    <Label text="{TODashboard9>TODashboard_TOStatus}" />
+                                                    <table:template>
+                                                        <ObjectStatus text="{TOStatus}" inverted="true" state="{=${TOStatusFlag}==='2'  ? 'Warning' : ${TOStatusFlag} === '4' ? 'None'  : ${TOStatusFlag} === '1' ? 'Success' : 'Error'}"/>
+                                                    </table:template>
+                                                </table:Column>
+                                                <table:Column hAlign="Center" visible="true"  width="90px" 
+									sortProperty="TOItem" filterProperty="TOItem">
+                                                    <Label text="{TODashboard10>TODashboard_TOItem}" />
+                                                    <table:template>
+                                                        <Text text="{TOItem}" />
+                                                    </table:template>
+                                                </table:Column>
+                                                <table:Column hAlign="Center" visible="true" 
+									sortProperty="TOQuantity" filterProperty="TOQuantity">
+                                                    <Label text="{TODashboard11>TODashboard_TOQuantity}" />
+                                                    <table:template>
+                                                        <Text text="{TOQuantity} {TOUOM}" />
+                                                    </table:template>
+                                                </table:Column>
+                                                <table:Column hAlign="Center" visible="true" 
+									sortProperty="TOConfirmQuantity" filterProperty="TOConfirmQuantity">
+                                                    <Label text="{TODashboard11>TODashboard_TOConfQuantity}" />
+                                                    <table:template>
+                                                        <Text text="{TOConfirmQuantity} {TOUOM}" />
+                                                    </table:template>
+                                                </table:Column>
+                                                <table:Column hAlign="Center" visible="true" width="70px"
+									sortProperty="TOPriority" filterProperty="TOPriority">
+                                                    <Label text="{TODashboard12>TODashboard_TOPriority}" />
+                                                    <table:template>
+                                                        <Text text="{TOPriority}" />
+                                                    </table:template>
+                                                </table:Column>
+                                                <table:Column hAlign="Center" visible="true"
+									sortProperty="RequiredQuantity" filterProperty="RequiredQuantity">
+                                                    <Label text="{TODashboard13>CustomGI_CL_6}" />
+                                                    <table:template>
+                                                        <Text text="{RequiredQuantity} {TRUOM}" />
+                                                    </table:template>
+                                                </table:Column>
+                                                <table:Column hAlign="Center" visible="false"
+									sortProperty="RequestedOn" filterProperty="RequestedOn">
+                                                    <Label text="{TODashboard13>GI_Stage_History_ReqOn}" />
+                                                    <table:template>
+                                                        <Text text="{RequestedOn}" />
+                                                    </table:template>
+                                                </table:Column>
+                                                <table:Column hAlign="Center" visible="false"
+									sortProperty="RequestedBy" filterProperty="RequestedBy">
+                                                    <Label text="{TODashboard12>GI_Stage_History_ReqBy}" />
+                                                    <table:template>
+                                                        <Text text="{RequestedBy}" />
+                                                    </table:template>
+                                                </table:Column>
+                                                <table:Column hAlign="Center" visible="true" width="60px"
+									sortProperty="RequestedBy" filterProperty="RequestedBy">
+                                                    <Label text="{TODashboard12>TODashboard_UserInfo}" />
+                                                    <table:template>
+                                                        <core:Icon  src="sap-icon://person-placeholder"  color="darkcyan" press="GetUserInfo" />
+                                                    </table:template>
+                                                </table:Column>
+                                            </table:columns>
+                                        </table:Table>
+                                    </content>
+                                </panel>
+                            </content>
+                        </Panel>
+                    </l:Splitter>
+                </panel>
+            </u:content>
+        </u:Shell>
+    </Page>
+</mvc:View>

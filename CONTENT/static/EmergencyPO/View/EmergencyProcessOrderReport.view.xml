@@ -1,0 +1,276 @@
+ 
+<mvc:View
+	controllerName="ePO.EmergencyProcessOrderReport"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns="sap.m"
+	xmlns:table="sap.ui.table"
+	xmlns:model="sap.ui.model"
+	 xmlns:f="sap.ui.layout.form"  
+	 xmlns:commons="sap.ui.commons"
+	xmlns:u="sap.ui.unified"
+	xmlns:s="sap.suite.ui.commons"
+	xmlns:m="sap.m"
+	xmlns:ux3="sap.ui.ux3"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+<html:style>
+
+.sapUiUfdShellHeadItmSep.sapUiUfdShellHeadItm{
+    width: 124px;
+}
+.sapUiUfdShellHeadItm>span>img {
+    margin-top: 0px;
+    width: 110px;
+    height: 40px;
+    border-width: 0;
+}
+.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+    max-height: 30px;
+    max-width: 150px;
+    vertical-align: middle;
+}
+.valueHlpBtn{
+font-weight: bold;
+}
+</html:style>
+
+ <Page
+    id="page"
+	title = ""
+    showHeader="false" > 
+      
+<!--<div id="Panel_LayoutV"></div>-->
+	<u:Shell class="Background"
+			id="shell1"
+			icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+
+			<u:headItems>
+				<u:ShellHeadItem
+					tooltip="{IMReceipt1>NPDashboard_Home}"
+					icon="sap-icon://home"
+					visible="true"
+					press="goHome" />
+			
+			</u:headItems>
+
+			<u:headEndItems>
+				<u:ShellHeadItem
+				            id="bcpHDR"
+					icon=""
+					tooltip="{title1>InBndMatRecpt_title_BCP}"  />
+			</u:headEndItems>
+
+			<u:user>
+				<u:ShellHeadUserItem
+					id="usernameIds"
+					image="sap-icon://person-placeholder" 
+				        	showPopupIndicator="false"
+					username=""	/>
+			</u:user>
+			<u:search>
+				<Label id="label_header"
+					text="{EPO_PROP1>EPO_UI_EMERGENCY_PO_REPORT}"/>
+		</u:search>
+
+  <u:content>
+  
+<OverflowToolbar>
+	<Button id="lineValueHlpBtn" class="valueHlpBtn" text="Line Name" press= "getLines" icon="sap-icon://value-help"/>
+<!--	<Button id="docValueHlpBtn" class="valueHlpBtn"  text="LOIPRO" press= "getDocType" icon="sap-icon://value-help"/> -->
+	<ToolbarSpacer/>
+
+</OverflowToolbar>    
+<Panel id="selectionPanel" headerText="{EPO_PROP2>EPO_UI_SELECTION_PANEL}" expandable="true" expanded="true"  > 
+
+<headerToolbar>
+  <Toolbar height="3rem" id="toolbar">
+	<Label text="{EPO_PROP3>EPO_UI_SELECTION_PANEL}" design="Bold"/>
+	<ToolbarSpacer />
+     </Toolbar>
+  </headerToolbar>
+
+      <f:Form id="formSelectPanel"    
+	minWidth="1024" 
+	maxContainerCols="2" 
+            editable="true">
+
+        <f:layout>
+          <f:ResponsiveGridLayout
+            labelSpanL="4"
+            labelSpanM="4"
+            emptySpanL="0"
+            emptySpanM="0"
+            columnsL="4"
+            columnsM="4"
+          />
+        </f:layout>
+	
+        <f:formContainers>
+
+	 <f:FormContainer>
+               <f:formElements>
+	     <f:FormElement label="{EPO_PROP4>EPO_UI_MATERIAL}">
+                  <f:fields>
+		<Input id ="inputMat"/>
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+	 <f:FormContainer>
+               <f:formElements>
+	     <f:FormElement label="{EPO_PROP5>EPO_UI_PV}">
+                  <f:fields>
+		<Input id ="inputPV"/>
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+
+	  <f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{EPO_PROP6>EPO_UI_MATERIAL_SOURCE_PO}">
+                  <f:fields>
+		<Input id ="inputSPO"/>
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+	 <f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="">
+                  <f:fields>
+	<Button 
+				id="refreshBttn" 
+				text ="{EPO_PROP7>EPO_UI_REFRESH}"
+			            press="refresh" 
+				width="170px"
+				icon="sap-icon://refresh" >
+			</Button>
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+	</f:formContainers>
+ </f:Form>
+
+</Panel> 
+
+
+<Panel expandable="true" expanded="true" > 
+
+     <f:Form id="formTable"
+        editable="false">
+
+        <f:layout>
+          <f:ResponsiveGridLayout
+            labelSpanL="1"
+            labelSpanM="1"
+            emptySpanL="0"
+            emptySpanM="0"
+            columnsL="1"
+            columnsM="1" />
+        </f:layout>
+
+	<f:formContainers>
+
+     <f:FormContainer>
+               <f:formElements>
+
+	  <f:FormElement>
+		<Table id="iDEPOTble"
+			growing="true"
+		growingThreshold="5"
+		items="{/Rowset/Row}">
+
+                		<headerToolbar>
+
+                    			<OverflowToolbar id="otbSubheader">
+                       				<ToolbarSpacer/>
+                        				<SearchField id="maxPrice" liveChange="onFilter">
+                            			<layoutData><OverflowToolbarLayoutData minWidth="200px" maxWidth="300px" shrinkable="true"/></layoutData>
+                        				</SearchField>
+                        				<OverflowToolbarButton type="Transparent" text="Sort" icon="sap-icon://sort" press="onSort"/>
+                        			
+                    			</OverflowToolbar>
+
+                		</headerToolbar>
+
+			<columns>
+			
+		   	
+				<Column hAlign="Center" visible="true">
+					<Text text="{EPO_PROP8>EPO_UI_MATERIAL_SOURCE_PO}" />
+				</Column>
+
+			         	<Column hAlign="Center" visible="true">
+					<Text text="{EPO_PROP9>EPO_UI_CRID}" />
+				</Column>
+		   	
+				<Column hAlign="Center" visible="true">
+					<Text text="{EPO_PROP10>EPO_UI_MATERIAL}" />
+				</Column>
+		   		<Column hAlign="Center" visible="true">
+					<Text text="{EPO_PROP11>EPO_UI_MAT_DESC}" />
+				</Column>
+				<Column hAlign="Center" visible="true">
+					<Text text="{EPO_PROP12>EPO_UI_PV}" />
+				</Column>
+		   	 	<Column hAlign="Center" visible="true">
+					<Text text="{EPO_PROP13>EPO_UI_QUANTITY}" />
+				</Column>
+		   	 	<Column hAlign="Left" visible="true" width = "172px">
+					<Text text="{EPO_PROP14>EPO_UI_PROD_DATE}" />
+				</Column>
+				<Column hAlign="Left" visible="true" width = "172px">
+					<Text text="{EPO_PROP15>EPO_UI_STATUS}" />
+				</Column>
+				<Column hAlign="Left" visible="true" width = "172px">
+					<Text text="{EPO_PROP16>EPO_UI_CREATEDBY}" />
+				</Column>
+				<Column hAlign="Left" visible="true" width = "172px">
+					<Text text="{EPO_PROP17>EPO_UI_COMMENTS}" />
+				</Column>
+				
+			</columns>
+
+                		<items>
+                    			<ColumnListItem vAlign="Middle">
+                        				<cells>
+                            				<ObjectIdentifier title="{Name}" text="{PO}" />
+                            				<Text text="{CRID}" />
+                            				<Text text="{MATERIAL}" />
+                            				<Text text="{MATDESC}" />
+                            				<Text text="{PV}" />
+						<Text text = "{parts : [{path : 'QTYUOM'},{path:'CommUOM'}], formatter : '.getFormattedQuantityUOM'}" />	
+                    
+					       <Text  text="{parts : [{path: 'PLANNED_STDATE'}],  formatter : '.getDateDisplayFormat' }" />
+					         <Text text="{MESSAGE}" />
+					<Text text="{CREATED_BY}" />
+					<Text text="{COMMENTS}" />
+                        				</cells>
+                    			</ColumnListItem>
+                		</items>
+			
+	
+</Table>
+
+    		</f:FormElement>
+	
+	 </f:formElements>
+             </f:FormContainer>         
+	</f:formContainers>
+     		</f:Form>
+
+   </Panel>
+
+  </u:content>
+</u:Shell>
+
+</Page>
+</mvc:View>

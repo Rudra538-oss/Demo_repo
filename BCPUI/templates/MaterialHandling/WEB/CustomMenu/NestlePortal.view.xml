@@ -1,0 +1,859 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns="sap.m"  xmlns:l="sap.ui.layout"  xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified"
+controllerName="nav.NestlePortal" xmlns:f="sap.ui.layout.form"
+xmlns:html="http://www.w3.org/1999/xhtml">
+<html:style>
+
+
+      	.sapMLabel{
+	//margin-top:1%;
+	font-size:20px;
+	font-weight:bold;}
+	#idNestlePortal--SWSPOutage{
+	color: #FFA500;}
+      	.sapMListTblCell{
+      	text-align:center !important;
+      	}
+
+/*	
+	.Background{
+	background-image: url("/XMII/CM/MaterialHandling/Common/Images/Nestle.jpg");
+	background-position: 70% 10%; 
+
+	}
+
+		#idNestlePortal--shell2-container-canvas{
+	background-image: url("/XMII/CM/MaterialHandling/Common/Images/Nestle.jpg");
+		background-position: 70% 10%; 
+	}
+*/
+
+	.custom-padding-left {
+	padding-left: 1rem;
+	}
+	.sapUiFormResGrid.sapUiFormBackgrTranslucent>div{
+	background-color:transparent !important;
+	}
+	#idNestlePortal--label_header2{
+	margin-left:25%;
+	}
+	.sapMITBContent {
+	padding: 0rem;
+	background:transparent;
+	}
+	.barBG{
+	background-color: #dbf2f2e3 !important;
+	box-shadow: inset 0 0rem #DDDDD5 !important;
+	}
+	.sapMBar {
+    height: 3rem;
+    line-height: 3rem;
+    color: #666666;
+    background-color: transparent;
+    text-shadow: 0px 0.06rem 0px rgba(255,255,255,0.5);
+    box-shadow: inset 0px -0.06rem #dddddd;
+}
+.saveDFLTBTN{
+		background-color:rgba(240, 243, 244, 1) ; 
+		border: black;
+		border-radius: 0.125rem;
+}
+
+.sapMITBTextOnly .sapMITBFilterPositive>.sapMITBText {
+    color: #000000;
+    background-color: #008000;
+    box-shadow: 0 0 0px 2px black;
+}
+
+.sapMITBTextOnly .sapMITBText {
+    font-size: 1.15rem;
+}
+	
+.sapMText {
+    font-size: 1.15rem;
+    font-family: Arial,Helvetica,sans-serif;
+    line-height: normal;
+}
+
+.sapMPanelContent {
+    padding: 0rem;
+    box-sizing: border-box;
+    overflow: auto;
+    white-space: normal;
+}
+
+#oFlexBoxTOStageID, #oFlexBoxPSAStageID, #oFlexBoxItemStageID, #oFlexBoxBackflushID{
+    padding-left: 10%;
+}
+#TOSwitchLabelID, #PSASwitchLabelID, #BackflushSwitchLabelID{
+padding-left:10px;
+}
+#oFlexBoxBackflushID {
+    padding-bottom: 5%;
+}
+.sapMPanelBGTranslucent {
+    background-color: rgba(218, 242, 246, 0.8);
+}
+.sapMPanelContent:not(.sapMPanelBGTransparent) {
+    border-bottom: 0px solid #dddddd;
+}
+.sapMTB {
+    height: 3rem;
+    background: transparent;
+    border-bottom: 0px solid #cccccc;
+}
+
+.sapMDialogText {
+    font-size: 0.8rem;
+    font-family: Arial,Helvetica,sans-serif;
+    line-height: normal;
+}
+.sapUiUfdShellHeadItmSep.sapUiUfdShellHeadItm{
+    width: 124px;
+}
+.sapUiUfdShellHeadItm>span>img {
+    margin-top: 0px;
+    width: 110px;
+    height: 40px;
+    border-width: 0;
+}
+.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+    max-height: 30px;
+    max-width: 150px;
+    vertical-align: middle;
+}
+#__item6{
+     width: 53px;
+}
+#__panel0 > div{
+	overflow: hidden;
+}
+.removeScroll{
+	overflow: hidden;
+}
+.BCP{
+    width: 109px;
+}
+.MSTInfo{
+	height: 2.15rem;
+}
+#idNestlePortal--image_bcp-icon-image{
+width : 70% !important;
+}
+
+.errorInput :-ms-input-placeholder.sapMInputBaseInner{
+color: red;
+}
+.errorInputtxt{
+color: red;
+}
+.sapMInputBaseInner{
+border: 1px solid;
+}
+.sapMBtnCustom {
+    background-color: transparent;
+    margin-left: 65px;
+    width:330px;
+}
+.sapMBtnInner {
+    vertical-align: top;
+    -webkit-appearance: none;
+     box-sizing: border-box;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 0.875rem;
+    height: 3.09rem;
+    min-width: 2.500rem;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    position: relative;
+}
+.sapMBtn {
+    height: 3.5rem;
+    vertical-align: top;
+    border: none;
+}
+#slocwhlist-header{
+text-align:center;
+font-weight:bold;
+}
+#swResetbutton-inner{
+    background-image: none;
+    background-color: steelblue;
+    border-color: steelblue;
+}
+#swbutton-img, #swEditbutton-img, #swResetbutton-img{
+    color: #ffffff;
+}
+#swbutton-inner, #swEditbutton-inner{
+    background-image: none;
+    background-color: #007833;
+    border-color: #005f28;
+}
+#swbutton-content, #swEditbutton-content{
+    padding-top: 3px;
+    font-size: 1rem;
+    color: #ffffff;
+    text-shadow: none;
+}
+#slocwhlist-listUl{
+text-align:center;
+}
+.sapMBtnRFDFCustom {
+   padding-left: 1rem;
+}
+.slocwhpadding {
+   padding-right: 20px;
+}
+.sapMList {
+    margin: 0;
+    padding: 1.7%;
+}
+#idNestlePortal--plant-inner{
+border-color: transparent;
+font-weight: bolder;
+font-size:1.1rem;
+}
+#textForConfirm1{
+	color: fireBrick;
+	font-weight:bold;
+	font-size: medium;
+}
+#textForConfirm2{
+	font-size: x-large;
+	padding-top: inherit;
+}
+
+</html:style>
+
+	<Page
+		id="tiles" class="Background"
+		showHeader="false"
+		title="Setup">
+						
+				<u:Shell
+			id="shell2"
+			icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+			<u:headItems>
+				<u:ShellHeadItem
+					tooltip="{NHPortal1>NPDashboard_Home}"
+					icon="sap-icon://home"
+					visible="true"
+					press="" />
+			</u:headItems>
+			<u:headEndItems>
+				<u:ShellHeadItem
+				         id="bcpHDR"
+					icon=""
+					tooltip="{NPortal2>InBndMatRecpt_title_BCP}"
+					press="" />
+				
+			</u:headEndItems>
+			<u:user>
+				<u:ShellHeadUserItem
+					image="sap-icon://person-placeholder"
+				            showPopupIndicator="false"
+					username="Karl Mustermann"
+					press="logoff"
+					 />
+			</u:user>
+				<u:search>
+				<Label  id="label_header2"
+					text="Nestle Portal"/>
+			</u:search>
+			<u:content>
+			
+			<f:SimpleForm id="SimpleFormChange471"
+			minWidth="1024"
+			maxContainerCols="6"
+			
+			layout="ResponsiveGridLayout"
+			
+			labelSpanL="4"
+			labelSpanM="4"
+			emptySpanL="1"
+			emptySpanM="1"
+			columnsL="1"
+			columnsM="1"
+			class="">
+			<f:content>
+			<Panel class="removeScroll" >
+				<content>
+				<Label id="SWSPOutage" />
+				<Bar class="barBG">
+					<contentLeft>
+				<Label text="{NHPortal4>NPDashboard_Plant}" />
+				<Label width="2%" />
+                                                 <Label text=":"/>
+		<!--	<Select id ="plant"  width="20%"  items="{path: '/Rowset/Row'}" change="getWorkcenter">-->
+                    	<!--	<items> <core:Item key="{PLANT}" text="{PLANT}" /> </items> </Select>-->
+				<Input id = "plant" width="8%"  editable = "false"  ></Input>				
+				<Label width="20%" />
+				<Label text="{NHPortal5>NPDashboard_Line}" />
+			    	<Label width="2%" />
+               		            <Label text=":"/>
+				<ComboBox id="workcenter"
+				 width="40%" selectionChange="getResource">
+				<core:Item key="{NAME}" text="{NAME}" />
+			          </ComboBox>
+				<Label width="5%" />
+					<Button class="saveDFLTBTN"
+			
+			enabled="true"
+		          visible="true"
+		          width="10%"
+			text = "{NPortal7>NPDashboard_SaveDefault}"
+			press="saveDefault" />
+					</contentLeft>
+				</Bar>
+				</content>
+			</Panel>
+			</f:content>
+		</f:SimpleForm>
+				
+				<IconTabBar 
+				id="idIconTabBarNoIcons"  
+		stretchContentHeight="true"
+		backgroundDesign="Transparent"
+		applyContentPadding="false"	
+		expandable="false"	
+				class="sapMITBContent">
+		
+						   
+			<items>
+
+			<IconTabFilter 
+				text="{NPortal3>NPDashboard_MFG}">
+			        <Panel id="panelMFG" width="auto" class="sapUiResponsiveMargin">
+					<content>
+						<Text text="{NPortal4>NPDashboard_MFG}"/>
+					</content>
+				</Panel>
+				<GenericTile id="goodsIssue_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal5>NPDashboard_Goods_Issue}"
+						press="doGoodsIssue" visible="true">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://database"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+
+				<GenericTile id="goodsReceipt_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal6>NPDashboard_Goods_Receipt}"
+						press="doGoodsReceipt">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://receipt"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+
+
+				<GenericTile id="RFDevice_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal5>NPDASHBOARD_BCPUI_RFDEVICE}"
+						press="doRFDevice" >
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://create"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+				<GenericTile id="eBCPOrders_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal34>EPO_UI_TILE_HEADER}"
+						press="openEProcessOrderUI">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://create"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+ 				<GenericTile id="emergencyOrder_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{title30>EPO_EmergencyProcessOrder}"
+						press="openEmergencyProcessOrderUI">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://ppt-attachment"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile> 
+				<GenericTile id="stockDisplayTrnsfr_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal7>NPDashboard_Stock_Display_Transfer}"
+						press="doStockDisplayTransfer">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://move"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+
+
+				<GenericTile id="nestlePrfmnceMngmnt_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal8>NPDashboard_Nestle_Performance_Management}"
+						press="doNestlePrfmnceMngmnt">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://home-share"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+
+				<GenericTile id="processOrdValidation_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal9>NPDashboard_Process_Order_Validation}"
+						press="doProcOrdValidation">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://survey"/>
+							</content>
+						</TileContent>
+					</tileContent>
+
+				</GenericTile>
+
+				<GenericTile id="reprintLable_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal10>NPDashboard_Reprint_Label}"
+						press="doReprintLabel">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://print"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+
+				<GenericTile id="printQ_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal11>NPDashboard_Print_Queue}"
+						press="doPrintQueue">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://my-view"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+				<GenericTile id="monitorMRF_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortalMRFMonitor>NPDashboard_MRF_MONITOR}"
+						press="openMRFMonitor">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://my-view"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+				<GenericTile id="monitorEMM_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortalMRFEMM>NPDashboard_MRF_EMM}"
+						press="openEMM">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://my-view"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+                                     	<GenericTile id="tileSupportLbr" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal29>NPDashboard_SupportLbrHrs}"
+						press="OpenSupportLbrHrsUI">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://my-view"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+
+				<GenericTile id="goodsmvt_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal12>NPDashboard_Goods_Movement_Report}"
+						press="doGoodsMvt">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://home-share"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+   	                       <GenericTile id="materialrpt_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal50>NPDashboard_Material_Master_Report}"
+						press="MaterialMasterReport">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://detail-view"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+                                      <GenericTile id="processordrpt_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal54>NPDashboard_Process_Order_Report}"
+						press="ProcessOrderReport">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://tools-opportunity"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+		 <GenericTile id="todashboard_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal64>MaterialReplinishment_Title}"
+						press="TODashboard">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://chart-table-view"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+
+		</IconTabFilter>
+		<IconTabFilter
+				text="{NPortal13>NPDashboard_QM}">
+			        <Panel id="panelQM" width="auto" class="sapUiResponsiveMargin">
+					<content>
+						<Text text="{NPortal14>NPDashboard_QM}"/>
+					</content>
+				</Panel>
+
+				<GenericTile id="QMS_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal15>NPDashboard_QMS}"
+						press="doQMS">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://my-view"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+<!--
+				<GenericTile id="inspectionRsltsRec_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal16>NPDashboard_Inspection_Lot_Results_Recording}"
+						press="doInspctionRsltRec">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://record"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+-->			
+		</IconTabFilter>
+		<IconTabFilter
+				text="{NPortal17>NPDashboard_AMM}">
+			        <Panel id="panelAMM" width="auto" class="sapUiResponsiveMargin">
+					<content>
+						<Text text="{NPortal18>NPDashboard_AMM}"/>
+					</content>
+				</Panel>
+<!--
+				<GenericTile id="AMM_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal19>NPDashboard_AMM}"
+						press="doAMM">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://my-view"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+-->		
+		</IconTabFilter>
+		<IconTabFilter
+				text="{NPortal20>NPDashboard_Stock_Mgmt}">
+			        <Panel id="panelStock" width="auto" class="sapUiResponsiveMargin">
+					<content>
+						<Text text="{NPortal21>NPDashboard_Stock_Management}"/>
+					</content>
+				</Panel>
+
+				<GenericTile id="stock_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal22>NPDashboard_Stock_Display_Transfer}"
+						press="doStockDisplayTransfer">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://move"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+
+				<GenericTile id="inbndMatRecpt_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal23>NPDashboard_Inbound_Material_Receipt}"
+						press="doInboundMatRecpt">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://receipt"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+
+				<GenericTile id="rPrntLabel_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal24>NPDashboard_Reprint_Label}"
+						press="doRprntlbl">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://print"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+
+
+				<GenericTile id="PrntQ_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal25>NPDashboard_Print_Queue}"
+						press="doPrntQ">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://my-view"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+				
+		</IconTabFilter>
+		<IconTabFilter
+				text="{NPortal26>NPDashboard_Admin}">
+			            <Panel id="panelAdmin" width="auto" class="sapUiResponsiveMargin">
+					<content>
+					<Text text="{NPortal27>NPDashboard_Admin}"/>
+					</content>
+			           </Panel>
+				<GenericTile id="tileDashboardAssignmnt" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal28>NPDashboard_User_Dashboard_Assignment}"
+						press="assignDashboard">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://my-view"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+				<GenericTile id="tileStorageFreqDisplay" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal29>NPDashboard_Storage_Type_Enquiry_Frequency_Display}"
+						press="displayStorageFreqInfo">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://my-view"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+
+				<!--GenericTile id="tileConfigurePrinter" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal30>NPDashboard_Configure_Printer}"
+						press="configurePrinter">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://print"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile--> 
+
+			       	<GenericTile id="tileNSAMConfig" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal33>NPDashboard_NSAM_CONFIG}"
+						press="configureNSAM">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://settings"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+
+				<GenericTile id="eProcessOrder_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal34>EPO_UI_TILE_HEADER}"
+						press="openEProcessOrderUI">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://create"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+ <GenericTile id="emergencyprocessorder_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{title30>EPO_EmergencyProcessOrder}"
+						press="openEmergencyProcessOrderUI">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://ppt-attachment"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile> 
+
+			       	<GenericTile id="tileBCPUIConfig" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortalBCPUIConfig>NPDASHBOARD_TILE_BCP_UI_CONFIG}"
+						press="configureBCPUI">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://settings"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+
+			       	<GenericTile id="tileSSPATCHER" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortalSSPATCHER>NPDashboard_SS_PATCHER_DISPLAY}"
+						press="openSSPatcher">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://my-view"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+
+			       	<GenericTile id="tileBCP" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal36>NPDashboard_BCP}"
+						press="doBCP">
+					<tileContent>
+						<TileContent>
+							<content>
+							<Switch id="switchBCP" type="AcceptReject" state="true" change="doBCP" customTextOn="BCP OFF" customTextOff="BCP ON" visible="false"/>
+							<ImageContent id="image_bcp" src="sap-icon://my-view"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+
+				<GenericTile id="tileSupportLbr1" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal29>NPDashboard_SupportLbrHrs}"
+						press="OpenSupportLbrHrsUI">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://my-view"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+				
+				<GenericTile id="tileLaborManagement" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" 
+				header="{NPortal28>NPDashboard_LaborManagement}"
+						press="OpenLaborManagementConfig">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://my-view"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+			
+				<GenericTile id="HealthCheck_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{HealthCheck>NPDashboard_MRF_HealthCheck}"
+						press="openHealthCheck">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://settings"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+				<GenericTile id="TranslationCockpit_tile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Translation Cockpit"
+						press="openTranslationCockpit" visible="false">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent  src="sap-icon://text-formatting"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+
+
+
+		</IconTabFilter>
+		<IconTabFilter
+				text="{NPortal39>NPDashboard_Report}">
+			             <Panel id="panelReports" width="auto" class="sapUiResponsiveMargin">
+					<content>
+						<Text text="{NPortal40>NPDashboard_Report}"/>
+					</content>
+				</Panel>
+                                         	<GenericTile id="tileAIReports" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal51>NPDashboard_Report_AI}"
+						press="displayReport">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://detail-view"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+                                             	<GenericTile id="tileDPRReports" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal52>NPDashboard_Report_DPR}"
+						press="displayReport">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://tools-opportunity"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+                                             	<GenericTile id="tileECCRRReports" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal53>NPDashboard_Report_ECCRR}"
+						press="displayReport">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://trip-report"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+                                                	<GenericTile id="tileLMReports" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal46>NPDashboard_Report_LM}"
+						press="displayReport">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://trip-report"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+                                              
+			
+				<GenericTile id="tileSRReports" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal46>NPDashboard_Report_SR}"
+						press="displayReport">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://trip-report"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile> 
+			
+                                             
+		      		
+		</IconTabFilter>
+		<IconTabFilter
+				text="{NPortal47>NPDashboard_ABOUT}">
+			        <Panel id="panelAbout" width="auto" class="sapUiResponsiveMargin" backgroundDesign="Transparent">
+					<content>
+						<Text text="{NPortal48>NPDashboard_ABOUT}"/>
+					</content>
+				</Panel>
+				<GenericTile id="tileAppVersion" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{NPortal49>NPDashboard_Version_Info}"
+						press="displayAppVersion">
+					<tileContent>
+						<TileContent>
+							<content>
+							<ImageContent src="sap-icon://my-view"/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+		</IconTabFilter>	
+		</items>
+
+	</IconTabBar>	
+	</u:content>
+
+	</u:Shell>
+</Page>
+
+</mvc:View>

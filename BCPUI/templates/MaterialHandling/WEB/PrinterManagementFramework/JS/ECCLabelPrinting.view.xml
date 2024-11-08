@@ -1,0 +1,206 @@
+ <mvc:View xmlns:core="sap.ui.core" xmlns="sap.m"  xmlns:l="sap.ui.layout"  xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified"
+xmlns:commons="sap.ui.commons"
+controllerName="JS.ECCLabelPrinting" xmlns:f="sap.ui.layout.form"
+xmlns:html="http://www.w3.org/1999/xhtml">
+<html:style>
+
+	
+
+.sapUiUfdShellHeadItmSep.sapUiUfdShellHeadItm{
+    width: 124px;
+}
+.sapMPanelBGTranslucent{
+ padding: 0px;
+}
+.sapUiUfdShellHeadItm>span>img {
+    margin-top: 0px;
+    width: 105px;
+    height: 38px;
+    border-width: 0;
+}
+.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+    max-height: 30px;
+    max-width: 150px;
+    vertical-align: middle;
+}
+.sapMSlt {
+    border-radius: 10px;
+    border: 1px solid grey;
+}
+.sapMInputBaseInner {
+    font-size: 0.82rem!important;
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+.addPaddingImage{
+   padding-left:10%;
+   padding-top: 7%;
+}
+.sapMBtnInner {
+    border-radius: 10px;
+}
+#idECCLabelPrinting--btnClearPrint-inner {
+    border-color: red;
+    background-color: rgba(192,0,0,1);
+}
+#idECCLabelPrinting--btnClearPrint-img {
+    color: #ffffff;
+}
+#idECCLabelPrinting--btnClearPrint-content {
+    color: #ffffff;
+    font-size: 1rem;
+}
+#idECCLabelPrinting--printerConfig--Grid, #idECCLabelPrinting--SSCCConfig--Grid{
+    padding: 3% 10%;
+}
+#idECCLabelPrinting--PrintID-inner{
+font-weight: bold;
+    font-size: medium;
+}
+#idECCLabelPrinting--SSCC-inner{
+border-width:2.5px;
+}
+#__item0{
+     width: 53px;
+}
+.sapMLabel{
+    font-weight: bold;
+}
+#idECCLabelPrinting--ChckBox1-label{
+    font-weight: bold;
+}
+#idECCLabelPrinting--label_header1 {
+    background-color: #f2f2f2;
+    font-size: 20px!important;
+    font-weight: bold;
+    color: grey;
+    width: 135%!important;
+    font-family: Times New Roman;
+}
+
+</html:style>
+
+	<Page
+		id="page"
+		showHeader="false"
+		title="Setup" >
+						
+				<u:Shell class="Background"
+			id="shell1"
+			icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+			<u:headItems>
+				<u:ShellHeadItem
+					tooltip="{PConfig1>NPDashboard_Back}"
+					icon="sap-icon://nav-back"
+					visible="true"
+					press="goBack" />
+			
+			</u:headItems>
+			<u:headEndItems>
+				<u:ShellHeadItem
+					  id="bcpStatus"
+					icon=""
+					tooltip="{title1>InBndMatRecpt_title_BCP}"
+					press="" />	
+			</u:headEndItems>
+			<u:user>
+				<u:ShellHeadUserItem
+					image="sap-icon://person-placeholder" 
+				        showPopupIndicator="false"
+					username="Karl Mustermann"
+					/>
+			</u:user>
+			<u:search>
+				<Label id="label_header1"
+					text="{PConfig20>ECC_Label_ReprintHdr}"  design="Bold"/>
+			</u:search>
+			<u:content>
+
+<Panel id="SSCCPanel">
+<f:Form id="SSCCConfig" minWidth="1024" maxContainerCols="2" editable="true">
+        <f:layout>
+          <f:ResponsiveGridLayout labelSpanL="4" labelSpanM="4"
+            emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="3" />
+        </f:layout>
+        <f:formContainers>
+	<f:FormContainer> <f:formElements>
+	   <f:FormElement label="{PConfig4>Print_SSCC}">
+		<f:fields><Input id ="SSCC0" change="SSCCValidation" width="60%" /></f:fields>
+	   </f:FormElement>
+	</f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements>
+	   <f:FormElement label="{PConfig21>TransferDisplay_colHeader_uom}">
+		<f:fields><Select id ="reprintUOM0" items="{path: '/Rowset/Row'}" ><items> <core:Item key="{InternalUOM}" text="{UOMDESC}" /> </items> </Select>
+		<commons:Image  id ="btn_addSSCC" width="10%" class="addPaddingImage" src="/XMII/CM/MaterialHandling/PrinterManagementFramework/Common/Image/addImage.png" press="doAddIdentifier"/> </f:fields>
+	   </f:FormElement>
+	</f:formElements> </f:FormContainer>
+        </f:formContainers>
+</f:Form>
+</Panel>
+<Panel id="topPanel">
+
+	  <headerToolbar><OverflowToolbar height="3rem">
+		<ToolbarSpacer width="20%" />
+		<CheckBox id="ChckBox1" text="{PConfig6>Print_GetExistingPrinter}" selected="true" select="GetExistingPrinter" />
+		<ToolbarSpacer />
+              	<Button id="PrintID" width="7%" type="Accept" class="sapUiLargeMarginEnd" text="{PConfig12>Print_Print}" icon="sap-icon://print" enabled="true" press="doPrint"/> 
+              	<Button id="btnClearPrint" width="7%" text="{PConfig13>GI_ComponentList_Reset}" press="doClearPrint" icon="sap-icon://reset"/> 
+		<ToolbarSpacer width="8%" />
+	  </OverflowToolbar></headerToolbar>
+<f:Form id="printerConfig" minWidth="1024" maxContainerCols="2" editable="true">
+        <f:layout>
+          <f:ResponsiveGridLayout labelSpanL="4" labelSpanM="5"
+            emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1" />
+        </f:layout>
+        <f:formContainers>
+	<f:FormContainer> <f:formElements> <f:FormElement label="{PConfig7>Print_Printer}">
+                <f:fields>
+                  <Select id ="PrinterDesc"  change="PrinterValidation"  width="30%"  items="{path: '/Rowset/Row'}"><items> <core:Item key="{PRINTER_DESC}" text="{PRINTER_DESC}" /> </items> </Select>
+                 </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+
+	<f:FormContainer> <f:formElements> <f:FormElement label="{PConfig8>Print_Template}">
+                <f:fields>
+                  <Select id ="Template"  change="TemplateValidation"  width="30%"  items="{path: '/Rowset/Row'}"><items> <core:Item key="{GLOBAL_TEMPLATE}" text="{GLOBAL_TEMPLATE}" /> </items> </Select>
+                 </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+<!-- <f:FormContainer>
+            <f:formElements>
+	<f:FormElement label="Material Type" visible="false">
+                <f:fields>
+                  <Select id ="MaterialTypeID"  width="30%"  visible="false" enabled="false" items="{path: '/Rowset/Row'}"><items> <core:Item key="{MATERIAL_TYPE}" text="{MATERIAL_TYPE}" /> </items> </Select>
+	
+                 </f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer> -->
+	<f:FormContainer> <f:formElements> <f:FormElement label="{PConfig9>ECCLabel_PrinterIP}">
+                <f:fields>
+              	<Input id ="PrinterIP" height ="4%"  width="30%"   value ="" change="PrinterIPValidation" placeholder="printername.aoa.nestle.com"  tooltip="printername.aoa.nestle.com" />
+                 </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+	<f:FormContainer> <f:formElements> <f:FormElement label="{PConfig10>ECCLabel_PrinterPort}">
+                <f:fields>
+              	<Input id ="PrinterPort" height ="4%"  width="30%"  value ="" change="PrinterPortValidation" />
+                 </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+
+	<f:FormContainer> <f:formElements> <f:FormElement label="{PConfig11>CustomGR_GR_16}">
+                <f:fields>
+              	<Input id ="copies" height ="4%"  width="30%"  liveChange="validateNoOfPrintCopies" />
+                 </f:fields>
+	</f:FormElement> </f:formElements> </f:FormContainer>
+</f:formContainers>
+ </f:Form>
+
+	  <!--<OverflowToolbar height="3rem">
+		<ToolbarSpacer />
+              	<Button id="PrintID" width="10%" type="Accept" text="{PConfig12>Print_Print}" icon="sap-icon://print" enabled="true" press="doPrint"/> 
+		<ToolbarSpacer />
+	  </OverflowToolbar>-->
+</Panel>
+		</u:content>
+			</u:Shell>
+		</Page>
+
+</mvc:View>

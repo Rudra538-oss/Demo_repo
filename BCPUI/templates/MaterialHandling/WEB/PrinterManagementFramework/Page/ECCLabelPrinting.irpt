@@ -1,0 +1,50 @@
+ <!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="expires" content="0">
+		<script src="/sapui5/resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.m,sap.ui.core"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- only load the mobile lib "sap.m" and the "sap_mvi" theme -->
+	<input id="login" type="hidden" value="{IllumLoginName}"></input>
+	<input id="firstname" type="hidden" value="{Firstname}"></input>
+	<input id="lastname" type="hidden" value="{Lastname}"></input>
+	<input id="machine" type="hidden" value="{Machine}"></input>
+<script type="text/javascript">
+document.write('<scr'+'ipt src="/XMII/CM/MaterialHandling/PrinterManagementFramework/JS/ECCLabelPrinting.controller.js?'+Math.random()+'" type="text/javascript"></scr'+'ipt>');
+document.write('<scr'+'ipt src="/XMII/CM/MaterialHandling/Common/JS/app.js?'+Math.random()+'" type="text/javascript"></scr'+'ipt>');
+</script>
+		<script>
+				//sap.ui.localResources("nav");
+			
+				jQuery.sap.registerModulePath("JS", "/XMII/CM/MaterialHandling/PrinterManagementFramework/JS");
+	
+				var page = sap.ui.view({id:"idECCLabelPrinting", viewName:"JS.ECCLabelPrinting", type:sap.ui.core.mvc.ViewType.XML});
+				//var page2 = sap.ui.view({id:"idview2", viewName:"nav.view2", type:sap.ui.core.mvc.ViewType.XML});
+				
+				var app = new sap.m.App("idapp1",{initialPage:"idECCLabelPrinting"});
+				
+				app.addPage(page);
+				app.placeAt("content");
+
+		</script>
+
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+
+<style>
+#__page0-cont{
+background-image : linear-gradient(to bottom, #2da9b1 0px, #178299 50%, #1a4c7d 100%);
+}
+</style>
+</html>

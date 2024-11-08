@@ -1,0 +1,667 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:microchart="sap.suite.ui.microchart"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified" controllerName="JS.ComponentList"
+	xmlns:f="sap.ui.layout.form" xmlns:table="sap.ui.table" xmlns:html="http://www.w3.org/1999/xhtml">
+	<html:style>.sapUiUfdShellHeadItmSep.sapUiUfdShellHeadItm{
+		width: 124px;
+		}
+		.sapUiUfdShellHeadItm>span>img {
+		margin-top: 0px;
+		width: 110px;
+		height: 40px;
+		border-width: 0;
+		}
+		.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+		max-height: 30px;
+		max-width: 150px;
+		vertical-align: middle;
+		}
+		.__mbox-btn-0-content {
+		width: 40px;
+		}
+		.sapUiTableColHdrCnt{
+		border-color: grey;
+		border-bottom-width: 2px;
+		background-image: linear-gradient(to bottom,white, #dedede);
+		}
+		
+		#ComponentList--label_header3{
+		font-size: 20px;
+		font-family: Times New Roman;
+		}
+		#__label1{
+		margin-top: 0px !important;
+		}
+		.sapMInputBaseInner{
+		padding-bottom:1.5%;
+		}
+		#ComponentList--barsscc-inner{
+		padding-bottom:0px;
+		}
+		.sapMPITextLeft { 
+   		float : none;  
+		}
+		
+		.sapMPIBarNeutral {
+		background: #008bc7;
+		}
+		#__item0{
+		width: 53px;
+		}
+		.sapMBtnEmphasized.sapMBtnInner {
+		
+		font-weight:bold;
+		
+		}
+		
+		#ComponentList--SaveDefault-inner
+		{
+		background-color: grey;
+		}
+		#ComponentList--Reset-img
+		{
+		color: orangered;
+		}
+		#ComponentList--SaveDefault-img
+		{
+		color: mediumblue;
+		}
+		#ComponentList--Reset-inner
+		{
+		background-color: grey;
+		}
+		#ComponentList--DeviceInfo-img
+		{
+		color: dodgerblue;
+		}
+		#ComponentList--DeviceInfo-inner
+		{
+		background-color: grey;
+		}
+		
+		#ComponentList--CResvId-img
+		{
+		color: red;
+		}
+		#ComponentList--GMId-img
+		{
+		color: green;
+		}
+		#ComponentList--btnECCGMId-img
+		{
+		color: royalBlue;
+		}
+		#ComponentList--camerascan-img{
+		color: green;
+		font-size:x-large;
+		}
+		
+		.sapborder{
+		background-color: transparent;
+		font-weight:bold;
+		font-size: 1.0rem;
+		
+		}
+		#stageHistoryDialogID-header{
+		background: linear-gradient(to
+		bottom,lightcyan,powderblue);
+		font-weight:bold;
+		}
+		#GIStageDialogBtnID-inner{
+		background: linear-gradient(to
+		bottom,green,darkgreen);
+		
+		}
+		#GIStageDialogID-footer{
+		background: linear-gradient(to
+		bottom,gray,black);
+		
+		
+		}
+		#GIStageDialogID-header{
+		background: linear-gradient(to
+		bottom,lightcyan,powderblue);
+		font-weight:bold;
+		}
+		#GIStageDialogID-title-inner{
+		color:black;
+		font-size: 20px;
+		font-family: Times New Roman;
+		}
+		#ComponentList--barsscc{
+		min-width:200px;
+		}
+		.sapborderRes{
+		background-color: transparent;
+		font-weight:bold;
+		font-size: 1.0rem;
+		font-stretch:semi-condensed;
+		}
+		.sapMPanelContent {
+		padding: 0rem;
+		}
+		#ComponentList--Form15--Grid{
+		padding: 0rem;
+		}
+		#ComponentList--ProcessOrder-inner{
+		width:50%;
+		}
+		#__label1{
+		margin-top:50%;
+		}
+		.borderButton{
+		background-color: aliceblue;
+		border-radius: 15px;
+		border-color: steelblue;
+		}
+		#ComponentList--GMId-inner{
+		background-color: aliceblue;
+		border-radius: 15px;
+		border-color: steelblue;
+		}
+		#ComponentList--btnECCGMId-inner{
+		background-color: aliceblue;
+		border-radius: 15px;
+		border-color: steelblue;
+		}
+		#ComponentList--getPalletID-inner{
+		
+		border-color: aliceblue;
+		}
+		#ComponentList--camerascan-inner{
+		background-color: aliceblue;
+		border-radius: 15px;
+		border-color: green;
+		border-width:2px;
+		
+		}
+		#ComponentList--CResvId-inner{
+		background-color: aliceblue;
+		border-radius: 15px;
+		border-color: darkorange;
+		}
+		#ComponentList--ProlistBtn-inner{
+		background-color: mintcream;
+		border-radius: 15px;
+		border-color: green;
+		}
+		#ComponentList--IdocBtn-inner{
+		background-color: whitesmoke;
+		border-radius: 15px;
+		border-color: steelblue;
+		}
+		#ComponentList--TODashboardBtn-inner{
+		background-color: whitesmoke;
+		border-radius: 15px;
+		border-color: steelblue;
+		}	
+		#ComponentList--HisttBtn-inner{
+		background-color: whitesmoke;
+		border-radius: 15px;
+		border-color: steelblue;
+		}
+		#ComponentList--Refresh-inner{
+		background-color: aliceblue;
+		border-radius: 15px;
+		border-color: steelblue;
+		}
+		#ComponentList--okID-inner{
+		border-color: black;
+		border-radius: 15px;
+		font-weight:bold;
+		height:90%;	
+		}
+		#ComponentList--SaveDefault-inner{
+		background: white;
+		border-color: grey;
+		}
+		#ComponentList--DeviceInfo-inner{
+		background: white;
+		border-color: #7cb342;
+		}
+		#ComponentList--Reset-inner{
+		background: white;
+		border-color: grey;
+		}
+		#ComponentList--Refresh-img
+		{
+		font-size: 23px;
+		color: dodgerblue;
+		}
+		#ComponentList--Reset{
+		background-color: white;
+		}
+		.sapMLabel{
+		font-weight: bold;
+		white-space:normal;
+		}
+		#textForConfirm1{
+		color: fireBrick;
+		font-weight:bold;
+		font-size: medium;
+		}
+		#textForConfirm2{
+		font-size: x-large;
+		padding-top: inherit;
+		}
+		#textForCamera{
+		color: #01579b;
+		font-weight:bold;
+		font-size: medium;
+		}
+		#dialogForDeviceInfo-scrollCont{
+		text-align: center;
+		}
+		.RearClass{
+		background-color: brown !important;
+		font-weight:bold;
+		}
+		#dialogForDeviceInfo-icon{
+		color:dodgerblue;
+		}
+		#ComponentList--barsscc-inner{
+		border-width:2.5px;
+		
+		}
+		#CompMatDesc-inner{
+  		  font-size: larger;
+    		font-weight: bold;
+  		  color: steelblue;
+		}
+		.warningInputtxt .sapMInputBaseInner{
+		
+		color:fireBrick;
+		font-weight:bold;
+		font-size:larger;
+		}
+		.availableInputtxt .sapMInputBaseInner{
+		
+		color:green;
+		font-weight:bold;
+		font-size:larger;
+		}
+			
+		
+		
+	</html:style>
+	<!-- Test comment for source control -->
+	<Page id="pageID" class="Background" showHeader="false" title="Setup">
+		<u:Shell id="shell3" icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+			<u:headItems>
+				<u:ShellHeadItem tooltip="{CompList1>NPDashboard_Back}"
+					icon="sap-icon://nav-back" visible="true" press="goHome" />
+			</u:headItems>
+			<u:headEndItems>
+				<u:ShellHeadItem id="bcpStatus" icon=""
+					tooltip="{CompList2>InBndMatRecpt_title_BCP}" press="" />
+			</u:headEndItems>
+			<u:user>
+				<u:ShellHeadUserItem image="sap-icon://person-placeholder"
+					showPopupIndicator="false" username="Karl Mustermann" press="logoff" />
+			</u:user>
+			<u:search>
+				<Label id="label_header3" text="{CompList3>CustomGI_CL_1}"
+					design="Bold" />
+			</u:search>
+			<u:content>
+
+				<panel id="1stPanel">
+				<f:Form id="FormTop"   
+            editable="false">
+
+        <f:layout>
+           <f:ResponsiveGridLayout
+	labelSpanL="4"
+            labelSpanM="4"
+             labelSpanS="4"
+	emptySpanL="0"
+            emptySpanM="0"
+         columnsL="4"
+            columnsM="4"
+          />
+        </f:layout>
+	
+        <f:formContainers>
+
+<f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{CompList24>NPDashboard_Line}">
+                  <f:fields>
+                  <Input class="sapborderRes" editable="false" id ="resDes" value =""  />
+	
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+
+	
+	  <f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{CompList4>CustomGR_GRR_2}" design="Bold">
+                  <f:fields>
+                  <Input class="sapborder" editable="false" id ="ProcessOrder"  width="300px" fieldWidth="30px"  value ="" style="border:none" />
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+
+	
+	<f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{CompList5>CustomGI_CL_3}" design="Bold">
+                  <f:fields>
+                  <Input class="sapborder" editable="false" id ="Material" width="200px" fieldWidth="25px"  value ="" change="poInput" />
+		 
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+
+		<f:FormContainer>
+               <f:formElements>
+	   <f:FormElement >
+                  <f:fields>
+                
+		  <Input class="sapborderRes" editable="false" id ="MatDes" fieldWidth="80px"  value ="" change="poInput" />
+                  </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+			 
+			 </f:formContainers>
+</f:Form>
+				</panel>
+				<panel id="topPanel" expandable="true" expanded="true">
+
+					<headerToolbar>
+						<OverflowToolbar height="2.7rem" id="toolbar3">
+							<Label text="{CompList5>TransferDisplay_title_SelectCriteria}"
+								design="Bold" />
+							<ToolbarSpacer />
+						<Button id="DeviceInfo" visible="true"
+								text="{CompList30>RearCam_DevInfo}" icon="sap-icon://add-photo"
+								 press="getDeviceInfo" />
+							<Button id="SaveDefault" visible="true"
+								text="{CompList22>NPDashboard_SaveDefault}" icon="sap-icon://user-settings"
+								width="9.5rem" press="doSaveReport" />
+							<Button id="Reset" visible="true"
+								text="{CompList23>GI_ComponentList_Reset}" icon="sap-icon://reset"
+								width="7.5rem" press="doReset" />
+						</OverflowToolbar>
+					</headerToolbar>
+					<f:Form id="Form1" editable="false">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanL="4"
+								labelSpanM="3" emptySpanL="0" emptySpanM="0" columnsL="4"
+								columnsM="4" />
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement label="{CompList19>POReport_Phase}"
+										design="Bold">
+										<f:fields>
+											<HBox>
+												<MultiComboBox id="PhaseNum" selectionChange="handleSelectionChangePhase"
+													selectionFinish="getSelectedValuesForPhase" items="{path: '/Rowset/Row'}"
+													enabled="true" width="140px" style="border:none">
+													<items>
+														<core:Item key="{Phase}" text="{Phase}" />
+													</items>
+												</MultiComboBox>
+												<CheckBox id="allChckBox1" text="All" selected="false"
+													enabled="true" select="ChartMultiComboSelection1" class="sapUiSmallMarginBegin" />
+											</HBox>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement label="{CompList20>TransferDisplay_label_SType}"
+										design="Bold">
+										<f:fields>
+											<HBox>
+												<MultiComboBox id="SType" selectionChange="handleSelectionChangeSType"
+													selectionFinish="getSelectedValuesForSType" items="{path: '/Rowset/Row'}"
+													enabled="true" width="140px">
+													<items>
+														<core:Item key="{SType}" text="{SType}" />
+													</items>
+												</MultiComboBox>
+												<CheckBox id="allChckBox2" text="All" selected="false"
+													enabled="true" select="ChartMultiComboSelection2" class="sapUiSmallMarginBegin" />
+											</HBox>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement label="{CompList21>TransferDisplay_label_SBin}"
+										design="Bold">
+										<f:fields>
+											<HBox>
+												<MultiComboBox id="SBin" selectionChange="handleSelectionChangeBin"
+													selectionFinish="getSelectedValuesForsBin" items="{path: '/Rowset/Row'}"
+													enabled="true" width="140px">
+													<items>
+														<core:Item key="{SBin}" text="{SBin}" />
+													</items>
+												</MultiComboBox>
+												<CheckBox id="allChckBox3" text="All" selected="false"
+													enabled="true" select="ChartMultiComboSelection3" class="sapUiSmallMarginBegin" />
+											</HBox>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement label="">
+										<f:fields>
+											<Button id="Refresh" text="Refresh" icon="sap-icon://synchronize"
+												width="70%" enabled="true" visible="true" press="getComponentReport" />
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement label="">
+										<f:fields>
+									<Button text="Camera"  enabled="true" visible="true" icon="sap-icon://camera"
+								id="camerascan" width="65%" press="onCameraScanDialog" />
+											
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement label="" >
+										<f:fields>
+											<Button  text="{GMReport21>GMReport_ECCGoodsMvmt}" icon="sap-icon://sap-box"
+								id="btnECCGMId"  enabled="true" width="65%" visible="true"
+								press="goToECCGM" />
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement label="">
+										<f:fields>
+										<Button text="{CompList13>CustomGI_CL_12}" icon="sap-icon://excel-attachment"
+								 enabled="true" visible="true" id="GMId" width="65%" press="doReport" />
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+								
+						
+							
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement label="">
+										<f:fields>
+
+												<Button text="{CompListCR1>Custom_GI_ClearReserve}" icon="sap-icon://cancel"
+								 enabled="true" visible="true" id="CResvId" width="70%"
+								press="onClearReservation" />	
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</panel>
+				<panel id="tabelPanel" headerText="" 
+					>
+					<headerToolbar>
+						<OverflowToolbar height="3rem" id="toolbar1">
+							<Button  text="{CompList25>GI_Stage_Pallets}" width="7%" type="Emphasized"
+								icon="sap-icon://detail-view" enabled="true" visible="false" id="getPalletID" press="getAvlPallets" />
+							<Input id="barsscc" editable="true" enabled="true" width="20%" placeholder="{CompList14>CustomGI_CL_13}"
+								 value="" />
+							<Button text="{CompList15>NPM_COMMON_OK}" width="5%" type="Accept"
+								icon="sap-icon://bar-code" enabled="true" visible="true" id="okID" press="OKID" />
+							
+							<ToolbarSpacer />
+							<Button text="{CompListIdoc>TO_DashboardTitleHdr}" 
+								 enabled="true" visible="true" id="TODashboardBtn" width="150px"
+								press="onTODashboard" />
+							<Button text="{CompListIdoc>GI_Stage_IdocList}" 
+								 enabled="true" visible="true" id="IdocBtn" width="150px"
+								press="onIDOClist" />
+							<Button text="{CompListHistory>GI_Stage_History}" 
+								 enabled="true" visible="true" id="HisttBtn" width="10%"
+								press="getStageHistory" />
+							<Button text="{CompListCRS1>GI_Stage_Prolist}" 
+								 enabled="true" visible="true" id="ProlistBtn" width="10%"
+								press="onProlist" />
+							<SearchField id="Search"
+								icon="/XMII/CM/PerformanceManagement/ChangeoverMatrix/Image/Search.png"
+								enabled="true" visible="true" width="20%" text="{CompList6>CustomGI_CL_4}"
+								liveChange="onSearch" />
+						</OverflowToolbar>
+					</headerToolbar>
+					<content>
+						<table:Table id="ComponentTable" rows="{/Rowset/Row}"
+							selectionMode="Single" selectionBehavior="RowOnly" visible="true"
+
+							visibleRowCount="7">
+							<table:columns>
+								<table:Column hAlign="Center" visible="true" 
+									sortProperty="MaterialItem" filterProperty="MaterialItem">
+									<Label text="Material Item" />
+									<table:template>
+										<Text text="{MaterialItem}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true"
+									sortProperty="Material" filterProperty="Material">
+									<Label text="{CompList7>CustomGI_CL_10}" />
+									<table:template>
+										<Text text="{Material}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width="19%"
+									sortProperty="MaterialDes" filterProperty="MaterialDes">
+									<Label text="{CompList8>CustomGI_CL_11}" />
+									<table:template>
+										<Text text="{MaterialDes}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" 
+									sortProperty="PredefinedBatch" filterProperty="PredefinedBatch">
+									<Label text="{CompList20>TransferDisplay_colHeader_batch}" />
+									<table:template>
+										<Text text="{PredefinedBatch}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width="5%"
+									sortProperty="Phase" filterProperty="Phase">
+									<Label text="{CompList19>POReport_Phase}" />
+									<table:template>
+										<Text text="{Phase}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width="5%"
+									sortProperty="StorageType" filterProperty="StorageType">
+									<Label text="{CompList16>NPM_COMMON_STORAGE_TYPE}" />
+									<table:template>
+										<Text text="{StorageType}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width="7%"
+									sortProperty="StorageBin" filterProperty="StorageBin">
+									<Label text="{CompList17>NPM_COMMON_STORAGE_BIN}" />
+									<table:template>
+										<Text text="{StorageBin}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true"
+									sortProperty="AvailableQuant" filterProperty="AvailableQuant">
+									<Label text="{CompList27>GI_Stage_AvlQuant}" />
+									<table:template>
+										<Text text="{AvailableQuant}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" 
+									sortProperty="ConsumedQuant" filterProperty="ConsumedQuant">
+									<Label text="{CompList9>CustomGI_CL_6}" />
+									<table:template>
+										<Text
+											text="{parts : [{path : 'ConsumedQuant'},{path:'ConsumedQuantUOM'}], formatter : '.getFormattedQuantityUOM'}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width="10%"  id="GIStageBar">
+									<Label text="{CompList21>GI_Stage_ColHdr}" />
+									<table:template>
+									<microchart:BulletMicroChart targetValue="{=Number(${Threshold})}" minValue="0" maxValue="{=Number(${ConsumedQuant})}" 
+									  size="S"  press="onStage">
+									<microchart:actual>
+									<microchart:BulletMicroChartData value="{=Number(${AvlQuantity})}" color="{ThresholdColor}"/>
+									</microchart:actual>
+									</microchart:BulletMicroChart>
+											
+									</table:template>
+								</table:Column>
+							<table:Column hAlign="Center" visible="true"  id="GIStage">
+									<Label text="{CompList21>GI_Stage_ColHdr}" />
+									<table:template>
+										<Button type="Accept" press="onStage" width="70px"
+											text="{CompList22>GI_Stage_ColRow}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width="11%"
+									sortProperty="RequiredQuant" filterProperty="RequiredQuant">
+									<Label text="{CompList10>CustomGI_CL_7}" />
+									<table:template>
+										<ProgressIndicator id="pi" class="progress"
+											 percentValue="{=Number(${PercentValue})}"
+											displayValue="{parts : [{path : 'RequiredQuant'}], formatter : 'sap.oee.ui.Formatter.formatQuantityValue'} of {parts : [{path : 'ConsumedQuant'},{path:'ConsumedQuantUOM'}], formatter : '.getFormattedQuantityUOM'} " 
+										 tooltip="{parts : [{path : 'RequiredQuant'}], formatter : 'sap.oee.ui.Formatter.formatQuantityValue'} of {parts : [{path : 'ConsumedQuant'},{path:'ConsumedQuantUOM'}], formatter : '.getFormattedQuantityUOM'} "
+											showValue="true" state="{=Number(${PercentValue})&lt; 100 ?'Success': 'Error'}" />
+											
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width="9%"
+									sortProperty="SType" filterProperty="SType">
+									<Label text="{CompList11>CustomGI_CL_8}" />
+									<table:template>
+										<Button type="{=${Backflush}==='X' ? 'Reject' : 'Emphasized'}" press="onPress" width="80%"
+											text="{=${Backflush}==='X' ? ${CompList23>POReport_BACKFLUSH} : ${Action}}" enabled="{=${Backflush}==='X' ? false : true}" />
+									</table:template>
+								</table:Column>
+							</table:columns>
+						</table:Table>
+					</content>
+				</panel>
+			</u:content>
+		</u:Shell>
+	</Page>
+</mvc:View>

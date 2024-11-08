@@ -1,0 +1,721 @@
+<mvc:View
+    controllerName="JS.EmergencyProcessOrder"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+    xmlns:model="sap.ui.model"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:commons="sap.u.commons"
+    xmlns:u="sap.ui.unified"
+
+xmlns:viz="sap.viz.ui5.controls"
+
+
+xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+xmlns:viz.data="sap.viz.ui5.data"
+
+
+    xmlns:s="sap.suite.ui.commons"
+    xmlns:m="sap.m"
+    xmlns:ux3="sap.ui.ux3"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+    <html:style>
+
+
+
+</html:style>
+    <Page
+      id="pageID" class="Background"
+      showHeader="false"
+      title="Setup" >
+        <u:Shell
+         id="shell3"
+         icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+            <u:headItems>
+                <u:ShellHeadItem
+               tooltip="{title1>NPDashboard_Home}"
+               icon="sap-icon://nav-back"
+               visible="true"
+               press="goHome" />
+            </u:headItems>
+            <u:headEndItems>
+                <u:ShellHeadItem
+               id="bcpStatus"
+               icon=""
+               tooltip="{title2>InBndMatRecpt_title_BCP}"
+               press="" />
+            </u:headEndItems>
+            <u:user>
+                <u:ShellHeadUserItem
+               image="sap-icon://person-placeholder"
+               showPopupIndicator="false"
+               username="Karl Mustermann"
+               />
+            </u:user>
+            <u:search>
+                <HBox>
+                    <Label id="label_header3" text="{title3>EPO_EmergencyProcessOrder}"
+					design="Bold" />
+                   
+                </HBox>
+            </u:search>
+            <u:content>
+                <IconTabBar 
+				id="idIconTabBar"  
+				stretchContentHeight="true"
+				backgroundDesign="Transparent"
+				applyContentPadding="false"	
+				expandable="false"
+				visible="true"
+                                                 select="doSwitchTab"	
+				class="sapMITBContent">
+                    <items>
+                        <IconTabFilter id="CreatePOTab" icon="sap-icon://add-product"  visible="true"  text="{title5>EPO_CreatePO}"  >
+                            <Panel id="selectionPanel" expanded="true">
+                                <content>
+                                    <l:Grid defaultSpan="L12 M12 S12" width="auto">
+                                        <l:content>
+                                            <f:Form id="Form" minWidth="800" maxContainerCols="2"
+									editable="true">
+                                                <f:layout>
+                                                    <f:ResponsiveGridLayout labelSpanL="5"
+											labelSpanM="5" emptySpanL="0" emptySpanM="0" columnsL="5"
+											columnsM="5" />
+                                                </f:layout>
+                                                <f:formContainers>
+  <f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{NHPortal5>NPDashboard_Line}">
+                  <f:fields>
+	<ComboBox id="workcenter1" items="{path: '/Rowset/Row'}" design="Bold" selectionChange="ResourceChangeCreate">
+				<core:Item key="{NODE_ID}" text="{DESCRIPTION}" />
+			          </ComboBox>         
+                </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+                                                    <f:FormContainer>
+                                                        <f:formElements>
+                                                            <f:FormElement id="mat"
+													label="{label1>NPM_COMMON_ORD_MATERIAL}">
+                                                                <f:fields>
+                                                                    <Input id="Inputmat" value="" width="110px" />
+                                                                </f:fields>
+                                                            </f:FormElement>
+                                                        </f:formElements>
+                                                    </f:FormContainer>
+                                                    <f:FormContainer>
+                                                        <f:formElements>
+                                                            <f:FormElement id="StartDateLabel"
+													label="{label2>EPO_StartTime}">
+                                                                <f:fields>
+                                                                    <DatePicker id="StartDate" type="Date" 
+															valueFormat="MM/dd/yyyy 00:00:00" placeholder="Select Date"
+															width="" change="handleStartDateChange" />
+                                                                </f:fields>
+                                                            </f:FormElement>
+                                                        </f:formElements>
+                                                    </f:FormContainer>
+                                                    <f:FormContainer>
+                                                        <f:formElements>
+                                                            <f:FormElement id="EndDateLabel"
+													label="{label3>EPO_EndTime}">
+                                                                <f:fields>
+                                                                    <DatePicker id="EndDate" type="Date"
+															valueFormat="MM/dd/yyyy 00:00:00" placeholder="Select Date"
+															change="handleEndDateChange" />
+                                                                </f:fields>
+                                                            </f:FormElement>
+                                                        </f:formElements>
+                                                    </f:FormContainer>
+                                                    <f:FormContainer>
+                                                        <f:formElements>
+                                                            <f:FormElement label="">
+                                                                <f:fields>
+                                                                    <Button id="DisplayData" text="{button1>TransferDisplay_btn_disp}" icon="sap-icon://provision" width="110px" enabled="true" visible="true" press="DisplayCreateTableData"/>
+                                                                </f:fields>
+                                                            </f:FormElement>
+                                                        </f:formElements>
+                                                    </f:FormContainer>
+                                                </f:formContainers>
+                                            </f:Form>
+                                        </l:content>
+                                    </l:Grid>
+                                </content>
+                            </Panel>
+                            <panel id="CreatePOPanel" headerText="" expandable="false" expanded="true" visible="true">
+                                <headerToolbar>
+                                    <Toolbar height="3rem" id="toolbar1">
+                                        <ToolbarSpacer/>
+                                        <SearchField 
+							id="searchFieldTableId"
+							icon="/XMII/CM/PerformanceManagement/ChangeoverMatrix/Image/Search.png"
+							enabled="true"
+							visible="true"
+							width="300px"
+							text = "Search"			
+							liveChange="onSearch"/>
+                                    </Toolbar>
+                                </headerToolbar>
+                                <table:Table 
+							id="CreatePOTable"
+							rows="{/Rowset/Row}"
+							selectionMode="Single"
+							selectionBehavior="Row"
+							visible="true"	
+							visibleRowCount="10">
+                                    <table:columns>
+                                        <table:Column hAlign="Center" visible="true" width = "60px" 
+                                       filterProperty="MATERIAL"  
+                                       sortProperty="MATERIAL" >
+                                            <Label text="{label1>NPM_COMMON_ORD_MATERIAL}" />
+                                            <table:template>
+                                                <Text text="{MATERIAL}" />
+                                            </table:template>
+                                        </table:Column>
+                                        <table:Column hAlign="Center" visible="true" width = "90px"  
+                                     filterProperty="PV"  
+                                       sortProperty="PV">
+                                            <Label text="{column4>EPO_ProductionVersion}" />
+                                            <table:template>
+                                                <Text text="{PV}" />
+                                            </table:template>
+                                        </table:Column>
+                                        <table:Column hAlign="Center" visible="true" width = "80px" 
+                                       filterProperty="RESOURCE"  
+                                       sortProperty="RESOURCE">
+                                            <Label text="{column5>NPDashboard_Resource}" />
+                                            <table:template>
+                                                <Text text="{RESOURCE}" />
+                                            </table:template>
+                                        </table:Column>
+                                        <table:Column hAlign="Center" visible="true" width = "100px" 
+                                       filterProperty="MATERIALDESC"  
+                                       sortProperty="MATERIALDESC"	>
+                                            <Label text="{column3>CustomGI_CL_5}" />
+                                            <table:template>
+                                                <Text text="{MATERIALDESC}" />
+                                            </table:template>
+                                        </table:Column>
+                                        <table:Column hAlign="Center" visible="true" width = "80px" 
+                                       filterProperty="LASTUSED"  
+                                       sortProperty="LASTUSED">
+                                            <Label text="{column7>CustomGI_PO_7}" />
+                                            <table:template>
+                                                <Text text="{parts : [{path: 'LASTUSED'}],  formatter : '.getDateDisplayFormat' }" />
+                                            </table:template>
+                                        </table:Column>
+                                        <table:Column hAlign="Center" visible="true" width = "90px" 
+                                       filterProperty="PROCESSORDER"  
+                                       sortProperty="PROCESSORDER" >
+                                            <Label text="{column1>EPO_LastProcessOrder}" />
+                                            <table:template>
+                                                <Text text="{PROCESSORDER}" />
+                                            </table:template>
+                                        </table:Column>
+                                        <table:Column hAlign="Center" visible="true" width = "60px" 
+                                       filterProperty="QUANTITY"  
+                                       sortProperty="QUANTITY">
+                                            <Label text="{column6>CustomGI_CM_6}" />
+                                            <table:template>
+                                                <Text text="{QUANTITY} {UOM}" />
+                                            </table:template>
+                                        </table:Column>
+
+                                        <table:Column hAlign="Center" visible="true" width = "110px" 
+                                       filterProperty="CR"  
+                                       sortProperty="CR">
+                                            <Label text="{column8>EPO_ControlRecipe}" />
+                                            <table:template>
+                                                <Link id="id_CR" text="{CR}" press="getCRXML"/>
+                                            </table:template>
+                                        </table:Column>
+                                        <table:Column hAlign="Center" visible="true" width = "80px" 
+                                       filterProperty="CREATE_PO"  
+                                       sortProperty="CREATE_PO">
+                                            <Label text="{title5>EPO_CreatePO}" />
+                                            <table:template>
+                                                <Button id="Create" text="{column24>EPO_UI_CREATE}" type="Emphasized" icon="sap-icon://write-new"  width="120px" enabled="true" visible="true" press="CreateEPO"/>
+                                            </table:template>
+                                        </table:Column>
+                                    </table:columns>
+                                </table:Table>
+                            </panel>
+                        </IconTabFilter>
+                     
+                      
+ <IconTabFilter id="GIGR_Tab" icon="sap-icon://accounting-document-verification" visible="false"  text="{title12>EPO_UI_GIGR}" >
+                            <panel id="GIGRPanel" headerText="" expandable="false" expanded="true" visible="true">
+                                <headerToolbar>
+                                    <Toolbar height="3rem" id="toolbar5">
+                                        <ToolbarSpacer/>
+
+                  
+                                        <SearchField 
+							id="searchFieldGIGRTableId"
+							icon="/XMII/CM/PerformanceManagement/ChangeoverMatrix/Image/Search.png"
+							enabled="true"
+							visible="true"
+							width="300px"
+							text = "Search"			
+							liveChange="onReportSearch"/>
+                                    </Toolbar>
+                                </headerToolbar>
+                                <table:Table 
+							id="GIGR_TableId"
+							rows="{/Rowset/Row}"
+							selectionMode="Single"
+							selectionBehavior="Row"
+							visible="true"	
+							visibleRowCount="20">
+                                    <table:columns>
+                                  
+
+   <table:Column hAlign="Center" visible="true" width = "90px" 
+                                       filterProperty="EmergencyPO"  
+                                       sortProperty="EmergencyPO" >
+                                            <Label text="{title7>EPO_UI_EmergencyPO}" />
+                                            <table:template>
+                                                <Text text="{EmergencyPO}" />
+                                            </table:template>
+                                        </table:Column>
+                                           <table:Column hAlign="Center" visible="true" width = "90px" 
+                                       filterProperty="SourcePO"  
+                                       sortProperty="SourcePO" >
+                                            <Label text="{column12>EPO_SourceEPO}" />
+                                            <table:template>
+                                                <Text text="{SourcePO}" />
+                                            </table:template>
+                                        </table:Column>
+ <table:Column hAlign="Center" visible="true" width = "90px" 
+                                       filterProperty="AssignedPO"  
+                                       sortProperty="AssignedPO" >
+                                            <Label text="{column13>EPO_AssignedEPO}" />
+                                            <table:template>
+                                                <Text text="{AssignedPO}" />
+                                            </table:template>
+                                        </table:Column>
+                                   
+ <table:Column hAlign="Center" visible="true" width = "100px" 
+                                       filterProperty=""  
+                                       sortProperty="" >
+                                            <Label text="{column34>RF_GRT_HDR}" />
+                                            <table:template>
+
+
+                            
+
+	                              
+ 	 
+													 <HBox>
+  <ToolbarSpacer width="30px"/>    
+                                            <core:Icon size="20px" src="sap-icon://receipt"  color="green" press="GRpushIcon" />   <Text
+text="{column35>EPO_UI_GRProcess}" />  
+                       <ToolbarSpacer width="30px"/>    
+
+
+<core:Icon size="20px" src="sap-icon://message-information"  color="deepskyblue" press="GRIcon" />   
+  <ToolbarSpacer width="30px"/>    
+
+
+<core:Icon size="20px" src="sap-icon://detail-view"  color="orange"/>            
+</HBox>
+		
+	                              
+ 
+                                            </table:template>
+                                        </table:Column>
+      <table:Column hAlign="Center" visible="true" width = "100px" 
+                                       filterProperty=""  
+                                       sortProperty="" >
+                                            <Label text="{column33>RF_GI_SCANSC_LBL}" />
+                                            <table:template>
+<HBox>
+                  <ToolbarSpacer width="30px"/>                                  
+    <core:Icon size="20px" src="sap-icon://manager-insight"  color="green" press="GIpushIcon"  /> 
+ <Text
+text="{column36>EPO_UI_GIProcess}" />  
+	                  <ToolbarSpacer width="30px"/>    
+
+
+<core:Icon size="20px" src="sap-icon://message-information"   color="deepskyblue"  />   
+  <ToolbarSpacer width="30px"/>    
+
+
+<core:Icon size="20px" src="sap-icon://detail-view"  color="orange" />                 
+  
+                                           
+</HBox>
+                                            </table:template>
+                                        </table:Column>
+                                    </table:columns>
+                                </table:Table>
+                            </panel>
+                        </IconTabFilter>
+   <IconTabFilter id="ReportEPO" icon="sap-icon://accelerated" visible="true"  text="{title11>EPO_ReportPO}" >
+                            <panel id="ReportEPOTable" headerText="" expandable="false" expanded="true" visible="true">
+                                <headerToolbar>
+                                    <Toolbar height="3rem" id="toolbar4">
+                                       
+	<ComboBox id="workcenter2" items="{path: '/Rowset/Row'}" design="Bold" selectionChange="ResourceChangeReport" width="290px">
+				<core:Item key="{NODE_ID}" text="{DESCRIPTION}" />
+			          </ComboBox>  
+
+		<Button
+			id="getReportRefresh"
+			icon="/XMII/CM/MaterialHandling/Common/Images/Refresh.png"
+			enabled="true"
+			visible="true"
+			
+			width="50px"
+
+			press="ResourceChangeReport" />
+   <ToolbarSpacer/>  
+
+
+
+
+	<Button
+			id="getAuditReport"
+			icon="sap-icon://manager-insight"
+			enabled="true"
+			visible="true"
+			text = "{title29>EPO_UI_AUDIT}"
+			width="150px"
+
+			press="pressGetAuditReportFn" />
+                  	<Button
+			id="getExcelReport"
+			icon="sap-icon://excel-attachment"
+			enabled="true"
+			visible="true"
+			text = "{title13>CustomGR_GMReport_11}"
+			width="150px"
+
+			press="pressGetExcelReportFn" />
+	<Button
+			id="getEMMlink"
+			icon="sap-icon://heatmap-chart"
+			enabled="true"
+			visible="true"
+			text = "{title20>EPO_EMM_LINK}"
+			width="120px"
+			press="pressGetEMMLinkFn" />
+                                        <SearchField 
+							id="searchFieldReportTableId"
+							icon="/XMII/CM/PerformanceManagement/ChangeoverMatrix/Image/Search.png"
+							enabled="true"
+							visible="true"
+							width="300px"
+							text = "Search"			
+							liveChange="onReportSearch"/>
+                                    </Toolbar>
+                                </headerToolbar>
+                                <table:Table 
+							id="ReportEPO_TableId"
+							rows="{/Rowset/Row}"
+							selectionMode="Single"
+							selectionBehavior="Row"
+							visible="true"
+                                                                                    rowSelectionChange="onRowSelection"	
+							visibleRowCount="10">
+                                    <table:columns>
+                                        <table:Column hAlign="Center" visible="true" id="EmergencyPOColumn" width = "90px" 
+                                       filterProperty="EmergencyPO"  
+                                       sortProperty="EmergencyPO" >
+                                            <Label text="{title7>EPO_UI_EmergencyPO}" />
+                                            <table:template>
+                                            
+	<ObjectStatus text="{EmergencyPO}" state="{= ${AssignedPO}.indexOf('-') &gt; -1 ? 'Warning' : 'Success'}"/>	
+								
+                                            </table:template>
+                                        </table:Column>
+                                        <table:Column hAlign="Center" visible="true" width = "90px" 
+                                       filterProperty="SourcePO"  
+                                       sortProperty="SourcePO" >
+                                            <Label text="{column12>EPO_SourceEPO}" />
+                                            <table:template>
+                                                <Text text="{SourcePO}" />
+                                            </table:template>
+                                        </table:Column>
+                                        <table:Column hAlign="Center" visible="true" id="AssignedPOColumn" width = "80px" 
+                                       filterProperty="AssignedPO"  
+                                       sortProperty="AssignedPO" >
+                                            <Label text="{column13>EPO_AssignedEPO}" />
+                                            <table:template>
+                                                <Text text="{AssignedPO}" />
+                                            </table:template>
+                                        </table:Column>
+                                        <table:Column hAlign="Center" visible="true" width = "80px" 
+                                       filterProperty="Material"  
+                                       sortProperty="Material" >
+                                            <Label text="{label1>NPM_COMMON_ORD_MATERIAL}" />
+                                            <table:template>
+                                                <Text text="{Material}" />
+                                            </table:template>
+                                        </table:Column>
+                                        <table:Column hAlign="Center" visible="true" width = "120px" 
+                                       filterProperty="MAKTX"  
+                                       sortProperty="MAKTX"	>
+                                            <Label text="{column3>CustomGI_CL_5}" />
+                                            <table:template>
+                                                <Text text="{MAKTX}" />
+                                            </table:template>
+                                        </table:Column>
+                                        <table:Column hAlign="Center" visible="true" width = "120px"  
+                                     filterProperty="ProductionVersion"  
+                                       sortProperty="ProductionVersion">
+                                            <Label text="{column4>EPO_ProductionVersion}" />
+                                            <table:template>
+                                                <Text text="{ProductionVersion}" />
+                                            </table:template>
+                                        </table:Column>
+ <table:Column hAlign="Center" visible="true" width = "80px" 
+                                       filterProperty="Resource"  
+                                       sortProperty="Resource">
+                                            <Label text="{column5>NPDashboard_Resource}" />
+                                            <table:template>
+                                                <Text text="{Resource}" />
+                                            </table:template>
+                                        </table:Column>
+                                        <table:Column hAlign="Center" visible="true" width = "80px" 
+                                       filterProperty="Quantity"  
+                                       sortProperty="Quantity">
+                                            <Label text="{column6>CustomGI_CM_6}" />
+                                            <table:template>
+                                                <Text text="{Quantity} {Uom}" />
+                                            </table:template>
+                                        </table:Column>
+
+                                        <table:Column hAlign="Center" visible="true" width = "120px" 
+                                       filterProperty="PlannedStartDate"  
+                                       sortProperty="PlannedStartDate">
+                                            <Label text="{column7>EPO_UI_LAST_EXECUTION_DATE}" />
+                                            <table:template>
+                                                <Text text="{parts : [{path: 'PlannedStartDate'}],  formatter : '.getDateDisplayFormat' }" />
+                                            </table:template>
+                                        </table:Column>
+
+
+			 <table:Column hAlign="Center" visible="true" width = "120px" 
+                                       filterProperty="PlannedEndDate"  
+                                       sortProperty="PlannedEndDate">
+                                            <Label text="{column8>EPO_UI_END_DATE}" />
+                                            <table:template>
+                                                <Text text="{parts : [{path: 'PlannedEndDate'}],  formatter : '.getDateDisplayFormat' }" />
+                                            </table:template>
+                                        </table:Column>
+
+			 
+ <table:Column hAlign="Center" visible="true" width = "60px" 
+                                       filterProperty=""  
+                                       sortProperty="" >
+                                            <Label text="{column34>EPO_UI_GR}" />
+                                            <table:template>
+    
+<core:Icon size="20px" src="sap-icon://message-information"  color="deepskyblue" press="GRIcon" />   
+ 	                            
+                                            </table:template>
+                                        </table:Column>
+      <table:Column hAlign="Center" visible="true" width = "60px" 
+                                       filterProperty=""  
+                                       sortProperty="" >
+                                            <Label text="{column33>EPO_UI_GI}" />
+                                            <table:template>
+<core:Icon size="20px" src="sap-icon://message-information"   color="orange"  press="GIIcon" />   
+                         
+
+                                            </table:template>
+                                        </table:Column>
+                                    </table:columns>
+                                </table:Table>
+                            </panel>
+                        </IconTabFilter>
+  <IconTabFilter id="AssignPO" icon="sap-icon://dimension"  visible="true"  text="{title6>EPO_AssignPO}">
+                            <Panel id="selectionPanel1"  expanded="true">
+                                <content>
+                                    <l:Grid defaultSpan="L12 M12 S12" width="auto">
+                                        <l:content>
+                                            <f:Form id="Form2" minWidth="1000" maxContainerCols="2"
+									editable="true">
+                                                <f:layout>
+                                                    <f:ResponsiveGridLayout labelSpanL="5"
+											labelSpanM="5" emptySpanL="0" emptySpanM="0" columnsL="6"
+											columnsM="6" />
+                                                </f:layout>
+                                                <f:formContainers>
+  <f:FormContainer>
+               <f:formElements>
+	   <f:FormElement label="{NHPortal5>NPDashboard_Line}">
+                  <f:fields>
+	<ComboBox id="workcenter" items="{path: '/Rowset/Row'}" design="Bold" selectionChange="ResourceChangeAssign">
+				<core:Item key="{NODE_ID}" text="{DESCRIPTION}" />
+			          </ComboBox>         
+                </f:fields>
+                </f:FormElement>
+	 </f:formElements>
+             </f:FormContainer>
+                                                    <f:FormContainer>
+                                                        <f:formElements>
+                                                            <f:FormElement id="SAPPO"
+													label="{column9>EPO_SAPOrderNumber}">
+                                                                <f:fields>
+                                                                    <Input id="InputSAPPO" value="" width="100px" />
+                                                                </f:fields>
+                                                            </f:FormElement>
+                                                        </f:formElements>
+                                                    </f:FormContainer>
+                                                    <f:FormContainer>
+                                                        <f:formElements>
+                                                            <f:FormElement id="material2"
+													label="{label1>NPM_COMMON_ORD_MATERIAL}">
+                                                                <f:fields>
+                                                                    <Input id="Inputmat2" value="" width="100px" />
+                                                                </f:fields>
+                                                            </f:FormElement>
+                                                        </f:formElements>
+                                                    </f:FormContainer>
+                                                    <f:FormContainer>
+                                                        <f:formElements>
+                                                            <f:FormElement id="StartDateLabel1"
+													label="{label2>EPO_StartTime}">
+                                                                <f:fields>
+                                                                    <DatePicker id="StartDate1" type="Date"
+															valueFormat="MM/dd/yyyy 00:00:00" placeholder="Select Date"
+															width="" change="handleStartDateChange1" />
+                                                                </f:fields>
+                                                            </f:FormElement>
+                                                        </f:formElements>
+                                                    </f:FormContainer>
+                                                    <f:FormContainer>
+                                                        <f:formElements>
+                                                            <f:FormElement id="EndDateLabel1"
+													label="{label3>EPO_EndTime}">
+                                                                <f:fields>
+                                                                    <DatePicker id="EndDate1" type="Date"
+															valueFormat="MM/dd/yyyy 00:00:00" placeholder="Select Date"
+															change="handleEndDateChange1" />
+                                                                </f:fields>
+                                                            </f:FormElement>
+                                                        </f:formElements>
+                                                    </f:FormContainer>
+
+                                                    <f:FormContainer>
+                                                        <f:formElements>
+                                                            <f:FormElement label="">
+                                                                <f:fields>
+                                                                    <Button id="AssignTableDisplay" text="{button1>TransferDisplay_btn_disp}" icon="sap-icon://provision"  width="110px" enabled="true" visible="true" press="DisplayAssignTableData"/>
+                                                                </f:fields>
+                                                            </f:FormElement>
+                                                        </f:formElements>
+                                                    </f:FormContainer>
+                                                </f:formContainers>
+                                            </f:Form>
+                                        </l:content>
+                                    </l:Grid>
+                                </content>
+                            </Panel>
+                            <panel id="AssignPOTable" headerText="" expandable="false" expanded="true" visible="true">
+                                <headerToolbar>
+                                    <Toolbar height="3rem" id="toolbar3">
+                                        <ToolbarSpacer/>
+  
+                                                    
+                                                    
+                                        <SearchField 
+							id="searchFieldAssignTableId"
+							icon="/XMII/CM/PerformanceManagement/ChangeoverMatrix/Image/Search.png"
+							enabled="true"
+							visible="true"
+							width="300px"
+							text = "Search"			
+							liveChange="onAssignSearch"/>
+                                    </Toolbar>
+                                </headerToolbar>
+                                <table:Table 
+							id="AssignPO_TableId"
+							rows="{/Rowset/Row}"
+							selectionMode="Single"
+							selectionBehavior="Row"
+							visible="true"	
+							visibleRowCount="10">
+                                    <table:columns>
+                                        <table:Column hAlign="Center" visible="true" width = "90px" 
+                                       filterProperty="EPO"  
+                                       sortProperty="EPO" >
+                                            <Label text="{title7>EPO_UI_EmergencyPO}" />
+                                           <table:template>
+                                                 <Button id="btn" text="{buttonAssign>EPO_UI_Assign}" press="AssignEPO"  type="{=${FLAG}==='F' ? 'Reject' : 'Accept'}"   icon="{=${FLAG}==='F' ? 'sap-icon://inspect-down' : 'sap-icon://add-activity'}"  width="120px" enabled="true"  />
+                                            </table:template>
+                                        </table:Column>
+  <table:Column hAlign="Center" visible="true" width = "90px" 
+                                       filterProperty="PROCESSORDER"  
+                                       sortProperty="PROCESSORDER" >
+                                            <Label text="{column9>EPO_SAPOrderNumber}" />
+                                            <table:template>
+                                                                       <Text text="{PROCESSORDER}" />
+                                            </table:template>
+                                        </table:Column>
+                                     
+                                        <table:Column hAlign="Center" visible="true" width = "90px" 
+                                       filterProperty="MATERIAL"  
+                                       sortProperty="MATERIAL" >
+                                            <Label text="{label1>NPM_COMMON_ORD_MATERIAL}" />
+                                            <table:template>
+                                                <Text text="{MATERIAL}" />
+                                            </table:template>
+                                        </table:Column>
+                                        <table:Column hAlign="Center" visible="true" width = "100px"  
+                                     filterProperty="PV"  
+                                       sortProperty="PV">
+                                            <Label text="{column4>EPO_ProductionVersion}" />
+                                            <table:template>
+                                                <Text text="{PV}" />
+                                            </table:template>
+                                        </table:Column>
+                           <table:Column hAlign="Center" visible="true" width = "80px" 
+                                       filterProperty="RESOURCE"  
+                                       sortProperty="RESOURCE">
+                                            <Label text="{column5>NPDashboard_Resource}" />
+                                            <table:template>
+                                                <Text text="{RESOURCE}" />
+                                            </table:template>
+                                        </table:Column>
+                                        <table:Column hAlign="Center" visible="true" width = "80px" 
+                                       filterProperty="MATERIALDESC"  
+                                       sortProperty="MATERIALDESC"	>
+                                            <Label text="{column3>CustomGI_CL_5}" />
+                                            <table:template>
+                                                <Text text="{MATERIALDESC}" />
+                                            </table:template>
+                                        </table:Column>
+                                        <table:Column hAlign="Center" visible="true" width = "80px" 
+                                       filterProperty="STARTTIME"  
+                                       sortProperty="STARTTIME">
+                                            <Label text="{column7>CustomGI_PO_7}" />
+                                            <table:template>
+                                                <Text text="{parts : [{path: 'STARTTIME'}],  formatter : '.getDateDisplayFormat' }" />
+                                                    
+                                            </table:template>
+                                        </table:Column>
+                                        <table:Column hAlign="Center" visible="true" width = "80px" 
+                                       filterProperty="QUANTITY"  
+                                       sortProperty="QUANTITY">
+                                            <Label text="{column6>CustomGI_CM_6}" />
+                                            <table:template>
+                                                <Text text="{QUANTITY} {UOM}" />
+                                            </table:template>
+                                        </table:Column>
+
+                                    </table:columns>
+                                </table:Table>
+                            </panel>
+                        </IconTabFilter>
+                    </items>
+                </IconTabBar>
+            </u:content>
+        </u:Shell>
+    </Page>
+</mvc:View>

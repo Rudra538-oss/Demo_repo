@@ -1,0 +1,311 @@
+ <mvc:View xmlns:core="sap.ui.core" xmlns="sap.m"  xmlns:l="sap.ui.layout"  xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified"
+controllerName="JS.TemplateManagement" xmlns:f="sap.ui.layout.form"
+xmlns:html="http://www.w3.org/1999/xhtml">
+<html:style>
+
+
+	.sapUiFormResGrid.sapUiFormBackgrTranslucent>div{
+	background-color:transparent !important;
+	}
+
+	#TemplateManagement--label_header1{
+	margin-left:25%; 
+            font-size: 16px;
+	font-weight:bold;
+	}
+	
+	#TemplateManagement--OverrideGlobalCon--Grid
+	{
+		margin-left:33%;	
+	}
+	
+		.sapMListTbl .sapMText, .sapMListTbl .sapMLabel
+	 {
+	    padding-top: 1px;
+   	 font-size: 0.875rem;
+   	 color: #333333;
+   	 font-weight: inherit;
+	 }
+	#idTemplateManagement--label_header1
+	{
+		font-weight: bold;
+		font-size:16px;	
+	}
+	.sapUiUfdShellHeadItmSep.sapUiUfdShellHeadItm{
+    width: 124px!important;
+}
+.sapUiUfdShellHeadItm>span>img {
+    margin-top: 0px;
+    width: 105px;
+    height: 38px;
+    border-width: 0;
+}
+.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+    max-height: 30px;
+    max-width: 150px;
+    vertical-align: middle;
+}
+	
+</html:style>
+
+	<Page
+		id="page"
+		showHeader="false"
+		title="Setup" >
+						
+				<u:Shell class="Background"
+			id="shell1"
+			icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+			<u:headItems>
+				<u:ShellHeadItem
+					tooltip="{TManage1>NPDashboard_Back}"
+					icon="sap-icon://nav-back"
+					visible="true"
+					press="goBack" />
+			
+			</u:headItems>
+			<u:headEndItems>
+				<u:ShellHeadItem
+					  id="bcpStatus"
+					icon=""
+					tooltip="{title1>InBndMatRecpt_title_BCP}"
+					press="" />
+			</u:headEndItems>
+			<u:user>
+				<u:ShellHeadUserItem
+					image="sap-icon://person-placeholder" 
+				        showPopupIndicator="false"
+					username="Karl Mustermann"
+					/>
+			</u:user>
+			<u:search>
+				<Label id="label_header1"
+					text="{TManage2>Print_BCPManagePrinterConfiguration}"/>
+			</u:search>
+			<u:content>
+
+<Panel expandable="true" expanded="true"   width="auto" class="sapUiResponsiveMargin" headerText="{TManage3>Print_Template_Mangemnt}">
+
+
+
+      <f:Form id="printerConfig"
+        minWidth="1024"
+        maxContainerCols="2"
+        editable="true">
+        <f:layout>
+          <f:ResponsiveGridLayout
+            labelSpanL="4"
+            labelSpanM="3"
+            emptySpanL="0"
+            emptySpanM="0"
+            columnsL="3"
+            columnsM="2" />
+        </f:layout>
+        <f:formContainers>
+          <f:FormContainer>
+            <f:formElements>
+              <f:FormElement label="{TManage4>Print_Workstation}">
+                <f:fields>
+               <Input id ="workstation"  width="100%">  </Input>
+                 </f:fields>
+              </f:FormElement>
+	 </f:formElements>
+	</f:FormContainer>
+<f:FormContainer>
+            <f:formElements>
+              <f:FormElement label="">
+                <f:fields>
+                 <Button id="fetch" width="100%" type="Accept" enabled="true" text="Get Printers" press="doFetch"/> 
+	 </f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+<f:FormContainer>
+            <f:formElements>
+             <f:FormElement label="">
+                <f:fields>
+                 </f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+	
+          <f:FormContainer>
+            <f:formElements>
+              <f:FormElement label="{TManage5>Print_PrinterName}">
+                <f:fields>
+               <Select id ="printer_name"  width="100%"  items="{path: '/Rowset/Row'}"><items> <core:Item key="{PRINTER_NAME}" text="{PRINTER_NAME}" /> </items> </Select>
+                 </f:fields>
+              </f:FormElement>
+	 </f:formElements>
+	</f:FormContainer>
+<f:FormContainer>
+            <f:formElements>
+              <f:FormElement label="{TManage6>Print_ScreenType}">
+                <f:fields>
+                  <Select id ="ScreenTypeID"  change="handleScreenTypeSelectionChange" width="100%"  items="{path: '/Rowset/Row'}"><items> <core:Item key="{SCREEN_TYPE}" text="{SCREEN_TYPE}" /> </items> </Select>
+	
+                 </f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+<f:FormContainer>
+            <f:formElements>
+             <f:FormElement label="{TManage7>Print_Label_Type}">
+                <f:fields>
+                 <Select id ="LabelTypeID"  enabled="false" width="100%"  items="{path: '/Rowset/Row'}"><items> <core:Item key="{LABEL_TYPE}" text="{LABEL_TYPE}" /> </items> </Select>
+                 </f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+<f:FormContainer>
+            <f:formElements>
+             <f:FormElement label="{TManage8>Print_Copies}">
+                <f:fields>
+                              	<Input id ="noCopies" height ="9%"   value =""/>
+	  </f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+<f:FormContainer>
+            <f:formElements>
+             <f:FormElement label="{TManage9>Print_Global_Template}">
+                <f:fields>
+                 <Select id ="template"  width="100%"  items="{path: '/Rowset/Row'}"><items> <core:Item key="{TEMPLATE_ID}" text="{TEMPLATE_ID}" /> </items> </Select>
+                 </f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+		   <f:FormContainer>
+            <f:formElements>
+              <f:FormElement label="">
+                <f:fields>
+	<Button id="InsertTemplate" width="100%" type="Insert" enabled="true" text="{TManage10>Print_InsertTemplate}" press="doInsertTemplate"/> 
+		</f:fields>
+	 </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+
+
+
+	<f:FormContainer id="OverrideGlobalCon">
+            <f:formElements>
+             <f:FormElement >
+                <f:fields>
+                <CheckBox id="Change" text="{TManage11>Print_OverrideGlobalTemplate}"  select ="OverrideGlobalTemplateFunction" selected="false" groupName="confirmation"/>
+	 </f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+	 <f:FormContainer>
+            <f:formElements>
+              <f:FormElement label="">
+                <f:fields>
+		<u:FileUploader
+			id="fileUploader"
+		          enabled="false"
+			name="myFileUpload"
+			uploadUrl="upload/"
+			width="100%"
+			tooltip="{TManage12>Print_File_Uploader_TT}"
+			uploadComplete="handleUploadComplete"/>
+	</f:fields>
+              </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+	   <f:FormContainer>
+            <f:formElements>
+              <f:FormElement label="">
+                <f:fields>
+	<Button id="UploadTemplate" width="100%" type="Upload" enabled="false" text="{TManage13>Print_UploadTemplate}" press="doUpload"/> 
+		</f:fields>
+	 </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+	   <f:FormContainer>
+            <f:formElements>
+              <f:FormElement label="">
+                <f:fields>
+	<Button id="DeleteTemplate" width="100%" type="Delete" enabled="true" text="{TManage14>Print_DeleteTemplate}" press="doDelete"/> 
+		</f:fields>
+	 </f:FormElement>
+			  </f:formElements>
+			  </f:FormContainer>
+	 
+			  </f:formContainers>
+      </f:Form>
+	<Table id="PrinterTemplateTable"
+		border="solid 0.1mm black"
+		inset="false"
+		mode="SingleSelectMaster"
+		selectionChange="doRowSelect"
+		items="{
+			path: '/Rowset/Row',
+			sorter: {
+				path: 'Name'
+			}
+		}"
+		>
+			
+		<columns>
+		
+			<Column
+				
+				hAlign="Center">
+				<Text text="{TManage15>Print_PrinterName}" />
+			</Column>
+
+			<Column
+				hAlign="Center">
+				<Text text="{TManage16>Print_ScreenType}" />
+			</Column>
+				<Column
+				hAlign="Center">
+				<Text text="{TManage17>Print_Label_Type}" />
+			</Column>
+			
+			<Column
+				hAlign="Center">
+				<Text text="{TManage18>Print_PrinterTemplate}" />
+			</Column>
+				<Column
+				hAlign="Center">
+					<Text text="" />
+			</Column>
+			
+			<Column
+				hAlign="Center"  visible="false">
+					<Text text="{TManage19>Print_TemplateID}"  />
+			</Column>
+		
+		</columns>
+	
+	<items>
+			<ColumnListItem id="PrinterTemplateItems">
+				<cells>
+				
+						<Text
+						text="{PRINTER_DESC}" />
+				
+					<Text
+						text="{SCREEN_TYPE}" />
+					<Text
+						text="{LABEL_TYPE}" />
+				
+				 <Text
+				        text="{TEMPLATE_NAME}" />
+				
+				<Button id="EditTemplate1"  width ="25%" type="Edit" visible="true" enabled="true" text="View" press="doPressEdit"/>
+			
+				<Text
+				        text="{TEMPLATE_ID}" />
+				</cells>
+			</ColumnListItem>
+		</items>
+			</Table>
+
+</Panel>
+		</u:content>
+			</u:Shell>
+		</Page>
+
+</mvc:View>

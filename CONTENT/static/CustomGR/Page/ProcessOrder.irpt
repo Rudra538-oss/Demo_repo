@@ -1,0 +1,61 @@
+ <!DOCTYPE HTML>
+<html>
+	<head>
+		 <title> </title>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="expires" content="0">
+
+		<script src="/sapui5/resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+			            data-sap-ui-xx-bindingSyntax='complex'
+				data-sap-ui-libs='sap.ui.commons,sap.ui.table,sap.m,sap.suite.ui.microchart'
+				data-sap-ui-theme="sap_bluecrystal" data-sap-ui-xx-bindingSyntax="complex">
+		</script>
+
+		<!-- only load the mobile lib "sap.m" and the "sap_mvi" theme -->
+	
+<SCRIPT src="/XMII/CM/MaterialHandling/Common/JS/Common.js" type="text/javascript"></script>
+
+ <SCRIPT src="/XMII/CM/MaterialHandling/Common/JS/UI5Utility.js" type="text/javascript"></script>
+
+<LINK REL="StyleSheet" HREF="/XMII/CM/MaterialHandling/Common/CSS/CustomGR.css" TYPE="text/css">
+	<input id="login" type="hidden" value="{IllumLoginName}"></input>
+	<input id="firstname" type="hidden" value="{Firstname}"></input>
+	<input id="lastname" type="hidden" value="{Lastname}"></input>
+	<input id="machine" type="hidden" value="{Machine}"></input>
+	<input id="tType" type="hidden" value=""></input>
+	<script type="text/javascript">
+document.write('<scr'+'ipt src="/XMII/CM/MaterialHandling/CustomGR/JS/ProcessOrder.controller.js?'+Math.random()+'" type="text/javascript"></scr'+'ipt>');
+document.write('<scr'+'ipt src="/XMII/CM/MaterialHandling/Common/JS/app.js?'+Math.random()+'" type="text/javascript"></scr'+'ipt>');
+document.write('<scr'+'ipt src="/XMII/CM/MaterialHandling/Common/JS/Formatter.js?'+Math.random()+'" type="text/javascript"></scr'+'ipt>');
+document.write('<scr'+'ipt src="/XMII/CM/MaterialHandling/Common/JS/Utils.js?'+Math.random()+'" type="text/javascript"></scr'+'ipt>');
+</script>
+
+
+	<script>
+				//sap.ui.localResources("nav");
+			
+				jQuery.sap.registerModulePath("JS", "/XMII/CM/MaterialHandling/CustomGR/JS");
+	
+				var page = sap.ui.view({id:"ProcessOrder", viewName:"JS/ProcessOrder", type:sap.ui.core.mvc.ViewType.XML});
+					
+				var app = new sap.m.App("idapp",{ initialPage:"ProcessOrder"});
+				
+				app.addPage(page);
+				app.placeAt("content");
+
+		</script>
+
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+
+<style>
+
+</style>
+</html>

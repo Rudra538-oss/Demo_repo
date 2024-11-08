@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?><Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:html="http://www.w3.org/TR/REC-html40" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns:x="urn:schemas-microsoft-com:office:excel">
+<Styles>
+<Style ss:ID="header">
+<Borders>
+<Border ss:LineStyle="Continuous" ss:Position="Left" ss:Weight="1"/>
+<Border ss:LineStyle="Continuous" ss:Position="Top" ss:Weight="1"/>
+</Borders>
+<Font ss:Bold="1"/>
+</Style>
+<Style ss:ID="Parameter">
+<Borders>
+<Border ss:LineStyle="Continuous" ss:Position="Left" ss:Weight="1"/>
+<Border ss:LineStyle="Continuous" ss:Position="Top" ss:Weight="1"/>
+</Borders>
+<Font ss:Bold="1"/>
+<Interior ss:Color="#FF8C00" ss:Pattern="Solid"/>
+</Style>
+<Style ss:ID="body">
+<Borders>
+<Border ss:LineStyle="Continuous" ss:Position="Left" ss:Weight="1"/>
+<Border ss:LineStyle="Continuous" ss:Position="Right" ss:Weight="1"/>
+<Border ss:LineStyle="Continuous" ss:Position="Top" ss:Weight="1"/>
+<Border ss:LineStyle="Continuous" ss:Position="Bottom" ss:Weight="1"/>
+</Borders>
+</Style>
+<Style ss:ID="Total">
+<Borders>
+<Border ss:LineStyle="Continuous" ss:Position="Left" ss:Weight="1"/>
+<Border ss:LineStyle="Continuous" ss:Position="Right" ss:Weight="1"/>
+<Border ss:LineStyle="Continuous" ss:Position="Top" ss:Weight="1"/>
+<Border ss:LineStyle="Continuous" ss:Position="Bottom" ss:Weight="1"/>
+</Borders>
+<Interior ss:Color="#FFFF00" ss:Pattern="Solid"/>
+</Style>
+<Style ss:ID="s65">
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+</Style>
+<Style ss:ID="s66">
+<Alignment ss:Vertical="Bottom"/>
+<Borders>
+<Border ss:LineStyle="Continuous" ss:Position="Left" ss:Weight="1"/>
+<Border ss:LineStyle="Continuous" ss:Position="Top" ss:Weight="1"/>
+</Borders>
+<Font ss:Bold="1" ss:FontName="Arial"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<NumberFormat/>
+<Protection/>
+</Style>
+<Style ss:ID="s76">
+<Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+<Borders>
+<Border ss:LineStyle="Continuous" ss:Position="Bottom" ss:Weight="1"/>
+</Borders>
+<Font ss:Bold="1" ss:Color="BLUE" ss:FontName="Calibri" ss:Size="14" x:Family="Swiss"/>
+<NumberFormat/>
+<Protection/>
+</Style>
+</Styles>
+<Worksheet ss:Name="Changeover Matrix">
+<Table ss:DefaultRowHeight="15" ss:ExpandedRowCount="6" x:FullColumns="1" x:FullRows="1">
+<Column ss:Span="4" ss:Width="155"/>
+<Column ss:Span="4" ss:Width="155"/>
+<Column ss:Span="4" ss:Width="155"/>
+<Column ss:Span="4" ss:Width="155"/>
+<Column ss:Span="4" ss:Width="155"/>
+<Column ss:Span="4" ss:Width="155"/>
+<Column ss:Span="4" ss:Width="155"/>
+<Column ss:Span="4" ss:Width="155"/>
+<Column ss:Span="4" ss:Width="155"/>
+<Column ss:Span="4" ss:Width="155"/>
+<Column ss:Span="4" ss:Width="155"/>
+<Column ss:Span="4" ss:Width="155"/>
+<Column ss:Span="4" ss:Width="155"/>
+<Row ss:AutoFitHeight="0">
+<Cell ss:Index="4" ss:MergeAcross="2" ss:StyleID="s76" ss:id="Stoppages">
+<Data ss:Type="String">Changeover Matrix</Data>
+</Cell>
+</Row>
+<Row/>
+<Row ss:AutoFitHeight="0" ss:StyleID="s65">
+<Cell ss:StyleID="s66"/>
+<Cell ss:StyleID="s66"/>
+<Cell ss:StyleID="s66"/>
+<Cell ss:StyleID="s66"/>
+<Cell ss:StyleID="s66"/>
+<Cell ss:StyleID="s66"/>
+<Cell ss:StyleID="s66"/>
+</Row>
+<Row>
+<Cell ss:StyleID="header" ss:id="Plant">
+<Data ss:Type="String">Plant</Data>
+</Cell>
+<Cell ss:StyleID="header" ss:id="Client">
+<Data ss:Type="String">Client</Data>
+</Cell>
+<Cell ss:StyleID="header" ss:id="Line">
+<Data ss:Type="String">Line</Data>
+</Cell>
+<Cell ss:StyleID="header" ss:id="FromGroup">
+<Data ss:Type="String">FromGroup</Data>
+</Cell>
+<Cell ss:StyleID="header" ss:id="FromTo">
+<Data ss:Type="String">FromTo</Data>
+</Cell>
+<Cell ss:StyleID="header" ss:id="StandardDuration">
+<Data ss:Type="String">StandardDuration</Data>
+</Cell>
+<Cell ss:StyleID="header" ss:id="ValidDate">
+<Data ss:Type="String">ValidDate</Data>
+</Cell>
+<Cell ss:StyleID="header" ss:id="ToDate">
+<Data ss:Type="String">ToDate</Data>
+</Cell>
+<Cell ss:StyleID="header" ss:id="Version">
+<Data ss:Type="String">Version</Data>
+</Cell>
+<Cell ss:StyleID="header" ss:id="Created_By">
+<Data ss:Type="String">Created_By</Data>
+</Cell>
+<Cell ss:StyleID="header" ss:id="Created_On">
+<Data ss:Type="String">Created_On</Data>
+</Cell>
+<Cell ss:StyleID="header" ss:id="Changed_By">
+<Data ss:Type="String">Changed_By</Data>
+</Cell>
+<Cell ss:StyleID="header" ss:id="Changed_On">
+<Data ss:Type="String">Changed_On</Data>
+</Cell>
+</Row>
+<Row>
+<Cell ss:StyleID="body" ss:id="Plant">
+<Data ss:Type="String">Y203</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="Client">
+<Data ss:Type="String">103</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="Line">
+<Data ss:Type="String">EGRON_COFFEE</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="FromGroup">
+<Data ss:Type="String">000000000013024463</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="FromTo">
+<Data ss:Type="String">MATGRPA</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="StandardDuration">
+<Data ss:Type="String">100.0</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="ValidDate">
+<Data ss:Type="String">2016-10-28T00:00:00</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="ToDate">
+<Data ss:Type="String">9999-12-31T00:00:00</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="Version">
+<Data ss:Type="String">1</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="Created_By">
+<Data ss:Type="String">NBKumariPr</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="Created_On">
+<Data ss:Type="String">2016-10-28T00:00:00</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="Changed_By">
+<Data ss:Type="String"/>
+</Cell>
+<Cell ss:StyleID="body" ss:id="Changed_On">
+<Data ss:Type="String"/>
+</Cell>
+</Row>
+<Row>
+<Cell ss:StyleID="body" ss:id="Plant">
+<Data ss:Type="String">Y203</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="Client">
+<Data ss:Type="String">103</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="Line">
+<Data ss:Type="String">EGRON_COFFEE</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="FromGroup">
+<Data ss:Type="String">000000000013031645</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="FromTo">
+<Data ss:Type="String">000000000013059764</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="StandardDuration">
+<Data ss:Type="String">19.0</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="ValidDate">
+<Data ss:Type="String">2016-10-28T00:00:00</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="ToDate">
+<Data ss:Type="String">9999-12-31T00:00:00</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="Version">
+<Data ss:Type="String">1</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="Created_By">
+<Data ss:Type="String">NBKumariPr</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="Created_On">
+<Data ss:Type="String">2016-10-28T00:00:00</Data>
+</Cell>
+<Cell ss:StyleID="body" ss:id="Changed_By">
+<Data ss:Type="String"/>
+</Cell>
+<Cell ss:StyleID="body" ss:id="Changed_On">
+<Data ss:Type="String"/>
+</Cell>
+</Row>
+</Table>
+</Worksheet>
+</Workbook>

@@ -1,0 +1,126 @@
+<HTML>
+	<HEAD>
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<TITLE id="title">Goods Issue</TITLE>
+				<script type="text/javascript">
+		document.write('<scr'+'ipt src="/XMII/CM/MaterialHandling/RFDevice/JavaScript/GIOrderMaterial.js?'+Math.random()+'" type="text/javascript"></scr'+'ipt>');
+		document.write('<scr'+'ipt src="/XMII/CM/MaterialHandling/RFDevice/Common/Utility.js?'+Math.random()+'" type="text/javascript"></scr'+'ipt>');
+		</script>
+			
+			<!--SCRIPT language="javascript" src="/XMII/CM/MaterialHandling/RFDevice/Common/Utility.js"></SCRIPT-->
+		<!--SCRIPT language="javascript" src="/XMII/CM/MaterialHandling/RFDevice/JavaScript/GIOrderMaterial.js"></SCRIPT-->
+		<script type="text/javascript" src="/XMII/CM/MaterialHandling/RFDevice/Common/jquery-1.7.2.js"></script>
+		<LINK REL="StyleSheet" HREF="/XMII/CM/MaterialHandling/RFDevice/Stylesheet/RF_Device.css" TYPE="text/css">
+
+<style>
+
+body {
+    margin: 0;
+    background: #f0f8ff;
+    font-family: "Open Sans", sans-serif;
+    padding-bottom: 8rem;
+}
+label {
+    color: #2f4f4f;
+    font-weight: bold;
+    font-size: 1.9rem;
+}
+input[type="text"] {
+    color: black;
+    font-size: 22px;
+    margin: 0 0 0.5em;
+    outline: medium none;
+    padding: 0px;
+    width: 400px;
+    height: 60px;
+}
+input[type="value"] {
+    color: black;
+    font-size: 22px;
+    margin: 0 0 0.5em;
+    outline: medium none;
+    padding: 0px;
+    width: 400px;
+    height: 60px;
+}
+input#inputDayId {
+    height: 38px;
+    width: 45px;
+    text-align: end;
+    padding-right: 10px;
+    margin-left: 17px;
+}
+label#InputDays {
+    margin-left: 160px;
+}
+button {
+    /* background-color: #4CAF50; */
+    border: none;
+    /* color: white; */
+    padding: 5px 12px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 27px;
+    margin: 4px 2px;
+    cursor: pointer;
+    /* font-weight: bold; */
+    border-style: solid;
+    border-width: 1px;
+    width: 195px;
+}
+select {
+    color: black;
+    font-size: 24px;
+    margin: 0 0 0px;
+    outline: medium none;
+    padding: 0px;
+    width: 400px;
+    height: 60px;
+}
+h3 {
+    color: #2f4f4f;
+    font-family: "Josefin Sans",sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+}
+</style>
+</HEAD>
+<BODY style="font-family: sans-serif" onload="loadStatus();">
+	<div>
+		<div class="content">
+			<div>
+					<div class="headerItem">	
+					</div>
+					<div class="mainContent">
+					<div class="header">
+  						<img src="/XMII/CM/MaterialHandling/Common/Images/NestleLogo.png" alt="Nestle" />
+  							<label id="labelHdr">GI-Order Material</label>
+					</div>
+
+			</br><br/>
+			<label for="bcp" id="idBCP">BCP </label>
+			<input class="input inputBCP" type="value" name="bcp" id="BCPArea" readonly disabled>
+			<label for="POManualScan" id="idPOManual">PO Manual Scan</label>
+			<input type="text" id="POManualScan" name="POManualScan" oninput="POManualNotBlank()" onchange="OnManualScanOfPO()"/><br/>
+			<label for="inputDayId" id="InputDays">No. of Days</label>
+			<Input type="value" id="inputDayId" value="3" width="10px" height="3px" align-content="right" onchange="handleDayChange()" /><br/>
+			<label for="linedrp" id="idLine">Select Line</label>
+			<select name="Line" id="linedrp" onChange="doLineDrp();" onFocus="changeStyle('linedrp')" onclick="selectLine()"></select>
+			<label for="order" id="idOrder">Select Order</label> 
+			<select id="order" onChange="doOrder();" onFocus="changeStyle('order')"></select>
+			<label for="material" id="materialL" hidden>Select Material</label>
+			<select name="material" id="material" onChange="doMat();" onclick="MaterialNotBlank()" onFocus="changeStyle('material')" hidden></select>
+			<label for="sscc" id="ssccL">SSCC </label>
+			<input type="text" name="sscc" id="ssccArea" oninput="SSCCNotBlank()">
+				<br/></br>
+
+			<!--button type="button" style="cursor:pointer" onclick="doClear()"> F2 Clear </button-->
+			<button id="BtnBk"  type="button" style="cursor:pointer" onclick="doBack()"> F3 Back </button>
+			<button id ="nxtBttn" type="button" style="cursor:pointer" onclick="doNext()"> F4 Next </button>
+			<button id="btn_nonsu" type="button" style="cursor:pointer" onclick="doNonSU()">F6 NONSU</button>
+			</div>
+		</div>
+	</div>
+</div>
+</BODY>
+</HTML>

@@ -1,0 +1,470 @@
+
+/*
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////COMMON STYLESHEET////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+*/
+
+.sapUiPanelTitle {
+background: -moz-linear-gradient(left,  rgba(73,165,191,1) 0%, rgba(31,69,79,1) 0%, rgba(73,165,191,1) 70%, rgba(249,251,252,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(73,165,191,1)), color-stop(0%,rgba(31,69,79,1)), color-stop(70%,rgba(73,165,191,1)), color-stop(100%,rgba(249,251,252,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left,  rgba(73,165,191,1) 0%,rgba(31,69,79,1) 0%,rgba(73,165,191,1) 70%,rgba(249,251,252,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left,  rgba(73,165,191,1) 0%,rgba(31,69,79,1) 0%,rgba(73,165,191,1) 70%,rgba(249,251,252,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left,  rgba(73,165,191,1) 0%,rgba(31,69,79,1) 0%,rgba(73,165,191,1) 70%,rgba(249,251,252,1) 100%); /* IE10+ */
+background: linear-gradient(to right,  rgba(73,165,191,1) 0%,rgba(31,69,79,1) 0%,rgba(73,165,191,1) 70%,rgba(249,251,252,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49a5bf', endColorstr='#f9fbfc',GradientType=1 ); /* IE6-9 */
+color: white;
+font-size: 16px;
+
+text-align: center;
+box-shadow: 0px 0px 0px 0px #7a7a7a;
+
+height:22px;
+}
+.sapUiMltPadRight {
+    padding: 0 2px 2px 0;
+}
+.sapUiPanelHdr {
+
+    color: #444444;
+    min-height: 0.5px;
+}
+.sapMDLIValue {
+    font-weight: bold;
+}
+
+
+
+html[data-sap-ui-browser*='ie'] .sapUiPanelTitle{
+height:5px;
+line-height:5px;
+}
+
+html[data-sap-ui-browser*='ie'] .sapUiPanelHdrItem, html[data-sap-ui-browser*='ie'] .sapUiPanelHdrRightItem
+{
+display:block;
+}
+
+
+.CommonTitleHeader {
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fcfaf9+0,e5ebee+50,f5f7f9+61 */
+background: rgb(252,250,249); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(252,250,249,1) 0%, rgba(229,235,238,1) 50%, rgba(245,247,249,1) 61%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,250,249,1)), color-stop(50%,rgba(229,235,238,1)), color-stop(61%,rgba(245,247,249,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, rgba(252,250,249,1) 0%,rgba(229,235,238,1) 50%,rgba(245,247,249,1) 61%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, rgba(252,250,249,1) 0%,rgba(229,235,238,1) 50%,rgba(245,247,249,1) 61%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, rgba(252,250,249,1) 0%,rgba(229,235,238,1) 50%,rgba(245,247,249,1) 61%); /* IE10+ */
+background: linear-gradient(to bottom, rgba(252,250,249,1) 0%,rgba(229,235,238,1) 50%,rgba(245,247,249,1) 61%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfaf9', endColorstr='#f5f7f9',GradientType=0 ); /* IE6-9 */
+color: #00009d;
+font-size: 18px;
+text-align: center;
+font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+border-top-right-radius: 5px;
+border-top-left-radius: 5px;
+border-bottom-right-radius: 5px;
+border-bottom-left-radius: 5px;
+box-shadow: 0px 0px 4px 0px #96a0a3;
+
+}
+
+.CommonTitleHeaderApple {
+	
+	color: #000000;
+	font-size: 18px;
+	text-align: center;
+	font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	box-shadow: 0px 0px 0px 0px #96a0a3;
+	margin-right:6px;
+}
+
+
+.CommonDivBackground{
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#deefff+0,98bede+100;Blue+3D+%2310 */
+background: rgb(222,239,255); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(222,239,255,1) 0%, rgba(152,190,222,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(222,239,255,1) 0%,rgba(152,190,222,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(222,239,255,1) 0%,rgba(152,190,222,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#deefff', endColorstr='#98bede',GradientType=0 ); /* IE6-9 */
+
+}
+
+.CommonDivContentBackground{
+
+
+}
+
+
+.tabStripStyle {
+
+}
+
+
+sapUiTf sapUiTfBack sapUiTfBrd sapUiTfStd sapUiTxtA {
+overflow:visible !important;}
+
+.sapMInputBase{
+vertical-align:baseline;
+}
+
+
+.sapUiTabPanel{
+
+}
+
+
+.sap-desktop .sapMIBar.sapMHeader-CTX {
+    background-color:#f2f7f9;
+}
+
+.sapMPanelBG{
+
+}
+
+.sapMPanelBGTranslucent{
+
+}
+
+
+.sapUiRespGrid.sapUiRespGridVSpace1>div{
+margin-bottom:0px;
+}
+
+.sapMTitleStyleAuto{
+font-size:18px;
+
+}
+
+.sapMListTblCell.sapMListTblCellNoData, .sapMListTblRow>:nth-last-child(2){
+padding-right:5px !important;
+}
+
+.sapMListTbl th {
+border-right: 1px solid #cdcdcd;
+font-weight:bold !important;
+}
+.sapMPanelHdr {
+font-size:17px;
+font-weight:bold;
+background-color:  transparent;
+color:black;
+text-shadow:none;
+font-family: inherit;
+}
+
+.sapMPanelExpandableIcon{
+
+color:#2F879D;
+width:2.45%;
+line-height:32px;
+margin-left:.5%;
+}
+
+
+.sapUiMediumMarginTop {
+    margin-top: 0rem!important; 
+}
+
+.v-plot-bound
+{
+    fill: #a8c8d0;
+    background-color: #a8c8d0;
+}
+
+
+#UIComp_0.v-info svg.v-m-root g.v-m-background rect.v-background-body.viz-plot-background.v-morphable-background
+{
+    fill: #a8c8d0 !important;
+	opacity:1;
+    background-color: #a8c8d0;
+} 
+
+.sapMSFF{
+    border: 2px solid steelblue;
+    border-radius: 15px;
+}
+.sapMSlt{
+    height: 2.5rem;
+    border-radius: 10px;
+    border: 1px solid grey;
+}
+.sapMComboBoxTextField
+{
+height:2.5rem;
+width:10rem;
+}
+.sapMSlt>.sapMSltLabel{
+line-height:2rem;
+}
+.sapMPanel .sapMPanelWrappingDiv .sapMPanelHdr, .sapMPanel .sapMPanelWrappingDivTb .sapMTB.sapMIBar
+{
+margin-left:3rem!important;
+}
+.sapMSltArrow{
+line-height:2rem;
+}
+.sapUiTable>.sapUiTableHdr {
+    border: none !important;
+    border-bottom: 0px !important;
+    min-height: 0px !important;
+    height: 0px !important;
+    padding: 0 !important;
+    margin-bottom: 0px !important;
+    background-color: transparent !important;
+}
+.sapUiTableColHdrCnt {
+    border-color: grey;
+    border-bottom-width: 2px;
+    background-image: linear-gradient(to bottom,white, #dedede);
+}
+.sapMInputBaseInner{
+    height:2.5rem;
+    font-size:0.82rem!important;
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+.sapMComboBoxTextField {
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+.sapMMultiComboBoxBorder, .sapMComboBoxTextFieldArrow  {
+    border-radius: 15px;
+}
+.sapUiForm .sapMCbBg {
+    left: 0.0625rem;
+    border: 2px solid grey;
+}
+.sapMInputValHelpInner, html[data-sap-ui-browser='ie9'] .sapMInputValHelpInner{
+line-height:2rem;
+height:2rem;
+padding-right:none;
+}
+.sapMInputVH>.sapMInputBaseInner{
+padding-right:none;
+}
+.sapMPanelHdr{
+height:2rem;
+line-height:2rem;}
+
+.sapMPanelHdrExpandable.sapMPanelHdr, .sapMPanelWrappingDivTb>.sapMTB{
+margin-left:3.48%;}
+
+#idORDBc--allChckBox{
+margin-left:51%;}
+
+.sapUiTableColCell, .sapUiTableColRowHdrIco{
+white-space:normal;
+font-weight:bold !important;
+}
+.sapMPanel .sapMPanelWrappingDiv .sapMPanelHdr, .sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB {
+    padding-left: 0;
+    margin-left: 2rem;
+}
+.sapUiRespGridMedia-Std-Desktop.sapUiFormResGridCont>.sapUiFormResGridLbl:not(.sapUiRespGridSpanL12)>.sapMLabel {
+    font-size: 12px !important;
+    padding-top: 13px !important;
+}
+.sapUiLbl {
+color:#000000;
+font-size:12px !important;
+font-weight:bold;
+}
+.sapMPanelHdr{
+height:2rem;
+line-height:2rem;}
+
+.sapMPanelHdrExpandable.sapMPanelHdr, .sapMPanelWrappingDivTb>.sapMTB{
+margin-left:2.48%}
+#idORDB--Full{
+margin-right:50%;}
+
+#idORDB--Partial{
+margin-right:50%;}
+/*
+#idcm--Arrow-inner{
+    margin-left: 412%;
+}
+#idcm--Arrow1-inner{
+    margin-left: 412%;
+}*/
+#idcm--Arrow
+{
+ margin-left: 36%;
+}
+#idcm--Arrow1
+{
+ margin-left: 36%;
+}
+#TransferDisplay--label_header3{
+    font-size: 20px;
+    font-family: Times New Roman;
+}
+#__input0-col2-row0-inner{
+border: 0px solid #c0c0c0!important;
+boder-color: #c0c0c0!important;
+}
+#TransferOrder--Form1--Grid, #TransferOrder--Form2--Grid{
+    padding: 1rem 8rem;
+}
+.sapUiRespGridMedia-Std-Phone.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanS12)>.sapMLabel, .sapUiRespGridMedia-Std-Tablet.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanM12)>.sapMLabel, .sapUiRespGridMedia-Std-Desktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanL12)>.sapMLabel, .sapUiRespGridMedia-Std-LargeDesktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanXL12)>.sapMLabel {
+    text-align: end!important;
+    float: none;
+    /* position: relative; */
+}
+
+.sapUiRespGridMedia-Std-Phone.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanS12)>.sapMLabel, .sapUiRespGridMedia-Std-Tablet.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanM12)>.sapMLabel, .sapUiRespGridMedia-Std-Desktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanL12)>.sapMLabel, .sapUiRespGridMedia-Std-LargeDesktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanXL12)>.sapMLabel {
+    padding-top: 13px;
+}
+.sapUiHiddenPlaceholder {
+    display: none!important;
+}
+.sapUiFormResGridCont {
+    padding-bottom: 0rem!important;
+}
+.sapMBtnInner{
+    min-width:0.5rem;
+    border-radius: 15px;
+}
+#TransferDisplay--getExcelReport-inner{
+    border-radius: 15px;
+    border-color: green;
+}
+#TransferDisplay--DisplayID-inner{
+    border-color: steelblue;
+}
+#TransferDisplay--RefreshID-inner{
+    border-color: red;
+}
+#TransferDisplay--DisplayID-img {
+    color: steelblue;
+}
+#TransferDisplay--RefreshID-img {
+    color: red;
+}
+#TransferDisplay--getExcelReport-img{
+color: green;
+}
+#TransferOrder--CreateTransferOrder-img{
+color: #ffffff;
+}
+#TransferOrder--CreateTransferOrder-content{
+    font-weight: normal !important;
+}
+#TransferOrder--CreateTransferOrder-inner {
+    background-image: none;
+    background-color: #007833;
+    border-color: #005f28;
+    color: #ffffff;
+}
+#idcm--label_header1{
+font-size: 1.099rem!important;
+}
+ #TransferOrder--StorageUnite-inner{
+border: 0px solid white!important;
+padding-bottom: 3%;
+font-weight: bold;
+font-size: small !important;
+}
+#TransferOrder--StorageLoc-inner, #TransferOrder--StorageType-inner, #TransferOrder--StorageBin-inner, #TransferOrder--Warehouse-inner, #TransferOrder--UnitType-inner
+, #TransferOrder--MatNumber-inner, #TransferOrder--BatchNumber-inner, #TransferOrder--SLED-inner, #TransferOrder--StockCategory-inner, #TransferOrder--Quantity-inner, #TransferOrder--Measure-inner
+, #TransferOrder--BatchStatus-inner{
+border: 0px solid white!important;
+padding-bottom: 3%;
+font-weight: bold;
+font-size: medium !important;
+background-color: transparent;
+}
+.sapMIBar.sapMTB .sapMBarChild {
+    font-weight: bold;
+}
+.sapMLabel, .sapMBtnContent {
+    font-weight: bold;
+}
+.sapUiTableColCell>.sapUiLbl {
+    font-weight: bold !important;
+    font-size: 0.875rem !important;
+    color: #666666 !important;
+    font-family: Arial,Helvetica,sans-serif;
+}
+#TransferOrder--Measure-inner
+{
+border: 0px solid white!important;
+//margin-left:64%!important;
+}
+#TransferOrder--Measure1-inner
+{
+border: 0px solid white!important;
+//margin-left:64%!important;
+}
+
+.sapMSlt>.sapMSltLabel {
+      font-size: 0.8rem!important;
+}
+#TransferOrder--gotoHomeHeadItem{
+    width: 53px;
+}
+#TransferOrder--Header-inner{
+    background-color: #f2f2f2;
+    border: 1px solid #f2f2f2;
+    border-bottom: 1px solid #dddddd;
+    font-size: 20px!important;
+    font-weight:bold;
+    color: grey;
+    width: 135%!important;
+    font-family: Times New Roman;
+}
+#TransferOrder--Quantity-inner
+{
+width:105%!important;
+}
+#TransferOrder--Quantity1-inner
+{
+width:103%!important;
+}
+#TransferOrder--StroageUniteCon2--Grid, #TransferOrder--StorageBinCon1--Grid
+{
+margin-left:-3.5%;
+}
+#TransferOrder--StorageUniteCon1--Grid
+{
+margin-left:-3%;
+}
+
+#TransferDisplay--allChckBox2
+{
+width:60%!important;
+}
+#TransferDisplay--allChckBox3
+{
+width:60%!important;
+}
+#TransferDisplay--allChckBox1
+{
+width:60%!important;
+}
+#TransferDisplay--td3--Grid{
+margin-left :-60%;
+}
+#TransferDisplay--td2--Grid{
+margin-left :-16%;
+Padding-right:10%;
+}
+#TransferDisplay--td4--Grid{
+margin-left :-40%;
+}
+#TransferDisplay--td6--Grid{
+margin-left :-16%;
+Padding-right:10%;
+}
+#TransferDisplay--td7--Grid{
+margin-left :-31%;
+Padding-right:40%
+}
+#TransferDisplay--td8--Grid{
+margin-left :-7%;
+Padding-right:8%
+}

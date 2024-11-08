@@ -1,0 +1,611 @@
+<mvc:View
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"  
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:u="sap.ui.unified"
+	controllerName="JS.MaterialMasterReport"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:table="sap.ui.table"
+	xmlns:commons="sap.ui.commons"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<html:style>
+		#MaterialMasterReport--navBackId{
+		   width: 53px;
+		}
+	.sapUiUfdShellHeadItmSep.sapUiUfdShellHeadItm{
+			width: 124px;
+		}
+		.sapUiUfdShellHeadItm>span>img {
+			margin-top: 0px;
+			width: 110px;
+			height: 40px;
+			border-width: 0;
+		}
+		.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+    		max-height: 30px;
+   		max-width: 150px;
+   		vertical-align: middle;
+		}
+		
+		.sapMMultiComboBoxInputContainer{ 
+		margin-right:0rem!imporant;
+		min-width:0rem!important;
+		}
+		#MaterialMasterReport--ECCButton1-inner {
+		background-color: white;
+		border: 1px solid;
+		border-color: #bfbfbf;
+		border-radius: 0.125rem;
+		}
+		#MaterialMasterReport--ECCButton2-inner {
+		background-color: white;
+		border: 1px solid;
+		border-color: #bfbfbf;
+		border-radius: 0.125rem;
+		}
+		.sapMBtnInner.sapMBtnText{
+		padding-left: 0rem; 
+		padding-right: 0rem; 
+		}
+		#MaterialMasterReport--btnExcelReportId-inner{
+		background-color: white;
+		border: 1px solid;
+		border-color: #bfbfbf;
+		border-radius: 0.125rem;
+		}
+		
+		#MaterialMasterReport--label_header3{ 
+   		 font-size: 20px;
+   		 font-family: Times New Roman;
+		}
+		#MaterialMasterReport--btnExcelReportIdForUoM-inner{
+		background-color: white;
+		border: 1px solid;
+		border-color: #bfbfbf;
+		border-radius: 0.125rem;
+		}
+		.sapMInputBaseReadonlyInner {
+  		 font-weight: bold;
+		}	
+		
+		#MaterialMasterReport--btnExcelReportIdForWM-inner{
+		background-color: white;
+		border: 1px solid;
+		border-color: #bfbfbf;
+		border-radius: 0.125rem;
+		}
+		
+		#MaterialMasterReport--btnRefresh-img
+		{
+		width:2.4rem!important;
+		}
+		.ColumnAlignText{
+			color: #666666;
+			text-align: center;
+			font-weight: bold;
+		}
+		.sapUiSizeCompact .sapUiTableColCell>.sapUiLbl, .sapUiSizeCompact .sapUiTableColCell>.sapMLabel, .sapUiSizeCompact .sapUiTableCell>.sapMLabel, .sapUiTableColCell>.sapUiLbl{
+			font-weight: bold;
+			color: #666666;
+			text-align: center;
+		}
+		.sapUiLbl {
+			text-align: center;
+		}
+		.sapMLabel.sapMLabelMaxWidth.sapUiSelectable{
+		font-weight: bold;
+		}
+		.sapMITBContent {
+ 		   padding: 0;
+  		  position: relative;
+		}
+		.sapMPanelContent {
+   		 padding: 0rem;
+  		 box-sizing: border-box;
+   		 overflow: auto;
+   		 white-space: normal;
+		}
+		
+	
+	</html:style>
+	<Page
+		id="pageID" 
+		class="Background"
+		showHeader="false"
+		title="Setup">				
+		<u:Shell
+			id="shell3"
+			icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+			<u:headItems>
+				<u:ShellHeadItem 
+					id="navBackId"
+					tooltip="{MMReport45>NPDashboard_Back}"
+					icon="sap-icon://nav-back"
+					visible="true"
+					press="goHome"/>
+			</u:headItems>
+			<u:headEndItems>
+				<u:ShellHeadItem
+					id="bcpStatus"
+					icon=""
+					tooltip="{MMReport46>InBndMatRecpt_title_BCP}"
+					press="" />
+			</u:headEndItems>
+			<u:user>
+				<u:ShellHeadUserItem
+					image="sap-icon://person-placeholder"
+					showPopupIndicator="false"
+					username=""/>
+			</u:user>
+			<u:search>
+				<Label  
+					id="label_header3"
+					text="{MMReport43>NPDashboard_Material_Master_Report}" 
+					design="Bold"/>
+			</u:search>
+			<u:content>
+			<Panel id="selectionPanel" expandable="false" expanded="true"> 
+					<content>
+						<l:Grid
+							defaultSpan="L12 M12 S12"
+							width="auto">
+							<l:content>
+								<f:Form 
+									id="selectionForm"
+									minWidth="1024"
+									maxContainerCols="15"
+									editable="true">
+									<f:layout>
+										<f:ResponsiveGridLayout
+											labelSpanL="4"
+											labelSpanM="4"
+											emptySpanL="0"
+											emptySpanM="0"
+											columnsL="4"
+											columnsM="4"/>
+									</f:layout>
+									<f:formContainers>
+									<f:FormContainer>
+											<f:formElements>
+												<f:FormElement  label="{MMReport>TransferDisplay_label_SLoc}">
+													<f:fields>
+										<HBox>
+										<MultiComboBox  id ="sLoc" selectionChange="handleSelectionChange1" selectionFinish="getSelectedValuesForSLOC"  items="{path: '/Rowset/Row'}" enabled="true"  width="140px">
+																<items> <core:Item key="{SLOC}" text="{SLOC}" /> </items>
+										</MultiComboBox>
+										<CheckBox id="allChckBox1" text="All" selected="true" enabled="true" select="ChartMultiComboSelection1" class="sapUiSmallMarginBegin" />
+										</HBox>
+													</f:fields>
+												</f:FormElement>
+											</f:formElements>		
+										</f:FormContainer>
+										<f:FormContainer>
+											<f:formElements>
+												<f:FormElement  label="{MMReport1>MMReport_MatType}"> 
+													<f:fields>
+										<HBox>
+										<MultiComboBox  id ="matType" selectionChange="handleSelectionChange" selectionFinish="getSelectedValues"  items="{path: '/Rowset/Row'}" enabled="true"  width="135px">
+																<items> <core:Item key="{MaterialType}" text="{MaterialType}" /> </items>
+														 	</MultiComboBox >
+										<CheckBox id="allChckBox" text="All" selected="true" enabled="true" select="ChartMultiComboSelection" class="sapUiSmallMarginBegin"/>
+										</HBox>
+													</f:fields>
+												</f:FormElement>
+											</f:formElements>
+										</f:FormContainer>
+										<f:FormContainer>
+											<f:formElements>
+												<f:FormElement  label="{MMReport2>NPM_COMMON_ORD_MATERIAL}">
+													<f:fields>    	
+													<Input id="MatNum" width="200px" change="handleSelectionChange" />
+													</f:fields>
+												</f:FormElement>
+											</f:formElements>		
+										</f:FormContainer>
+										<f:FormContainer>
+											<f:formElements>
+												<f:FormElement label="">
+													<f:fields>
+														<Button id="btnRefresh" text="{MMReport48>TransferDisplay_btn_disp}" icon="/XMII/CM/MaterialHandling/Common/Images/Display.png" width="13rem" enabled="true" visible="true" press="getMMReport"/>
+													</f:fields>
+												</f:FormElement>
+											</f:formElements>		
+										</f:FormContainer>
+									</f:formContainers>
+								</f:Form>
+							</l:content>
+						</l:Grid> 
+					</content>
+				</Panel>  
+				<panel 
+					id="tabelPanel" 
+					headerText="" 
+					expandable="true" 
+					expanded="true">
+					<headerToolbar>
+						<Toolbar height="3rem" id="toolbar1">
+						<Label text="{MMReport47>CustomGR_GR_6}" design="Bold"/>
+						<ToolbarSpacer/>
+						<Button
+							id="ECCButton1"
+							enabled="false"
+							text = "{MMReport41>MMReport_ECCButton1}"
+						      	icon="sap-icon://sap-box"
+							width="180px"
+							press="goToECC_DISP"/>
+						<Button
+							id="ECCButton2"
+							enabled="false"
+							text = "{MMReport42>MMReport_ECCButton2}"
+						      	icon="sap-icon://sap-box"
+							width="180px"
+							press="goToECC_MM03"/>
+						<Button
+							id="btnExcelReportId"
+						      	icon="sap-icon://excel-attachment"
+							enabled="false"
+							visible="true"	
+							text = "{MMReport37>CustomGR_GMReport_11}"
+							width="180px"
+							press="getExcelReport"/>
+						<SearchField 
+							id="searchFieldMMTableId"
+							icon="/XMII/CM/PerformanceManagement/ChangeoverMatrix/Image/Search.png"
+							enabled="true"
+							visible="true"
+							width="300px"
+							text = "{MMReport10>CustomGR_PO_3}"			
+							liveChange="onSearch"/>
+						</Toolbar>
+					</headerToolbar>
+					<content>
+						<table:Table 
+							id="MMTable"
+							rows="{/Rowset/Row}"
+							selectionMode="Single"
+							selectionBehavior="Row"
+							rowSelectionChange="onRowSelection"
+							visible="true"	
+							visibleRowCount="7">
+							<table:columns>
+								<table:Column hAlign="Center" visible="true" width = "80px" fixedLayout="true"
+									sortProperty="MATERIAL_NUMBER"
+									filterProperty="MATERIAL_NUMBER">
+									 <commons:Label text="{MMReport2>NPM_COMMON_ORD_MATERIAL}" wrapping="true" design="Bold"/>
+									<table:template>
+									<Text text="{MATERIAL_NUMBER}" />
+									</table:template>
+								</table:Column>		   
+								<table:Column hAlign="left" visible="true" width = "205px"
+									sortProperty="MAKTX"
+									filterProperty="MAKTX">
+									<Label  class="ColumnAlignText" text="{MMReport38>MMReport_MatDesc}"/>
+									<table:template>
+									<Text text="{MAKTX}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width = "70px"
+									sortProperty="MTART"
+									filterProperty="MTART">
+								 <commons:Label class="ColumnAlignText" text="{MMReport49>MMReport_MatType}" wrapping="true"/>
+									<table:template>
+									<Text text="{MTART}" />
+									</table:template>
+								</table:Column>
+							      <table:Column hAlign="Center" visible="true" width = "60px"
+									sortProperty="SLOC"
+									filterProperty="SLOC">
+								 <commons:Label class="ColumnAlignText" text="{MMReport49>MMReport_SLOC}" wrapping="true"/>
+									<table:template>
+									<Text text="{SLOC}" />
+									</table:template>
+								</table:Column>		
+								<table:Column hAlign="Center" visible="true" width = "80px"
+									sortProperty="MATNR_CODE"
+									filterProperty="MATNR_CODE">
+								 <commons:Label text="{MMReport7>MMReport_MatCode}" wrapping="true" design="Bold"/>
+									<table:template>
+										<Text text="{MATNR_CODE}" />												
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width = "70px"
+									sortProperty="MATKL"
+									filterProperty="MATKL">
+								 <commons:Label text="{MMReport8>MMReport_MatGrp}" wrapping="true" design="Bold"/>
+									<table:template>
+									<Text text="{MATKL}" />
+									</table:template>
+								</table:Column>
+						           	<table:Column hAlign="Center" visible="true" width = "75px"
+									sortProperty="MATERIAL_STATUS"
+									filterProperty="MATERIAL_STATUS">
+									<commons:Label text="{MMReport11>MMReport_MatStatus}" wrapping="true" design="Bold"/>
+									<table:template>
+										<Text text="{MATERIAL_STATUS}" />
+									</table:template>
+								</table:Column>
+						             	<table:Column hAlign="Center" visible="true" width = "70px"
+									sortProperty="MRP_CONTROLLER"
+									filterProperty="MRP_CONTROLLER">
+									<commons:Label text="{MMReport12>MMReport_MRPCont}" wrapping="true" design="Bold"/>
+									<table:template>
+										<Text text="{MRP_CONTROLLER}" />
+									</table:template>
+								</table:Column>	  
+								<table:Column hAlign="Center" visible="true" width = "50px"
+									sortProperty="MSEH3_2"
+									filterProperty="MSEH3_2">
+									<commons:Label text="{MMReport5>TransferDisplay_colHeader1_uom}" wrapping="true" design="Bold" />
+									<table:template>
+										<Text text="{MSEH3_2}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width = "50px"
+									sortProperty="SLED"
+									filterProperty="SLED">
+									<commons:Label text="{MMReport39>MMReport_SLEDDays}"  wrapping="true" design="Bold" />
+									<table:template>
+										<Text text="{SLED}" />
+									</table:template>
+								</table:Column>
+							      <table:Column hAlign="Center" visible="true" width = "60px"
+									sortProperty="SLED_PERIOD"
+									filterProperty="SLED_PERIOD">
+								<commons:Label text="{MMReport9>MMReport_PeriodIndForSLED}" wrapping="true" design="Bold"/>
+									<table:template>
+							    <Text text="{parts : [{path: 'SLED_PERIOD'}],  formatter : '.getSLEDPERIODFormat' }" />
+									</table:template>
+								</table:Column>
+						   	            <table:Column hAlign="Center" visible="true" width = "75px"
+									sortProperty="ROUNDING_RULE"
+									filterProperty="ROUNDING_RULE">
+									<commons:Label text="{MMReport10>MMReport_RoundingRule}" wrapping="true" design="Bold" />
+									<table:template>
+										<Text text="{ROUNDING_RULE}" />
+									</table:template>
+								</table:Column>
+							    <table:Column hAlign="Center" visible="true" width = "70px"
+									sortProperty="IPKRZ_PAL"
+									filterProperty="IPKRZ_PAL">
+									<commons:Label text="{MMReport15>MMReport_FixedBBD}" wrapping="true" design="Bold" />
+									<table:template>
+										<Text text="{IPKRZ_PAL}" />
+									</table:template>
+								</table:Column>
+							 <table:Column hAlign="Center" visible="true" width = "70px"
+									sortProperty="BBD_FLAG"
+									filterProperty="BBD_FLAG">
+								<commons:Label text="{MMReport14>MMReport_BBDCalc}" wrapping="true" design="Bold"/>
+									<table:template>
+										<Text text="{BBD_FLAG}" />
+									</table:template>
+								</table:Column>		 
+                                                                                              	<table:Column hAlign="Center" visible="true" width = "70px"
+									sortProperty="XCHPF"
+									filterProperty="XCHPF">
+									<commons:Label text="{MMReport13>MMReport_BatchManaged}" wrapping="true" design="Bold"/>
+									<table:template>
+											<Text text="{XCHPF}" />
+                                                                                                                                       	</table:template>
+								</table:Column>	 
+							     <table:Column hAlign="Center" visible="true" width = "65px"
+									sortProperty="COPRODUCT_FLAG"
+									filterProperty="COPRODUCT_FLAG">
+									<commons:Label text="{MMReport16>MMReport_CoProd}" wrapping="true" design="Bold" />
+									<table:template>
+										<Text text="{COPRODUCT_FLAG}" />
+									</table:template>
+								</table:Column>	 	
+							</table:columns>
+						</table:Table>
+					</content>
+				</panel>
+		
+
+			
+				<IconTabBar 
+				id="idIconTabBar"  
+				stretchContentHeight="true"
+				backgroundDesign="Transparent"
+				applyContentPadding="false"	
+				expandable="false"
+				visible="false"	
+				class="sapMITBContent">
+				<items>
+						 <IconTabFilter id="labelUoMTable" icon="sap-icon://along-stacked-chart"  key="user_tabfilter" visible="true"  text="{MMReport18>MMReport_UoMTable}" >
+							<panel id="UoMpanel" headerText="" expandable="false" expanded="true" visible="true">
+								<OverflowToolbar>
+									
+									<Label text="{MMReport2>NPM_COMMON_ORD_MATERIAL} :" design="Bold"/>
+									<Input id ="MatNumber"   value ="" width="20%" editable="false"/>
+
+									<Label text="{MMReport44>TransferDisplay_colHeader1_uom} :" design="Bold"/>
+									<Input id ="baseuom"   value ="" width="20%" editable="false"/>	
+															
+						
+								
+								</OverflowToolbar>
+							<table:Table 
+							id="MMTable_UoM"
+							rows="{/Rowset/Row}"
+							selectionMode="Single"
+							selectionBehavior="Row"
+							visible="true"	
+							visibleRowCount="5">
+							<table:columns>
+								<table:Column hAlign="Center" visible="true" width = "80px"
+									sortProperty="EQUIVALENCE"
+									filterProperty="EQUIVALENCE">
+									<Label text="{MMReport20>MMReport_Equivalence}" />
+									<table:template>
+									<Text text="{EQUIVALENCE}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width = "80px"
+									sortProperty="TechnicalUOM"
+									filterProperty="TechnicalUOM">
+									<Label text="{MMReport21>MMReport_TechUoM}" />
+									<table:template>
+									<Text text="{TechnicalUOM}" />
+									</table:template>
+								</table:Column>
+							<table:Column hAlign="Center" visible="true" width = "80px"
+									sortProperty="ISOCODE"
+									filterProperty="ISOCODE">
+									<Label text="{MMReport40>MMReport_ISOCODE}" />
+									<table:template>
+									<Text text="{ISOCODE}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width = "80px"
+									sortProperty="NUMTP"
+									filterProperty="NUMTP">
+									<Label text="{MMReport22>MMReport_EANCategory}" />
+									<table:template>
+									<Text text="{NUMTP}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width = "80px"
+									sortProperty="EAN11"
+									filterProperty="EAN11">
+									<Label text="{MMReport23>MMReport_EANItemCode}" />
+									<table:template>
+									<Text text="{EAN11}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width = "80px"
+									sortProperty="GTIN_VARIANT"
+									filterProperty="GTIN_VARIANT">
+									<Label text="{MMReport24>MMReport_EANVariant}" />
+									<table:template>
+									<Text text="{GTIN_VARIANT}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width = "80px"
+									sortProperty="VOLUM"
+									filterProperty="VOLUM">
+									<Label text="{MMReport25>MMReport_Vol}" />
+									<table:template>
+									<Text text="{VOLUM}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width = "80px"
+									sortProperty="VOLEH"
+									filterProperty="VOLEH">
+									<Label text="{MMReport26>MMReport_VolUoM}" />
+									<table:template>
+									<Text text="{VOLEH}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width = "80px"
+									sortProperty="BRGEW"
+									filterProperty="BRGEW">
+									<Label text="{MMReport27>MMReport_Gross}" />
+									<table:template>
+									<Text text="{BRGEW}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width = "80px"
+									sortProperty="GEWEI"
+									filterProperty="GEWEI">
+									<Label text="{MMReport28>MMReport_WeightUoM}" />
+									<table:template>
+									<Text text="{GEWEI}" />
+									</table:template>
+								</table:Column>	
+								</table:columns>
+								</table:Table>
+								</panel>
+						</IconTabFilter>
+						 <IconTabFilter id="labelWMTable" icon="sap-icon://along-stacked-chart"  key="user_tabfilter1" visible="false"  text="{MMReport19>MMReport_WMTable}" >
+						<panel id="WMpanel" headerText="" expandable="false" expanded="true" visible="true">
+								<OverflowToolbar>
+									<Label text="{MMReport2>NPM_COMMON_ORD_MATERIAL} :" design="Bold"/>
+									<Input id ="MatNumber_WM"   value ="" width="20%" editable="false"/>
+						
+									
+								</OverflowToolbar>	
+							<table:Table 
+							id="MMTable_WM"
+							rows="{/Rowset/Row}"
+							selectionMode="Single"
+							selectionBehavior="Row"
+							visible="true"	
+							visibleRowCount="1">
+							<table:columns>
+								<table:Column hAlign="Center" visible="true" width = "80px"
+									sortProperty="WHNO"
+									filterProperty="WHNO">
+									<Label text="{MMReport29>NPM_COMMON_WAREHOUSE}" />
+									<table:template>
+									<Text text="{WHNO}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width = "80px"
+									sortProperty="STYPE"
+									filterProperty="STYPE">
+									<Label text="{MMReport30>InBndMatRecpt_colHeader_strgType}" />
+									<table:template>
+									<Text text="{STYPE}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width = "80px"
+									sortProperty="SBIN"
+									filterProperty="SBIN">
+									<Label text="{MMReport31>InBndMatRecpt_colHeader_strgBin}" />
+									<table:template>
+									<Text text="{SBIN}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width = "80px"
+									sortProperty="STGE_SECTION"
+									filterProperty="STGE_SECTION">
+									<Label text="{MMReport32>MMReport_StorageSec}" />
+									<table:template>
+									<Text text="{STGE_SECTION}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width = "80px"
+									sortProperty="WM_SPLPROCESS"
+									filterProperty="WM_SPLPROCESS">
+									<Label text="{MMReport33>MMReport_WMSpPro}" />
+									<table:template>
+									<Text text="{WM_SPLPROCESS}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width = "80px"
+									sortProperty="BULK_IND"
+									filterProperty="BULK_IND">
+									<Label text="{MMReport34>MMReport_BulkInd}" />
+									<table:template>
+									<Text text="{BULK_IND}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width = "80px"
+									sortProperty="LHMG1"
+									filterProperty="LHMG1">
+									<Label text="{MMReport35>MMReport_LEQuant}" />
+									<table:template>
+									<Text text="{LHMG1}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width = "80px"
+									sortProperty="LHME1"
+									filterProperty="LHME1">
+									<Label text="{MMReport36>MMReport_LEUnit}" />
+									<table:template>
+									<Text text="{LHME1}" />
+									</table:template>
+								</table:Column>
+								</table:columns>
+								</table:Table>
+						</panel>
+						     </IconTabFilter>
+				</items>
+			           </IconTabBar>
+		
+			</u:content>
+		</u:Shell>
+	</Page>
+</mvc:View>

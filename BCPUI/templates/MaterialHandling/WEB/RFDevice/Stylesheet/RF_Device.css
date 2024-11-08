@@ -1,0 +1,149 @@
+
+input[type="password"] {
+    background: rgba(13, 13, 13, 0.31) none repeat scroll 0 0;
+    border: 10px none rgba(10, 19, 20, 1);
+    color: white;
+    font-size: 0.9em;
+    margin: 0 0 0.5em;
+    outline: medium none;
+    padding: 0.5em;
+    //width: 500px;
+}
+input[type="text"] {
+ //   background: rgba(13, 13, 13, 0.31) none repeat scroll 0 0;
+  //  border: 10px none rgba(10, 19, 20, 1);
+    color: black;
+    font-size: 0.9em;
+    margin: 0 0 0.5em;
+    outline: medium none;
+    padding: 0.5em;
+   // width: 400px;
+}
+input[type="submit"] {
+   // background: #8bc34a none repeat scroll 0 0;
+    //border: 2px solid #ffffff;
+    color: #000000;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 600;
+    padding: 0.5em 1em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.5s ease 0s;
+}
+
+select {
+ //   background: rgba(13, 13, 13, 0.31) none repeat scroll 0 0;
+  //  border: 10px none rgba(10, 19, 20, 1);
+    color: black;
+    font-size: 0.9em;
+    margin: 0 0 0.5em;
+    outline: medium none;
+    padding: 0.5em;
+    width: 400px;
+}
+
+h1 {
+    color: #ffffff;
+    font-family: "Josefin Sans",sans-serif;
+    font-size: 2.5em;
+    font-weight: 700;
+    letter-spacing: 7px;
+    text-align: center;
+    text-transform: uppercase;
+}
+h2{
+    color: #ffffff;
+    font-family: "Josefin Sans",sans-serif;
+    font-size: 2.0em;
+    text-align: center;
+}
+.content {
+    margin: 2em auto 0;
+    width:470px;
+}
+
+.footer {
+    margin: 2em 0 0;
+    text-align: center;
+}
+.labelHDR{
+    background-color: #608AB9;
+    padding: 2;
+    border: 1px solid darkgray;
+    color: white;
+    font-size: 15;
+    width: 300px;
+    display: inline-block;
+    text-align: left;
+}
+}
+.fieldLabel{
+color:#000000;
+}
+.header img {
+  float: right;
+  background: Transparent;
+}
+
+h4 {
+     color: #2f4f4f;
+    font-family: "Josefin Sans",sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    text-align: left;
+}
+body {
+    margin: 0;
+    background: #f0f8ff;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.mainContent {
+    background: Transparent;
+    border: 0 solid;
+    padding: 1em 2em;
+}
+h3 {
+    color: #2f4f4f;
+    font-family: "Josefin Sans",sans-serif;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.b {
+    cursor: pointer;
+    font-size: 1.7em;
+    font-weight: 600;
+    padding: 0.2em 2em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    width:400px;
+}
+
+label{
+color: #2f4f4f;
+font-weight: bold;
+}
+#bcp{
+background-color: #0e7d0e;
+color: white;
+font-weight: bold;
+}
+#BCPArea{
+background-color: #0e7d0e;
+color: white;
+font-weight: bold;
+}
+input[type="value"] {
+  //  background: rgba(13, 13, 13, 0.31) none repeat scroll 0 0;
+   // border: 10px none rgba(10, 19, 20, 1);
+    color: white;
+    font-size: 0.9em;
+    margin: 0 0 0.5em;
+    outline: medium none;
+    padding: 0.5em;
+    width: 352px;
+}

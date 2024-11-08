@@ -1,0 +1,344 @@
+<mvc:View
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:u="sap.ui.unified"
+controllerName="JS.GoodReceipt"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:table="sap.ui.table"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+    <html:style>
+      		
+
+.sapUiUfdShellHeadItmSep.sapUiUfdShellHeadItm{
+    width: 124px;
+}
+.sapMLabel{
+    font-weight: bold;
+    white-space:normal;
+}
+.sapUiUfdShellHeadItm>span>img {
+    margin-top: 0px;
+    width: 110px;
+    height: 40px;
+    border-width: 0;
+}
+.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+    max-height: 30px;
+    max-width: 150px;
+    vertical-align: middle;
+}
+.sapMPI{
+ height: 2rem;
+ margin-left: 0.5rem;
+}
+#__item0{
+     width: 53px;
+}
+#textForConfirm1{
+	color: fireBrick;
+	font-weight:bold;
+	font-size: medium;
+}
+#textForConfirm2{
+	font-size: x-large;
+	padding-top: inherit;
+}
+#GoodReceipt--btnECCGMId-img{
+color: green;
+}
+#GoodReceipt--label_header3{
+    font-size: 20px;
+    font-family: Times New Roman;
+}
+#GoodReceipt--repID-img{
+color: royalBlue;
+}
+#GoodReceipt--quant, #GoodReceipt--batchNo, #GoodReceipt--ProdDate, #GoodReceipt--sledDate, #GoodReceipt--PostDate, #GoodReceipt--info, #GoodReceipt--itemInfo, #GoodReceipt--copies{
+max-width:280px;
+}
+#GoodReceipt--CreateBatch, #GoodReceipt--decID, #GoodReceipt--revID{
+max-width:190px;
+}
+.errorInput :-ms-input-placeholder.sapMInputBaseInner{
+color: red;
+}
+.errorInput ::placeholder{
+color: red;
+}
+.sapMLabelRequired:before{
+color:red;
+}
+.sapborderRes{
+font-stretch:semi-condensed;
+}
+
+.messageText{
+color:red;
+}
+</html:style>
+    <Page
+		id="pageID" class="Background"
+		showHeader="false"
+		title="Setup" >
+        <u:Shell
+			id="shell3"
+			icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+            <u:headItems>
+                <u:ShellHeadItem
+					tooltip="{GR1>NPDashboard_Back}"
+					icon="sap-icon://nav-back"
+					visible="true"
+					press="goHome" />
+            </u:headItems>
+            <u:headEndItems>
+                <u:ShellHeadItem
+					  id="bcpStatus"
+					icon=""
+					tooltip="{GR2>InBndMatRecpt_title_BCP}"
+					press="" />
+            </u:headEndItems>
+            <u:user>
+                <u:ShellHeadUserItem
+					image="sap-icon://person-placeholder"
+				            showPopupIndicator="false"
+					username="Karl Mustermann"
+                                                            press="logoff"
+					 />
+            </u:user>
+            <u:search>
+                <Label  id="label_header3"
+					text="{GR3>CustomGR_GR_1}" design="Bold"/>
+            </u:search>
+            <u:content>
+                <f:Form id="Form1"   
+            editable="false">
+                    <f:layout>
+                        <f:ResponsiveGridLayout
+	labelSpanL="4" labelSpanM="4" labelSpanS="3"
+            emptySpanL="0" emptySpanM="0"
+            columnsL="4" columnsM="4"/>
+                    </f:layout>
+                    <f:formContainers>
+                        <f:FormContainer>
+                            <f:formElements>
+                                <f:FormElement label="{GR4>NPDashboard_Line}">
+                                    <f:fields>
+                                        <Input id ="resDes" class="sapborderRes" value ="" />
+                                    </f:fields>
+                                </f:FormElement>
+                            </f:formElements>
+                        </f:FormContainer>
+                        <f:FormContainer>
+                            <f:formElements>
+                                <f:FormElement label = "{GR4>CustomGR_GRR_2}">
+                                    <f:fields>
+                                        <Input id ="ProcessOrder"  value ="" width="60%"/>
+                                    </f:fields>
+                                </f:FormElement>
+                            </f:formElements>
+                        </f:FormContainer>
+                        <f:FormContainer>
+                            <f:formElements>
+                                <f:FormElement label="{GR6>CustomGR_GR_4}" design="Bold">
+                                    <f:fields>
+                                        <Input id ="Material" value ="" change="poInput" />
+                                    </f:fields>
+                                </f:FormElement>
+                            </f:formElements>
+                        </f:FormContainer>
+                        <f:FormContainer>
+                            <f:formElements>
+                                <f:FormElement >
+                                    <f:fields>
+                                        <Input id ="MatDes" class="sapborderRes" value ="" change="poInput" />
+                                    </f:fields>
+                                </f:FormElement>
+                            </f:formElements>
+                        </f:FormContainer>
+                        <f:FormContainer>
+                            <f:formElements>
+                                <f:FormElement label="{GR5>CustomGR_GR_3}" design="Bold">
+                                    <f:fields>
+                                        <Input id ="Target" value ="" />
+                                    </f:fields>
+                                </f:FormElement>
+                            </f:formElements>
+                        </f:FormContainer>
+                        <f:FormContainer>
+                            <f:formElements>
+                                <f:FormElement label="{GR7>CustomGR_GR_5}" design="Bold">
+                                    <f:fields>
+                                        <Input id ="Produced"  value ="" />
+                                    </f:fields>
+                                </f:FormElement>
+                            </f:formElements>
+                        </f:FormContainer>
+                        <f:FormContainer>
+                            <f:formElements>
+                                <f:FormElement>
+                                    <f:fields>
+                                        <Select id ="changeMatID"  visible="true"  height="100%" change="changeMaterial" items="{path: '/Rowset/Row'}" tooltip="{GR8>CustomGR_GRR_22}">
+                                            <items>
+                                                <core:Item key="{WarehouseNumber}"  />
+                                            </items>
+                                        </Select>
+                                    </f:fields>
+                                </f:FormElement>
+                            </f:formElements>
+                        </f:FormContainer>
+                        <f:FormContainer>
+                            <f:formElements>
+                                <f:FormElement>
+                                    <f:fields>
+                                        <ProgressIndicator id="pi" class="progress" width="80%" showValue="true" />
+                                    </f:fields>
+                                </f:FormElement>
+                            </f:formElements>
+                        </f:FormContainer>
+                    </f:formContainers>
+                </f:Form>
+                <panel id="Panel2" >
+                    <headerToolbar>
+                        <OverflowToolbar height="3rem">
+                            <ToolbarSpacer />
+                            <Label text="{GR8>CustomGR_GR_6}" align="left" design="Bold"/>
+                            <Label text="" design=""/>
+                            <ToolbarSpacer />
+                            <Button id="btnECCGMId" enabled="true" align="left" text = "{GMReport21>GMReport_ECCGoodsMvmt}" width="200px" icon="sap-icon://sap-box"  press="goToECCGM"/>
+                            <Button id ="repID" enabled="true" align="left" visible="true" text = "{GR21>CustomGI_CL_12}" width="200px" icon="sap-icon://excel-attachment" press="doReport" />
+                            <ToolbarSpacer width="25px"/>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <f:Form id="Form2"   
+            editable="false"
+	width="100%">
+                        <f:layout>
+                            <f:ResponsiveGridLayout labelSpanL="3" labelSpanM="3" labelSpanS="3" emptySpanL="4" emptySpanM="5"
+            columnsL="1" columnsM="1"/>
+                        </f:layout>
+                        <f:formContainers>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{GR9>CustomGR_GR_7}" design="Bold">
+                                        <f:fields>
+                                            <Input id ="quant" value ="" liveChange="validateQuant"  />
+                                            <ComboBox id ="uom" width= "200px" height="100%" change="getUom" enabled="true" items="{path: '/Rowset/Row'}">
+                                                <items>
+                                                    <core:Item key="{WarehouseNumber}"  />
+                                                </items>
+                                            </ComboBox>
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{GR10>CustomGR_GR_8}">
+                                        <f:fields>
+                                            <MultiInput id ="batchNo" liveChange="checkExistBatch"  maxLength="10" valueHelpRequest="getBatch"/>
+                                            <Button id ="CreateBatch"  enabled="true" visible="true" text = "{GR11>CustomGR_GR_9}" press="pressBatch" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{GR23>CustomGR_FinalDelivery}" design="Bold">
+                                        <f:fields>
+                                            <CheckBox id="idFinalDelivery" selected="false" visible="true" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{GR12>CustomGR_GR_10}" design="Bold">
+                                        <f:fields>
+                                            <DatePicker  id ="ProdDate"  type="Date" valueFormat="yyyy-MM-dd" placeholder="" change="handleProdDateChange" />
+                                            <Button id ="decID"  enabled="true" type="Emphasized" visible="true" text = "{GR18>CustomGR_GRR_14}" press="doGR" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{GR13>CustomGR_GR_11}" design="Bold">
+                                        <f:fields>
+                                            <DatePicker  id ="sledDate"  type="Date" valueFormat="yyyy-MM-dd" placeholder="" change="handleSledDateChange" />
+                                            <Input id ="shelfDays" editable="false"  value ="" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{GR14>CustomGR_GR_12}" design="Bold">
+                                        <f:fields>
+                                            <DatePicker  id ="PostDate"  type="Date" valueFormat="yyyy-MM-dd" placeholder="" change="handlePostingDateChange" />
+                                            <Button id ="revID"   enabled="true" visible="true" text = "{GR19>CustomGR_GR_17}" press="doReverse" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement id ="infoLabel" label="{GR15>CustomGR_GR_Header}" design="Bold">
+                                        <f:fields>
+                                            <Input id ="info"  value =""  maxLength="50" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement id ="itemInfoLabel" label="{GR18>CustomGR_GR_Item}" design="Bold">
+                                        <f:fields>
+                                            <Input id ="itemInfo" value =""  maxLength="50" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{GR16>CustomGR_GR_15}" id="printerLabel"  visible="false" design="Bold">
+                                        <f:fields>
+                                            <Select id ="printerID" width="280px" visible="false" height="100%" enabled="true" change="getPrinter" items="{path: '/Rowset/Row'}">
+                                                <items>
+                                                    <core:Item key="{WarehouseNumber}"  />
+                                                </items>
+                                            </Select>
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{GR16>CustomGR_GR_PrintUOM}" id="printerUOM"  visible="false" design="Bold">
+                                        <f:fields>
+                                            <Select id ="altuom" width= "280px" visible="true" height="100%" enabled="true" items="{path: '/Rowset/Row'}">
+                                                <items>
+                                                    <core:Item key="{InternalUOM}"  text="{UOMDESC}" />
+                                                </items>
+                                            </Select>
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{GR17>CustomGR_GR_16}" id="copyLabel" visible="false" design="Bold">
+                                        <f:fields>
+                                            <Input id ="copies" enabled="true" visible="false" value ="" liveChange="validateNoOfPrintCopies" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                        </f:formContainers>
+                    </f:Form>
+                </panel>
+            </u:content>
+        </u:Shell>
+    </Page>
+</mvc:View>

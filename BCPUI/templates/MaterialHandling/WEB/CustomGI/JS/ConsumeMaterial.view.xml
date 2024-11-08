@@ -1,0 +1,373 @@
+<mvc:View
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:u="sap.ui.unified"
+controllerName="JS.ConsumeMaterial"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:table="sap.ui.table"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+    <html:style>
+      	
+	
+
+.sapUiUfdShellHeadItmSep.sapUiUfdShellHeadItm{
+    width: 124px;
+}
+.sapUiUfdShellHeadItm>span>img {
+    margin-top: 0px;
+    width: 110px;
+    height: 40px;
+    border-width: 0;
+}
+.sapMInputBaseInner{
+padding-right:0px;
+padding-bottom:1.5%;
+}
+.sapMPanelBGTranslucent{
+padding:0px;
+}
+
+#ConsumeMaterial--PostDate{
+max-width:200px;
+}
+#ConsumeMaterial--ReverseID{
+max-width:190px
+}
+#ConsumeMaterial--pInd{
+max-width:190px;
+}
+#ConsumeMaterial--stock{
+max-width:200px;
+}
+#ConsumeMaterial--ConsumeID{
+max-width:190px;
+}
+#ConsumeMaterial--ConsumeStageID{
+max-width:190px;
+}
+#ConsumeMaterial--uom{
+max-width:190px !important;
+}
+.greenIcon.sapMDialog > header.sapMDialogTitle .sapUiIcon.sapMDialogIcon{
+color:green;
+}
+.redIcon.sapMDialog > header.sapMDialogTitle .sapUiIcon.sapMDialogIcon{
+color:red;
+}
+#closeIcon-icon{
+color: dodgerblue;
+}
+#confirmdialog-icon{
+color: dodgerblue;
+}
+#ConsumeMaterial--btnECCGMId{
+min-width:150px;
+}
+#ConsumeMaterial--GMId{
+min-width:150px;
+}
+
+.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+    max-height: 30px;
+    max-width: 150px;
+    vertical-align: middle;
+}
+#__item0{
+     width: 53px;
+}
+.sapMLabel{
+font-weight: bold;
+white-space:normal;
+}
+
+#ConsumeMaterial--label_header3{
+	font-size: 20px;
+	font-family: Times New Roman;
+}
+#ConsumeMaterial--btnECCGMId-inner{
+background: white;
+border-color: grey;
+}
+#ConsumeMaterial--GMId-inner{
+background: white;
+border-color: grey;
+}
+#ConsumeMaterial--GMId-img
+{
+color: green;
+}
+#ConsumeMaterial--btnECCGMId-img
+{
+color: royalBlue;
+}	
+.sapUiRespGridHSpace0.sapUiRespGridMedia-Std-LargeDesktop > .sapUiRespGridSpanXL1 {
+width:17%;
+}
+
+
+.sapborder{
+background-color: transparent;
+font-weight:bold;
+ border-width: 0;
+outline:none;
+font-size: 1.2rem;
+}
+.sapborderRes{
+background-color: transparent;
+font-weight:bold;
+font-size: 1.0rem;
+font-stretch:semi-condensed;
+}
+#textForConfirm1{
+	color: fireBrick;
+	font-weight:bold;
+	font-size: medium;
+}
+#textForConfirm2{
+	font-size: x-large;
+	padding-top: inherit;
+}
+
+</html:style>
+    <Page
+		id="pageID" class="Background"
+		showHeader="false"
+		title="Setup" >
+        <u:Shell
+			id="shell3"
+			icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+            <u:headItems>
+                <u:ShellHeadItem
+					tooltip="{GI1>NPDashboard_Back}"
+					icon="sap-icon://nav-back"
+					visible="true"
+					press="goHome" />
+            </u:headItems>
+            <u:headEndItems>
+                <u:ShellHeadItem
+					  id="bcpStatus"
+					icon=""
+					tooltip="{GI2>InBndMatRecpt_title_BCP}"
+					press="" />
+            </u:headEndItems>
+            <u:user>
+                <u:ShellHeadUserItem
+					image="sap-icon://person-placeholder"
+				            showPopupIndicator="false"
+					username="Karl Mustermann"
+					press="logoff"
+					 />
+            </u:user>
+            <u:search>
+                <Label  id="label_header3"
+					text="{GI3>CustomGI_CM_1}" design="Bold"/>
+            </u:search>
+            <u:content>
+                <panel id="PanelTitle" visible="false">
+                    <headerToolbar>
+                        <Toolbar height="2rem" visible="false">
+                            <ToolbarSpacer />
+                            <Label text="" design="Bold"/>
+                            <ToolbarSpacer />
+                        </Toolbar>
+                    </headerToolbar>
+                </panel>
+                <panel id="topPanel" >
+                    <f:Form id="Form1"   
+            editable="false">
+                        <f:layout>
+                            <f:ResponsiveGridLayout
+	labelSpanL="4"
+            labelSpanM="4"
+             labelSpanS="4"
+	emptySpanL="0"
+            emptySpanM="0"
+         columnsL="4"
+            columnsM="4"
+          />
+                        </f:layout>
+                        <f:formContainers>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{ConsGIList24>NPDashboard_Line}">
+                                        <f:fields>
+                                            <Input class="sapborderRes" editable="false" id ="resDes" fieldWidth="70px"  value =""   />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{GI4>CustomGR_GRR_2}" design="Bold">
+                                        <f:fields>
+                                            <Input class="sapborder" editable="false" id ="ProcessOrder"  width="300px" fieldWidth="30px"  value ="" style="border:none" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{GI5>CustomGI_CM_3}" design="Bold">
+                                        <f:fields>
+                                            <Input class="sapborder" editable="false" id ="Material" width="200px" fieldWidth="25px"  value ="" change="poInput" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement >
+                                        <f:fields>
+                                            <Input class="sapborderRes" editable="false" id ="MatDes" fieldWidth="80px"  value ="" change="poInput" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                        </f:formContainers>
+                    </f:Form>
+                </panel>
+                <panel id="Panel2" expandable="false" expanded="true">
+                    <headerToolbar>
+                        <Toolbar >
+                            <ToolbarSpacer />
+                            <Button text="{GMReport21>GMReport_ECCGoodsMvmt}" id="btnECCGMId" width="12%" enabled="true" visible="true" press="goToECCGM" icon="sap-icon://sap-box" />
+                            <Button text="{CompList13>CustomGI_CL_12}" width="12%" enabled="true" visible="true" id="GMId" press="doReport" icon="sap-icon://excel-attachment"/>
+                        </Toolbar>
+                    </headerToolbar>
+                    <f:Form id="Form2"   
+            editable="false">
+                        <f:layout>
+                            <f:ResponsiveGridLayout
+	labelSpanL="3"
+            labelSpanM="3"
+             labelSpanS="3"
+            emptySpanL="5"
+            emptySpanM="0"
+	 emptySpanS="0"
+            columnsL="1"
+            columnsM="1"
+	columnsS="2"
+          />
+                        </f:layout>
+                        <f:formContainers>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{GI6>CustomGI_CM_4}" design="Bold">
+                                        <f:fields>
+                                            <Input id ="batchNo" editable="false" visible="false" fieldWidth="40px"  value ="" />
+                                            <ComboBox id="batchCombo" visible="false" width="253px"  items="{path: '/Rowset/Row'}"  selectionChange="getBatch">
+                                                <core:Item key="{batchNumber}" text="{SLEDFormattedDate}" />
+                                            </ComboBox>
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{GI7>CustomGI_CM_5}" design="Bold">
+                                        <f:fields>
+                                            <DatePicker  id ="shelfID" 
+                    		type="Date"
+                    		valueFormat="yyyy-MM-dd"
+			width="220px"
+                   		placeholder=""
+			editable="false"
+			change="handleProdDateChange" />
+                                            <Input id ="shelfDays" editable="false"  fieldWidth="30px"  value ="" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{GI8>CustomGI_CM_6}" design="Bold">
+                                        <f:fields>
+                                            <Input id ="stock"  width="75%" fieldWidth="30px" value =""  liveChange="validateQuantity"  />
+                                            <ComboBox id ="uom"  height="100%" change="getUom" items="{path: '/Rowset/Row'}">
+                                                <items>
+                                                    <core:Item key="{WarehouseNumber}"  />
+                                                </items>
+                                            </ComboBox>
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{GI18>Custom_GI_FinalIssue}" design="Bold">
+                                        <f:fields>
+                                            <CheckBox id="idFinalIssue" selected="false"  width="75%"  visible="true" />
+                                            <Button text="{GI16>CustomGI_CM_12}" type="Emphasized" id="ConsumeID"  enabled="true" visible="true" background-color="#A9A9A9" press="doGI" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{GI12>CustomGI_CM_8}" design="Bold">
+                                        <f:fields>
+                                            <Input id ="reqQuant" editable="false" width="300px" fieldWidth="30px"  value ="" change="quantInput" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{GI13>CustomGI_CM_9}" design="Bold">
+                                        <f:fields>
+                                            <Input id ="conQuant" editable="false"  value ="" change="quantInput" />
+                                            <ProgressIndicator id="pInd" showValue="true" displayValue="" state="Success"  />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{GI9>CustomGI_CM_7}" design="Bold">
+                                        <f:fields>
+                                            <HBox>
+                                                <Switch id="switch" state="false" customTextOn="{GI10>CustomGI_CM_14}" customTextOff="{GI11>CustomGI_CM_15}">
+                                                    <layoutData>
+                                                        <FlexItemData growFactor="1" />
+                                                    </layoutData>
+                                                </Switch>
+                                            </HBox>
+			 <Button text="{GI20>GI_Stage_ConsumReq}" type="Accept" id="ConsumeStageID"  enabled="true" visible="false" press="doGIStage" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{GI14>CustomGI_CM_10}" design="Bold">
+                                        <f:fields>
+                                            <DatePicker  id ="PostDate" 
+                    		type="Date"
+                    		valueFormat="yyyy-MM-dd"
+			width="90%"
+		
+                   		placeholder=""
+			change="handlePostingDateChange" />
+                                            <Button text="{GI17>CustomGR_GR_17}" id="ReverseID"  enabled="true" visible="true" press="doReverse" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{GI15>CustomGI_CM_11}" visible="false" id="ssccLabel">
+                                        <f:fields>
+                                            <Input id ="sscc" visible="false" width="300px" editable="false" fieldWidth="30px"  value ="" change="quantInput" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                        </f:formContainers>
+                    </f:Form>
+                </panel>
+            </u:content>
+        </u:Shell>
+    </Page>
+</mvc:View>

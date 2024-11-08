@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>BCP Process Order Report</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	
+	<script src="/sapui5/resources/sap-ui-core.js"
+			id="sap-ui-bootstrap“  type="text/javascript"   
+			
+			data-sap-ui-libs="sap.ui.commons,sap.m,sap.ui.core"
+			data-sap-ui-theme="sap_bluecrystal" data-sap-ui-xx-bindingSyntax="complex">
+	</script>
+
+	<script src="/XMII/CM/MaterialHandling/Common/JS/Common.js" type="text/javascript"></script>
+ 	<script src="/XMII/CM/MaterialHandling/Common/JS/date.js" type="text/javascript"></script>
+ 	<script src="/XMII/CM/MaterialHandling/Common/JS/UI5Utility.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		document.write('<scr'+'ipt src="/XMII/CM/MaterialHandling/EmergencyPO/View/EmergencyProcessOrderReport.controller.js?'+Math.random()+'" type="text/javascript"></scr'+'ipt>');
+		document.write('<scr'+'ipt src="/XMII/CM/MaterialHandling/Common/JS/app.js?'+Math.random()+'" type="text/javascript"></scr'+'ipt>');
+		document.write('<scr'+'ipt src="/XMII/CM/MaterialHandling/Common/JS/Formatter.js?'+Math.random()+'" type="text/javascript"></scr'+'ipt>');
+		document.write('<scr'+'ipt src="/XMII/CM/MaterialHandling/Common/JS/Utils.js?'+Math.random()+'" type="text/javascript"></scr'+'ipt>');
+ 	</script>
+
+	<input type="hidden"  value="{IllumLoginName}" id="UserNameId" width="145" style="text-align:center "></input>
+	<input id="firstname" type="hidden" value="{Firstname}"></input>
+	<input id="lastname" type="hidden" value="{Lastname}"></input>
+
+	<link rel="StyleSheet" href="" type="text/css"/>
+
+	<script>
+		jQuery.sap.registerModulePath("ePO", "/XMII/CM/MaterialHandling/EmergencyPO/View");  
+	           var page = sap.ui.view({id:"iDEPOPage", viewName:"ePO/EmergencyProcessOrderReport", type:sap.ui.core.mvc.ViewType.XML });  
+	           var app = new sap.m.App({initialPage:"iDEPOPage"});
+		app.addPage(page);
+		app.placeAt('content');
+	 </script>
+
+</head>
+	<!-- UI Content -->
+	<body class="sapUiBody" id="content" role="application">
+	</body>	
+</html>

@@ -1,0 +1,284 @@
+<mvc:View
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:u="sap.ui.unified"
+controllerName="JS.ProcessOrderGI"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:table="sap.ui.table"
+    xmlns:m="sap.suite.ui.microchart"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+    <html:style>
+      	
+	
+.sapUiUfdShellHeadItmSep.sapUiUfdShellHeadItm{
+    width: 124px;
+}
+.sapUiUfdShellHeadItm>span>img {
+    margin-top: 0px;
+    width: 110px;
+    height: 40px;
+    border-width: 0;
+}
+.sapUiTableColHdrCnt{
+border-color: grey;
+border-bottom-width: 2px;
+background-image: linear-gradient(to bottom,white, #dedede);
+}
+#ProcessOrderGI--Refresh-img{
+	color:#008bc7;
+	font-size: x-large;
+}
+.sapMLabel{
+	font-weight: bold;
+	white-space:normal;
+}
+.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+    max-height: 30px;
+    max-width: 150px;
+    vertical-align: middle;
+}
+#__item0{
+     width: 53px;
+}
+#__container3--Grid{
+	padding:0px;
+}
+.sapMPanelBGTranslucent{
+	padding:0px;
+}
+#ProcessOrderGI--label_header3{
+	font-size: 20px;
+	font-family: Times New Roman;
+}
+#ProcessOrderGI--Search-F{
+	border-width: 2.5px;
+ 	border-color: #008bc7;
+   	border-radius: 15px;
+}
+#ProcessOrderGI--Search-search{
+	color: #008bc7;
+}
+#ProcessOrderGI--Form1--Grid{
+	background-color:rgba(221, 239, 241, 1);
+}
+#ProcessOrderGI--range2-inner{
+	font-weight: bold;
+	font-size:large;
+	border-width: 2.5px;
+    	border-color: #008bc7;
+  	border-radius: 15px;
+}
+#ProcessOrderGI--Refresh-inner{
+	border-width: 2px;
+    	border-color: grey;
+}
+
+#ProcessOrderGI--resource{
+	font-weight: bold;
+	border-width: 2.5px;
+    	border-color: #008bc7;
+    	border-radius: 15px;
+}
+#ProcessOrderGI--resource-inner{
+	border-width: 2.5px;
+    	border-color: #008bc7;
+    	border-radius: 15px;
+}
+#ProcessOrderGI--resource-arrow{
+	border-radius: 15px;
+}
+#ProcessOrderGI--DateRange-inner{
+    font-weight: bold;
+    color: dimgrey;
+}
+#textForConfirm1{
+	color: fireBrick;
+	font-weight:bold;
+	font-size: medium;
+}
+#textForConfirm2{
+	font-size: x-large;
+	padding-top: inherit;
+}
+</html:style>
+    <Page
+		id="pageID" class="Background"
+		showHeader="false"
+		title="Setup" >
+        <u:Shell
+			id="shell3"
+			icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+            <u:headItems>
+                <u:ShellHeadItem
+					tooltip="{GIPO1>NPDashboard_Back}"
+					icon="sap-icon://nav-back"
+					visible="true"
+					press="goHome" />
+            </u:headItems>
+            <u:headEndItems>
+                <u:ShellHeadItem
+					  id="bcpStatus"
+					icon=""
+					tooltip="{GIPO2>InBndMatRecpt_title_BCP}"
+					press="" />
+            </u:headEndItems>
+            <u:user>
+                <u:ShellHeadUserItem
+					image="sap-icon://person-placeholder"
+				            showPopupIndicator="false"
+					username="Karl Mustermann"
+					press="logoff"/>
+            </u:user>
+            <u:search>
+                <Label  id="label_header3"
+					text="{GIPO3>CustomGI_PO_1}" design="Bold"/>
+            </u:search>
+            <u:content>
+                <panel id="topPanel">
+                    <headerToolbar visible="false">
+                        <Toolbar height="2rem" visible="false">
+                            <ToolbarSpacer />
+                            <Label text="" design="Bold"/>
+                            <ToolbarSpacer />
+                        </Toolbar>
+                    </headerToolbar>
+                    <f:Form id="Form1"   
+            editable="false">
+                        <f:layout>
+                            <f:ResponsiveGridLayout
+	labelSpanL="7"
+            labelSpanM="5"
+             labelSpanS="6"
+            emptySpanL="1"
+            emptySpanM="1"
+            columnsL="3"
+            columnsM="1"
+	breakpointL="1024"
+	breakpointM="600"
+          />
+                        </f:layout>
+                        <f:formContainers>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement>
+                                        <f:fields>
+                                            <ComboBox id="resource" items="{path: '/Rowset/Row'}"  selectionChange="ResourceChange">
+                                                <core:Item key="{NODE_ID}" text="{DESCRIPTION}" />
+                                            </ComboBox>
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="{GIPO4>CustomGI_PO_2}">
+                                        <f:fields>
+                                            <Input id ="range2" width="80%" textAlign="Center" value ="" />
+                                            <Button id="Refresh"
+		icon="/XMII/CM/MaterialHandling/Common/Images/Refresh.png" width="60%" enabled="true" visible="true" press="doRefresh" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement>
+                                        <f:fields>
+                                            <SearchField 
+			id="Search"
+			icon="sap-icon://search"
+			enabled="true"
+			visible="true"
+	 		width="80%"
+			placeholder = "{GIPO5>CustomGI_PO_3}"			
+		    	liveChange="onSearch" />
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                        </f:formContainers>
+                    </f:Form>
+                </panel>
+                <panel id="tabelPanel" headerText="" expandable="true" expanded="true"  >
+                    <headerToolbar visible="false">
+                        <Toolbar height="3rem" id="toolbar1" visible="false">
+                            <Label text="" design="Bold"/>
+                            <ToolbarSpacer/>
+                        </Toolbar>
+                    </headerToolbar>
+                    <f:Form id="form3"
+        editable="false">
+                        <f:layout>
+                            <f:ResponsiveGridLayout
+            labelSpanL="1"
+            labelSpanM="1"
+            emptySpanL="0"
+            emptySpanM="0"
+            columnsL="1"
+            columnsM="1" />
+                        </f:layout>
+                        <f:formContainers>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement id="ProcessOrderData">
+                                        <table:Table id="ProcessOrderTable" rows="{/Rowset/Row}"
+							selectionMode="Single" selectionBehavior="RowOnly" visible="true" rowSelectionChange="rowSelectionPage" 
+
+							visibleRowCount="21">
+                                            <table:columns>
+                                                <table:Column hAlign="Center" visible="true" 
+									sortProperty="Order" filterProperty="Order">
+                                                    <Label text="{GIPO6>CustomGI_PO_4}" />
+                                                    <table:template>
+                                                        <Text text="{Order}" />
+                                                    </table:template>
+                                                </table:Column>
+                                                <table:Column hAlign="Center" visible="true"
+									sortProperty="Material" filterProperty="Material">
+                                                    <Label text="{GIPO7>CustomGI_PO_5}" />
+                                                    <table:template>
+                                                        <Text text="{Material}" />
+                                                    </table:template>
+                                                </table:Column>
+                                                <table:Column hAlign="Center" visible="true" width="40%"
+									sortProperty="MaterialDescription" filterProperty="MaterialDescription">
+                                                    <Label text="{GIPO8>CustomGI_PO_6}" />
+                                                    <table:template>
+                                                        <Text text="{MaterialDescription}" />
+                                                    </table:template>
+                                                </table:Column>
+                                                <table:Column hAlign="Center" visible="true" 
+									sortProperty="PlannedStart" filterProperty="PlannedStart" >
+                                                    <Label text="{GIPO9>CustomGI_PO_7}" />
+                                                    <table:template>
+                                                        <Text text="{parts : [{path: 'PlannedStart'}],  formatter : '.getDateDisplayFormat' }" />
+                                                    </table:template>
+                                                </table:Column>
+                                                <table:Column hAlign="Center" visible="true" 
+									sortProperty="TargetQuantity" filterProperty="TargetQuantity">
+                                                    <Label text="{GIPO10>CustomGI_PO_8}" />
+                                                    <table:template>
+                                                        <Text text="{parts : [{path : 'TargetQuantity'},{path:'TargetCommUOM'}], formatter : '.getFormattedQuantityUOM'}" />
+                                                    </table:template>
+                                                </table:Column>
+                                                <table:Column hAlign="Center" visible="false" 
+									sortProperty="ProdType" filterProperty="ProdType">
+                                                    <Label text="{GIPO11>CustomGI_PO_9}" />
+                                                    <table:template>
+                                                        <Text text="{ProdType}" />
+                                                    </table:template>
+                                                </table:Column>
+                                            </table:columns>
+                                        </table:Table>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                        </f:formContainers>
+                    </f:Form>
+                </panel>
+            </u:content>
+        </u:Shell>
+    </Page>
+</mvc:View>

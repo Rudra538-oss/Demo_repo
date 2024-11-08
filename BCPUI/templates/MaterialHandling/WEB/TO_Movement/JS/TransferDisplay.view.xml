@@ -1,0 +1,315 @@
+<mvc:View
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified"
+controllerName="JS.TransferDisplay"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:table="sap.ui.table"
+	xmlns:commons="sap.ui.commons"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<html:style>
+.sapUiFormResGridCont.sapUiRespGridMedia-Std-Phone > :not(.sapUiRespGridSpanS12).sapUiFormElementLbl, .sapUiFormResGridCont.sapUiRespGridMedia-Std-Tablet > :not(.sapUiRespGridSpanM12).sapUiFormElementLbl, .sapUiFormResGridCont.sapUiRespGridMedia-Std-Desktop > :not(.sapUiRespGridSpanL12).sapUiFormElementLbl, .sapUiFormResGridCont.sapUiRespGridMedia-Std-LargeDesktop > :not(.sapUiRespGridSpanXL12).sapUiFormElementLbl {
+    padding-right: 0.2rem;
+}
+.sapMPanelContent {
+    padding: 0rem;
+    box-sizing: border-box;
+    overflow: auto;
+    white-space: normal;
+}
+.sapMMultiComboBoxInputContainer{ 
+margin-right:0rem!imporant;
+min-width:0rem!important;
+}
+.sapUiUfdShellHeadItmSep.sapUiUfdShellHeadItm{
+    width: 124px;
+}
+.sapUiUfdShellHeadItm>span>img {
+    margin-top: 0px;
+    width: 110px;
+    height: 40px;
+    border-width: 0;
+}
+.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+    max-height: 30px;
+    max-width: 150px;
+    vertical-align: middle;
+}
+
+#__item0{
+     width: 53px;
+}
+.sapMCb{
+box-sizing:initial!important;
+}
+.sapMSltArrow{
+    line-height: 2rem;
+    z-index: 2;
+}
+#TransferDisplay--wareNum{
+pointer-events:blocked;
+}
+
+
+
+</html:style>
+	<Page
+		id="pageID" class="Background"
+		showHeader="false"
+		title="Setup" >
+		<u:Shell
+			id="shell3"
+			icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+			<u:headItems>
+				<u:ShellHeadItem
+					tooltip="{title1>NPDashboard_Home}"
+					icon="sap-icon://nav-back"
+					visible="true"
+					press="goHome" />
+			</u:headItems>
+			<u:headEndItems>
+				<u:ShellHeadItem
+					  id="bcpStatus"
+					icon=""
+					tooltip="{title2>InBndMatRecpt_title_BCP}"
+					press="" />
+			</u:headEndItems>
+			<u:user>
+				<u:ShellHeadUserItem
+					image="sap-icon://person-placeholder"
+				            showPopupIndicator="false"
+					username="Karl Mustermann"
+					 />
+			</u:user>
+			<u:search>
+				<Label  id="label_header3"
+					text="{title3>TransferDisplay_tile}" design="Bold"/>
+			</u:search>
+			<u:content>
+	<f:Form id="Form1"    editable="false">
+	<f:layout> <f:ResponsiveGridLayout labelSpanXL = "5" labelSpanL="5" labelSpanM="5"
+			emptySpanXL = "0" emptySpanL="0" emptySpanM="0"
+			columnsXL="4" columnsL="4" columnsM="4" />
+	</f:layout> <f:formContainers>
+		<f:FormContainer id="td1"> <f:formElements>
+			<f:FormElement label="{label1>TransferDisplay_label_SLoc}">
+				<f:fields> <Select id ="sLoc" visible="true" enabled="true"  change="getSLoc" items="{path: '/Rowset/Row'}">
+					<items> <core:Item key="{StorageLocation}"  text="{StorageLocation}" /> </items> </Select>
+				</f:fields>
+			</f:FormElement> </f:formElements> </f:FormContainer>
+		<f:FormContainer  id="td2"> <f:formElements>
+			<f:FormElement label="{label2>TransferDisplay_label_WHNo}">
+				<f:fields> <Input id ="wareNum" value ="" /> </f:fields>
+			</f:FormElement> </f:formElements> </f:FormContainer>
+		<f:FormContainer  id="td3"> <f:formElements>
+			<f:FormElement label="{label3>TransferDisplay_label_SType}">
+				<f:fields> <MultiComboBox  id ="sType" selectionChange="handleSelectionChange" selectionFinish="getSelectedValues"  items="{path: '/Rowset/Row'}" enabled="false">
+					<items> <core:Item key="{StorageType}" text="{StorageType}" /> </items> </MultiComboBox >
+					<CheckBox id="allChckBox1" text="All" selected="false" enabled="false" select="ChartMultiComboSelection1" /> </f:fields>
+			</f:FormElement> </f:formElements> </f:FormContainer>
+		<f:FormContainer  id="td4"> <f:formElements>
+			<f:FormElement label="{label4>TransferDisplay_label_SBin}">
+				<f:fields> <MultiComboBox  id ="sBin" selectionChange="handleStoreSelectionChange" selectionFinish="getStorageBin" items="{path: '/Rowset/Row'}" enabled="false">
+					<items> <core:Item key="{StorageBin}" text="{StorageBin}" /> </items> </MultiComboBox >
+					<CheckBox id="allChckBox2" text="All" selected="false" enabled="false" select="ChartMultiComboSelection2" /> </f:fields>
+			</f:FormElement> </f:formElements> </f:FormContainer>
+		<f:FormContainer  id="td5"> <f:formElements>
+			<f:FormElement label="{label5>TransferDisplay_label_Mat}">
+				<f:fields> <Input id ="mat" value ="" change="handleSelectionChange" /> </f:fields>
+			</f:FormElement> </f:formElements> </f:FormContainer>
+		<f:FormContainer id="td6"> <f:formElements>
+			<f:FormElement label="Storage Unit">
+				<f:fields> <Input id ="sunit"  value =""  /> </f:fields>
+			</f:FormElement> </f:formElements> </f:FormContainer>
+		<f:FormContainer  id="td7"> <f:formElements>
+			<f:FormElement label="Batch">
+				<f:fields> <Input id ="Batch" value =""  /> </f:fields>
+			</f:FormElement> </f:formElements> </f:FormContainer>
+		<f:FormContainer id="td8"> <f:formElements>
+			<f:FormElement ><!-- /XMII/CM/MaterialHandling/Common/Images/Display.png        -->
+				<f:fields> <Button id="DisplayID" width="80%" text="{button1>TransferDisplay_btn_disp}" enabled="true" icon="sap-icon://detail-view" press="doDisplay"/>
+					<Button id="RefreshID" width="80%"  text="{button2>TransferDisplay_btn_Clear}" enabled="true" icon="sap-icon://reset" press="doRefresh"/> </f:fields>
+			</f:FormElement> </f:formElements> </f:FormContainer>
+	</f:formContainers>
+	</f:Form>
+	<Panel id="tabelPanel" headerText="{title6>TransferDisplay_title_StockDisplay}" >
+		<headerToolbar> <OverflowToolbar height="3rem" id="toolbar1">
+				<Label text="Fast Moving Runtime:" id="FastLab"  />
+				<Label id = "FastID"   /> <ToolbarSpacer/>
+				<Label text="Frequent Moving Runtime:" id="FreqLab" />
+				<Label id = "FreqID"   /> <ToolbarSpacer/>
+				<Label text="Slow Moving Runtime:" id="SlowLab" />
+				<Label id = "SlowID"   /> <ToolbarSpacer/>
+				<Button id="getExcelReport" icon="sap-icon://excel-attachment" enabled="true" visible="false" text = "{button3>TransferDisplay_btn_excel}" width="180px" press="pressGetExcelReportFn" />
+				<SearchField id="Search" icon="sap-icon://search" enabled="true" visible="true" width="250px" placeholder="{title7>CustomGI_CL_4}" liveChange="onSearch" />
+		</OverflowToolbar> </headerToolbar>
+		<table:Table id="TransferStockTable" rows="{/Rowset/Row}" selectionMode="Single" selectionBehavior="Row" rowSelectionChange ="rowSelectionDialog"
+					visible="true" RowCount="500" visibleRowCount="16">
+			<table:columns>
+				<table:Column hAlign="Center" visible="true" width = "5%" sortProperty="STGE_TYPE"  filterProperty="STGE_TYPE">
+					<commons:Label text="{column1>TransferDisplay_colHeader_sType}" wrapping="true"/>
+					<table:template> <Text text="{STGE_TYPE}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="true" width = "8%" sortProperty="STGE_BIN"  filterProperty="STGE_BIN">
+					<commons:Label text="{column2>TransferDisplay_colHeader_sBin}" wrapping="true"/>
+					<table:template> <Text text="{STGE_BIN}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="true" sortProperty="MaterialDescription" filterProperty="MaterialDescription">
+					<Label text="{column3>TransferDisplay_colHeader_matdes}" />
+					<table:template> <Text text="{MaterialDescription}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="true" width = "7%" sortProperty="MATERIAL"  filterProperty="MATERIAL">
+					<Label text="{column4>TransferDisplay_colHeader_mat}" />
+					<table:template> <Text text="{path: 'MATERIAL',  formatter : '.getMateriaFormat' }" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="false" width = "120px" sortProperty="BATCH_STATUS" filterProperty="BATCH_STATUS">
+					<Label text="{column5>TransferDisplay_colHeader_status}" />
+					<table:template> <Text text="{BATCH_STATUS}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="true" width = "7%" sortProperty="BATCH"  filterProperty="BATCH">
+					<Label text="{column6>TransferDisplay_colHeader_batch}" />
+					<table:template> <Text text="{BATCH}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="true" width = "7%" sortProperty="EXPIRYDATE" filterProperty="EXPIRYDATE">
+					<Label text="{column7>TransferDisplay_colHeader_sled}" />
+					<table:template> <Text text="{path: 'EXPIRYDATE',  formatter : '.getDateDisplayFormat' }" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="true" width = "7%" sortProperty="PROD_DATE" filterProperty="PROD_DATE">
+					<Label text="{column13>TransferDisplay_colHeader_prodDate}" />
+					<table:template> <Text text="{path: 'PROD_DATE',  formatter : '.getDateDisplayFormat' }" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="true" width = "6%" sortProperty="AVAIL_STCK" filterProperty="AVAIL_STCK">
+					<commons:Label text="{column8>TransferDisplay_colHeader_avail}" wrapping="true"/>
+					<table:template> <Text text="{parts : [{path: 'AVAIL_STCK'}],  formatter : 'sap.oee.ui.Formatter.formatQuantityValue'}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="true" width = "5%" sortProperty="PICKQUANTITY" filterProperty="PICKQUANTITY">
+					<commons:Label text="{column18>TransferDisplay_colHeader_pick}" wrapping="true"/>
+					<table:template> <Text text="{parts : [{path: 'PICKQUANTITY'}],  formatter : 'sap.oee.ui.Formatter.formatQuantityValue'}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="true" width = "5%" sortProperty="PUTAWAY" filterProperty="PUTAWAY">
+					<commons:Label text="{column19>TransferDisplay_colHeader_putaway}" wrapping="true"/>
+					<table:template> <Text text="{parts : [{path: 'PUTAWAY'}],  formatter : 'sap.oee.ui.Formatter.formatQuantityValue'}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="true" width = "5%" sortProperty="CommercialUOM" filterProperty="CommercialUOM">
+					<Label text="{column9>TransferDisplay_colHeader_uom}" />
+					<table:template> <Text text="{CommercialUOM}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="true" width = "13%" sortProperty="STOR_UNIT" filterProperty="STOR_UNIT">
+					<Label text="{column10>TransferDisplay_colHeader_sUnit}" />
+					<table:template> <Text text="{STOR_UNIT}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="true" width = "5%" sortProperty="STOCK_CAT" filterProperty="STOCK_CAT">
+					<commons:Label text="{column11>TransferDisplay_colHeader_stckcat}" wrapping="true"/>
+					<table:template> <Text text="{STOCK_CAT}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="false" width = "100px" sortProperty="PLANT" filterProperty="PLANT">
+					<Label text="{column12>TransferDisplay_colHeader_plant}" />
+					<table:template> <Text text="{PLANT}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="false" width = "80px" sortProperty="UNITTYPE_1" filterProperty="UNITTYPE_1">
+					<Label text="{column14>TransferDisplay_colHeader_unitType}" />
+					<table:template> <Text text="{UNITTYPE_1}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="false" width = "100px" sortProperty="STGE_LOC" filterProperty="STGE_LOC">
+					<Label text="{column15>TransferDisplay_colHeader_sLoc}" />
+					<table:template> <Text text="{STGE_LOC}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="false" width = "100px" sortProperty="WHSENUMBER" filterProperty="WHSENUMBER">
+					<Label text="{column16>TransferDisplay_colHeader_whNo}" />
+					<table:template> <Text text="{WHSENUMBER}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" width = "6%" visible="true" sortProperty="RESTRICTED" filterProperty="RESTRICTED">
+					<commons:Label text="{column17>TransferDisplay_colHeader_BatchRestricted}"  wrapping="true"/>
+					<table:template> <Text text="{RESTRICTED}" /> </table:template>
+				</table:Column>
+			</table:columns>
+		</table:Table>
+
+
+		<table:Table id="TransferStockTable2" rows="{/Rowset/Row}" title="Destination" selectionMode="Single" selectionBehavior="Row" navigationMode="Paginator" rowSelectionChange ="rowSelectionDialog1"
+	            		visible="false" RowCount="500" visibleRowCount="10">
+			<table:columns>
+				<table:Column hAlign="Center" visible="true" width = "60px" sortProperty="STGE_TYPE"  filterProperty="STGE_TYPE">
+					<Label text="{column18>TransferDisplay_colHeader1_sType}" />
+					<table:template> <Text text="{STGE_TYPE}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="true" width = "100px" sortProperty="STGE_BIN" filterProperty="STGE_BIN">
+					<Label text="{column19>TransferDisplay_colHeader1_sBin}" />
+					<table:template> <Text text="{STGE_BIN}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="true" width = "120px" sortProperty="MaterialDescription" filterProperty="MaterialDescription">
+					<Label text="{column20>TransferDisplay_colHeader1_matdes}" />
+					<table:template> <Text text="{MaterialDescription}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="true" width = "100px" sortProperty="MATERIAL" filterProperty="MATERIAL">
+					<Label text="{column21>TransferDisplay_colHeader1_mat}" />
+					<table:template> <Text text="{MATERIAL}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="false" width = "100px" sortProperty="BATCH_STATUS" filterProperty="BATCH_STATUS">
+					<Label text="{column22>TransferDisplay_colHeader1_status}" />
+					<table:template> <Text text="{BATCH_STATUS}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="true" width = "100px" sortProperty="BATCH" filterProperty="BATCH">
+					<Label text="{column23>TransferDisplay_colHeader1_batch}" />
+					<table:template> <Text text="{BATCH}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="true" width = "100px" sortProperty="EXPIRYDATE"  filterProperty="EXPIRYDATE">
+					<Label text="{column24>TransferDisplay_colHeader1_sled}" />
+					<table:template> <Text text="{parts : [{path: 'EXPIRYDATE'}],  formatter : '.getDateDisplayFormat' }" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="false" width = "100px" sortProperty="PROD_DATE" filterProperty="PROD_DATE">
+					<Label text="{column30>TransferDisplay_colHeader1_prodDate}" />
+					<table:template> <Text text="{PROD_DATE}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="true" width = "100px" sortProperty="AVAIL_STCK" filterProperty="AVAIL_STCK">
+					<Label text="{column25>TransferDisplay_colHeader1_avail}" />
+					<table:template> <Text text="{AVAIL_STCK}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="true" width = "5%" sortProperty="PICKQUANTITY" filterProperty="PICKQUANTITY">
+					<commons:Label text="{column18>TransferDisplay_colHeader_pick}" wrapping="true"/>
+					<table:template> <Text text="{parts : [{path: 'PICKQUANTITY'}],  formatter : 'sap.oee.ui.Formatter.formatQuantityValue'}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="true" width = "5%" sortProperty="PUTAWAY" filterProperty="PUTAWAY">
+					<commons:Label text="{column19>TransferDisplay_colHeader_putaway}" wrapping="true"/>
+					<table:template> <Text text="{parts : [{path: 'PUTAWAY'}],  formatter : 'sap.oee.ui.Formatter.formatQuantityValue'}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="true" width = "100px" sortProperty="CommercialUOM" filterProperty="CommercialUOM">
+					<Label text="{column26>TransferDisplay_colHeader_uom}" />
+					<table:template> <Text text="{CommercialUOM}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="true" width = "120px" sortProperty="STOR_UNIT" filterProperty="STOR_UNIT">
+					<Label text="{column27>TransferDisplay_colHeader1_sUnit}" />
+					<table:template> <Text text="{STOR_UNIT}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="true" width = "100px" sortProperty="STOCK_CAT" filterProperty="STOCK_CAT">
+					<Label text="{column28>TransferDisplay_colHeader1_stckcat}" />
+					<table:template> <Text text="{STOCK_CAT}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="false" width = "100px" sortProperty="PLANT" filterProperty="PLANT">
+					<Label text="{column29>TransferDisplay_colHeader1_plant}" />
+					<table:template> <Text text="{PLANT}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="false" width = "100px" sortProperty="UNITTYPE_1" filterProperty="UNITTYPE_1">
+					<Label text="{column31>TransferDisplay_colHeader_unitType}" />
+					<table:template> <Text text="{UNITTYPE_1}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="false" width = "100px" sortProperty="STGE_LOC" filterProperty="STGE_LOC">
+					<Label text="{column32>TransferDisplay_colHeader_sLoc}" />
+					<table:template> <Text text="{STGE_LOC}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="false" width = "100px" sortProperty="WHSENUMBER" filterProperty="WHSENUMBER">
+					<Label text="{column33>TransferDisplay_colHeader_whNo}" />
+					<table:template> <Text text="{WHSENUMBER}" /> </table:template>
+				</table:Column>
+				<table:Column hAlign="Center" visible="true" width = "100px" sortProperty="RESTRICTED" filterProperty="RESTRICTED">
+					<Label text="{column34>TransferDisplay_colHeader_StockStatus}" />
+					<table:template> <Text text="{RESTRICTED}" /> </table:template>
+				</table:Column>
+			</table:columns>
+		</table:Table></Panel>
+			</u:content>
+		</u:Shell>
+	</Page>
+</mvc:View>

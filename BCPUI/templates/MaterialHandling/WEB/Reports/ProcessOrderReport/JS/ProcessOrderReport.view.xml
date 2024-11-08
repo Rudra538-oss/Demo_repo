@@ -1,0 +1,766 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified" controllerName="JS.ProcessOrderReport"
+	xmlns:f="sap.ui.layout.form" xmlns:table="sap.ui.table" xmlns:commons="sap.ui.commons"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<html:style>
+		.sapUiUfdShellHeadItmSep.sapUiUfdShellHeadItm{
+		width: 124px;
+		}
+		.sapUiUfdShellHeadItm>span>img {
+		margin-top: 0px;
+		width: 110px;
+		height:
+		40px;
+		border-width: 0;
+		}
+		#ProcessOrderReport--objectCount-inner{
+		color:
+		darkorange;
+		font-size: 20px;
+		}
+		.sapMInputBaseInner.sapMInputBaseReadonlyInner{
+		font-weight: bold;
+		}
+		#ProcessOrderReport--label_header3{
+		font-size: 20px;
+		font-family: Times
+		New Roman;
+		}
+		#ProcessOrderReport--iconTabBar-content{
+		padding-top: 1px;
+		padding-left: 0px;
+		padding-right: 0px;
+		}
+		#ProcessOrderReport--iconTabBar--header{
+		margin-top: -1.8rem;
+		}
+		.sapUiUfdShellHeadEnd > .sapUiUfdShellIco > img,
+		.sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+
+		max-height: 30px;
+		max-width: 150px;
+		vertical-align: middle;
+		}
+		.sapMMultiComboBoxInputContainer{
+		margin-right:0rem!imporant;
+		min-width:0rem!important;
+		}
+
+		#ProcessOrderReport--navBackId{
+		width: 53px;
+		}
+		#ProcessOrderReport--Refresh-img{
+		padding-left: 20%;
+		font-size: 25px;
+		color: dodgerblue;
+		}
+		.sapUiFormBackgrTranslucent.sapUiFormResGrid > div{
+		margin:-15px;
+
+		}
+		.sapMLabel.sapMLabelMaxWidth.sapUiSelectable{
+
+		font-weight: bold;
+		}
+		#ProcessOrderReport--selectionPanel{
+		height:150px
+		!important;}
+
+		.roundButton .sapMBtnInner {
+		border-radius:300px;
+		border-color:orange;
+		color:#12197a;
+		font-weight: bold;
+		}
+		.sapMPI {
+		box-sizing: border-box;
+		min-width: 5rem;
+		outline: none;
+		background:
+		#ffffff;
+		height: auto;
+		border:none;
+		margin:0rem;
+		}
+		.sapMPIBar {
+		height:
+		100%;
+		float: left;
+		border-radius: 25px;
+		}
+		.sapMPIText {
+		font-family:
+		Arial,Helvetica,sans-serif;
+		font-weight: normal;
+		line-height: 1.5rem;
+		color: #333333;
+		}
+		.sapMPIBarPositive {
+		background: linear-gradient(to
+		bottom,#5cb85c 0,#5cb85c 100%);
+		}
+		.sapMPIBarCritical {
+		background:
+		linear-gradient(to bottom,#f0ad4e 0,#f0ad4e 100%);
+		}
+		#ProcessOrderReport--btnExcelReportId-inner{
+		background-color: white;
+		border: 1px solid;
+		border-color: #bfbfbf;
+		border-radius: 0.125rem;
+		}
+		#ProcessOrderReport--btnExcelReportId-img{
+		color:green;}
+	</html:style>
+	<Page id="pageID" class="Background" showHeader="false" title="Setup">
+		<u:Shell id="shell3" icon="/XMII/CM/MaterialHandling/Common/Images/logo.png">
+			<u:headItems>
+				<u:ShellHeadItem id="navBackId" tooltip="{POReport>NPDashboard_Back}"
+					icon="sap-icon://nav-back" visible="true" press="goHome" />
+			</u:headItems>
+			<u:headEndItems>
+				<u:ShellHeadItem id="bcpStatus" icon=""
+					tooltip="{POReport>InBndMatRecpt_title_BCP}" press="" />
+			</u:headEndItems>
+			<u:user>
+				<u:ShellHeadUserItem image="sap-icon://person-placeholder"
+					showPopupIndicator="false" username="" />
+			</u:user>
+			<u:search>
+				<Label id="label_header3" text="{POReport>NPDashboard_Process_Order_Report}"
+					design="Bold" />
+			</u:search>
+			<u:content>
+				<Panel id="selectionPanel" expandable="false" expanded="true">
+					<content>
+						<l:Grid defaultSpan="L12 M12 S12" width="auto">
+							<l:content>
+								<f:Form id="Form1" minWidth="1024" maxContainerCols="2"
+									editable="true">
+									<f:layout>
+										<f:ResponsiveGridLayout labelSpanL="4"
+											labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="4"
+											columnsM="4" />
+									</f:layout>
+									<f:formContainers>
+										<f:FormContainer>
+											<f:formElements>
+												<f:FormElement label="{POReport>NPDashboard_Line}">
+													<f:fields>
+														<HBox>
+															<MultiComboBox id="selLineId"
+																selectionChange="onLineSelect" items="{path: '/Rowset/Row'}"
+																width="145px">
+																<items>
+																	<core:Item key="{NODE_ID}" text="{DESCRIPTION}" />
+																</items>
+															</MultiComboBox>
+															<CheckBox id="allLineChckBox" text="All"
+																selected="false" enabled="true" select="LineMultiComboSelect"
+																class="sapUiSmallMarginBegin" />
+														</HBox>
+													</f:fields>
+												</f:FormElement>
+											</f:formElements>
+										</f:FormContainer>
+										<f:FormContainer>
+											<f:formElements>
+												<f:FormElement label="{POReport>TransferDisplay_colHeader_status}">
+													<f:fields>
+														<HBox>
+															<MultiComboBox id="Status" items="{path: '/Rowset/Row'}"
+																enabled="true" width="140px">
+																<items>
+																	<core:Item key="{STATUS}" text="{DESCRIPTION}" />
+																</items>
+															</MultiComboBox>
+															<CheckBox id="allChckBox" text="All" selected="false"
+																enabled="true" select="MultiComboSelect" class="sapUiSmallMarginBegin" />
+														</HBox>
+													</f:fields>
+												</f:FormElement>
+											</f:formElements>
+										</f:FormContainer>
+										<f:FormContainer>
+											<f:formElements>
+												<f:FormElement id="StartDateLabel"
+													label="{POReport>InBndMatRecpt_Lbl_StartDate}">
+													<f:fields>
+														<DatePicker id="StartDate" type="Date"
+															valueFormat="MM/dd/yyyy 00:00:00" placeholder="Select Date"
+															width="" change="handleStartDateChange" />
+													</f:fields>
+												</f:FormElement>
+											</f:formElements>
+										</f:FormContainer>
+										<f:FormContainer>
+											<f:formElements>
+												<f:FormElement id="EndDateLabel"
+													label="{POReport>InBndMatRecpt_Lbl_EndDate}">
+													<f:fields>
+														<DatePicker id="EndDate" type="Date"
+															valueFormat="MM/dd/yyyy 00:00:00" placeholder="Select Date"
+															change="handleEndDateChange" />
+													</f:fields>
+												</f:FormElement>
+											</f:formElements>
+										</f:FormContainer>
+									</f:formContainers>
+								</f:Form>
+								<f:Form id="Form2" editable="true">
+									<f:layout>
+										<f:ResponsiveGridLayout labelSpanL="4"
+											labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="4"
+											columnsM="4" />
+									</f:layout>
+									<f:formContainers>
+										<f:FormContainer>
+											<f:formElements>
+												<f:FormElement label="{POReport>CustomGR_GR_2}">
+													<f:fields>
+														<Input id="ProcessOrder" value="" change="poInput" />
+													</f:fields>
+												</f:FormElement>
+											</f:formElements>
+										</f:FormContainer>
+										<f:FormContainer>
+											<f:formElements>
+												<f:FormElement label="{POReport>InBndMatRecpt_Lbl_Material}">
+													<f:fields>
+														<Input id="Material" value="" />
+													</f:fields>
+												</f:FormElement>
+											</f:formElements>
+										</f:FormContainer>
+										<f:FormContainer>
+											<f:formElements>
+												<f:FormElement label="">
+													<f:fields>
+														<Button id="Refresh" icon="sap-icon://display-more"
+															enabled="true" visible="true"
+															text="{POReport>TransferDisplay_btn_disp}" width="100%"
+															press="doRefreshFn" />
+													</f:fields>
+												</f:FormElement>
+											</f:formElements>
+										</f:FormContainer>
+									</f:formContainers>
+								</f:Form>
+							</l:content>
+						</l:Grid>
+					</content>
+				</Panel>
+				<panel id="tabelPanel" headerText="" expandable="true"
+					expanded="true">
+					<headerToolbar>
+						<Toolbar height="3rem" id="toolbar1">
+							<Label text="{POReport>POReport_PODetails}" design="Bold" />
+							<Input id="objectCount" tooltip="{POReport>Recordcount}"
+								value="" width="20%" editable="false" />
+							<ToolbarSpacer />
+							<Button id="btnExcelReportId" icon="sap-icon://excel-attachment"
+								enabled="true" visible="true" text="{POReport>CustomGR_GMReport_11}"
+								width="180px" press="getExcelReport" />
+							<SearchField id="searchFieldPOTableId"
+								icon="/XMII/CM/PerformanceManagement/ChangeoverMatrix/Image/Search.png"
+								enabled="true" visible="true" width="300px" text="{GMReport10>CustomGR_PO_3}"
+								liveChange="onSearchHdr" />
+						</Toolbar>
+					</headerToolbar>
+					<content>
+						<table:Table id="POTable" rows="{/Rowset/Row}"
+							selectionMode="Single" selectionBehavior="Row"
+							rowSelectionChange="onRowSelectionHdr" visibleRowCount="12">
+							<table:columns>
+
+								<table:Column hAlign="Center" visible="true" width="100px"
+									sortProperty="AUFNR" filterProperty="AUFNR">
+									<Label text="{POReport>CustomGR_GR_2}" />
+									<table:template>
+										<Text text="{AUFNR}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width="80px"
+									sortProperty="MATNR" filterProperty="MATNR">
+									<Label text="{POReport>CustomGR_GMReport_2}" />
+									<table:template>
+										<Text text="{MATNR}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width="180px"
+									sortProperty="MAKTX" filterProperty="MAKTX">
+									<Label text="{POReport>CustomGR_GMReport_16}" />
+									<table:template>
+										<Text text="{MAKTX}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width="95px"
+									sortProperty="STATUS" filterProperty="STATUS">
+									<Label text="{POReport>CustomGR_PO_11}" />
+									<table:template>
+										<Text text="{=${Status}==='TECO' ? ${Status} : ${STATUS}}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width="100px"
+									sortProperty="ARBPL" filterProperty="ARBPL">
+									<Label text="{POReport>RF_UI_LABEL_RESR}" />
+									<table:template>
+										<Text text="{ARBPL}" />
+									</table:template>
+								</table:Column>
+								<table:Column id = "PlannedStartDate" hAlign="Center" visible="true" width="90px"
+									sortProperty="START_DATE" filterProperty="START_DATE">
+									<Label text="{POReport>POReport_Start}" />
+									<table:template>
+										<Text
+											text="{parts : [{path : 'START_DATE'},{path:'START_TIME'}], formatter : '.formatDateTime'}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width="90px"
+									sortProperty="END_DATE" filterProperty="END_DATE">
+									<Label text="{POReport>POReport_End}" />
+									<table:template>
+										<Text
+											text="{parts : [{path : 'END_DATE'},{path:'END_TIME'}], formatter : '.formatDateTime'}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width="90px"
+									sortProperty="PLNNR" filterProperty="PLNNR">
+									<Label text="{POReport>POReport_PV}" />
+									<table:template>
+										<Text text="{PLNNR}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width="100px"
+									sortProperty="QTY_RELEASED" filterProperty="QTY_RELEASED">
+									<Label text="{POReport>CustomGI_PO_8}" />
+									<table:template>
+										<Text text="{QTY_RELEASED} {QTY_RELEASED_UOM}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width="55px"
+									sortProperty="LGORT" filterProperty="LGORT">
+									<Label text="{POReport>NPM_COMMON_SLOC}" />
+									<table:template>
+										<Text text="{LGORT}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width="50px"
+									sortProperty="LGNUM" filterProperty="LGNUM">
+									<Label text="{POReport>POReport_WH}" />
+									<table:template>
+										<Text text="{LGNUM}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width="60px"
+									sortProperty="STRG_BIN" filterProperty="STRG_BIN">
+									<Label text="{POReport>POReport_Bin}" />
+									<table:template>
+										<Text text="{STRG_BIN}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width="55px"
+									sortProperty="STRG_TYPE" filterProperty="STRG_TYPE">
+									<Label text="{POReport>POReport_Type}" />
+									<table:template>
+										<Text text="{STRG_TYPE}" />
+									</table:template>
+								</table:Column>
+								<table:Column hAlign="Center" visible="true" width="120px"
+									sortProperty="CHARG" filterProperty="CHARG">
+									<Label text="{POReport>POReport_PreBatch}" />
+									<table:template>
+										<Text text="{CHARG}" />
+									</table:template>
+								</table:Column>
+							</table:columns>
+						</table:Table>
+					</content>
+				</panel>
+				<OverflowToolbar id="CompToolbar" class="sapUiMediumMarginTop"
+					visible="false">
+					<ToolbarSpacer />
+					<Button id="Consumption" class="roundButton" enabled="true"
+						text="{POReport>PO_Consumption}" width="220px" press="goConsumption" />
+					<ToolbarSpacer />
+					<Button id="Declaration" class="roundButton" enabled="true"
+						text="{POReport>PO_Declaration}" width="220px" press="goDeclaration" />
+					<ToolbarSpacer />
+					<Button id="Confirmation" class="roundButton" visible="true"
+						text="{POReport>NPORTAL_IMR_CONFIRMATION}" width="220px" press="goConfirmation" />
+					<ToolbarSpacer />
+				</OverflowToolbar>
+				<Panel id="ComponentsPanel" visible="false">
+					<content>
+						<IconTabBar id="iconTabBar" tabDensityMode="Compact"
+							class="sapUiResponsiveContentPadding" select="doSwitchTab">
+							<items>
+								<IconTabFilter id="compTab" text="{POReport>POReport_Comp}"
+									icon="sap-icon://grid">
+									<panel id="tablePanelComp" headerText="" expandable="false"
+										expanded="true" visible="false">
+										<headerToolbar>
+											<Toolbar height="2.7rem" id="toolbar1Comp">
+												<Label text="{POReport>CustomGR_GR_2} :" design="Bold" />
+												<Input id="CompTableInp" value="" width="20%"
+													editable="false" />
+												<ToolbarSpacer />
+												<SearchField id="searchFieldCompTableId"
+													icon="/XMII/CM/PerformanceManagement/ChangeoverMatrix/Image/Search.png"
+													enabled="true" visible="true" width="300px"
+													text="{GMReport10>CustomGR_PO_3}" liveChange="onSearchComp" />
+											</Toolbar>
+										</headerToolbar>
+										<content>
+											<table:Table id="CompTable" rows="{/Rowset/Row}"
+												selectionMode="Single" selectionBehavior="Row"
+												rowSelectionChange="onRowSelection" visible="true"
+												visibleRowCount="9">
+												<table:columns>
+													<table:Column hAlign="Center" visible="false"
+														width="80px" sortProperty="Order" filterProperty="Order">
+														<Label text="{POReport>POReport_Operation}" />
+														<table:template>
+															<Text text="{Order}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="80px" sortProperty="POSNR" filterProperty="POSNR">
+														<Label text="{POReport>POReport_MatItem}" wrapping="true"
+															textAlign="Center" />
+														<table:template>
+															<Text text="{POSNR}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="100px" sortProperty="MATNR" filterProperty="MATNR">
+														<Label text="{POReport>CustomGR_GMReport_2}" />
+														<table:template>
+															<Text text="{MATNR}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="180px" sortProperty="MAKTX" filterProperty="MAKTX">
+														<Label text="{POReport>CustomGR_GMReport_16}" />
+														<table:template>
+															<Text text="{MAKTX}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="90px" sortProperty="BDMNG" filterProperty="BDMNG">
+														<Label text="{POReport>CustomGI_PO_8}" />
+														<table:template>
+															<Text text="{BDMNG} {MEINS}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="70px" sortProperty="VORNR" filterProperty="VORNR">
+														<Label text="{POReport>POReport_Phase}" />
+														<table:template>
+															<Text text="{VORNR}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="false"
+														width="60px" sortProperty="LGORT" filterProperty="LGORT">
+														<Label text="{POReport>NPM_COMMON_SLOC}" />
+														<table:template>
+															<Text text="{LGORT}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="60px" sortProperty="WAREHOUSE_NO" filterProperty="WAREHOUSE_NO">
+														<Label text="{POReport>POReport_WH}" />
+														<table:template>
+															<Text text="{WAREHOUSE_NO}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="60px" sortProperty="STORAGE_TYPE" filterProperty="STORAGE_TYPE">
+														<Label text="{POReport>POReport_Type}" wrapping="true"
+															textAlign="Center" design="Bold" />
+														<table:template>
+															<Text text="{STORAGE_TYPE}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="80px" sortProperty="STORAGE_BIN" filterProperty="STORAGE_BIN">
+														<Label text="{POReport>POReport_Bin}" textAlign="Center"
+															wrapping="true" />
+														<table:template>
+															<Text text="{STORAGE_BIN}" />
+														</table:template>
+													</table:Column>
+
+													<table:Column hAlign="Center" visible="true"
+														width="80px" sortProperty="HU_MANAGED" filterProperty="HU_MANAGED">
+														<Label text="{POReport>SU_Manag}" wrapping="true"
+															textAlign="Center" />
+														<table:template>
+															<Text text="{HU_MANAGED}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="70px" sortProperty="BACKFLUSH" filterProperty="BACKFLUSH">
+														<Label text="{POReport>POReport_BACKFLUSH}" />
+														<table:template>
+															<Text text="{BACKFLUSH}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="100px" sortProperty="CHARG" filterProperty="CHARG">
+														<Label text="{POReport>POReport_PreBatch}" wrapping="true"
+															textAlign="Center" />
+														<table:template>
+															<Text text="{CHARG}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="60px" sortProperty="RSPOS" filterProperty="RSPOS">
+														<Label text="{POReport>POReport_Item}" />
+														<table:template>
+															<Text text="{RSPOS}" />
+														</table:template>
+													</table:Column>
+												</table:columns>
+											</table:Table>
+										</content>
+									</panel>
+								</IconTabFilter>
+								<IconTabFilter id="consTab" text="{POReport>PO_Consumption}"
+									icon="sap-icon://grid">
+									<panel id="tablePanelCons" headerText="" expandable="false"
+										expanded="true" visible="true">
+										<headerToolbar>
+											<Toolbar height="3rem" id="toolbar1Cons">
+												<Label text="{POReport>CustomGR_GR_2} :" design="Bold" />
+												<Input id="ConsTableInp" value="" width="20%"
+													editable="false" />
+												<ToolbarSpacer />
+												<SearchField id="searchFieldConsTableId"
+													icon="/XMII/CM/PerformanceManagement/ChangeoverMatrix/Image/Search.png"
+													enabled="true" visible="true" width="300px"
+													text="{GMReport10>CustomGR_PO_3}" liveChange="onSearchCons" />
+											</Toolbar>
+										</headerToolbar>
+										<content>
+											<table:Table id="ConsTable" rows="{/Rowset/Row}"
+												selectionMode="Single" selectionBehavior="Row"
+												rowSelectionChange="onRowSelection" visible="true"
+												visibleRowCount="9">
+												<table:columns>
+													<table:Column hAlign="Center" visible="true"
+														width="90px" sortProperty="ProcOrd" filterProperty="ProcOrd">
+														<Label text="{POReport>CustomGR_GR_2}" />
+														<table:template>
+															<Text text="{ProcOrd}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="80px" sortProperty="Material" filterProperty="Material">
+														<Label text="{POReport>CustomGR_GMReport_2}" />
+														<table:template>
+															<Text text="{Material}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="180px" sortProperty="MaterialDescription"
+														filterProperty="MaterialDescription">
+														<Label text="{POReport>CustomGR_GMReport_16}" />
+														<table:template>
+															<Text text="{MaterialDescription}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="80px" sortProperty="Quantity" filterProperty="Quantity">
+														<Label text="{POReport>CustomGI_PO_8}" />
+														<table:template>
+															<ProgressIndicator percentValue="100%"
+																displayValue="{path: 'Quantity',  formatter : 'sap.oee.ui.Formatter.formatQuantityValue'}"
+																showValue="true"
+																state="{= ${Quantity} &lt; 0 ? 'Warning' : 'Success'}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="55px" sortProperty="CommUOM" filterProperty="CommUOM">
+														<Label text="{POReport>CustomGR_GMReport_4}" />
+														<table:template>
+															<Text text="{CommUOM}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="80px" sortProperty="MovementType" filterProperty="MovementType">
+														<Label text="{POReport>POReport_Mvmt}" />
+														<table:template>
+															<Text text="{MovementType}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="80px" sortProperty="Batch" filterProperty="Batch">
+														<Label text="{POReport>TransferDisplay_colHeader_batch}" />
+														<table:template>
+															<Text text="{Batch}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="110px" sortProperty="StorageUnit" filterProperty="StorageUnit">
+														<Label text="{POReport>CustomGR_GMReport_7}" />
+														<table:template>
+															<Text text="{StorageUnit}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="100px" sortProperty="PostingDate" filterProperty="PostingDate">
+														<Label text="{POReport>CustomGR_GMReport_8}" />
+														<table:template>
+															<Text text="{PostingDate}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="80px" sortProperty="Pallet_Info" filterProperty="Pallet_Info">
+														<Label text="{POReport>CustomGR_GMReport_17}" />
+														<table:template>
+															<Text text="{Pallet_Info}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="90px" sortProperty="UserID" filterProperty="UserID">
+														<Label text="{POReport>CustomGR_GMReport_9}" />
+														<table:template>
+															<Text text="{UserID}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="75px" sortProperty="BCPStatus" filterProperty="BCPStatus">
+														<Label text="{POReport>NPM_COMMON_BCP_STATUS}" />
+														<table:template>
+															<Text text="{BCPStatus}" />
+														</table:template>
+													</table:Column>
+												</table:columns>
+											</table:Table>
+										</content>
+									</panel>
+								</IconTabFilter>
+								<IconTabFilter id="declTab" text="{POReport>PO_Declaration}"
+									icon="sap-icon://grid">
+									<panel id="tablePanelDecl" headerText="" expandable="false"
+										expanded="true" visible="true">
+										<headerToolbar>
+											<Toolbar height="3rem" id="toolbar1Decl">
+												<Label text="{POReport>CustomGR_GR_2} :" design="Bold" />
+												<Input id="DeclTableInp" value="" width="20%"
+													editable="false" />
+												<ToolbarSpacer />
+												<SearchField id="searchFieldDeclTableId"
+													icon="/XMII/CM/PerformanceManagement/ChangeoverMatrix/Image/Search.png"
+													enabled="true" visible="true" width="300px"
+													text="{GMReport10>CustomGR_PO_3}" liveChange="onSearchDecl" />
+											</Toolbar>
+										</headerToolbar>
+										<content>
+											<table:Table id="DeclTable" rows="{/Rowset/Row}"
+												selectionMode="Single" selectionBehavior="Row"
+												rowSelectionChange="onRowSelection" visible="true"
+												visibleRowCount="9">
+												<table:columns>
+													<table:Column hAlign="Center" visible="true"
+														width="90px" sortProperty="ProcOrd" filterProperty="ProcOrd">
+														<Label text="{POReport>CustomGR_GR_2}" />
+														<table:template>
+															<Text text="{ProcOrd}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="85px" sortProperty="Material" filterProperty="Material">
+														<Label text="{POReport>CustomGR_GMReport_2}" />
+														<table:template>
+															<Text text="{Material}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="180px" sortProperty="MaterialDescription"
+														filterProperty="MaterialDescription">
+														<Label text="{POReport>CustomGR_GMReport_16}" />
+														<table:template>
+															<Text text="{MaterialDescription}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="80px" sortProperty="Quantity" filterProperty="Quantity">
+														<Label text="{POReport>CustomGI_PO_8}" />
+														<table:template>
+															<ProgressIndicator percentValue="100%"
+																displayValue="{path: 'Quantity',  formatter : 'sap.oee.ui.Formatter.formatQuantityValue'}"
+																showValue="true"
+																state="{= ${Quantity} &lt; 0 ? 'Warning' : 'Success'}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="55px" sortProperty="CommUOM" filterProperty="CommUOM">
+														<Label text="{POReport>CustomGR_GMReport_4}" />
+														<table:template>
+															<Text text="{CommUOM}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="80px" sortProperty="MovementType" filterProperty="MovementType">
+														<Label text="{POReport>POReport_Mvmt}" />
+														<table:template>
+															<Text text="{MovementType}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="80px" sortProperty="Batch" filterProperty="Batch">
+														<Label text="{POReport>TransferDisplay_colHeader_batch}" />
+														<table:template>
+															<Text text="{Batch}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="110px" sortProperty="StorageUnit" filterProperty="StorageUnit">
+														<Label text="{POReport>CustomGR_GMReport_7}" />
+														<table:template>
+															<Text text="{StorageUnit}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="100px" sortProperty="PostingDate" filterProperty="PostingDate">
+														<Label text="{POReport>CustomGR_GMReport_8}" />
+														<table:template>
+															<Text text="{PostingDate}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="80px" sortProperty="Pallet_Info" filterProperty="Pallet_Info">
+														<Label text="{POReport>CustomGR_GMReport_17}" />
+														<table:template>
+															<Text text="{Pallet_Info}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="90px" sortProperty="UserID" filterProperty="UserID">
+														<Label text="{POReport>CustomGR_GMReport_9}" />
+														<table:template>
+															<Text text="{UserID}" />
+														</table:template>
+													</table:Column>
+													<table:Column hAlign="Center" visible="true"
+														width="75px" sortProperty="BCPStatus" filterProperty="BCPStatus">
+														<Label text="{POReport>NPM_COMMON_BCP_STATUS}" />
+														<table:template>
+															<Text text="{BCPStatus}" />
+														</table:template>
+													</table:Column>
+												</table:columns>
+											</table:Table>
+										</content>
+									</panel>
+								</IconTabFilter>
+							</items>
+						</IconTabBar>
+					</content>
+				</Panel>
+			</u:content>
+		</u:Shell>
+	</Page>
+</mvc:View>

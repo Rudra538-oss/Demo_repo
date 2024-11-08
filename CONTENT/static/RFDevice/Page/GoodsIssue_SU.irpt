@@ -1,0 +1,149 @@
+<HTML>
+	<HEAD>
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<TITLE id="title">Goods Issue</TITLE>
+				<script type="text/javascript">
+		document.write('<scr'+'ipt src="/XMII/CM/MaterialHandling/RFDevice/JavaScript/GoodsIssue_SU.js?'+Math.random()+'" type="text/javascript"></scr'+'ipt>');
+		document.write('<scr'+'ipt src="/XMII/CM/MaterialHandling/RFDevice/Common/Utility.js?'+Math.random()+'" type="text/javascript"></scr'+'ipt>');
+		</script>
+			<!--SCRIPT language="javascript" src="/XMII/CM/MaterialHandling/RFDevice/Common/Utility.js"></SCRIPT-->
+		<!--SCRIPT language="javascript" src="/XMII/CM/MaterialHandling/RFDevice/JavaScript/GoodsIssue.js"></SCRIPT-->
+		<script type="text/javascript" src="/XMII/CM/MaterialHandling/RFDevice/Common/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="/XMII/CM/MaterialHandling/RFDevice/Common/jquery-ui.js"></script>
+	<LINK REL="StyleSheet" HREF="/XMII/CM/MaterialHandling/RFDevice/Common/jquery-ui.css" TYPE="text/css">
+	<LINK REL="StyleSheet" HREF="/XMII/CM/MaterialHandling/RFDevice/Stylesheet/RF_Device.css" TYPE="text/css">
+<script>
+$(document).ready(function(){
+    $("#gi_save").click(function(){
+	
+   	           $("#errorMsg").show("fast",function(){
+       		doSave();
+    		});
+	
+    });
+$("#gi_stageConsume").click(function(){
+	
+   	           $("#errorMsg").show("fast",function(){
+       		doConsumeRequest();
+    		});
+	
+    });
+});
+</script>
+
+<script>   
+    $(function() {
+         $( "#postArea" ).datepicker();   
+    }); 
+</script>
+	<script>   
+    $(function() {
+         $( "#sledArea" ).datepicker();   
+    }); 
+</script>
+
+<style>
+body {
+    margin: 0;
+    background: #f0f8ff;
+    font-family: "Open Sans", sans-serif;
+    padding-bottom: 8rem;
+}
+label {
+    color: #2f4f4f;
+    font-weight: bold;
+    font-size: 1.9rem;
+}
+input[type="text"] {
+    color: black;
+    font-size: 22px;
+    margin: 0 0 0.5em;
+    outline: medium none;
+    padding: 0px;
+    width: 400px;
+    height: 60px;
+}
+input[type="value"] {
+    color: black;
+    font-size: 22px;
+    margin: 0 0 0.5em;
+    outline: medium none;
+    padding: 0px;
+    width: 400px;
+    height: 60px;
+}
+button {
+    /* background-color: #4CAF50; */
+    border: none;
+    /* color: white; */
+    padding: 5px 12px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 27px;
+    margin: 4px 2px;
+    cursor: pointer;
+    /* font-weight: bold; */
+    border-style: solid;
+    border-width: 1px;
+    width: 195px;
+}
+select {
+    color: black;
+    font-size: 24px;
+    margin: 0 0 0px;
+    outline: medium none;
+    padding: 0px;
+    width: 400px;
+    height: 60px;
+}
+h3 {
+    color: #2f4f4f;
+    font-family: "Josefin Sans",sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+}
+</style>
+		<input id="login" type="hidden" value="{IllumLoginName}"></input>
+	</HEAD>
+	<BODY onload="onLoading();">
+		<div class="content">
+			<div>
+					<div class="headerItem">	
+					</div>
+					<div class="mainContent">
+					<div class="header">
+  						<img src="/XMII/CM/MaterialHandling/Common/Images/NestleLogo.png" alt="Nestle" />
+  							<label id="labelHdr">GI-Order Material</label>
+					</div>
+
+			</br><br/>
+			<label for="bcp" id="idBCP">BCP  </label>
+			<input class="input inputBCP" type="value" name="bcp" id="BCPArea" readonly disabled>
+			<label for="order" id="idOrder">Order </label>
+			<input type="text" name="order" id="orderArea" readonly>
+			<label for="material" id="materialL">Material </label>
+			<input type="text" name="material" id="materialArea" readonly>
+			<!--label for="materialdes">Description </label-->
+			<!--input type="text" name="materialdes" id="descriptionArea" readonly-->
+			<label for="sscc" id="ssccL">SSCC </label>
+			<input type="text" name="sscc" id="ssccArea" readonly>
+			<label for="batch" id="batchL">Batch </label>
+			<input type="text" name="batch" id="batchArea" readonly></select>
+			<label for="sled" id="sledL">SLED </label>
+			<input type="text" name="sled" id="sledArea" readonly>
+			<label for="post" id="postL">Posting Date </label>
+			<input type="text" name="post" id="postArea"></input>
+			<label for="quant" id="qty">Quantity </label>
+			<input type="text" name="quant" id="quantityArea" oninput="quantityChange()">
+			<select name="uom" id="uomArea" onchange="getUom()" onFocus="changeStyle('uomArea')"></select>
+			<br/><br/>
+			<button id ="gi_save" type="button" style="cursor:pointer"> F1 Consume </button>
+			<button id="BtnBk" type="button" style="cursor:pointer" onclick="doBack()"> F3 Back </button>
+			<button id ="gi_stageConsume" type="button" style="cursor:pointer"> F5 Consume and Request </button>
+				<label id="errorMsg" class="label msgLabel" align="center" hidden="true" >Please wait...</label>
+		</div>
+	</div>
+        </div>
+</div>
+	</BODY>
+</HTML>
